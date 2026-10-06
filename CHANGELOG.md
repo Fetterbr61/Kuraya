@@ -17,6 +17,13 @@ repository.
 
 ---
 
+## [2.0.1-beta.7] — 2026-10-06 — Actor Photos fix
+
+### Fixed
+- Media Tools → **Actor Photos** showed a grey screen on a new install (no actor photos yet) (#1789)
+
+---
+
 ## [2.0.1-beta.6] — 2026-10-06 — move folder content
 
 ### New
