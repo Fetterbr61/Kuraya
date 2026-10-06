@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fetterbr61.github.io/Kuraya/sitemap.xml
