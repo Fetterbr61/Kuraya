@@ -1,0 +1,265 @@
+# How Kuraya works
+
+**Kuraya 0.9.0-beta.1 (test version)** — *Where Your Japanese Adult Movies Lives.*
+
+This is the complete description of what Kuraya does and how it does it, written for
+users. The newest changes are in CHANGELOG.md. Kuraya is for adults (18+) and for
+managing a collection you own.
+
+---
+
+## 1. What Kuraya is
+
+Kuraya is a Windows program that organises a library of Japanese adult movies (JAV)
+stored on your own drives. You point it at your folders and it:
+
+- recognises every movie by its **DVD-ID** (the product code, e.g. `ABP-112`),
+- fetches the **title, cover, actresses, genres, studio, series and release date**
+  from several public movie databases,
+- files every movie into a **tidy folder structure** you can also browse in Explorer,
+- **plays** the movies and shows them as a cover grid with filters and search,
+- builds an **actress database** with photos and bios,
+- can make **English subtitles** from the Japanese audio,
+- finds **duplicates**, broken files and missing pieces, and can shrink large videos.
+
+An optional **Android remote app** (a separate download, "Kuraya-Remote") lets you
+browse and stream your library on a phone or tablet on your home network.
+
+Kuraya never deletes anything without asking you first.
+
+---
+
+## 2. Installing
+
+**Recommended - the installer:**
+1. Download **`Kuraya-Setup-<version>.exe`** from the **Releases** page on GitHub.
+2. Run it. If a SmartScreen warning appears (the program is not signed), click
+   **More info -> Run anyway**.
+3. Click through the installer (no administrator rights needed). It installs to your user
+   folder by default and adds Kuraya to the Start menu (and the desktop if you tick it).
+
+**To update:** run the newer `Kuraya-Setup` - it finds your installation and replaces only
+the program files. Your settings, folders, cache and tools stay exactly as they are.
+**To uninstall:** Settings > Apps > Kuraya > Uninstall (your movies, settings and cache are
+left alone).
+
+**Portable alternative - the zip:** `Kuraya-<version>-win64.zip` contains one folder called
+`Kuraya`. Unzip it with **7-Zip > Extract Here** and start `Kuraya.exe`. To update, unzip the
+new version to the SAME place and choose **Replace**. (Unzipped somewhere else by mistake? The
+new copy takes over the previous install's settings automatically on its first start.)
+
+The very first start can take a while while Kuraya creates its database and cache.
+
+---
+
+## 3. The first start — Setup
+
+On the first start Kuraya opens **Setup** (you can close it at any time; Kuraya keeps
+working and you can reopen it from **Settings → External tools → Setup & Tools**):
+
+1. **Welcome** — confirm you are 18 or older.
+2. **Your folders** — Kuraya has already created `Library`, `Inbox` and `Pre-Inbox` inside
+   its own folder so you can start at once. Keep them, or Browse to your own folders (e.g. an
+   existing collection on another drive); you can change them any time in Settings > Paths.
+   - **Library folder(s)** — where your sorted collection lives (one per drive if you
+     use several drives).
+   - **Inbox** — where new movies arrive; Kuraya identifies, scrapes and files them.
+   - **Pre-Inbox** (optional) — a staging folder checked *before* the Inbox (see §5).
+3. **Helper tools** — Kuraya uses free third-party tools for some jobs. Each row says
+   what the tool is for and whether it was found:
+   - **Download** puts a portable tool into `Kuraya\Tools\` (you see the source address
+     first). Nothing is installed into Windows.
+   - **Get installer** opens the official download page for tools that need their own
+     installer. Afterwards press **Check again**.
+   - **I have it — browse** points Kuraya at a copy you already have.
+4. **Done** — shows what works and what stays off until a tool is installed.
+
+| Tool | Needed for | Group |
+|---|---|---|
+| FFmpeg + FFprobe | reading video details, conversion, audio for subtitles | **Required** |
+| FlareSolverr (runs in Docker Desktop) | scraping sites protected by Cloudflare | Recommended |
+| CF Cookie Bridge (browser extension, in the `Browser extension` folder) | faster scraping of Cloudflare sites — Edge: `edge://extensions` → Developer mode → Load unpacked → pick that folder | Recommended |
+| Ollama | free local AI: genre sorting, title help | Recommended |
+| Python 3.12 | cover-text reading, anime-whisper, burned-sub tools | Recommended |
+| fpcalc | finding duplicates by sound | Optional |
+| czkawka | duplicate / similar / broken file scans | Optional |
+| Tesseract | detecting the language of burned-in subtitles | Optional |
+| VideOCR | reading burned-in English subtitles | Optional |
+| Subtitle Edit + Faster-Whisper | making subtitles from the audio | Optional |
+
+You can skip every tool. When you later start a feature whose tool is missing,
+Kuraya tells you which tool it needs and offers to open Setup.
+
+---
+
+## 4. Words used in Kuraya
+
+- **Movie** — one title, one DVD-ID. On disk a movie is a **folder** holding its video
+  file(s), the .nmp, covers and subtitles. Kuraya counts movies.
+- **Video** — an actual file you play (`.mp4`, `.mkv`). A movie usually has one video,
+  but can have several (CD1 + CD2 parts, or a censored and an uncensored copy).
+- **DVD-ID** — the product code that identifies a movie (`SONE-804`, `ABP-112`).
+- **.nmp file** — Kuraya's information file inside each movie folder (title, actresses,
+  genres, studio, cover names…). It is plain XML; Kuraya's database is rebuilt from it.
+- **Scraping** — looking a DVD-ID up on movie databases to fill in the .nmp.
+- **Fanart / poster** — the wide cover / the tall cover image.
+- **Censored / Uncensored** — whether the video has the mosaic.
+- **Burned-in subtitles (hardsub)** — text painted into the picture; **soft subtitles**
+  are separate `.srt` files you can switch on/off.
+
+---
+
+## 5. How a new movie travels
+
+```
+ Pre-Inbox (optional)  ->  Inbox  ->  Scrape  ->  Library (sorted folders)
+```
+
+**Pre-Inbox (optional).** Drop finished downloads here. Kuraya watches the folder and,
+for each movie, works through checks in order: is it a duplicate of something you
+already own? is there an uncensored version? is an advertisement glued to the start?
+are there burned-in subtitles? does it need English subtitles (made now, see §8)?
+A movie that passes is moved to the Inbox automatically; one that stops shows the
+reason in plain words. You can close the Pre-Inbox window — the work continues and
+shows in the Task Console.
+
+**Inbox.** Press **Process Inbox**. Loose files get their own folder named after the
+DVD-ID; multi-part movies (CD1/CD2) can be joined; and every movie is compared with
+your library. If you already own it, a **duplicate window** shows both copies side by
+side (size, resolution, censored/uncensored, subtitles) and you choose: keep the new
+one, keep the old one, keep both, or **Combine** (put the subtitles of a censored copy
+onto an uncensored one). Subtitles of the copy you drop are rescued first.
+
+**Scrape.** The scraping window looks the movie up on several sources at once and
+shows every result as a card. You (or the automatic mode for many movies) choose the
+best title, cover, actresses and genres. Kuraya then cleans the data (titles without
+site watermarks, genres de-duplicated and capped at 6, actress names checked),
+writes the .nmp, downloads the cover and renames the files.
+
+**Library.** Movies are filed into the sort folders described in §6. A move only ever
+happens because you started it — never as a side effect of opening Kuraya.
+
+---
+
+## 6. How the library is sorted
+
+Every movie is filed on its own drive as:
+
+```
+<drive>:\Sorted\<Maker>\<g1>\<g2>\<g3>\<g4>\<DVD-ID>\<DVD-ID> <Title> (<Year>).mp4
+```
+
+- **Maker** — the studio, e.g. `Natural High`.
+- **g1** — who is in control (e.g. `Dominant-Men`).
+- **g2** — what happens (the main act).
+- **g3** — who it is done to.
+- **g4** — where it happens.
+
+The four genre levels come from the movie's scraped genres, its series and (optionally)
+the local AI. In the scraping window you see the proposed path and can change any level
+before applying. The full path is kept under Windows' 255-character limit: long titles
+are shortened in the file names, never in the .nmp. Label and director are stored in
+the .nmp and searchable, but are not folder levels.
+
+---
+
+## 7. Browsing and playing
+
+- **Cover grid** with badges: uncensored, English subtitles (ENG SUB / AI SUB),
+  burned-in subtitles, errors, inbox, needs scraping.
+- **Filters and sorting** — by genre, actress, studio, series, subtitles, censorship,
+  date added and more. Movies in the inbox or still needing scraping are pinned to the top.
+- **Views** — fanart, poster, actresses, series (movies grouped by series, with series
+  names translated to English).
+- **Movie Details** — everything about one movie on one page.
+- **Player** — built in, with subtitles you can switch on and off.
+- **Actresses** — photos and bios collected from several sources, duplicates removed.
+
+---
+
+## 8. English subtitles
+
+For a movie without English subtitles Kuraya can make them in two steps:
+
+1. **Transcribe** — speech is turned into a Japanese subtitle file by Whisper on your
+   graphics card (anime-whisper when installed, otherwise Subtitle Edit's Faster-Whisper).
+2. **Translate** — the Japanese text is translated to English by **DeepSeek** (needs a
+   DeepSeek API key in Settings; the cost is about a few cents per movie). The result is
+   `<movie>.DeepSeek.EN.srt` next to the video.
+
+Rules Kuraya always follows:
+- A real English subtitle you already have (downloaded or hand-made) is **never
+  overwritten** — such folders are skipped.
+- An empty or failed subtitle is **never written**; the Japanese file stays so it can be
+  retried.
+- Subtitles stay **separate .srt files**; Kuraya does not paint text into your videos.
+- Titles framed around minors are excluded from every subtitle path.
+
+---
+
+## 9. Keeping the library healthy
+
+- **Doctor** — a health scan (missing .nmp, missing cover, no video, extra files, NMP
+  format problems). Safe fixes can be applied with one click; anything removed goes to
+  a **quarantine** folder first, so it can be put back.
+- **Guard** — the same checks running quietly in the background in small steps.
+- **Duplicates** — by DVD-ID, by file content (czkawka) and by sound (fpcalc).
+- **Video conversion** — re-encodes very large files to HEVC (H.265) to save space,
+  and repackages old formats (.avi, .wmv) to .mp4. Every result is checked (length,
+  picture, **sound**) before the original is replaced; a bigger result is thrown away.
+- **Video Repair** — fixes files whose start is damaged.
+- **Deletion guard** — every delete of a folder or media file asks you first.
+- **Task Console** — every long job (scraping, conversion, subtitles) shows its progress
+  there and can be paused or stopped safely between movies.
+
+---
+
+## 10. The Android remote (optional)
+
+Install **Kuraya-Remote** on an Android phone or tablet on the same network as the PC.
+In the remote's settings enter the PC's **IP address** (e.g. `192.168.0.10`, not
+"localhost") and port **8080**. The PC does all the work; the remote shows your library,
+streams movies, and syncs favourites and flags back to the PC. The PC must be on and
+Kuraya running.
+
+---
+
+## 11. What goes online — privacy
+
+- **Scraping** sends the **DVD-ID** to the movie databases you enabled, to look it up.
+- **Translation** sends the **subtitle text** to DeepSeek — only if you entered a key.
+  Other cloud AI (Claude, DeepL) is used only if you add their keys.
+- **Ollama** runs on your own PC; nothing leaves it.
+- Kuraya sends **nothing** to its developers: no accounts, no tracking, no statistics.
+- Your files never leave your drives (the remote app streams over your home network only).
+
+---
+
+## 12. Where Kuraya keeps its files
+
+All inside the Kuraya folder:
+- `settings.json` — your settings.
+- `Cashe\` — Kuraya's cache: actress photos, translations, progress files, backups.
+- `Logs\` — log files (`Logs\full\<date>\part_*.log` is the complete log of a session).
+- `Tools\` — helper tools downloaded by Setup.
+
+Each movie folder holds the video, its `.nmp`, the cover images and any subtitles.
+
+---
+
+## 13. When something goes wrong
+
+- **A feature says a tool is missing** — click **Open Setup** and install it.
+- **Scraping finds nothing** — check that FlareSolverr (Docker Desktop) is running; some
+  sites block for a while after many lookups ("rate limited" / error 1015) — wait an hour.
+- **Look in the log** — `Cashe\error_snapshot.txt` lists recent errors and warnings;
+  `Logs\full\` has everything. Please include the version number (top of the log) when
+  you report a problem.
+
+---
+
+## 14. Versions
+
+Kuraya uses version numbers like `0.9.0-beta.1`. "beta" means a **test version**: all
+main features are there but bugs are expected. A finished release has no suffix
+(`1.0.0`). What changed in each version is in **CHANGELOG.md**.
