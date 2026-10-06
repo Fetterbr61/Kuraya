@@ -3,6 +3,7 @@
 <p align="center"><i>The JAV library that runs itself.</i></p>
 <p align="center">
   <a href="https://github.com/Fetterbr61/Kuraya/releases"><img alt="latest release" src="https://img.shields.io/github/v/release/Fetterbr61/Kuraya?include_prereleases&label=version&color=orange"></a>
+  <a href="https://github.com/Fetterbr61/Kuraya/releases"><img alt="downloads" src="https://img.shields.io/github/downloads/Fetterbr61/Kuraya/total?label=downloads&color=2ea44f"></a>
   <img alt="platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-blue">
   <img alt="status" src="https://img.shields.io/badge/status-beta%20(test%20version)-yellow">
   <img alt="18+" src="https://img.shields.io/badge/adults-18%2B-red">
