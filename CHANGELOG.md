@@ -17,6 +17,14 @@ repository.
 
 ---
 
+## [2.0.1-beta.2] — 2026-10-06 — public version tidy-up
+
+### Changed
+- Scat Japan, JAV Porn Club, Pornolab, Rinryu and Body Fluids are gone from the public version everywhere: scraping, **Scraper Calibration** and **Settings** (#1778, #1782)
+- **Local & LAN browser** works like the Android remote: only movies are shown (no torrents, subtitles or installers), plus Home, **All movies** (every movie in all subfolders) and **Not in app** (hide movies already in your library) (#1781)
+
+---
+
 ## [2.0.1-beta.1] — 2026-10-06 — Kuraya 2.0.1 Beta
 
 Kuraya moves to version **2.0.1 Beta** (the 0.9 betas above were the first test rounds).
