@@ -2,5 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://fetterbr61.github.io/Kuraya/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://fetterbr61.github.io/Kuraya/buttons.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fetterbr61.github.io/Kuraya/third-party.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://fetterbr61.github.io/Kuraya/how-kuraya-works</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

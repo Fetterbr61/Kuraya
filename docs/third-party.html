@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuraya - third-party tools</title>
+<meta name="description" content="The free third-party tools, libraries and online services Kuraya uses, what each one is for and its licence.">
+<link rel="icon" href="kuraya_logo.png">
+<style>
+:root{--bg:#111318;--card:#1b1f27;--text:#e8e6e1;--muted:#9aa3b2;--accent:#D9432B;--line:#2a303b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px 40px}
+nav{display:flex;align-items:center;gap:12px;padding:20px 0}nav img{width:40px;height:40px}nav a{color:var(--text);text-decoration:none;font-weight:600}
+nav .sp{flex:1}nav .lnk{color:var(--muted);font-weight:400}
+h1{font-size:34px;margin:16px 0 4px}h2{margin:40px 0 4px;color:var(--text)}
+.sub{color:var(--muted);margin:0 0 12px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}tr:first-child td{border-top:none}
+td.ic{width:44px;text-align:center;font-size:18px;color:var(--accent);font-weight:700}
+td:first-child{width:260px}th{text-align:left;padding:10px 12px;color:var(--muted);font-weight:600}td a{color:var(--text)}
+code,kbd{background:#262b35;border-radius:4px;padding:1px 5px;font-size:14px}
+.tip{background:var(--card);border-left:4px solid var(--accent);padding:12px 16px;border-radius:8px;margin:20px 0}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center;padding:24px 0;margin-top:40px}footer a{color:var(--muted)}
+@media(max-width:640px){td:nth-child(2){width:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><img src="kuraya_logo.png" alt=""><a href="./">Kuraya</a><span class="sp"></span>
+<a class="lnk" href="https://github.com/Fetterbr61/Kuraya/releases/latest">Download</a></nav>
+<h1>Third-party tools</h1>
+<p class="sub">Kuraya stands on the shoulders of great free software. Nothing below is installed into Windows by Kuraya: the <b>Setup</b> window downloads a tool into Kuraya's own <code>Tools</code> folder or links to its installer, and every feature tells you when a tool it needs is missing. Thank you to all these projects.</p>
+<h2>Helper tools (chosen in Setup)</h2><p class="sub">Only FFmpeg is required; everything else is optional and unlocks extra features.</p>
+<table><tr><th>Name</th><th>What Kuraya uses it for</th><th>Licence</th></tr>
+<tr><td><b><a href="https://www.gyan.dev/ffmpeg/builds/">FFmpeg + FFprobe</a></b></td><td><b>Required.</b> Reads video length and quality, makes thumbnails, extracts audio for subtitles, the HEVC converter.</td><td>LGPL / GPL</td></tr>
+<tr><td><b><a href="https://github.com/FlareSolverr/FlareSolverr">FlareSolverr (via Docker Desktop)</a></b></td><td>Recommended. Opens movie sites that are protected by Cloudflare.</td><td>MIT</td></tr>
+<tr><td><b><a href="https://ollama.com">Ollama</a></b></td><td>Recommended. Local AI on your own PC: genre sorting, title clean-up. Nothing leaves your PC.</td><td>MIT</td></tr>
+<tr><td><b><a href="https://www.python.org">Python 3.12</a></b></td><td>Recommended. Runs the helper scripts (OCR, audio fingerprints, anime-whisper).</td><td>PSF</td></tr>
+<tr><td><b><a href="https://github.com/SubtitleEdit/subtitleedit">Subtitle Edit + Faster-Whisper-XXL</a></b></td><td>Optional. Speech-to-text: turns the movie audio into subtitles (Whisper).</td><td>GPL-3 / MIT</td></tr>
+<tr><td><b><a href="https://acoustid.org/chromaprint">fpcalc (Chromaprint)</a></b></td><td>Optional. Audio fingerprints — finds duplicates by their <i>sound</i>.</td><td>LGPL</td></tr>
+<tr><td><b><a href="https://github.com/qarmin/czkawka">czkawka</a></b></td><td>Optional. Finds look-alike duplicate videos.</td><td>MIT</td></tr>
+<tr><td><b><a href="https://github.com/tesseract-ocr/tesseract">Tesseract OCR</a></b></td><td>Optional. Reads the language of burned-in subtitles.</td><td>Apache-2.0</td></tr>
+<tr><td><b><a href="https://github.com/timminator/VideOCR">VideOCR</a></b></td><td>Optional. Copies burned-in subtitles out of the picture into a subtitle file.</td><td>MIT</td></tr>
+</table>
+<h2>Built into Kuraya</h2><p class="sub">Libraries that are part of the program itself.</p>
+<table><tr><th>Name</th><th>What Kuraya uses it for</th><th>Licence</th></tr>
+<tr><td><b><a href="https://flutter.dev">Flutter</a></b></td><td>The framework Kuraya is built with.</td><td>BSD-3</td></tr>
+<tr><td><b><a href="https://github.com/media-kit/media-kit">media_kit + libmpv</a></b></td><td>The built-in video player.</td><td>MIT / LGPL</td></tr>
+<tr><td><b><a href="https://objectbox.io">ObjectBox</a></b></td><td>The fast database that holds your library list.</td><td>Apache-2.0</td></tr>
+<tr><td><b><a href="https://jrsoftware.org/isinfo.php">Inno Setup</a></b></td><td>Makes the Kuraya installer.</td><td>Inno Setup licence</td></tr>
+</table>
+<h2>Online services</h2><p class="sub">What Kuraya talks to on the internet. Your files never leave your PC.</p>
+<table><tr><th>Name</th><th>What Kuraya uses it for</th><th>Licence</th></tr>
+<tr><td><b><a href="#">Movie sites (JAVLibrary, JAV-GURU, MissAV, JavDatabase, JavTrailers, EroAsia, R18.dev, Warashi …)</a></b></td><td>Kuraya asks them for the cover, title, cast and genres. Only the DVD-ID is sent.</td><td>—</td></tr>
+<tr><td><b><a href="https://platform.deepseek.com">DeepSeek</a></b></td><td>Optional, only with your own key: better English subtitles (about 3 US cents per movie).</td><td>paid service</td></tr>
+</table>
+
+<footer>Kuraya manages files you own and does not provide any video content. For adults (18+) only.<br>
+<a href="./">Home</a> · <a href="buttons.html">What every button does</a> · <a href="https://github.com/Fetterbr61/Kuraya/releases">Releases</a></footer>
+</div>
+</body>
+</html>

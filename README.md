@@ -119,6 +119,14 @@ tablet in the house. Your files never leave your network.
 
 ---
 
+## Built on great free software
+
+FFmpeg · FlareSolverr · Ollama · Python · Subtitle Edit + Faster-Whisper · Chromaprint · czkawka · Tesseract · VideOCR · Flutter · media_kit/libmpv · ObjectBox.
+Only **FFmpeg** is required — Kuraya's Setup offers the rest. Full list with what each is for and its licence:
+**[Third-party tools](https://fetterbr61.github.io/Kuraya/third-party.html)**
+
+---
+
 ## Your library stays yours
 
 - **Local first.** Your files never leave your drives. No account, no cloud library.
