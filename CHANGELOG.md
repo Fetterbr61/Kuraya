@@ -17,6 +17,13 @@ repository.
 
 ---
 
+## [2.0.1-beta.5] — 2026-10-06 — work folders ready
+
+### Changed
+- The Subtitle queue, Hardsub extraction and Duplicates folders are created inside the Kuraya folder automatically when they are not set yet. Folders you chose yourself are never changed (#1787)
+
+---
+
 ## [2.0.1-beta.4] — 2026-10-06 — installer folder fix
 
 ### Fixed
