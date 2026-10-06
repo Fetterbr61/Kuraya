@@ -17,6 +17,13 @@ repository.
 
 ---
 
+## [2.0.1-beta.17] — 2026-10-06 — no more freeze at start
+
+### Fixed
+- **Kuraya froze for up to two minutes after starting** with a big library. A cover-image warm-up that was meant to run in the background read every movie folder before the first screen. It now really runs in the background and the window responds straight away (#1807)
+
+---
+
 ## [2.0.1-beta.16] — 2026-10-06 — updates built in
 
 ### New
