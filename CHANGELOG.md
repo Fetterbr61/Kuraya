@@ -17,6 +17,28 @@ repository.
 
 ---
 
+## [2.0.1-beta.20] — 2026-10-06 — browser extension explained
+
+### Changed
+- **Setup → Tools** explains the optional **browser extension for Edge/Chrome** (faster scraping of Cloudflare-protected sites) with step-by-step install and a button that opens its folder. Also on the website and the project page (#1812)
+- Browser extension 1.7.15 — talks to Kuraya on this PC only (#1811)
+
+---
+
+## [2.0.1-beta.19] — 2026-10-06 — copy text again
+
+### Fixed
+- You can select and copy text again — actress names, DVD-IDs, titles — in **Movie Details**, the **Scraper** and the **Pre-Inbox** comparison (#1810)
+
+---
+
+## [2.0.1-beta.18] — 2026-10-06 — bigger icon
+
+### Changed
+- The Kuraya icon fills its whole space, so the sun and the dancer look about a third bigger on the taskbar and in the Start menu (#1809)
+
+---
+
 ## [2.0.1-beta.17] — 2026-10-06 — no more freeze at start
 
 ### Fixed

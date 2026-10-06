@@ -132,6 +132,7 @@ Kuraya creates them for you inside its own folder on the first start — move an
 | **Subtitle Queue** | Work folder for subtitles being made. |
 | **Hardsub Extraction** | Drop a video with burned-in subtitles here to copy the text out into a subtitle file. |
 | **Tools** | The free helper tools Setup downloads (FFmpeg, …). |
+| **Browser extension** | Optional add-on for **Microsoft Edge** (or Chrome): it passes the Cloudflare "not a robot" check of the movie sites you visit to Kuraya, so scraping is faster and needs no FlareSolverr. Install: `edge://extensions` → Developer mode → **Load unpacked** → this folder. |
 
 ---
 
@@ -143,7 +144,7 @@ Try **[Troubleshooting](https://fetterbr61.github.io/Kuraya/troubleshooting.html
 
 ## Built on great free software
 
-FFmpeg · FlareSolverr · Ollama · Python · Subtitle Edit + Faster-Whisper · Chromaprint · czkawka · Tesseract · VideOCR · Flutter · media_kit/libmpv · ObjectBox.
+FFmpeg · FlareSolverr · Microsoft Edge (optional, with Kuraya's browser extension) · Ollama · Python · Subtitle Edit + Faster-Whisper · Chromaprint · czkawka · Tesseract · VideOCR · Flutter · media_kit/libmpv · ObjectBox.
 Only **FFmpeg** is required — Kuraya's Setup offers the rest. Full list with what each is for and its licence:
 **[Third-party tools](https://fetterbr61.github.io/Kuraya/third-party.html)**
 
