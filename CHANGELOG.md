@@ -17,6 +17,13 @@ repository.
 
 ---
 
+## [2.0.1-beta.15] — 2026-10-06 — measuring the startup freeze
+
+### Changed
+- Kuraya measures how long the first sort/filter of a big library takes and records it in the log, to find the cause of a freeze some users see right after starting (#1802)
+
+---
+
 ## [2.0.1-beta.14] — 2026-10-06 — Duplicates folder, correct explanation
 
 ### Changed
