@@ -17,6 +17,15 @@ repository.
 
 ---
 
+## [2.0.1-beta.1] — 2026-10-06 — Kuraya 2.0.1 Beta
+
+Kuraya moves to version **2.0.1 Beta** (the 0.9 betas above were the first test rounds).
+
+### Changed
+- **Tube browser** is back in every version — browse, play and keep favourites; downloading stays switched off in the public version (#1776)
+
+---
+
 ## [0.9.0-beta.15] — 2026-10-06 — new logo position
 
 ### Changed
