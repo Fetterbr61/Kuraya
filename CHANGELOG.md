@@ -17,6 +17,16 @@ repository.
 
 ---
 
+## [2.0.1-beta.14] — 2026-10-06 — Duplicates folder, correct explanation
+
+### Changed
+- The **Duplicates folder** is for DVD-IDs that clash: two *different* movies with the same DVD-ID. "Keep both" moves both there so neither overwrites the other — now explained in Settings → Folders, on the website and on GitHub (#1796b)
+
+### Fixed
+- The welcome screen no longer flashes at every start while your library is still loading — you see "Loading your library…" instead (#1801)
+
+---
+
 ## [2.0.1-beta.13] — 2026-10-06 — subtitles must fit
 
 ### Changed
@@ -38,7 +48,7 @@ repository.
 ## [2.0.1-beta.11] — 2026-10-06 — Duplicates folder explained
 
 ### Changed
-- Settings → Folders explains what the **Duplicates folder** is for: a waiting room for second copies when you choose "Keep both" in the Inbox (#1796)
+- Website explains what the **Duplicates folder** is for (#1796)
 
 ---
 

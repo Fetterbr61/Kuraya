@@ -128,7 +128,7 @@ Kuraya creates them for you inside its own folder on the first start — move an
 | **Library** | Your finished, sorted collection: `Studio \ genres \ DVD-ID`. You can have several, on different drives. |
 | **Pre-Inbox** | Where new downloads land first. Kuraya joins multi-part files, finds duplicates and makes subtitles here before anything moves on. |
 | **Inbox** | New movies waiting to be scraped. *Process Inbox* moves them into the library. |
-| **Duplicates** | A waiting room for second copies. When a new movie is one you already own and you choose **Keep both**, the new copy goes here instead of into your library — nothing is thrown away, your library stays clean, and *Source → Duplicates* lets you compare them and keep the best one. |
+| **Duplicates** | For DVD-IDs that clash: some **different** movies share the same DVD-ID (studios reuse codes). When the Inbox finds such a pair and you choose **Keep both**, Kuraya moves **both** into this folder, so neither overwrites the other or gets the other's cover, title or subtitle. Check them under *Source → Duplicates*, give each the right ID and scrape them again. |
 | **Subtitle Queue** | Work folder for subtitles being made. |
 | **Hardsub Extraction** | Drop a video with burned-in subtitles here to copy the text out into a subtitle file. |
 | **Tools** | The free helper tools Setup downloads (FFmpeg, …). |
