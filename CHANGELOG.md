@@ -17,6 +17,14 @@ repository.
 
 ---
 
+## [2.0.1-beta.3] — 2026-10-06 — version in the title
+
+### Changed
+- The window title shows the version right after the name, e.g. "Kuraya 2.0.1 Beta 3" (#1784)
+- New help page on the website: **what every button does** — fetterbr61.github.io/Kuraya/buttons.html (#1783)
+
+---
+
 ## [2.0.1-beta.2] — 2026-10-06 — public version tidy-up
 
 ### Changed
