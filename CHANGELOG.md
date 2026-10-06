@@ -17,6 +17,13 @@ repository.
 
 ---
 
+## [2.0.1-beta.6] — 2026-10-06 — move folder content
+
+### New
+- Changing a folder in Settings asks whether its **content should move along**. Same drive = instant; another drive = copy first, then Kuraya asks before removing the old copies. Nothing is ever overwritten, and you can stop it in the Task Console (#1788)
+
+---
+
 ## [2.0.1-beta.5] — 2026-10-06 — work folders ready
 
 ### Changed
