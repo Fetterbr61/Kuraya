@@ -17,6 +17,13 @@ repository.
 
 ---
 
+## [2.0.1-beta.8] — 2026-10-06 — actor photo sources shown
+
+### Changed
+- The actor photo scraper shows which sources answered for each actress (Warashi, JavDatabase, DMM, SexTB) and counts all four at the end — before, only Warashi was listed although all four were used (#1791)
+
+---
+
 ## [2.0.1-beta.7] — 2026-10-06 — Actor Photos fix
 
 ### Fixed
