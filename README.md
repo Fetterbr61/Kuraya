@@ -119,6 +119,22 @@ tablet in the house. Your files never leave your network.
 
 ---
 
+## Your folders
+
+Kuraya creates them for you inside its own folder on the first start — move any of them later in **Settings → Folders** (Kuraya offers to move the content along).
+
+| Folder | What it is for |
+|---|---|
+| **Library** | Your finished, sorted collection: `Studio \ genres \ DVD-ID`. You can have several, on different drives. |
+| **Pre-Inbox** | Where new downloads land first. Kuraya joins multi-part files, finds duplicates and makes subtitles here before anything moves on. |
+| **Inbox** | New movies waiting to be scraped. *Process Inbox* moves them into the library. |
+| **Duplicates** | A waiting room for second copies. When a new movie is one you already own and you choose **Keep both**, the new copy goes here instead of into your library — nothing is thrown away, your library stays clean, and *Source → Duplicates* lets you compare them and keep the best one. |
+| **Subtitle Queue** | Work folder for subtitles being made. |
+| **Hardsub Extraction** | Drop a video with burned-in subtitles here to copy the text out into a subtitle file. |
+| **Tools** | The free helper tools Setup downloads (FFmpeg, …). |
+
+---
+
 ## Something not working?
 
 Try **[Troubleshooting](https://fetterbr61.github.io/Kuraya/troubleshooting.html)** first. Still stuck? In Kuraya click **Help → Report a problem** — it saves a log report on your Desktop and opens the problem page for you.
