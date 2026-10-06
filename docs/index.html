@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuraya - the JAV library that runs itself</title>
+<meta name="description" content="Kuraya is a free Windows app that organises your Japanese adult movie (JAV) collection: it identifies every film by DVD-ID, fetches covers and metadata from several sources, files everything into clean folders, finds duplicates and makes English subtitles from the audio.">
+<meta name="keywords" content="JAV organizer, JAV scraper, JAV library manager, JAVLibrary, DVD-ID, JAV subtitles, Whisper subtitles, media manager, movie organizer">
+<meta name="rating" content="adult">
+<meta property="og:title" content="Kuraya - the JAV library that runs itself">
+<meta property="og:description" content="Scrape, sort, subtitle, dedupe and play your own JAV collection. Free, Windows, local-first.">
+<meta property="og:image" content="https://fetterbr61.github.io/Kuraya/kuraya_logo.png">
+<link rel="icon" href="kuraya_logo.png">
+<style>
+:root{--bg:#111318;--card:#1b1f27;--text:#e8e6e1;--muted:#9aa3b2;--accent:#D9432B;--line:#2a303b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header{text-align:center;padding:56px 0 24px}header img{width:150px;height:150px}
+h1{font-size:44px;margin:12px 0 4px}h1 span{color:var(--muted);font-weight:400}
+.tag{font-size:20px;color:var(--muted);margin:0 0 28px}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:14px 28px;border-radius:10px;margin:6px}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+.age{font-size:13px;color:var(--muted);margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:40px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.card h3{margin:0 0 6px;font-size:18px}.card p{margin:0;color:var(--muted)}
+h2{text-align:center;margin:48px 0 8px}.sub{text-align:center;color:var(--muted);margin:0 0 8px}
+.testers{background:var(--card);border:1px solid var(--accent);border-radius:12px;padding:22px;margin:40px 0;text-align:center}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px;margin-top:40px}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <img src="kuraya_logo.png" alt="Kuraya logo">
+  <h1>Kuraya <span>蔵屋</span></h1>
+  <p class="tag">The JAV library that runs itself.</p>
+  <a class="btn" href="https://github.com/Fetterbr61/Kuraya/releases/latest">Download for Windows</a>
+  <a class="btn ghost" href="https://github.com/Fetterbr61/Kuraya">Project page</a>
+  <p class="age">Free · Windows 10/11 · adults 18+ only · your files never leave your PC</p>
+</header>
+
+<h2>You don't have a collection problem. You have a time problem.</h2>
+<p class="sub">Kuraya does the work that other tools leave to you.</p>
+
+<div class="grid">
+  <div class="card"><h3>🧠 It knows every film</h3><p>Reads the DVD-ID from even messy file names and asks several movie databases at once: cover, title, cast, studio and genres. Pick the best result or let it run automatically.</p></div>
+  <div class="card"><h3>🗂️ Files it like a librarian</h3><p>Studio, then genres, then the film, in clean folders that also make sense in Explorer, always under Windows' 255-character path limit.</p></div>
+  <div class="card"><h3>🈶 English subtitles from the audio</h3><p>Transcribes the Japanese speech on your own graphics card with Whisper and turns it into English. Free, or even better with a DeepSeek key.</p></div>
+  <div class="card"><h3>🎭 Knows the cast</h3><p>An actress database with photos and bios from several sources, duplicates removed and aliases understood.</p></div>
+  <div class="card"><h3>🔁 Finds duplicates</h3><p>The same film on three drives? Kuraya finds copies by DVD-ID, file content and even sound, and keeps the best one.</p></div>
+  <div class="card"><h3>🩺 Keeps itself healthy</h3><p>A background guard finds missing covers, broken files and leftovers. Nothing is deleted without asking, and removed files go to a quarantine first.</p></div>
+  <div class="card"><h3>📂 Local and LAN browser</h3><p>Open any drive or network share and play movies straight away in Kuraya's own player.</p></div>
+  <div class="card"><h3>📺 Tube browser</h3><p>Search the popular tube sites inside Kuraya, play in the same player and keep favourites.</p></div>
+  <div class="card"><h3>📱 Android remote</h3><p>Stream your own collection to any phone or tablet in the house with the free remote app.</p></div>
+</div>
+
+<div class="testers">
+  <h3>🧪 Beta testers wanted</h3>
+  <p>Kuraya is in beta. Try it on your own collection and tell us what breaks, what is confusing and what is missing.</p>
+  <a class="btn" href="https://github.com/Fetterbr61/Kuraya/issues/new?title=Tester%20sign-up">Sign up as a tester</a>
+</div>
+
+<footer>
+  Kuraya manages files you own and does not provide any video content. For adults (18+) only.<br>
+  <a href="https://github.com/Fetterbr61/Kuraya/releases">Releases</a> ·
+  <a href="https://github.com/Fetterbr61/Kuraya/blob/main/CHANGELOG.md">Changelog</a> ·
+  <a href="https://paypal.me/supportkuraya">Support Kuraya</a>
+</footer>
+</div>
+</body>
+</html>
