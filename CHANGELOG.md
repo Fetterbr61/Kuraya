@@ -17,6 +17,14 @@ repository.
 
 ---
 
+## [2.0.1-beta.4] — 2026-10-06 — installer folder fix
+
+### Fixed
+- Setup no longer puts Kuraya in a doubled `...\Kuraya\Kuraya` folder left over from an old version — it suggests the right folder and brings your settings along (#1786)
+- Choosing your own library folder in Setup replaces Kuraya's empty starter folder, so you don't end up with two libraries (#1785)
+
+---
+
 ## [2.0.1-beta.3] — 2026-10-06 — version in the title
 
 ### Changed
