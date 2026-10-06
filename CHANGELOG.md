@@ -17,6 +17,18 @@ repository.
 
 ---
 
+## [2.0.1-beta.9] — 2026-10-06 — Help and problem reports
+
+### New
+- **Help** button (blue ?, top right): *What every button does*, *Troubleshooting* and **Report a problem** — Kuraya saves a log report on your Desktop and opens the problem page; just drag the file in. The report never contains passwords, API keys or settings (#1793)
+- **Troubleshooting** page with quick fixes for the most common problems: fetterbr61.github.io/Kuraya/troubleshooting.html (#1793)
+
+### Fixed
+- Actor Photos said "With photo 0" although photos were there (#1792)
+- A "?" placeholder picture was saved as an actress photo (#1792)
+
+---
+
 ## [2.0.1-beta.8] — 2026-10-06 — actor photo sources shown
 
 ### Changed

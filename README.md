@@ -119,6 +119,12 @@ tablet in the house. Your files never leave your network.
 
 ---
 
+## Something not working?
+
+Try **[Troubleshooting](https://fetterbr61.github.io/Kuraya/troubleshooting.html)** first. Still stuck? In Kuraya click **Help → Report a problem** — it saves a log report on your Desktop and opens the problem page for you.
+
+---
+
 ## Built on great free software
 
 FFmpeg · FlareSolverr · Ollama · Python · Subtitle Edit + Faster-Whisper · Chromaprint · czkawka · Tesseract · VideOCR · Flutter · media_kit/libmpv · ObjectBox.
