@@ -65,6 +65,29 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td class="ic">❓</td><td><b>DVD-ID review</b></td><td>Only appears when some file names could not be recognised. Click to type the right DVD-ID.</td></tr>
 </table>
 </section>
+<section><h2>How the Task Console takes turns</h2>
+<p class="sub">Every background job has a box. The badge on the box says what it needs: <b>GPU</b> (graphics card), <b>NET</b> (internet) or <b>CPU</b>.</p>
+<table>
+<tr><td class="ic">▶</td><td><b>Auto ON / OFF</b></td><td><b>OFF</b> = nothing starts by itself (only what you start by hand). <b>ON</b> = the ticked boxes run in the background.</td></tr>
+<tr><td class="ic">GPU</td><td><b>One GPU job at a time</b></td><td>Transcribe + Translate, Video Converter and the Burned-sub Detector share the graphics card. Only one runs; the others wait in line and their boxes turn grey. <b>Long-press</b> a grey box to force it on.</td></tr>
+<tr><td class="ic">NET</td><td><b>Internet jobs run alongside</b></td><td>Metadata Backfill and Idle Genre Re-scrape use the internet, not the graphics card, so they run at the same time as a GPU job.</td></tr>
+<tr><td class="ic">CPU</td><td><b>Doctor Guard</b></td><td>Checks the library in small steps and steps aside on its own when something heavier is busy.</td></tr>
+<tr><td class="ic">⏸</td><td><b>You always come first</b></td><td>While you <b>scrape</b> or the <b>Pre-Inbox</b> is working, transcription and the internet jobs pause and continue afterwards.</td></tr>
+<tr><td class="ic">⏳</td><td><b>Video Converter waits</b></td><td>The converter only starts when no movie is waiting for subtitles any more, so subtitles are never delayed by converting.</td></tr>
+<tr><td class="ic">%</td><td><b>The percentage</b></td><td>How much of your library still needs that job. Run the box with the highest number first.</td></tr>
+<tr><td class="ic">■</td><td><b>Stop</b></td><td>Finishes the movie it is working on, then stops. Nothing is cut off half-way.</td></tr>
+</table>
+<h3 style="margin:22px 0 6px">In what order are movies transcribed?</h3>
+<table>
+<tr><td class="ic">1</td><td><b>Your own choice</b></td><td>Right-click → Transcribe + Translate jumps the whole queue.</td></tr>
+<tr><td class="ic">2</td><td><b>Newly scraped</b></td><td>Movies that just came through the Pre-Inbox / Inbox — always, even with Auto OFF.</td></tr>
+<tr><td class="ic">3</td><td><b>Favourites</b></td><td>Movies you marked ❤️.</td></tr>
+<tr><td class="ic">4</td><td><b>The rest of the Inbox</b></td><td>Only when Auto is ON.</td></tr>
+<tr><td class="ic">5</td><td><b>The library</b></td><td>First movies with <b>no subtitle at all</b> (newest first), last movies whose old subtitle could be made better.</td></tr>
+<tr><td class="ic">↻</td><td><b>Translating</b></td><td>While the next movie is transcribed on the graphics card, the previous one is translated over the internet at the same time — so the queue keeps moving.</td></tr>
+</table>
+<p class="sub" style="margin-top:10px">Skipped on purpose: movies with no audio or no speech, movies that already have a downloaded or extracted English subtitle (those are never replaced), and titles blocked by the content filter.</p>
+</section>
 <section><h2>The second row — filters and views</h2><p class="sub">Combine them: e.g. Source = Inbox + Badge letters = "E — No English".</p>
 <table>
 <tr><td class="ic"></td><td><b>Source</b></td><td>Which movies to show: All, all libraries, only the Inbox, the Pre-Inbox or the duplicates area.</td></tr>

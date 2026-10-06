@@ -17,6 +17,13 @@ repository.
 
 ---
 
+## [2.0.1-beta.11] — 2026-10-06 — Duplicates folder explained
+
+### Changed
+- Settings → Folders explains what the **Duplicates folder** is for: a waiting room for second copies when you choose "Keep both" in the Inbox (#1796)
+
+---
+
 ## [2.0.1-beta.10] — 2026-10-06 — cleaner toolbar
 
 ### Changed
