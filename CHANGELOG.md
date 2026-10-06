@@ -17,6 +17,17 @@ repository.
 
 ---
 
+## [2.0.1-beta.13] — 2026-10-06 — subtitles must fit
+
+### Changed
+- When a new copy replaces a movie you own, its old subtitle is only kept if it **fits**: same length = kept; only a different intro = every line is moved to match the new audio (lip-sync); anything else = the old one is switched off (.old) and a new subtitle is made from the new copy's own audio (#1799)
+- Pre-Inbox: a movie you already own now says **"WAITING FOR YOU"** with its own **Compare & decide** button, instead of an hourglass that looked frozen (#1800)
+
+### Fixed
+- Pre-Inbox: after deciding, the movie's card disappears instead of staying as "waiting" (#1800)
+
+---
+
 ## [2.0.1-beta.12] — 2026-10-06 — subtitles: only what is missing
 
 ### Changed
