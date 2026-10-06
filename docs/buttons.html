@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuraya - buttons and controls</title>
+<meta name="description" content="What every button, menu and letter in Kuraya does - the toolbar, filters, movie card letters, the right-click menu and the background jobs.">
+<link rel="icon" href="kuraya_logo.png">
+<style>
+:root{--bg:#111318;--card:#1b1f27;--text:#e8e6e1;--muted:#9aa3b2;--accent:#D9432B;--line:#2a303b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px 40px}
+nav{display:flex;align-items:center;gap:12px;padding:20px 0}nav img{width:40px;height:40px}nav a{color:var(--text);text-decoration:none;font-weight:600}
+nav .sp{flex:1}nav .lnk{color:var(--muted);font-weight:400}
+h1{font-size:34px;margin:16px 0 4px}h2{margin:40px 0 4px;color:var(--text)}
+.sub{color:var(--muted);margin:0 0 12px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}tr:first-child td{border-top:none}
+td.ic{width:44px;text-align:center;font-size:18px;color:var(--accent);font-weight:700}
+td:nth-child(2){width:230px}
+code,kbd{background:#262b35;border-radius:4px;padding:1px 5px;font-size:14px}
+.tip{background:var(--card);border-left:4px solid var(--accent);padding:12px 16px;border-radius:8px;margin:20px 0}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center;padding:24px 0;margin-top:40px}footer a{color:var(--muted)}
+@media(max-width:640px){td:nth-child(2){width:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><img src="kuraya_logo.png" alt=""><a href="./">Kuraya</a><span class="sp"></span>
+<a class="lnk" href="https://github.com/Fetterbr61/Kuraya/releases/latest">Download</a></nav>
+<h1>Buttons &amp; controls</h1>
+<p class="sub">What every button, list and letter in Kuraya does. Hover any button in the app to see its name.</p>
+<div class="tip"><b>New here?</b> Start with the <b>Setup</b> window, copy a few movies into your <b>Inbox</b> folder and press <b>Process Inbox</b> 📥. Then right-click a movie → <b>Scrape Movie</b>.</div>
+<section><h2>The top toolbar — left</h2><p class="sub">Small icons next to the search box.</p>
+<table>
+<tr><td class="ic">🔍</td><td><b>Search box</b></td><td>Type any part of a title, DVD-ID, actress, studio or genre. <code>space</code> = all words must match, <code>,</code> = any of them, <code>+</code> = genre AND genre. The ⓘ next to it explains the syntax; the clock icon shows your recent searches.</td></tr>
+<tr><td class="ic">🖥️</td><td><b>Log</b></td><td>Opens the live log (also <kbd>Ctrl</kbd>+<kbd>L</kbd>). Useful when you report a problem.</td></tr>
+<tr><td class="ic">🛡️</td><td><b>Doctor Guard</b></td><td>Shows the background guard. Green = all fine; a number = issues it found. Click to see them and fix the safe ones.</td></tr>
+<tr><td class="ic">▦</td><td><b>Task Console</b></td><td>Every job that runs in the background (subtitles, converter, metadata, guard). Tick a box to run that job, untick to stop it. <b>Auto OFF</b> means nothing starts by itself.</td></tr>
+<tr><td class="ic">▶</td><td><b>Resume scrape</b></td><td>Only appears when you minimised a scrape — reopens it where it stopped.</td></tr>
+<tr><td class="ic">⏷</td><td><b>Taste filter</b></td><td>Build a "keep list" from your favourites. When active (red), movies outside your taste are marked as delete candidates.</td></tr>
+<tr><td class="ic">📺</td><td><b>Tube</b></td><td>Search the tube sites inside Kuraya, play in the built-in player and keep favourites.</td></tr>
+<tr><td class="ic">🔎</td><td><b>Identify unknown clip</b></td><td>Pick any video file — Kuraya finds out which film (DVD-ID) it is.</td></tr>
+<tr><td class="ic">📂</td><td><b>Local & LAN browser</b></td><td>Open any drive or network share and play movies straight away. Shows only movies; <b>All movies</b> lists every movie in all subfolders, <b>Not in app</b> hides the ones already in your library.</td></tr>
+</table>
+</section>
+<section><h2>The big buttons — middle</h2><p class="sub">The main jobs, always in the centre of the toolbar.</p>
+<table>
+<tr><td class="ic">🆕</td><td><b>New Releases</b></td><td>The newest films from the movie sites, with the ones you own marked. Press again to go back to your library.</td></tr>
+<tr><td class="ic">🔄</td><td><b>Scan Library</b></td><td>Reads all your library folders and the Inbox from disk again. Use it after you copied movies in with Explorer.</td></tr>
+<tr><td class="ic">CC</td><td><b>Scan Burned Subs</b></td><td>Finds movies whose English subtitles are burned into the picture.</td></tr>
+<tr><td class="ic">📋</td><td><b>Pre-Inbox</b></td><td>The waiting room before the Inbox: joins multi-part movies (CD1/CD2), removes duplicates and lets you check everything before it moves on.</td></tr>
+<tr><td class="ic">🕘</td><td><b>Trash / History</b></td><td>Undo a recent delete, replace, rename or move while it is still in the trash.</td></tr>
+<tr><td class="ic">📥</td><td><b>Process Inbox</b></td><td>Organises new files in your Inbox: finds the DVD-ID, checks for duplicates and moves each movie into the library.</td></tr>
+<tr><td class="ic">👥</td><td><b>Media Tools</b></td><td>Actor photos and bios, metadata refill and the Movie Sorter (genre rules, synonyms, blacklists).</td></tr>
+<tr><td class="ic">🩺</td><td><b>Doctor</b></td><td>A full health check of the library: missing covers, broken files, leftovers, wrong names. Shows what it found and fixes it on request.</td></tr>
+</table>
+</section>
+<section><h2>The top toolbar — right</h2><p class="sub">Small icons on the right.</p>
+<table>
+<tr><td class="ic">⚙️</td><td><b>Settings</b></td><td>All options, grouped and searchable: folders, scrapers, subtitles, the player, the look.</td></tr>
+<tr><td class="ic">🔍</td><td><b>Check Duplicates</b></td><td>Finds the same film more than once (by DVD-ID, file content and sound) and lets you keep the best copy.</td></tr>
+<tr><td class="ic">🧹</td><td><b>Cleanup Duplicates</b></td><td>Removes duplicate rows from Kuraya's list (not your files).</td></tr>
+<tr><td class="ic">🗑️</td><td><b>Clean Cache</b></td><td>Repairs Kuraya's list quickly: wrong flags, double rows and entries whose folder is gone. Fast, no disk rescan, your files are not touched.</td></tr>
+<tr><td class="ic">❓</td><td><b>DVD-ID review</b></td><td>Only appears when some file names could not be recognised. Click to type the right DVD-ID.</td></tr>
+</table>
+</section>
+<section><h2>The second row — filters and views</h2><p class="sub">Combine them: e.g. Source = Inbox + Badge letters = "E — No English".</p>
+<table>
+<tr><td class="ic"></td><td><b>Source</b></td><td>Which movies to show: All, all libraries, only the Inbox, the Pre-Inbox or the duplicates area.</td></tr>
+<tr><td class="ic"></td><td><b>Flags</b></td><td>Movies you marked: fanart mismatch, marked for deletion, playback error, no sound, foreign subtitles, bad English subtitles, wrong disc.</td></tr>
+<tr><td class="ic"></td><td><b>Content</b></td><td>Needs scraping, needs renaming, complete movies, uncensored with burned subs, censored movies not yet checked for an uncensored version, minor-flagged (review).</td></tr>
+<tr><td class="ic"></td><td><b>Badge letters</b></td><td>Filter by the letters on the cards: has / missing video, fanart, poster, NMP file, burned subs (also by language), transcript (T), English made by Kuraya (E), downloaded English (D), uncensored (U), locked (L).</td></tr>
+<tr><td class="ic"></td><td><b>View</b></td><td>Fanart (wide covers), Poster (tall covers), Favourites, Actors or Series.</td></tr>
+<tr><td class="ic"></td><td><b>Sort</b></td><td>Title, ID, actress, library, date, random, recently added / viewed, favourited, series. The ↓ next to it flips the direction.</td></tr>
+<tr><td class="ic"></td><td><b>Card size / theme</b></td><td>The slider changes the card size; the theme button switches dark and light.</td></tr>
+</table>
+</section>
+<section><h2>The letters on every movie card</h2><p class="sub">Green = present, red = missing. Hover a letter to see the files behind it.</p>
+<table>
+<tr><td class="ic">V</td><td><b>Video</b></td><td>The video file is there.</td></tr>
+<tr><td class="ic">F</td><td><b>Fanart</b></td><td>The wide cover is there.</td></tr>
+<tr><td class="ic">P</td><td><b>Poster</b></td><td>The tall cover is there.</td></tr>
+<tr><td class="ic">N</td><td><b>NMP</b></td><td>Kuraya's information file (title, cast, genres…) is there.</td></tr>
+<tr><td class="ic">B</td><td><b>Burned</b></td><td>Subtitles are burned into the picture.</td></tr>
+<tr><td class="ic">T</td><td><b>Transcript</b></td><td>A Japanese or Chinese subtitle made from the audio.</td></tr>
+<tr><td class="ic">E</td><td><b>English</b></td><td>English subtitles made by Kuraya.</td></tr>
+<tr><td class="ic">D</td><td><b>Downloaded</b></td><td>English subtitles you downloaded.</td></tr>
+<tr><td class="ic">U</td><td><b>Uncensored</b></td><td>The movie is uncensored.</td></tr>
+<tr><td class="ic">L</td><td><b>Locked</b></td><td>Kuraya will not change this movie automatically.</td></tr>
+</table>
+</section>
+<section><h2>Right-click on a movie</h2><p class="sub">Everything you can do with one movie.</p>
+<table>
+<tr><td class="ic">▶</td><td><b>Play Movie</b></td><td>Plays it in Kuraya's own player (subtitles load automatically).</td></tr>
+<tr><td class="ic">🔄</td><td><b>Scan This Movie</b></td><td>Reads just this folder from disk again.</td></tr>
+<tr><td class="ic">✏️</td><td><b>Quick Edit</b></td><td>Change the title, genres and the sort genres (g1–g4) in one small window.</td></tr>
+<tr><td class="ic">🌐</td><td><b>Scrape Movie</b></td><td>Asks the movie sites about this film and shows every answer side by side — pick the best cover, title, cast and genres.</td></tr>
+<tr><td class="ic">🧪</td><td><b>Check Which Scrapers Have This Movie</b></td><td>Quick test of which sites know this DVD-ID.</td></tr>
+<tr><td class="ic">💬</td><td><b>Edit / Add Subtitle</b></td><td>Attach a subtitle file you have, or make one: Transcribe + Translate turns the movie's audio into English subtitles.</td></tr>
+<tr><td class="ic">🔧</td><td><b>Repair Video</b></td><td>Fixes a file that will not play or seek properly.</td></tr>
+<tr><td class="ic">✂️</td><td><b>Scan for Start Ad</b></td><td>Finds an advert glued to the start of the movie so it can be cut off.</td></tr>
+<tr><td class="ic">🛠️</td><td><b>NMP Re-Creator</b></td><td>Rebuilds the information file from what is in the folder.</td></tr>
+<tr><td class="ic">ℹ️</td><td><b>View Movie Details</b></td><td>All information about the movie on one page.</td></tr>
+<tr><td class="ic">📚</td><td><b>Show Series</b></td><td>Every film of the same series — which you own and which are missing.</td></tr>
+<tr><td class="ic">📁</td><td><b>Open Movie Folder</b></td><td>Opens the folder in Explorer.</td></tr>
+<tr><td class="ic">🖼️</td><td><b>Fanart tools</b></td><td>Download fanart from the internet, search manually, or make a poster from the fanart.</td></tr>
+<tr><td class="ic">📦</td><td><b>Sort into V2 folder</b></td><td>Moves the movie to Studio \ genres \ DVD-ID — the same place its badge shows.</td></tr>
+<tr><td class="ic">📅</td><td><b>Change Date Added to Today</b></td><td>Makes it show up under "Recently added" again.</td></tr>
+<tr><td class="ic">🙈</td><td><b>Hide from Library</b></td><td>Removes it from Kuraya's list but leaves the files on disk.</td></tr>
+<tr><td class="ic">🗑️</td><td><b>Delete Folder & Files</b></td><td>Deletes the movie for real — Kuraya always asks first.</td></tr>
+</table>
+</section>
+<section><h2>Working with many movies</h2><p class="sub">Select first, then right-click.</p>
+<table>
+<tr><td class="ic">☑️</td><td><b>Select several movies</b></td><td>Click the tick box on a card, or <kbd>Ctrl</kbd>/<kbd>Shift</kbd>-click. The right-click menu then works on all of them.</td></tr>
+<tr><td class="ic">🌐</td><td><b>Bulk Scrape Selected</b></td><td>Scrapes all selected movies in one go.</td></tr>
+<tr><td class="ic">✏️</td><td><b>Bulk edit</b></td><td>Quick Edit, metadata, genres or genre &amp; location for many movies at once.</td></tr>
+<tr><td class="ic">📏</td><td><b>Fix names to 255 rule</b></td><td>Shortens folder and file names that are too long for Windows.</td></tr>
+<tr><td class="ic">🔓</td><td><b>Find Uncensored / Eng-Sub Versions</b></td><td>Searches for a better version (uncensored or English-subtitled) of the selected movies.</td></tr>
+<tr><td class="ic">⭐</td><td><b>Favourites, lock, flags</b></td><td>Add to / remove from favourites, lock or unlock, mark uncensored / censored, flag for review.</td></tr>
+<tr><td class="ic">📦</td><td><b>Move / sort / hide / delete</b></td><td>Move to another folder, sort into the V2 layout, hide or delete several movies at once.</td></tr>
+</table>
+</section>
+<section><h2>Setup, background jobs and tools</h2><p class="sub"></p>
+<table>
+<tr><td class="ic"></td><td><b>Setup (first start)</b></td><td>Choose your folders and download the free helper tools (FFmpeg is required; the others are optional and each says what it is for). Open it again from the welcome screen.</td></tr>
+<tr><td class="ic"></td><td><b>Task Console boxes</b></td><td><b>Transcribe + Translate</b> makes English subtitles for movies without them. <b>Video Converter</b> shrinks big files to HEVC (it checks picture, sound and length before replacing). <b>Metadata Backfill</b> fills missing information. <b>Idle Genre Re-scrape</b> improves genres while you do nothing. <b>Doctor Guard</b> checks the library in small steps. The % on each box shows how much is still to do.</td></tr>
+<tr><td class="ic"></td><td><b>DeepSeek key</b></td><td>Without a key Kuraya makes free English subtitles with Whisper. With a DeepSeek key (about 3 US cents per movie) the English is much better. Paste it in Setup → Tools or Settings → API Credentials.</td></tr>
+<tr><td class="ic"></td><td><b>Movie Sorter</b></td><td>In Media Tools. <b>Series Paths</b> and <b>Sort</b> show where each movie belongs and move it there; <b>Categories</b>, <b>Synonyms</b> and <b>Blacklist</b> come set up already — only change them if you want different genre rules.</td></tr>
+</table>
+</section>
+
+<footer>Kuraya manages files you own and does not provide any video content. For adults (18+) only.<br>
+<a href="./">Home</a> · <a href="https://github.com/Fetterbr61/Kuraya/releases">Releases</a> · <a href="https://github.com/Fetterbr61/Kuraya/issues">Report a problem</a></footer>
+</div>
+</body>
+</html>
