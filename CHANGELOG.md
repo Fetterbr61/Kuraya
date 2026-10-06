@@ -17,6 +17,17 @@ repository.
 
 ---
 
+## [2.0.1-beta.10] — 2026-10-06 — cleaner toolbar
+
+### Changed
+- Toolbar: every button is a dark chip with a white icon, in every dark theme (#1795)
+- Toolbar: the left and right sides are balanced, so the search box is never cut off (#1795)
+
+### Fixed
+- Setup always shows the folder page with **Browse**, also when you update — it used to skip it and install over the last folder (#1794)
+
+---
+
 ## [2.0.1-beta.9] — 2026-10-06 — Help and problem reports
 
 ### New
