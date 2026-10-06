@@ -17,6 +17,13 @@ repository.
 
 ---
 
+## [2.0.1-beta.12] — 2026-10-06 — subtitles: only what is missing
+
+### Changed
+- Automatic transcription + translation works through **Favourites → Inbox → Library** and only takes movies **without** an English subtitle. An existing subtitle is never redone automatically (right-click still can). When nothing is missing, the graphics card is free for the other jobs (#1798)
+
+---
+
 ## [2.0.1-beta.11] — 2026-10-06 — Duplicates folder explained
 
 ### Changed
