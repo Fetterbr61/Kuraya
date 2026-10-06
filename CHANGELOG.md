@@ -17,6 +17,17 @@ repository.
 
 ---
 
+## [2.0.1-beta.16] — 2026-10-06 — updates built in
+
+### New
+- **Automatic updates:** Kuraya tells you when a new version is out and installs it with one click (Install now / Later / Skip this version). Also under **Help → Check for updates**. Your settings, folders and library are kept (#1805)
+- **Only one Kuraya at a time** on the same library cache — starting it again brings the open window to the front instead of risking damage to the database (#1804)
+
+### Changed
+- 21 software libraries updated to their latest safe versions, including two that their makers had withdrawn (#1803)
+
+---
+
 ## [2.0.1-beta.15] — 2026-10-06 — measuring the startup freeze
 
 ### Changed

@@ -164,7 +164,7 @@ Only **FFmpeg** is required — Kuraya's Setup offers the rest. Full list with w
 
 1. Download **`Kuraya-Setup-<version>.exe`** from [Releases](../../releases) and run it.
    *(Windows may warn because the program is not signed: More info > Run anyway.)*
-2. Updates: just run the newer Setup - it keeps all your settings and folders.
+2. Updates: Kuraya tells you when a new version is out (or use **Help → Check for updates**) and installs it with one click — your settings, folders and library are kept.
    *(Prefer portable? Use the `-win64.zip` - see the guide.)*
 3. The **Setup** window walks you through it: choose your movie folders, and let
    Kuraya download the free helper tools it needs (FFmpeg and friends) into its own
