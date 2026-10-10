@@ -132,7 +132,7 @@ Kuraya creates them for you inside its own folder on the first start — move an
 | **Subtitle Queue** | Work folder for subtitles being made. |
 | **Hardsub Extraction** | Drop a video with burned-in subtitles here to copy the text out into a subtitle file. |
 | **Tools** | The free helper tools Setup downloads (FFmpeg, …). |
-| **Browser extension** | Optional add-on for **Microsoft Edge** (or Chrome): it passes the Cloudflare "not a robot" check of the movie sites you visit to Kuraya, so scraping is faster and needs no FlareSolverr. Install: `edge://extensions` → Developer mode → **Load unpacked** → this folder. |
+| **Browser extension** | Optional add-on for **Microsoft Edge** (or Chrome): it passes the Cloudflare "not a robot" check of the movie sites you visit to Kuraya, so scraping is faster and needs no FlareSolverr. Install: Setup → Tools → **Add to Edge** (or **Add to Chrome**). Kuraya opens the extensions page and copies the folder; switch on Developer mode, click **Load unpacked** and paste (Ctrl+V). Browsers only let you add an extension yourself. |
 
 ---
 

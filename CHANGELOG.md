@@ -17,6 +17,157 @@ repository.
 
 ---
 
+## [2.0.2-beta.1] — 2026-10-10 — duplicates show with the Fanart flag
+
+New version line 2.0.2 (Finn 2026-10-10).
+
+### Fixed
+
+- The Duplicates folder movies were added without their fanart/poster
+  information, so with **Flags: Fanart** (the normal setting) they were still
+  hidden. They are now read like every other movie in the library. (#1853)
+
+## [2.0.1-beta.35] — 2026-10-10 — Duplicates source shows the duplicates
+
+### Fixed
+
+- Choosing **Duplicates** as source showed nothing. The Duplicates folder is
+  now sorted in sub-folders (maker, genres …), but the app only looked at its
+  top level, so it never found the movie folders inside. It now looks through
+  all sub-folders every time. (#1852)
+
+## [2.0.1-beta.34] — 2026-10-10 — faster keyword search
+
+### Fixed
+
+- A keyword search could take almost 3 minutes: MissAV, JavTrailers and
+  JavLibrary each waited 75 seconds for an Edge tab stuck on a Cloudflare
+  check before trying another way. After one such wait, the app now skips the
+  Edge tab for that site for 5 minutes and uses FlareSolverr straight away
+  (about 15 seconds). (#1851)
+
+## [2.0.1-beta.33] — 2026-10-08 — real uncensored badge in search
+
+### Fixed
+
+- Movies whose code contains "UC" (JUC-, RBUC- …) were shown as an
+  uncensored upgrade ("UC · HAVE CENSORED") in search results, and the links
+  found were the normal censored version. The uncensored check now looks for a
+  separate "uc" tag, never letters inside the movie code. (#1850)
+
+## [2.0.1-beta.32] — 2026-10-08 — no 2-minute freeze after the subtitle scan
+
+### Fixed
+
+- After the subtitle job finished scanning, the app froze for minutes while it
+  sorted the list, because it read every folder's date from disk again and
+  again. Each date is now read once, without blocking the app. (#1831)
+
+## [2.0.1-beta.31] — 2026-10-07 — no freeze while the subtitle job scans
+
+### Fixed
+
+- The app no longer freezes while the Task Console shows "Scanning..." for
+  Transcribe + Translate. The job used to walk every folder on all library
+  drives and open every subtitle file; it now asks Kuraya's own movie list
+  which movies have no English subtitle and only checks those. (#1830)
+
+## [2.0.1-beta.30] — 2026-10-07 — catch short freezes
+
+### Changed
+
+- The freeze watchdog now records every hang of 3 seconds or more (was 8), so
+  short freezes show up in the log with what the app was doing. (#1829)
+
+## [2.0.1-beta.29] — 2026-10-07 — choose your Subtitle Edit
+
+### Changed
+
+- New setting "Subtitle Edit program" (Settings > Paths > Tools): the
+  Subtitle Edit that right-click > Open in Subtitle Edit starts. Point it at
+  Subtitle Edit 5 to use that one. Before, the path was fixed to
+  C:\Program Files\Subtitle Edit. (#1828)
+
+## [2.0.1-beta.28] — 2026-10-07 — no freeze when the remote refreshes
+
+### Fixed
+
+- The PC no longer freezes when the Android remote loads or refreshes its
+  movie list. The PC used to scan the whole Duplicates folder from disk (with
+  an ffmpeg check per movie) every time; it now uses the list it already has
+  in memory. (#1826)
+
+## [2.0.1-beta.27] — 2026-10-07 — icon 20 % bigger
+
+### Changed
+
+- The Kuraya icon is zoomed in another 20 %. (#1825)
+
+## [2.0.1-beta.26] — 2026-10-07 — icon without the square
+
+### Changed
+
+- The Kuraya icon is now just the sun and the dancer, without the dark square,
+  so it fills the whole icon and looks as big as the other apps on a dark
+  taskbar. (#1824)
+
+## [2.0.1-beta.25] — 2026-10-07 — bigger icon
+
+### Changed
+
+- The Kuraya icon is zoomed in 25 % on the logo, so it looks bigger on the
+  taskbar and the desktop. (#1822)
+- Kuraya now gives Windows its icon in the exact size your screen needs, big
+  and small, instead of one size Windows had to scale. (#1823)
+- The Android remote has the Kuraya logo as its app icon, and a dark Kuraya
+  start-up screen with a big logo. (#1821, #1822)
+- The public remote hides New Releases (it is all about download links), and
+  Tube search on the remote works in the public build too. (#1820)
+
+## [2.0.1-beta.24] — 2026-10-07 — settings safety copy
+
+### Fixed
+
+- Kuraya now keeps a second copy of your settings in `%APPDATA%\Kuraya`.
+  If the settings file in the Kuraya folder is ever missing, Kuraya restores
+  from that copy instead of starting empty (no libraries, an empty cache).
+  (#1819)
+
+## [2.0.1-beta.23] — 2026-10-07 — easier setup
+
+### Changed
+
+- Setup -> browser extension: one button per browser you have ("Add to Edge",
+  "Add to Chrome"). It opens the browser's extensions page and copies the
+  extension folder for you, so you only switch on Developer mode, click
+  "Load unpacked" and paste. (Browsers only let you add an extension yourself.)
+  (#1817)
+- Setup -> JDownloader 2: "I have it - browse" to point at JDownloader2.exe
+  yourself, and "Choose watch folder" with a folder picker. (#1817)
+- The welcome guide on an empty library has a close button. "Show the welcome
+  guide" brings it back. (#1818)
+
+## [2.0.1-beta.22] — 2026-10-06 — subtitles after scraping
+
+### Fixed
+
+- Movies that come from the Pre-Inbox now get their English subtitle in the
+  Inbox after scraping. Before, the subtitle job looked for them in the old
+  Pre-Inbox folder, did not find them, and showed "done" in the Task Console
+  without making a subtitle. (#1815)
+- The app no longer freezes for about half a minute when many Pre-Inbox movies
+  move to the Inbox at once. Each new folder used to reload the whole library
+  to look itself up. (#1816)
+- Pre-Inbox no longer seems to run twice: "Item n of N" now counts only the
+  movies that still need work. (#1814)
+
+## [2.0.1-beta.21] — 2026-10-06 — covers in Compare & decide
+
+### Fixed
+- Pre-Inbox → **Compare & decide** shows the covers (fanart + poster) of both copies again instead of "No images available" (#1813)
+
+---
+
 ## [2.0.1-beta.20] — 2026-10-06 — browser extension explained
 
 ### Changed
