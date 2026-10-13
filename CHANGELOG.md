@@ -55,6 +55,33 @@ The public test release that collects everything from the 2.0.2 betas.
 - The scraper's Play button and photo boxes no longer overflow. (#1904)
 - The freeze detector also notices when the window stops reacting. (#1905)
 
+### Also in this release (from the 2.0.2 betas)
+
+- **Edit Everything…** (right-click) is the one editor for title, genres
+  g1–g4, series, studio and director; changing a series asks whether to change
+  only this movie or the whole series. Edit Genres g1–g4 is back in the menu.
+- The right-click menu is grouped (Play, Open Folder, Movie …), every entry
+  explains itself, "Flag for Review" is now called **Mismatch**, and items that
+  did nothing are gone.
+- Series Browser merges all sites, no "choose a source" step; the series name
+  you pick in the scraper is the one saved.
+- Scraper: picking the right movie from "Multiple Movies Found" works the
+  first time.
+- Subtitles: speech-to-text really runs again (it was skipped and "finished"
+  in a second), and a site's uniform tag alone no longer blocks subtitles.
+- Actor photos: no more photos of a different actress with the same first
+  name; a run no longer restarts from an old resume point.
+- Calmer start-up (less drive work), no more hangs while the Task Console runs
+  on Auto, and no freeze when you come back to the window.
+- Clicking the taskbar icon shows the running Kuraya instead of starting a
+  second one; the tray icon no longer leaves a ghost after a restart.
+- Recent searches: newest on top, no half-typed entries.
+- Duplicates-folder movies show with their fanart; the Android remote finds the
+  PC by itself (no IP address to type).
+- Installing a new version removes the old program files first, and Kuraya
+  finds its own scripts next to Kuraya.exe.
+- The public edition contains nothing from the developer's own setup.
+
 ## [2.0.2-beta.23] — 2026-10-13 — backfill filters men, actor list gets new photos
 
 ### Fixed
