@@ -17,6 +17,37 @@ repository.
 
 ---
 
+## [2.0.3-beta.4] — 2026-10-13 — the new logo, everywhere
+
+### Changed
+
+- New logo: the original dancer with her whole body (hair, hands, feet and the
+  pole), in front of the red sun. Used for the program icon, the taskbar and
+  tray icon and the About box. (#1915)
+- The logo now shows faintly behind every page and every dialog, so Kuraya is
+  recognisable everywhere. In the light theme the square turns white and the
+  dancer black; the red sun stays. (#1915)
+
+## [2.0.3-beta.3] — 2026-10-13 — About Kuraya
+
+### Added
+
+- Help → **About Kuraya**: version and date, which edition you have, the
+  project page, and the list of open-source licenses Kuraya uses. (#1914)
+
+## [2.0.3-beta.2] — 2026-10-13 — update reminder on the Help button
+
+### Added
+
+- When a newer version is ready, the Help button shows a green dot and its menu
+  says "Install Kuraya <version>", also after you chose "Later". Choosing
+  "Skip this version" removes the dot. (#1913)
+
+### Changed
+
+- The project page's comparison table is grouped and tidier, and no longer
+  lists the Tube browser, which the public edition does not contain.
+
 ## [2.0.3-beta.1] — 2026-10-13 — safer deleting, better actors, help on every button
 
 The public test release that collects everything from the 2.0.2 betas.

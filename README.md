@@ -1,3 +1,9 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="docs/kuraya_logo_light.png">
+    <img alt="Kuraya logo" src="docs/kuraya_logo.png" width="180">
+  </picture>
+</p>
 <h1 align="center">Kuraya 蔵屋</h1>
 <p align="center"><b>Where Your Japanese Adult Movies Lives.</b></p>
 <p align="center"><i>The JAV library that runs itself.</i></p>
@@ -42,26 +48,30 @@ subtitles from the audio — and plays it all in one place.
 
 ## Why Kuraya and not the others
 
-Most JAV tools fall into one of two camps. Kuraya is both — and then some.
+Most JAV tools fall into one of two camps: **scrapers** that fetch metadata, and
+**media servers** that play it. Kuraya does both, and adds what neither offers.
 
-| | Scraper tools | Media servers + plugins | **Kuraya** |
-|---|:---:|:---:|:---:|
-| Identify films by DVD-ID, fetch metadata & covers | ✅ | ⚠️ via plugins | ✅ **several sources at once, you pick the best** |
-| See *every* source's result side by side | ❌ | ❌ | ✅ |
-| Rename & file into a clean folder tree | ✅ | ❌ | ✅ **Studio → genres → film, under the 255-char limit** |
-| Built-in player & cover browser | ❌ | ✅ | ✅ |
-| Actress database with photos & bios | ⚠️ | ⚠️ | ✅ **multi-source, de-duplicated** |
-| English titles & series names | ⚠️ | ❌ | ✅ **translated and written back to disk** |
-| English **subtitles made from the audio** | ❌ | ❌ | ✅ **Whisper + AI translation, hands-off** |
-| Duplicate detection (ID, file content, *sound*) | ❌ | ❌ | ✅ |
-| Self-healing: health scans, repairs, quarantine | ❌ | ❌ | ✅ |
-| Shrink huge files to HEVC — *proven* sound & picture | ❌ | ❌ | ✅ |
-| Stream your own library to your phone | ❌ | ✅ | ✅ **free Android remote** |
-| Browse & play any drive or LAN share — movies only | ❌ | ⚠️ | ✅ **built-in, no clutter** |
-| Browse the tube sites inside the app | ❌ | ❌ | ✅ **built-in Tube browser, player & favourites** |
-| Tested on a library of **18,000+ films** | — | — | ✅ |
+| Capability | Scraper tools | Media servers | Kuraya |
+|:---|:---:|:---:|:---|
+| **Metadata** | | | |
+| Identify films by DVD-ID; fetch metadata and covers | ✓ | ◐ | ✓ Several sources at once — you choose the best |
+| Compare every source's result side by side | — | — | ✓ |
+| English titles and series names | ◐ | — | ✓ Translated and saved with the film |
+| Actress database with photos and bios | ◐ | ◐ | ✓ Multiple sources, one entry per actress |
+| **Library** | | | |
+| Rename and file into a clean folder structure | ✓ | — | ✓ Studio → genres → film, within Windows' path limit |
+| Duplicate detection by ID, file content and audio | — | — | ✓ |
+| Health checks, repairs and a recoverable trash | — | — | ✓ |
+| Shrink large files to HEVC with verified picture and sound | — | — | ✓ |
+| **Watching** | | | |
+| Built-in player and cover browser | — | ✓ | ✓ |
+| English subtitles generated from the audio | — | — | ✓ Whisper + AI translation, fully automatic |
+| Stream your library to your phone | — | ✓ | ✓ Free Android remote |
+| Browse and play any drive or network share | — | ◐ | ✓ Movies only, no clutter |
+| **Proven** | | | |
+| Used daily on a library of 20,000+ films | — | — | ✓ |
 
-*(✅ yes · ⚠️ partly / depends on setup · ❌ no — compared to typical tools in each camp.)*
+<sub>✓ yes · ◐ partly, or depends on plugins and setup · — no. Compared with typical tools in each category.</sub>
 
 ---
 
@@ -107,11 +117,6 @@ silent is thrown away and the original kept.
 Not everything is in the library yet? The **Local & LAN browser** opens any drive or
 network share and shows **only the movies** — no torrents, subtitles or installers in
 the way. Sort, change the grid size and play straight away in Kuraya's own player.
-
-### 📺 The tube sites, built in
-The **Tube browser** searches the popular tube sites from inside Kuraya and plays the
-videos in the same player — no browser tabs, no pop-up ads. Keep the ones you like as
-**favourites** and find them again in one click.
 
 ### 📱 It comes with you
 The free **Kuraya-Remote** Android app streams your own collection to any phone or
@@ -195,7 +200,7 @@ subtitles, more fixes.
 ## Status
 
 Kuraya is in **beta** — every main feature is in place and it has been tested on a
-library of 18,000+ films, but you may meet bugs. Found one? Open an issue with the version number
+library of 20,000+ films, but you may meet bugs. Found one? Open an issue with the version number
 (top of the log) and the file `Cashe\error_snapshot.txt`.
 
 ---
