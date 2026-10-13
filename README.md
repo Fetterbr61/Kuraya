@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: light)" srcset="docs/kuraya_logo_light.png">
-    <img alt="Kuraya logo" src="docs/kuraya_logo.png" width="180">
+    <img alt="Kuraya logo" src="docs/kuraya_logo.png" width="320">
   </picture>
 </p>
 <h1 align="center">Kuraya 蔵屋</h1>
