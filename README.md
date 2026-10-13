@@ -76,7 +76,7 @@ soup (max 6, de-duplicated).
 
 ### 🗂️ It files your library like a librarian would
 ```
-D:\Sorted\Natural High\Dominant-Men\Molester\Office-Lady\Train\NHDTC-216\
+D:\Movies\Natural High\Dominant-Men\Molester\Office-Lady\Train\NHDTC-216\
 ```
 Studio first, then **who is in control, what happens, to whom, and where**. Browse it
 in Kuraya or straight in Explorer. Paths are kept under Windows' 255-character limit

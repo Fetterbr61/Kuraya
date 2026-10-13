@@ -17,9 +17,350 @@ repository.
 
 ---
 
+## [2.0.3-beta.1] — 2026-10-13 — safer deleting, better actors, help on every button
+
+The public test release that collects everything from the 2.0.2 betas.
+
+### Safer
+
+- Right-clicking a movie that is not selected now acts on that movie only, like
+  Windows Explorer (hold Ctrl to add it to a selection). A selection left over
+  from an earlier job can no longer ride along into "Delete Permanently".
+  After a right-click job on several movies they are deselected. (#1910)
+- The delete question lists every movie, shows the count in big red letters and
+  makes "Cancel - keep them" the big, pre-selected button. (#1910)
+
+### Actors
+
+- The scraper shows each actor as a card with ALL her photos; click one to make
+  it the photo used everywhere. (#1903)
+- Male actors that only some sites list (they show the whole cast) are hidden,
+  with a line to bring one back with a click. The same rule is used by Metadata
+  Backfill. (#1903, #1904, #1911)
+- One entry per actress whatever the spelling ("Haruka Kitagawa" /
+  "Kitagawa Haruka" / one word), in the scraper, Movie Details and the actor
+  list. (#1902, #1908)
+- Each actor card shows her bio (born, height, measurements, cup) and whether
+  the name was already in the file or just came from the scrape, plus how many
+  other movies of yours she is in. (#1906, #1909)
+- Photos and bios of a scraped cast are fetched in the background; the actor
+  list picks up new actresses and new photos by itself. (#1899, #1906, #1911)
+- In a bulk scrape, names you type in stay with their own movie. (#1907)
+
+### Everything else
+
+- Every button, switch and menu entry explains itself when you hover it.
+  (#1891-#1898)
+- Less drive work at start-up. (#1901)
+- The scraper's Play button and photo boxes no longer overflow. (#1904)
+- The freeze detector also notices when the window stops reacting. (#1905)
+
+## [2.0.2-beta.23] — 2026-10-13 — backfill filters men, actor list gets new photos
+
+### Fixed
+
+- Metadata Backfill now uses the same actor rule as the scraper: one entry per
+  actress whatever the spelling, and names that only MissAV/JavTrailers/
+  JavLibrary list (they list men too) are left out. (#1911)
+- The actor list shows new photos as soon as the background photo search
+  finishes a batch, instead of a grey box until the next start. (#1911)
+
+## [2.0.2-beta.22] — 2026-10-13 — no more deleting movies you did not mean to
+
+### Fixed
+
+- Right-clicking a movie that is not selected now selects ONLY that movie (hold
+  Ctrl to add it to the selection instead), like Windows Explorer. Before, it
+  was ADDED to whatever was still selected from an earlier job, so "Delete
+  Permanently" also hit those movies. (#1910)
+- After a right-click action on several movies finishes, they are deselected.
+  (#1910)
+- The bulk delete question lists EVERY movie (not the first 5), shows the count
+  in big red letters, and "Cancel - keep them" is the big button. (#1910)
+
+## [2.0.2-beta.21] — 2026-10-12 — room for all actors, and where each came from
+
+### Changed
+
+- The scraper's actor box grows with the number of actors instead of cutting
+  them off at a fixed height. (#1909)
+- Each actor card says whether the name was already in the movie's file or
+  just came from the scrape (or was typed by you), and in how many other
+  movies of your library she is. (#1909)
+
+## [2.0.2-beta.20] — 2026-10-12 — actor photos in Movie Details
+
+### Fixed
+
+- Movie Details and the actor list now find an actor's photos whatever the
+  spelling of the name (reversed, or written as one word), like the scraper
+  already did. Kitagawa Haruka had photos in the scraper but a grey box in
+  Movie Details. (#1908)
+
+## [2.0.2-beta.19] — 2026-10-12 — actors per movie in a bulk scrape
+
+### Fixed
+
+- Scraping several movies at once: actor names you type in by hand now go to
+  THAT movie only. Before, every movie in the batch got the typed names of the
+  movie on screen when you pressed Apply. (#1907)
+- Genres and actors typed on the movie on screen are no longer lost when you
+  press Apply without first going to another movie. (#1907)
+
+## [2.0.2-beta.18] — 2026-10-12 — actor bios in the scraper
+
+### Added
+
+- The scraper shows each actor's bio under the photos (born, height,
+  measurements, cup); hover it for the whole bio. "No bio yet" when the
+  background search has not found one. (#1906)
+
+### Fixed
+
+- A newly scraped actress now shows up in the actor list about 10 seconds
+  after the scrape is applied, not only after the next start. (#1906)
+- The "hidden" line names JavLibrary too. (#1906)
+
+## [2.0.2-beta.17] — 2026-10-12 — freeze detector sees the window too
+
+### Changed
+
+- The freeze detector now also notices when the WINDOW stops reacting (mouse,
+  keyboard, drawing) while the program itself keeps working, and writes what
+  was running at that moment to `Logs\reports\freeze_watchdog.txt`. (#1905)
+
+## [2.0.2-beta.16] — 2026-10-12 — scraper layout fixes
+
+### Fixed
+
+- The Play button no longer overflows: icon, PLAY VIDEO and the file name now
+  sit on one line. (#1904)
+- The grey "no photo" box no longer overflows; it shows a short reason and the
+  full reason when you hover it. Actor photos are bigger. (#1904)
+- Male actors that JavLibrary lists (it shows the whole cast, not only
+  actresses) are now hidden too, and a stray "×" is removed from scraped names
+  ("Kita Kouji×"). (#1904)
+
+## [2.0.2-beta.15] — 2026-10-12 — actor cards, no male actors
+
+### Changed
+
+- The scraper shows each actor as a card with **all her photos**. Click a photo
+  to make it the one shown in the actor browser and movie details (green frame
+  and check mark). An actor without a photo shows why: not found on the photo
+  sites, photo search waiting, or no photo yet. (#1903)
+- **Male actors are left out.** JAV-GURU, R18.dev, Warashi and JavLibrary list
+  only actresses; MissAV and JavTrailers list the whole cast. When an
+  actress-only site found the movie, names only MissAV/JavTrailers give are
+  hidden and not saved. A small line under the actors lists them - click a name
+  to keep it after all. (#1903)
+- The same actor is now also saved only once, whatever the spelling (before,
+  only the screen showed her once). (#1903)
+- The Play button in the scraper is much smaller, so there is more room. (#1903)
+
+## [2.0.2-beta.14] — 2026-10-12 — less drive work after starting
+
+### Fixed
+
+- Kuraya no longer walks through every folder on all your library drives a few
+  minutes after every start. That check now runs at most once a day; in between,
+  the list from the cache and the live folder watcher are used. (#1901)
+- The inbox subtitle check after starting only opens inbox folders that changed
+  since the last check, instead of all of them. Folders with a Japanese
+  subtitle still waiting for translation are still checked every start. (#1901)
+- The scraper no longer lists the same actress several times when sites spell
+  her name differently ("Kitagawa Haruka", "Haruka Kitagawa", "Kitagawaharuka",
+  "Anna KAMI"). The first spelling is kept, and her photo is found for every
+  spelling. (#1902)
+
+## [2.0.2-beta.13] — 2026-10-12 — actor photos while you scrape
+
+### Added
+
+- Scraping a movie now also fetches photos and bios for its actors in the
+  background (Task Console: "Actor photos & bios (after scraping)"). No
+  separate actor scraper run needed for new movies. It waits while you run the
+  actor photo scraper yourself, and you can pause or stop it. (#1899)
+- The scraper shows a small photo before each actor name. Click it to see all
+  her photos and tick the main photo used by the actor browser and movie
+  details. (#1900)
+
+### Fixed
+
+- A chosen main actor photo was forgotten after a restart. (#1900)
+
+## [2.0.2-beta.12] — 2026-10-12 — every control has a tooltip, no dead buttons
+
+### Fixed
+
+- The last controls without a tooltip got one. Buttons that did nothing when
+  clicked are gone: the previous/next arrows and the edit pencil in the movie
+  details window, and the help icon in the duplicate window. (#1898)
+- Genre review → the **"Add to..." list** next to an unknown genre now works: the
+  genre is added to the category you pick and kept for sorting. Before, picking
+  a category did nothing. (#1898)
+- The "fill bios" switch in Media Tools explains in plain words what it does. (#1898)
+
+## [2.0.2-beta.11] — 2026-10-12 — every button explains itself; nothing personal in the public edition
+
+### Added
+
+- **Every button, switch, tab, menu entry and dropdown now has a tooltip** that
+  says in plain words what it does (and, for risky ones, what happens to your
+  files). About 1,430 controls in total — each text was written from what that
+  control really does, not guessed. (#1891)
+- All tooltip texts are collected in one list, `docs/TOOLTIP_TEXTS.txt`, so a
+  button can be found by screen, label or icon — the raw material for the user
+  manual. It is rebuilt with `python tools/dev/Export_Tooltips.py`. (#1892)
+
+### Fixed
+
+- The subtitle watcher that starts with Kuraya now watches **your** library and
+  inbox folders from Settings. Before, it looked at three fixed folders from the
+  developer's PC and did nothing on yours. (#1897)
+- The public download no longer contains the developer's own tools, folder names
+  or notes: only the scripts Kuraya really starts are included, and every release
+  is checked for personal data before it can be published. (#1897)
+- Media Tools → Metadata: with all sections open the page showed a yellow
+  "BOTTOM OVERFLOWED" stripe and hid the lower buttons. The controls area now
+  scrolls. (#1893)
+- Actor photo scraper: a run that started from an old, left-over resume point
+  skipped every actor ("Actors remaining: 0", everything 0). The scraper now
+  ignores a resume point that is not in the current list and starts from the
+  beginning. (#1894)
+
+### For developers
+
+- The tooltip guard (`#1860`) now checks all of `lib/` (not just `lib/ui/`) and
+  more control types (tabs, list tiles, dropdowns, dialog options). Baseline: 20
+  controls left, all explained in `docs/TOOLTIP_TEXTS.txt`. (#1895)
+
+## [2.0.2-beta.10] — 2026-10-12 — one editor, series names, JavGuru links, no extra windows
+
+### Changed
+
+- Right-click: **Edit Everything…** is the one editor (title, genres g1–g4,
+  metadata and files on one page). The separate Edit Genres / Edit Metadata /
+  Rename items are gone; the full file editor and the renamer are buttons in
+  it, and it has a clear **Done — Close** button. (#1869, #1870, #1872)
+- Changing genres or a series name for a movie in a series asks: only these
+  movies, or the whole series? Renaming a series lists every movie in it. (#1868, #1877)
+- The editor shows the current Series / Studio / Director, also when several
+  movies are selected. (#1874, #1875)
+- Series Browser: no more "choose a source" — all sites are merged; a renamed
+  series is still found by its original name; outlet (5GVG-…) and FANZA (DK…)
+  editions count as owned; new filter **Uncensored available**; counters follow
+  the filters. (#1878, #1879, #1880, #1881, #1884)
+- Scraper: the series name you pick or edit is the one saved; the movie's own
+  series name comes first; starred R18.dev words are filled in. (#1887, #1888)
+- Subtitles: a website's uniform tag alone no longer blocks subtitles (184
+  movies freed). (#1889)
+- Tray icon library updated (hot restart no longer leaves a ghost icon). (#1871)
+
+### Fixed
+
+- JavGuru download links work again (also the -MR uncensored posts), shown as
+  UNC. (#1882, #1883)
+- Clicking the taskbar icon opened a new Kuraya each time instead of showing the
+  open one. (#1885)
+- The window froze for seconds when you came back to it. (#1886)
+- Recent searches: newest on top, no half-typed entries. (#1876)
+- Actor photos: no more photos of a different actress with the same first name;
+  imggle.net photos download again. (#1890)
+
+## [2.0.2-beta.9] — 2026-10-11 — Edit Genres is back in the right-click menu
+
+### Fixed
+
+- Right-click → Edit ▸ → **Edit Genres g1–g4…** is back (it went missing when
+  the menu was put into groups). For a movie in a series it asks whether the
+  change is for this movie only or for the whole series. Works for one movie
+  and for several selected movies. (#1867)
+
+## [2.0.2-beta.8] — 2026-10-11 — picking a movie works the first time
+
+### Fixed
+
+- In the scraper, picking the right movie from "Multiple Movies Found" seemed
+  to need two or three tries. The first pick did work, but loading that page
+  can take up to 1½ minutes and the card kept saying "Select one" meanwhile.
+  The card now says it is fetching, and clicking it again just tells you to
+  wait instead of starting over. (#1866)
+
+## [2.0.2-beta.7] — 2026-10-11 — transcribe really runs; clean installs
+
+### Fixed
+
+- Subtitles were "made" in a fraction of a second: the speech-to-text step
+  could not start, but the app still called the movie transcribed, and the
+  translate step then marked it as a movie without speech. Now a step that
+  did not run is reported as an error with the reason, the movie is tried
+  again later, and it is never marked "no speech". The 9 movies wrongly
+  marked today were un-marked. (#1864)
+- The app now finds its own scripts next to Kuraya.exe as well, not only in
+  the folder it was started from. (#1864)
+
+### Changed
+
+- Installing a new version first removes the old program files, so nothing
+  from an older version is left behind. Your settings, logs and cache are
+  kept. (#1865)
+
+## [2.0.2-beta.6] — 2026-10-11 — clickable while the Task Console runs on Auto
+
+### Fixed
+
+- With the Task Console on Auto, the app could hang for up to 13 seconds at a
+  time. The subtitle job re-read every subtitle file of all your favourite
+  movies over and over, although they all have English subtitles already. It
+  now uses the list the app already keeps in memory and only reads the drive
+  for favourites that still need a subtitle. (#1863)
+
+## [2.0.2-beta.5] — 2026-10-11 — calmer start-up
+
+### Fixed
+
+- After a restart the drives worked hard for several minutes and the app felt
+  frozen. Two start-up jobs read every movie folder on all drives at the same
+  time, and one of them made the window wait for each read. The picture
+  look-up now reads the drives in the background without blocking the window,
+  and the full folder check waits 5 minutes so it does not compete with it.
+  (#1862)
+
+## [2.0.2-beta.4] — 2026-10-10 — tooltips in the right-click menu
+
+### Changed
+
+- Every entry in the right-click menu, including the group names, now shows
+  a short explanation when you rest the mouse on it for half a second. (#1859)
+
+## [2.0.2-beta.3] — 2026-10-10 — tidy right-click menu
+
+### Changed
+
+- The right-click menu on a movie is now grouped: Play, Open Folder, Movie
+  Details and Quick Edit at the top, then **Edit ▸ Scrape ▸ Subtitles ▸ Mark ▸
+  Organize ▸** (and Find ▸ / Tools ▸ in the full version), and Delete last in
+  red. Picking a group opens it in the same place; **‹ Back** goes up again.
+  Several selected movies get the same groups. (#1858)
+- "Flag for Review" is now called **Mismatch**, the same word as on the movie
+  card and in the remote, so it is easy to find and remove. (#1858)
+- Removed from the menu: Edit Genres (Quick Edit does it), and items that did
+  nothing yet (Hide from Library, Check Scrapers for several movies) or belong
+  to the old subtitle pipeline (Whisper queue, Boost audio). (#1858)
+
+## [2.0.2-beta.2] — 2026-10-10 — the remote finds the PC by itself
+
+### New
+
+- The Android remote no longer needs the PC's IP address typed in. When it
+  starts and can't reach the PC, it looks for Kuraya on your Wi-Fi and
+  connects by itself. In the remote's Settings there is also a
+  **Find my PC automatically** button. Needs remote 2.0.1 or newer. (#1855)
+
 ## [2.0.2-beta.1] — 2026-10-10 — duplicates show with the Fanart flag
 
-New version line 2.0.2 (Finn 2026-10-10).
+New version line 2.0.2 (2026-10-10).
 
 ### Fixed
 
@@ -461,7 +802,7 @@ Kuraya moves to version **2.0.1 Beta** (the 0.9 betas above were the first test 
 ## [0.9.0-beta.3] — 2026-10-06 — no more fixed drive folders
 
 ### Fixed
-- Removed every remaining folder fixed to the developer's drives: sorting fallback (`K:\Sorted` → the movie's own drive), genre-sort base folders (→ your library folders), converter order, series-browser download folder (→ your Downloads, setting `downloadFolder`), folder-browser thumbnails (`C:\Temp` → `Cashe\video_thumbs`), ImageMagick (`H:\` → setting `imageMagickPath` or PATH), Desktop paths (→ your own home folder) (#1747)
+- Removed every remaining folder fixed to the developer's drives: sorting fallback (one fixed drive → the movie's own drive), genre-sort base folders (→ your library folders), converter order, series-browser download folder (→ your Downloads, setting `downloadFolder`), folder-browser thumbnails (`C:\Temp` → `Cashe\video_thumbs`), ImageMagick (`H:\` → setting `imageMagickPath` or PATH), Desktop paths (→ your own home folder) (#1747)
 - A new test fails the build if a fixed drive folder ever returns to the code (#1747)
 
 ### Changed

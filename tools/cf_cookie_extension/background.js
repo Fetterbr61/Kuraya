@@ -282,7 +282,7 @@ function needsTabRelay(u) {
 
 // #1396 mirrors these two (non-CF) scraper hosts as display-only tabs — must
 // match Dart's BrowserRelayService._watchHosts exactly.
-// #1613 Finn: "there should than be the same amounts of tabs as i have
+// #1613 user: "there should than be the same amounts of tabs as i have
 // scrapers" — every OTHER scraper site was invisible (fetched directly by
 // the Dart app, no browser/extension involvement at all), so only 2 of his
 // ~30 scrapers ever got a tab. Every non-Cloudflare scraper host now mirrors
@@ -297,7 +297,7 @@ function isManagedHost(u) {
   } catch (e) { return false; }
 }
 
-// #1601 Finn: "max be one page pr scraper and will not try to open anew when
+// #1601 user: "max be one page pr scraper and will not try to open anew when
 // already have... open the pages in the tab i created called scraper tabs" —
 // he made his own Chrome tab group ("Scraper Tabs", visible on his bookmarks
 // bar as a saved group) and wants scraper tabs to land there instead of in a
@@ -312,13 +312,13 @@ async function findScraperGroup() {
   return null;
 }
 
-// #1612 Finn: "no i dont want this. i want all scrapers in one window same
+// #1612 user: "no i dont want this. i want all scrapers in one window same
 // the example and each scraper having each own tab so i dont have 20 windows
 // open." — #1610 tried giving every origin its OWN window, which is the
 // opposite of what he wants. Back to ONE shared window; each origin still
 // gets its OWN persistent tab inside it (relayTabs/displayTabs — unchanged
 // from before #1610), so switching scrapers never touches another origin's
-// tab, but Finn only ever has the one window to manage.
+// tab, but the user only ever has the one window to manage.
 let relayWindowId = null;    // ONE shared window for every scraper's tab
 const relayTabs = {};        // origin -> tabId
 const relayTabCreating = {}; // origin -> Promise<tabId>
@@ -356,7 +356,7 @@ async function openDisplayTab(url) {
       catch (e) { tabId = null; }
     }
     if (tabId == null) {
-      // #1617 Finn's screenshot showed 5x jav.guru tabs, 2x SSIS-00, 2x
+      // #1617 the user's screenshot showed 5x jav.guru tabs, 2x SSIS-00, 2x
       // FNS-05, 2x "You sea..." — one tab PER URL instead of one per origin.
       // Root cause: the poll handler below fires `openDisplayTab(du)` for
       // every queued URL in a batch WITHOUT awaiting each one (see the
@@ -401,7 +401,7 @@ async function openDisplayTab(url) {
 async function sweepRelayTabs() {
   try {
     await loadRelayState();
-    // #1605 Finn: "the special scraper tab i made is gone." The #1601 sweep
+    // #1605 user: "the special scraper tab i made is gone." The #1601 sweep
     // above used to delete any tab in "Scraper Tabs" that wasn't in our
     // in-memory relayTabs/displayTabs maps, treating it as an orphan. But
     // chrome.storage.session (#1400) is explicitly cleared when Chrome closes,
@@ -409,12 +409,12 @@ async function sweepRelayTabs() {
     // tracking, and the NEXT sweep then saw every real display tab as
     // "untracked" and deleted it. If that group had nothing else in it, Chrome
     // removes an empty group entirely — which is exactly "the tab I made is
-    // gone." That risk (destroying a group Finn built by hand) is worse than
+    // gone." That risk (destroying a group the user built by hand) is worse than
     // the thing this sweep guarded against (a stray extra tab), so: NEVER
     // touch "Scraper Tabs" here at all. The one-tab-per-origin check already
     // in openDisplayTab/ensureRelayTab (reuse before create) is what actually
     // keeps it to one page per scraper; this sweep is now only for the
-    // fallback hidden window, which we fully own and nothing of Finn's can be
+    // fallback hidden window, which we fully own and nothing of the user's can be
     // lost from.
     if (relayWindowId == null) return;
     const keep = new Set([...Object.values(relayTabs), ...Object.values(displayTabs)]);
@@ -441,7 +441,7 @@ async function sweepRelayTabs() {
     } else {
       log('[sweepRelayTabs]', 'no orphans; hidden relay window has', tabs.length, 'tab(s), all tracked');
     }
-    // Also snapshot Finn's "Scraper Tabs" group so duplicate display tabs are visible even
+    // Also snapshot the user's "Scraper Tabs" group so duplicate display tabs are visible even
     // though this function never touches that group (see #1605 comment above).
     try {
       const group = await findScraperGroup();
@@ -454,12 +454,12 @@ async function sweepRelayTabs() {
   } catch (e) { log('[sweepRelayTabs]', 'ERROR', String(e)); }
 }
 
-// #1603 Finn: "it always says javlibrary is cooldown on every single search"
-// — after #1601 routed relay tabs into Finn's own "Scraper Tabs" group (his
+// #1603 user: "it always says javlibrary is cooldown on every single search"
+// — after #1601 routed relay tabs into the user's own "Scraper Tabs" group (his
 // real, everyday browsing window), the CF-bypass relay tab for javlibrary/
 // missav/etc. stopped reliably passing Cloudflare's JS challenge: #1395
 // already found that a challenge only completes at full speed while its tab
-// stays the ACTIVE tab of its window, and in Finn's real window that keeps
+// stays the ACTIVE tab of its window, and in the user's real window that keeps
 // losing "active" the moment he clicks any other tab of his — so almost
 // every relay fetch timed out, which is exactly what trips the #1483
 // circuit-breaker into "cooldown" after 4 failures. A DISPLAY-only mirror
@@ -481,7 +481,7 @@ async function ensureHiddenRelayWindow() {
   // while the user's own visible tab passed fine). Create a small, UNFOCUSED,
   // NON-minimized window instead: its active tab counts as "visible" so the
   // challenge runs at full speed, but it stays in the background out of the way.
-  // #1612 ONE shared window for every origin (Finn: "all scrapers in one
+  // #1612 ONE shared window for every origin (the user: "all scrapers in one
   // window... so i dont have 20 windows open") — each origin still gets its
   // own persistent TAB inside it (relayTabs[origin]), never a new window.
   let w;
@@ -499,12 +499,12 @@ async function ensureHiddenRelayWindow() {
   return { windowId: relayWindowId, groupId: null };
 }
 
-// #1601 Cosmetic display-mirror tabs only — prefer Finn's "Scraper Tabs"
+// #1601 Cosmetic display-mirror tabs only — prefer the user's "Scraper Tabs"
 // group; no CF challenge involved so backgrounding it is harmless.
 async function ensureDisplayWindow() {
   const group = await findScraperGroup();
   if (group != null) {
-    log('[ensureDisplayWindow]', 'using Finn\'s "Scraper Tabs" group', group.id, 'in window', group.windowId);
+    log('[ensureDisplayWindow]', 'using the user\'s "Scraper Tabs" group', group.id, 'in window', group.windowId);
     return { windowId: group.windowId, groupId: group.id };
   }
   log('[ensureDisplayWindow]', 'no "Scraper Tabs" group found, falling back to hidden relay window');
@@ -537,7 +537,7 @@ async function ensureRelayTab(origin) {
     // #1392 A DEDICATED background tab we own — NEVER the user's visible tab, so
     // navigating it can't hijack what they are viewing. Same Chrome profile, so
     // it shares the site's cookies / Cloudflare session. Lives in a minimized
-    // background window it can keep ACTIVE (#1603 — must stay out of Finn's
+    // background window it can keep ACTIVE (#1603 — must stay out of the user's
     // "Scraper Tabs" group, which can't guarantee that and broke the CF
     // challenge for real fetches; that group is for cosmetic mirrors only).
     const { windowId: winId, groupId } = await ensureHiddenRelayWindow(); // #1612 shared window, this origin's OWN tab inside it
@@ -667,7 +667,7 @@ async function _tabRelayFetchImpl(url, origin) {
   const res = await navReadLoop(tabId, url);
   // #1394 originally CLOSED the tab here on a failed relay attempt (stuck
   // challenge / hung page / redirect loop); #1615 changed that to resetting
-  // it to about:blank instead. Finn: "it needs to be so i can see when a
+  // it to about:blank instead. the user: "it needs to be so i can see when a
   // scraper is failing so dont reset the page, let me see the error from the
   // scraper" — he wants the tab left EXACTLY as the failed attempt left it
   // (the stuck Cloudflare challenge, an error page, whatever it is), so he
