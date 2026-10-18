@@ -17,6 +17,127 @@ repository.
 
 ---
 
+## [2.0.4-beta.1] — 2026-10-18 — face-checked actor photos, no more freezes in the scraper and Refill Missing, black theme
+
+- Also in this release: everything from the test versions 2.0.3-beta.5 to 2.0.3-beta.10 (fewer hiccups while subtitles are queued, smoother remote streaming, you choose how much videos are compressed, do not download what you deleted before, less freezing while the video converter scans, the scraper window no longer holds back the mouse).
+
+- Scraper priority is now one small panel with everything visible; drag to reorder, so a number can only be used by one scraper (#1956).
+
+- When Pre-Inbox is finished it just closes; it no longer opens the scraping window by itself (#1955).
+
+- The app no longer walks all drives once a day to double-check owned movies; it trusts the cache and the folder watcher (#1954).
+
+- Deleting a movie now first stops any transcription, translation or conversion working on it, then deletes (#1953).
+
+- A movie whose file name contains an "&" (stored as &amp; in the info file) no longer shows NEEDS SCRAPING by mistake. (#1949)
+- Right-click → Edit → "Check & Fix Names + Info to Standard" is back: checks and fixes the folder and file names, the subtitle names and the info file of the selected movies against all the rules, and asks before renaming. (#1947). It now also checks the content of the info file (.nmp) and lists what is wrong before it rewrites it: junk in the title, missing year or maker, more than 6 genres, blacklisted genres, not-allowed actor names, a wrong DVD-ID, old tags
+- "Move by amount" (green button in the toolbar): choose how many GB or movies to move and where from (the whole view or one drive); Kuraya selects them from the top of the grid and asks for the destination. No need to select first. (#1943)
+- Selection limit: a new toolbar button lets you set, BEFORE you select, the most movies or the most GB you can select; selecting (click, Shift-click, Select all) stops at the limit. Handy for moving a set amount between drives. (#1942)
+- Moving several movies to another folder or drive now asks how much: all of them, only the first N movies, or up to a number of GB. (#1941)
+- New Releases: movies you tick in one tab are kept when you go to another tab (New, Upgrades, Keywords, Similar, Actress ...); the selections are merged, not thrown away. (#1939)
+- minnano-av.com (the Japanese actress database) is now a standard actor source: aliases (stage names), birth date and Japanese name are saved per actress, and two names with the same minnano-av id are noted as one woman. (#1938)
+- Less drive reading: the actor photo list is rebuilt only when the photo folder really changed, and the folder watcher now tells the background subtitle scan and the photo list when something really changed, so unchanged folders are never read again; the actor list refresh is limited to every 5 minutes. This removes the spinning-mouse stalls. (#1934, #1935)
+- Face check now also catches the same photo saved twice at a different size or with a white border (20 more found in the first run). (#1933)
+- A photo that shows another actress's face (a good photo under the wrong name) is moved to the right actress instead of being thrown out, when the face match is strong. (#1931)
+- Photos that arrive outside a normal batch (r18.dev) are face-checked too, so duplicates and wrong-person photos no longer linger. (#1930); during a long photo fetch the face check also runs every ~2.5 minutes
+- r18.dev is now a standard actor source: for every scraped movie, its actresses get their r18 id, Japanese name and (when missing) a photo; two names with the same r18 id are noted as the same woman. (#1929)
+- Face check also joins photos of the same actress saved under two spellings (e.g. Ruri Saijo and Saijou Ruri) under one name, only when the faces agree; the other name becomes an alias. (#1927)
+- Actor names that differ only in how a long vowel is written (Saijo / Saijou / Saijoh) now count as the same actress, so their photos sit in one group. (#1927)
+- Closing the scraper window with X (or Esc) now forgets the scrape. "Resume" only appears after you press Stop or Minimize, or if Kuraya crashed. (#1902)
+- A red "No" cross next to the Resume button (toolbar and floating button) drops the paused scrape for good. (#1902)
+- The scraper no longer reads its genre files (about 0.9 MB) while drawing, which could hold the mouse back for a few seconds; they load in the background when it opens. (#1904)
+- The scraper no longer loads the whole movie database from disk when it opens or checks 'already in library' - it uses the list already in memory (this was the multi-second stall). (#1905)
+- Actor photos are fetched while you scrape: the actors of the movie on screen go first, and their photos appear in the scraper within a minute or so. (#1906)
+- Video search "Add screenshot": works again, and pastes a screenshot from the clipboard (Win+Shift+S) first. (#1907)
+- "Ask Claude" in the video search now works with only a screenshot (it did nothing when the description box was empty), and it reads the on-screen text to build search terms. (#1908)
+- "Ask Claude" now searches the sites with the actress name plus an English title keyword (like "Tamaki Mai widow"), then widens if nothing is found - the way a Google search finds it. (#1909)
+- Fixed a total freeze (5+ minutes, "Not Responding") that could hit while scraping: when background actor photos finished, Kuraya re-read the whole actors folder once per actor. It now refreshes the photo list in the background and reads the folder at most once. (#1913)
+- The Kuraya icon and logo now have a pure black background, edge to edge, so no square edge shows on a black desktop or taskbar. (#1914)
+- Dark theme: the page background is now pure black, matching the logo; panels and the toolbar stay slightly lighter. (#1915)
+- The old "Dark" theme is removed; Picasa Dark (now black) is the dark theme and the default. Anyone who had "Dark" gets Picasa Dark. (#1916)
+- The "Professional" theme is removed as well; it also opens as Picasa Dark. Two themes are left: Picasa Dark and Picasa Light. (#1917)
+- Remote (tablet) playback: lighter picture filters so the tablet no longer drops frames, and the PC sends the video in smaller, steadier pieces in smooth mode. Needs the new remote app on the tablet. (#1919)
+- Refill Missing: for kinky movies (BDSM, femdom, bondage...) Rinryu is the first priority and its title, series, actors and genres are never overwritten; other sources only fill what Rinryu left empty. Also fixed a crash for movies whose stored actors/genres were saved in the longer form. (#1921, #1922)
+- Movies in the known Rinryu series (Doris, Livestock Candidate Club, Livestock Chair Way, Meat Toilet Way, Perverted Torture Princess, Project Zero (Next), Pure Gold, Tongue Doll Way, Tsumikisha, Yapoo's Market (Venus)) always get Rinryu first. (#1922)
+- Fixed the 3-minute freeze after Refill Missing: it started the old automatic genre sort over the whole library (and could move folders). That automatic step is now off; sorting only happens when you start it in Movie Sorter. (#1923)
+- Removed the old "Auto-Sort Movies" entry from the tray menu; it used the old sorter and could undo the new folder layout. (#1924)
+- Checked every other mover: right-click "Move to genre folder" now moves into the new layout (Maker, then genre folders) like the Movie Sorter; the old AI Fanart Sorter can no longer move movies. (#1925)
+- Actor photos are now checked by FACE: duplicates, covers and photos of the wrong person are moved out (reversible) and the same check runs after every automatic photo fetch. (#1926)
+- Picasa Dark theme (the one most people use) is now black too: pages pure black, panels near-black, on every screen and dialog. The Kuraya logo shows in colour on black, empty parts of the page and fades out over covers and text. (#1918) (#1915)
+- Actor photos that were the same picture for several different actresses are moved out of the cache (reversible); the scraper fetches proper ones. (#1903)
+
+**Also since the last public test version (2.0.3-beta.4):**
+
+- The scraper window used to read ~26,000 actor photo files in one go while drawing, so mouse and keyboard stalled 3–6 seconds. The photo list is now built in the background; the small round photos appear a moment later. (#1900)
+- The background subtitle-watcher PowerShell now closes when Kuraya exits (all other PowerShell helpers were already tracked). (#1901)
+- Kuraya froze for seconds while the video converter went through thousands of
+- Movies you downloaded and then deleted on purpose now carry a red label
+- Settings → Media → **Video compression**: choose *smallest* (480p), *balanced*
+- Streaming to the Android remote stuttered: the PC blew a 540p movie up to
+- The mouse froze for several seconds again and again while the subtitle
+- Actress photos: the same picture could be saved under many actresses with
+- The guide and the website now describe Edit Everything, series renaming,
+
+## [2.0.3-beta.10] — 2026-10-14 — scraper window no longer holds back the mouse
+
+- The scraper window used to read ~26,000 actor photo files in one go while drawing, so mouse and keyboard stalled 3–6 seconds. The photo list is now built in the background; the small round photos appear a moment later. (#1900)
+- The background subtitle-watcher PowerShell now closes when Kuraya exits (all other PowerShell helpers were already tracked). (#1901)
+
+## [2.0.3-beta.9] — 2026-10-14 — less freezing while the video converter scans
+
+### Fixed
+
+- Kuraya froze for seconds while the video converter went through thousands of
+  files that were already handled: it checked the disk for every single file on
+  the main thread and wrote one log line per file. It now knows from one scan
+  which files need attention and writes a short progress line instead. (#1899)
+
+## [2.0.3-beta.8] — 2026-10-14 — do not download what you deleted before
+
+### Added
+
+- Movies you downloaded and then deleted on purpose now carry a red label
+  "DELETED BEFORE" on their card in New Releases (all tabs incl. Keywords), in
+  the Series Browser and in the "Multiple Movies Found" window. When you
+  download several movies at once, those are skipped; Kuraya asks once if you
+  want to download them anyway. (#1898)
+
+## [2.0.3-beta.7] — 2026-10-14 — you choose how much videos are compressed
+
+### Added
+
+- Settings → Media → **Video compression**: choose *smallest* (480p), *balanced*
+  (540p, the default and the same as before), *best* (720p) or *custom*
+  (your own resolution and a quality number). The converter still only runs
+  when you start it and never makes a file bigger. (#1897)
+
+## [2.0.3-beta.6] — 2026-10-14 — smoother remote streaming
+
+### Fixed
+
+- Streaming to the Android remote stuttered: the PC blew a 540p movie up to
+  1080p before sending it over WiFi (about 4 times the data for no better
+  picture). It now never scales above the original height. (#1896)
+
+## [2.0.3-beta.5] — 2026-10-14 — fewer hiccups while subtitles are queued
+
+### Fixed
+
+- The mouse froze for several seconds again and again while the subtitle
+  worker checked the library: it re-read and re-checked the same unchanged
+  subtitle files on every pass. It now remembers each folder and only checks
+  again when something in that folder changed. (#1893)
+- Actress photos: the same picture could be saved under many actresses with
+  the same first name (one photo under up to 84 names). 2,348 wrong photos
+  were set aside, and a new check refuses a picture that already belongs to
+  a different actress. (#1894)
+
+### Added
+
+- The guide and the website now describe Edit Everything, series renaming,
+  the Series Browser, automatic actress photos, and have a page listing every
+  button by screen. (#1895)
+
 ## [2.0.3-beta.4] — 2026-10-13 — the new logo, everywhere
 
 ### Changed

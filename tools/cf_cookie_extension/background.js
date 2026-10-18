@@ -30,6 +30,7 @@ const HOSTS = [
   'jav-dl.com',
   'extreme-fetish.org',
   'warashi-asian-pornstars.fr',
+  'minnano-av.com', // #1940 actor source (aliases + birth date)
   // #1611 the calibrate-test/tube-search scrapers hit these too (CORS errors
   // in edge://extensions when they weren't covered — see FEATURE_REGISTRY #1611).
   'javhd.com',
@@ -269,7 +270,7 @@ function relaySleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 // site's own partition (cookie attached) and the loaded tab has already passed
 // the JS challenge. The helper tab lives in a minimized background window so it
 // stays out of the way.
-const TAB_RELAY_HOSTS = ['missav.ws', 'missav.com', 'javlibrary.com', 'javtrailers.com', 'sextb.net', 'sextb.cc', 'jav-dl.com', 'javpornclub.com', 'extreme-fetish.org', 'warashi-asian-pornstars.fr', 'luxuretv.com', 'spankbang.com', 'heavy-r.com']; // #1390/#1414 every CF-protected scraper that Dio 403s must have a real-tab fetch fallback: CF's cf_clearance // #1611 luxuretv/spankbang/heavy-r confirmed Cloudflare-protected in tube_search_service.dart (cfSites / _fetchCloudflaredPage) — added so the calibrate test's tube-search checks get the same real-tab bypass instead of a plain (CORS-blocked, then Cloudflare-blocked) fetch.
+const TAB_RELAY_HOSTS = ['missav.ws', 'missav.com', 'javlibrary.com', 'javtrailers.com', 'sextb.net', 'sextb.cc', 'jav-dl.com', 'javpornclub.com', 'extreme-fetish.org', 'warashi-asian-pornstars.fr', 'minnano-av.com', 'luxuretv.com', 'spankbang.com', 'heavy-r.com']; // #1390/#1414 every CF-protected scraper that Dio 403s must have a real-tab fetch fallback: CF's cf_clearance // #1611 luxuretv/spankbang/heavy-r confirmed Cloudflare-protected in tube_search_service.dart (cfSites / _fetchCloudflaredPage) — added so the calibrate test's tube-search checks get the same real-tab bypass instead of a plain (CORS-blocked, then Cloudflare-blocked) fetch.
 // is partitioned (CHIPS) + TLS-bound, so replaying it over Dio 403s and the SW-fetch
 // relay (extension partition) also misses it. A fetch inside a real site tab carries
 // the genuine cookie/UA/TLS and passes CF — the same path that already works for MissAV.

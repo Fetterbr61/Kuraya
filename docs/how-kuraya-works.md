@@ -136,6 +136,8 @@ best title, cover, actresses and genres. Kuraya then cleans the data (titles wit
 site watermarks, genres de-duplicated and capped at 6, actress names checked),
 writes the .nmp, downloads the cover and renames the files.
 
+The series name you pick or edit in the scraper is the one that is saved. Right after you apply a movie, Kuraya fetches photos and bios for its actresses in the background (see the Task Console); each actress has a small photo in the scraper — click it to see all her photos and tick the main one. A photo can never end up under two different actresses.
+
 **Library.** Movies are filed into the sort folders described in §6. A move only ever
 happens because you started it — never as a side effect of opening Kuraya.
 
@@ -174,6 +176,8 @@ the .nmp and searchable, but are not folder levels.
 - **Movie Details** — everything about one movie on one page.
 - **Player** — built in, with subtitles you can switch on and off.
 - **Actresses** — photos and bios collected from several sources, duplicates removed.
+- **Right-click** — one grouped menu. **Edit Everything…** is the one editor for title, genres, metadata and files, and renaming. Changing genres or a series name for a movie in a series asks: only these movies, or the whole series? Renaming a series lists every movie in it first.
+- **Series Browser** — all sites merged, every movie marked owned or missing, found even if you renamed the series.
 
 ---
 
@@ -257,6 +261,13 @@ Each movie folder holds the video, its `.nmp`, the cover images and any subtitle
   you report a problem.
 
 ---
+
+## Face check for actor photos (optional)
+Media Tools, Advanced, **Face check**: compares the faces in every actor photo. Photos of the wrong
+person, duplicates and DVD covers are moved to a quarantine folder (nothing is deleted; there is an
+undo list). The first time it installs a free add-on (needs Python 3); the face model (about 280 MB)
+downloads once. After that it also runs by itself after automatic photo downloads. Everything runs on
+your PC.
 
 ## 14. Versions
 

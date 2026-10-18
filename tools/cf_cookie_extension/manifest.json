@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Kuraya \u2014 CF Cookie Bridge",
-  "version": "1.7.15",
+  "version": "1.7.16",
   "description": "Sends the live cf_clearance cookie + this browser's exact User-Agent for the scraper sites to Kuraya (127.0.0.1:8080), keeps login cookies fresh (pornolab bb_data), and fetches pages in-browser on request (relay) so Cloudflare always passes \u2014 including MissAV via a real in-partition tab.",
   "permissions": [
     "cookies",
@@ -34,6 +34,8 @@
     "https://*.eroasia.org/*",
     "https://extreme-fetish.org/*",
     "https://*.extreme-fetish.org/*",
+    "https://minnano-av.com/*",
+    "https://*.minnano-av.com/*",
     "https://warashi-asian-pornstars.fr/*",
     "https://*.warashi-asian-pornstars.fr/*",
     "https://pornolab.net/*",

@@ -100,7 +100,8 @@ failed one is never written — no empty files pretending to be done.
 
 ### 🎭 It knows the cast
 A full actress database: photos and bios from several sources, duplicates removed,
-aliases understood. Click a name, see every film she is in.
+aliases understood. Click a name, see every film she is in. An optional face check
+(Media Tools) makes sure every photo really shows the right person and removes duplicates and covers.
 
 ### 🩺 It keeps itself healthy
 A background guard checks your library in small steps while you use it: missing

@@ -128,6 +128,12 @@ best title, cover, actresses and genres. Kuraya then cleans the data (titles wit
 site watermarks, genres de-duplicated and capped at 6, actress names checked),
 writes the .nmp, downloads the cover and renames the files.
 
+The series name you pick or edit in the scraper is the one that is saved. Right after
+you apply a movie, Kuraya fetches photos and bios for its actresses in the background
+(see the Task Console); each actress has a small photo in the scraper — click it to see
+all her photos and tick the main one. A photo can never end up under two different
+actresses.
+
 Library. Movies are filed into the sort folders described in §6. A move only ever
 happens because you started it — never as a side effect of opening Kuraya.
 
@@ -166,6 +172,11 @@ the .nmp and searchable, but are not folder levels.
 - Movie Details — everything about one movie on one page.
 - Player — built in, with subtitles you can switch on and off.
 - Actresses — photos and bios collected from several sources, duplicates removed.
+- Right-click — one grouped menu. Edit Everything… is the one editor for title, genres,
+    metadata and files, and renaming. Changing genres or a series name for a movie in a
+    series asks: only these movies, or the whole series? Renaming a series lists every
+    movie in it first. - Series Browser — all sites merged, every movie marked owned or
+    missing, found even if you renamed the series.
 
 
 8. English subtitles
@@ -255,3 +266,6 @@ Each movie folder holds the video, its .nmp, the cover images and any subtitles.
 Kuraya uses version numbers like 0.9.0-beta.1. "beta" means a test version: all
 main features are there but bugs are expected. A finished release has no suffix
 (1.0.0). What changed in each version is in CHANGELOG.md.
+
+FACE CHECK FOR ACTOR PHOTOS (optional)
+Media Tools, Advanced, Face check: compares the faces in every actor photo. Wrong-person photos, duplicates and DVD covers go to a quarantine folder (nothing is deleted, undo list included). First use installs a free add-on (needs Python 3); the face model (about 280 MB) downloads once. Everything runs on your PC.
