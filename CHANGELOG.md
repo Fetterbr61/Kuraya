@@ -17,6 +17,182 @@ repository.
 
 ---
 
+## [2.0.5-beta.1] — 2026-10-24 — pause and resume every job, themes everywhere, copyable text, a safer video converter
+
+- In short: every long job in the Task Console can be paused, resumed and stopped; every page, dialog and button follows the chosen theme; text in windows can be marked and copied; the video converter keeps its originals in NMP_Trash and leaves its end result on screen; the scraper shows the whole cover; many Upgrades, subtitle and Pre-Inbox fixes. Everything is listed below.
+
+- Actor photos & bios: Stop now always stops the job, also when the download of one actor hangs. A job that makes no progress for 20 minutes is stopped by itself and the remaining actors carry on (#2073)
+- Video converter: the original file is now moved to NMP_Trash (a dated folder on the same drive) after it has been replaced by the smaller version, instead of being deleted for good (#2072)
+- Video converter: when a run finishes, the result (how many were converted, skipped, failed and how much space was saved) now stays on screen until you close it. A later automatic run can no longer wipe it (#2071)
+- **Download Guard** (full edition) also stops a movie you deleted earlier, not only movies you own. The prompt says "You deleted ..." and nothing in your library changes (#2068)
+- Scraper: the cover preview in the left panel now fits the picture, so a full DVD cover is shown whole. The Play button is a small chip on the picture instead of its own row (#2069, #2070)
+- **Download Guard** (full edition): a browser add-on that stops a torrent or download link for a movie you already own before it reaches uTorrent, so the tracker never counts it. The owned movie gets today's date as date added. The tray icon shows how many movies it knows and has a Rescan button (#2067)
+- Each scraper now has a link to its website, in the scraper list before scraping and in Settings, so you can open the site in your browser when its tab has disappeared or the site wants a check (#2066).
+- Pre-Inbox: a movie whose title the content filter excludes from subtitles no longer gets stuck in the Pre-Inbox; it moves on to the Inbox without a subtitle (#2065b).
+- Guide and README: a yes/no comparison of the Pre-Inbox and putting files straight into the Inbox, and why the Pre-Inbox is worth using. Corrected: the Pre-Inbox no longer makes the subtitle before the movie moves on (it is made in the background in the Inbox), and it checks whether this file is censored, not whether an uncensored version exists (#2065).
+- Pre-Inbox: the middle panel now follows the movie that is being worked on, also after a loose file was moved into its own folder or when the movie arrived after the window was opened (#2064).
+- Combine (burn subtitles from a hardsub copy into the uncensored copy) is now safe: it checks for free space first, keeps the original library video on the same drive (fast, no big copy), puts everything back and tells you if a step fails, and sends replaced files to the trash folder instead of deleting them (#2063).
+- Fixed: exporting series paths to CSV no longer crashes when the file is open in Excel (it says so instead); a locked temporary file no longer stops a whole video-conversion run; Stop in the movie scraper no longer throws when its stop file cannot be written (#2062).
+- Themes: all of Flutter's own buttons, dialogs, menus, input fields, chips, tabs and switches now follow the chosen theme in one consistent style (flex_color_scheme). Fixed: the right-click menu stayed dark in Picasa Light, so its text could not be read (#2061).
+- Themes are now easy to add or change: every colour of a theme (pages, panels, text, buttons, movie cards, toolbar) lives in one list, and a new theme shows up in the theme picker and Settings automatically (#2060).
+- Themes, step 1: the right-click menus and their dialogs (rename, move, delete confirmation, multi-part files) now follow the chosen theme instead of fixed colours (#2059).
+- Every job in the Task Console can now be paused and resumed, not only stopped: series move, sort to V2, folder move, genre rename, long-path fix, background translation, repair scan, short titles, loose movies to Pre-Inbox and actor photo top-up. Pause always waits until the current movie is finished (#2058).
+- Transcribe + Translate batches and 'Bake translations' over the whole library can now be paused, resumed and stopped from the Task Console (#2057).
+- Fixed: Stop in the Task Console now stops a Transcribe + Translate batch. The batch has its own card; Stop lets the current movie finish and then ends the batch (#2056).
+- Every bulk job (right-click on several movies, bulk scraping) now runs in alphabetical ID order, with numbers in natural order (ABP-2 before ABP-10) (#2055).
+- Subtitle content filter: the 'transcribe then translate' path now checks the movie's genres and series too, not only the file name, so every path follows the same rule (#2054).
+- Local subtitle translation now prefers gemma4:12b (about twice as fast, same quality and wording in tests); the previous Gemma 4 model is used when it is not installed (#2053).
+- Text in dialogs and windows can now be marked with the mouse and copied (Ctrl+C), like in any Windows program. The movie grid and the very large result windows are left out on purpose (an app-wide selection froze the app) (#2052).
+- Movie Details: the texts (title, ID, actress names, rows) can now be selected with the mouse and copied (#2051).
+- The subtitle fit check now covers the whole library (not only uncensored) and keeps running in the background: a movie whose folder changes (new video or subtitle) is checked again a few minutes later (#2050).
+- New right-click entry for several movies: 'Subtitle does not fit - make a new one'. The old subtitle files are set aside (renamed .misfit, not deleted) and a new subtitle is made from the movie's own sound. Downloaded or extracted English subtitles are never touched (#2049).
+- Fixed: Start in the actor photo scraper closed its window at once (it looked for the actor list in an old cache folder). Background actor photos are now also saved in the real cache folder (#2048).
+- Fixed: after replacing a movie with an uncensored copy, the movie could lose its UNCENSORED banner a few seconds later, because a background update wrote back an old copy of the movie info. It now checks that the file did not change in the meantime (#2047).
+- New one-time background check of uncensored movies: does the English subtitle still fit the video? Movies where the subtitle ends after the video, or before 70 % of it, show under the filter 'S - Subtitle may not fit (uncensored)'. Nothing is changed automatically (#2046).
+- Replace keeping the library name: the old movie's subtitle is now checked against the new video. Same length keeps it, a shifted start is retimed, a different cut parks it as .old so a fresh one is made (#2045).
+- Uncensored scrape: when the normal sites have nothing, it now also checks JavGuru MR, JavLibrary, MissAV and Sukebei, the same way as the favorites check in Upgrades, so it no longer reports 'no results' for movies that are findable there (#2043).
+- Uncensored search: a movie searched without finding anything is searched again after 7 days (new releases and links appear); movies where one was found stay marked as searched (#2042).
+- Downloads: when fetching links for an uncensored copy, JavGuru is now tried first (its MR posts have Rapidgator links), then MissAV, then JavLibrary (#2041).
+- Upgrades: movies that arrived after the last full load (for example just moved into the Inbox) now count as owned and censored right away, so a favorite you just added is included in the favorites check (#2040).
+- Upgrades: a MissAV page only counts as an uncensored copy when the movie ID is in the page's title; before, MissAV's "not found" page (which also contains the ID) produced false finds such as the Chinese spanking videos (#2039). Press Reset on the Upgrades tab to clear earlier false finds.
+
+- Upgrades, Favorites only: a movie that was already on screen is now recognised when it is found again (before, the search carried on to the next source), and every checked favorite writes one log line saying where it was found or that nothing was found (#2038).
+
+- Upgrades, Favorites only: the limit now counts the favorites checked in this run; before, the 48 upgrades already on screen used it up and the search stopped after about 28 favorites (#2037).
+
+- Upgrades, Favorites only: JavLibrary is checked too - after the two JavGuru sections and before MissAV - for uncensored / MR RapidGator links that users post in its comments (#2036).
+
+- Upgrades, Favorites only: JavGuru is searched inside its sections - first "Decensored (MR)", then "English subbed" (#2035).
+
+- Upgrades, Favorites only: every favorite is now checked by itself, in this order: JavGuru MR section, JavGuru Subs section, MissAV, Sukebei - stopping at the first find. JavGuru first because it always has the download link. When JavGuru refuses Kuraya's own request, its search page is read through the browser (#2034).
+
+- Browser extension 1.7.20: a normal page that only carries Cloudflare's background script is no longer taken for a "verify you are human" page (MissAV list page 3 was thrown away every time) (#2033).
+
+- Upgrades: JavGuru answers "too many requests" to the app's own request but works fine in the browser, so its list pages are now fetched through the browser when that happens (#2032).
+
+- Upgrades: with "RG only" on, SexTB (Nitroflare only) is skipped in the upgrade search too (#2031).
+
+- Upgrades search no longer gives up on a busy or blocked site: JavGuru "too many requests" and server errors are retried after 20 s, 60 s and 120 s (or the wait the site asks for), MissAV and SexTB pages behind Cloudflare are retried twice with a longer wait; the status line counts down the wait and Cancel still works (#2030).
+
+- Upgrades: when a source could not be checked (JavGuru busy with "too many requests", MissAV timing out behind Cloudflare, SexTB errors), the result line now says so, e.g. "NOT checked this time: JavGuru (too many requests), MissAV (timed out) - try again later" (#2029).
+
+- The Sukebei upgrade search now accepts exactly the same uncensored markers as Kuraya's filename list (MR, Reducing Mosaic, uncensored, leak, 無修正, 破壊 …), from one shared list, and checks only the torrent's name (#2028).
+
+- "-MR" and "Reducing Mosaic" count as uncensored in one shared rule, protected by an automatic check so it cannot be changed by mistake again (#2027).
+
+- Fixed: the one-time subtitle index pass of the previous build rebuilt each movie without its "has NMP / fanart / poster" flags, so cards showed the NMP as missing. The pass now keeps the flags, runs again once (about 3 minutes after start, when nothing else is busy) and restores them from each movie folder (#2025).
+
+- Sukebei search for uncensored versions: "[Reducing Mosaic]" (MR) torrents are offered again; they count as uncensored in this library, as before (#2026, undoes #2024).
+
+- Upgrades tab: a live countdown above the controls, for example "300 favorites can be upgraded · checked 120 · found 5 · not found 115 · 180 left to check" (#2023).
+
+- Upgrades tab: one plain sentence above the controls says what is being checked (favorites or all movies), how many can be upgraded and how many upgrades were found; the progress counter now counts inside that choice (not all 18,637 movies); and the same movie no longer shows as two Sukebei cards (#2022).
+
+- New Releases, Upgrades tab: a "Favorites only" switch next to the limit. It shows only your favorites in the list at once (the other found upgrades stay saved) and makes the next search check only your favorites (#2021).
+
+- Subtitles made by the local model are named .Gemma4.EN.srt; existing .DeepSeek.EN.srt files keep their name, and both count as the finished English subtitle everywhere. If DeepSeek has no key or its balance runs out, the movie is translated locally instead of getting no subtitle (#2020).
+
+- The library cache now stores each movie's subtitle names (before, about 98 % of movies looked like they had no subtitle to the filters and the Task Console counts). New scans store them, and a one-time background pass fills the existing movies when nothing else is busy (#2019).
+
+- The subtitle line in the Task Console now names the queue it is checking (Inbox or library) and always shows both queues, for example "Inbox 0 · Library 18,546 left", so the Inbox no longer looks forgotten (#2018).
+
+- "Open in Subtitle Edit" now uses the Subtitle Edit 5 portable folder in the Kuraya tools folder by default (#2017).
+
+- czkawka (duplicate and broken-file finder) now lives in the Kuraya tools folder like the other tools, so it finds FFmpeg next to it; the default path is {tools}\czkawka_cli.exe (#2016).
+
+- The public edition translates subtitles with local AI (Ollama, Gemma 4 when installed) and no longer has any DeepSeek setting; the guide, README and website say so (#2015).
+
+- Subtitle translation keeps using DeepSeek until the account balance is gone: a timeout or network error is retried (5 s, 15 s, 40 s) instead of switching to the local model; only an empty balance, a missing key or three failed retries use the local model (#2014).
+
+- When DeepSeek is off or fails, the local translation (now Gemma 4) uses the same intimate style: kissing, licking and breathing sounds become natural English sound words, with a glossary taken from the real translations (#2013).
+
+- The local AI model is now Qwen 3.5 (9B): faster and smaller than the old Qwen 3 14B, and it follows the answer format better in the genre test (#2011).
+
+- Right-click menu: hover a group (Names & Info, Get Info, Flags ...) and its functions open at the side at once, no click needed (#2010).
+
+- Add to Series now also sets the movie's series name and updates the library list at once, so the series viewer shows it straight away (#2008).
+
+- Add to Series is now also in the right-click menu for several selected movies, and does everything in one step: series name, genres, and moving each folder to its new place (never the old Level1/Level2/Level3 layout) (#2007, #2009).
+
+- The browser extension no longer opens a second empty window when two sources start at the same moment, closes the blank start page of its window, and removes leftover empty scraper windows (extension 1.7.19) (#2006).
+
+- The browser extension no longer leaves old scraper windows and pages behind: every page it opens is marked, and any marked page that is not the one tab for its source is closed, in every window. Pages you open yourself are never touched (extension 1.7.18) (#2005).
+
+- Actress photos now come from more than one source automatically: in the background, in small batches and only when nothing else is busy, Kuraya checks JavDatabase, DMM and SexTB for actresses whose photos all came from one source and adds new photos next to the old ones without removing anything. Every new photo records which site it came from, and the repeated source names in the labels are fixed (#2004).
+
+- In the scrape window, the sort-folder and genre pickers are greyed out until the scrape of that movie is done (#2003).
+
+- The Pre-Inbox now recognises every video type Kuraya supports (for example .flv, .ts, .mpg, .webm); before, files like MLDO-044.flv were ignored (#2002).
+
+- The README, the guide and the website now say clearly that every movie needs its DVD-ID in the file name, and that files with a normal text name are not recognised (#2000).
+
+- Helper programs (the subtitle watcher, OCR, transcription, repair checks) now close together with Kuraya even when it is stopped abruptly, so no PowerShell windows are left running (#1999).
+
+- The right-click menu is regrouped by purpose: Names & Info, Get Info (Scrape), Subtitles, Flags, Move & Sort, Downloads & Upgrades, Video & Repair and a new Whole Library group; Find Replacement (No Sound) now sits under Downloads & Upgrades (#1997).
+
+- New right-click entry "Find Uncensored - choose movies": search your favorites, what the grid shows, or the whole library, and skip movies that already have an uncensored version (#1996).
+
+- With Rapidgator-only on, SexTB and EroAsia (which only have Nitroflare) are no longer searched at all (#1995).
+
+- Find Replacement (No Sound) now searches every source the app knows (it was missing SexTB and EroAsia) and its status text names them all (#1994).
+
+- Find Replacement (No Sound) is now also available when several movies are selected; it goes through them one at a time and you can stop at any point (#1993).
+
+- Right-clicking several movies now also offers Repair Video, Tag for Ad-Removal and Unlock Genres for all of them at once (#1992).
+
+- Sorted folders no longer repeat the same genre twice in one path, no longer get a performer name glued to a genre (Slut-Yui, Married-Woman-Mio), and no longer use generic words like Actor / Actress as genre folders (#1991).
+
+- The repair scan now also checks that each movie's length fits its file size, so files with a wrong length in the header are sent to repair before they are compressed (#1990).
+
+- The repair scan now only checks that each movie can start (a quick header check) instead of decoding every movie fully, so it finishes in minutes instead of many hours (#1989).
+
+- The repair scan now shows an estimated percentage and time left in the Task Console (#1988).
+
+- Stopping the repair scan now also stops the video checkers it started, so nothing keeps running in the background (#1987).
+
+- The repair scan (broken videos) can now be paused and resumed from the Task Console, and shows how long it has been running (#1986).
+
+- The converter now also waits for the broken-video scan to finish, then for all the repairs it finds, before it compresses or remuxes anything (#1985).
+
+- The converter (compressing and remuxing) now always waits for the video repair to finish first, and starts the repair itself when files are waiting for it (#1984).
+
+- The converter window no longer starts a new movie on the previous movie's full green bar (#1983).
+
+- R18.dev now really counts with the priority you set (it was treated as last, so its title was never picked first); the automatic title/field pick now knows every scraper in the priority list (#1982).
+
+- The browser helper no longer keeps a tab open on SexTB, so its ads stop opening new pages; SexTB is read without a browser tab instead. Reload the extension (version 1.7.17) (#1981).
+
+- Fixed a rare loss of a movie's info file when two things updated the same folder at the same moment (for example while converting many fanarts to posters) (#1980).
+
+- Poster view: a movie that has its poster file but no poster tag in its info file no longer shows the red NEEDS SCRAPING tile; the card now finds the poster the same way the green P badge does (#1979).
+
+- The movie grid no longer freezes for 10+ seconds: the Folder dropdown listed every folder of the library (about 21,000); it now shows the 300 biggest makers, and deeper folders are reached through "show this maker's catalogue" (#1978).
+
+- Changes made while Kuraya was closed are picked up quietly a few minutes after start by checking folder times, instead of reading through the drives (#1975).
+
+- The background health check no longer goes through the whole library over and over: it does one full check a day and otherwise only checks folders that changed, so the drives can rest (#1974).
+
+- The app no longer freezes when the subtitle work starts: finding movies that still need an English translation now uses the library cache instead of reading every subtitle file on all drives (#1973).
+
+- Actress photo search also reads the "Alias" line of her JAV-GURU page, so a woman who works under several names gets her photos found under all of them (#1963).
+
+- The Android remote now shows the actress photo you picked as the main one, not just the first photo found (#1968).
+
+- In Actor Details "Blood Type:" now stays on one line (#1967).
+
+- On the Android remote, a male actor without a photo now shows a grey picture saying "MALE ACTOR" instead of an empty person icon (#1966).
+
+- In the scraping window every actress photo now shows the site it came from, and male actors (listed by JAV-GURU under "Actor") get a big blue "MALE ACTOR" line and no photo search (#1964, #1965).
+
+- Actress photo search now also looks for the second name JavLibrary lists in brackets, for example "Aida Asuka (Takashima Yuika)", so actresses who work under two names get their photos (#1963).
+
+
+- Scraping now also makes the poster: after you press Apply, Kuraya cuts the poster from the fanart you chose, in the background like the actress photos. A newly chosen fanart replaces the old poster (#1960).
+- The program icon now fills its square in the taskbar like other apps (#1959).
+
+- Scan Library now notices movie files that lie loose in a library folder (Kuraya only reads movies that are in their own folder). It lists them and offers to move the ones with a DVD-ID in the name to the Pre-Inbox, where they are checked, scraped, renamed and filed as usual. Files without a DVD-ID stay where they are. Nothing is overwritten (#1958).
+- A file name with a website glued in front with "@" (like hhd800.com@IPX-177.mp4) now gives the right DVD-ID (IPX-177) instead of the site name (#1958).
+
 ## [2.0.4-beta.1] — 2026-10-18 — face-checked actor photos, no more freezes in the scraper and Refill Missing, black theme
 
 - Also in this release: everything from the test versions 2.0.3-beta.5 to 2.0.3-beta.10 (fewer hiccups while subtitles are queued, smoother remote streaming, you choose how much videos are compressed, do not download what you deleted before, less freezing while the video converter scans, the scraper window no longer holds back the mouse).

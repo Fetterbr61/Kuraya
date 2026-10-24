@@ -78,7 +78,7 @@ Most JAV tools fall into one of two camps: **scrapers** that fetch metadata, and
 ## What it feels like
 
 ### 🧠 It knows every film
-Kuraya reads the DVD-ID out of even the messiest file name, asks several movie
+Kuraya reads the DVD-ID out of even a messy file name (as long as the DVD-ID is in it), asks several movie
 databases **at the same time**, and shows you every answer as a card: cover, title,
 cast, genres. Take the best of each — or let automatic mode decide for a thousand films
 while you sleep. Titles come back clean: no site watermarks, no junk tags, no 40-genre
@@ -95,7 +95,7 @@ automatically — long titles are shortened in file names, never lost.
 ### 🈶 It gives you English subtitles — from the audio
 No subtitle on the internet? Kuraya transcribes the Japanese speech on your own
 graphics card (Whisper, with a model tuned for this content) and translates it into
-natural English. A real subtitle you already have is **never overwritten**, and a
+natural English, **locally on your own PC** (Ollama), so nothing about your movies leaves it. A real subtitle you already have is **never overwritten**, and a
 failed one is never written — no empty files pretending to be done.
 
 ### 🎭 It knows the cast
@@ -132,13 +132,52 @@ Kuraya creates them for you inside its own folder on the first start — move an
 | Folder | What it is for |
 |---|---|
 | **Library** | Your finished, sorted collection: `Studio \ genres \ DVD-ID`. You can have several, on different drives. |
-| **Pre-Inbox** | Where new downloads land first. Kuraya joins multi-part files, finds duplicates and makes subtitles here before anything moves on. |
+| **Pre-Inbox** | *Optional.* Where new downloads can land first. Kuraya joins multi-part files and asks about duplicates before any work, then moves the movie on to the Inbox and scrapes it by itself (see *Pre-Inbox or straight into the Inbox?* below). |
 | **Inbox** | New movies waiting to be scraped. *Process Inbox* moves them into the library. |
 | **Duplicates** | For DVD-IDs that clash: some **different** movies share the same DVD-ID (studios reuse codes). When the Inbox finds such a pair and you choose **Keep both**, Kuraya moves **both** into this folder, so neither overwrites the other or gets the other's cover, title or subtitle. Check them under *Source → Duplicates*, give each the right ID and scrape them again. |
 | **Subtitle Queue** | Work folder for subtitles being made. |
 | **Hardsub Extraction** | Drop a video with burned-in subtitles here to copy the text out into a subtitle file. |
 | **Tools** | The free helper tools Setup downloads (FFmpeg, …). |
+
+### Pre-Inbox or straight into the Inbox?
+
+Both work - the Pre-Inbox is **optional**. With the default settings:
+
+| | Pre-Inbox | Straight into the Inbox |
+|---|---|---|
+| Starts by itself when a download lands | yes | no |
+| Loose file gets its own folder | yes | yes |
+| Multi-part files (CD1/CD2) joined | yes | yes |
+| Asks "do I already own this?" | yes | yes |
+| ...before any work, while the other movies carry on | yes | no |
+| Catches a movie you deleted before | yes | no |
+| Checks the picture for mosaic, not only the file name | yes | no |
+| Makes the English subtitle in the background | yes | yes |
+| Checks for adverts and burned-in text in the background | yes | yes |
+| Moves the movie on to the Inbox by itself | yes | no |
+| Starts scraping by itself | yes | no |
+
+**Why use the Pre-Inbox?** It is the hands-off way: you drop downloads in, and they come out scraped in the Inbox without pressing anything. Movies you already own wait for your answer **before** any work is spent on them, while the rest keeps going - so a big overnight batch never stalls on one duplicate. It also stops a movie you deleted on purpose from sneaking back, and its picture check gives a better censored/uncensored answer than the file name alone. Put files **straight into the Inbox** when you want to handle each step yourself.
+
+Background work (subtitles, advert and burned-in text checks) runs while the **Auto** switch in the Task Console is on.
 | **Browser extension** | Optional add-on for **Microsoft Edge** (or Chrome): it passes the Cloudflare "not a robot" check of the movie sites you visit to Kuraya, so scraping is faster and needs no FlareSolverr. Install: Setup → Tools → **Add to Edge** (or **Add to Chrome**). Kuraya opens the extensions page and copies the folder; switch on Developer mode, click **Load unpacked** and paste (Ctrl+V). Browsers only let you add an extension yourself. |
+
+### Movies that are not in folders
+
+Kuraya reads a movie only when it sits in **its own folder**, and every movie needs at least its **DVD-ID in the file name**. When **Scan Library** finds loose movie files in a library folder, it asks whether to move the ones with a DVD-ID to the **Pre-Inbox**. There Kuraya checks, scrapes, renames and files them by itself. Files without a DVD-ID stay where they are; put the DVD-ID in the name (for example `ABP-112.mp4`) and scan again. Nothing is overwritten.
+
+```
+Before (loose files)                 After Pre-Inbox + scraping
+D:\Movies\                           D:\Movies\
+  abp112.mp4                           ABP-112\
+  abp112.srt                             ABP-112 <title> (<year>).mp4  (+ its .srt, cover, poster, .nmp)
+  [HD]SONE-804-C.mkv                   SONE-804\  ...
+  hhd800.com@IPX-177.mp4               IPX-177\   ...
+  SSIS-001 CD1.mp4 + CD2.mp4           SSIS-001\  (you choose: join the parts, or keep them as Part 1 / Part 2)
+  My Holiday Video.mp4                 My Holiday Video.mp4   <- no DVD-ID: stays, rename it first
+```
+
+Movies that are already in a folder, even one with an odd name, are read as they are. Right-click > **Check & Fix Names** shows what is not standard and fixes it after you agree.
 
 ---
 
@@ -176,6 +215,18 @@ Only **FFmpeg** is required — Kuraya's Setup offers the rest. Full list with w
 3. The **Setup** window walks you through it: choose your movie folders, and let
    Kuraya download the free helper tools it needs (FFmpeg and friends) into its own
    folder.
+
+> ### ⚠️ Every movie needs its DVD-ID in the file name
+> Kuraya recognises a movie **only by its DVD-ID** (the product code, for example `ABP-112` or `SONE-804`).
+> A file with a normal text name is **not recognised** — it is not scraped, not filed and not matched
+> against what you already own. Look the ID up first and put it in the name:
+>
+> | File name | Result |
+> |---|---|
+> | `ABP-112.mp4`, `[HD]SONE-804-C.mkv`, `hhd800.com@IPX-177.mp4` | ✓ recognised (site tags and suffixes are ignored) |
+> | `My Holiday Video.mp4`, `beach party 2019.mp4`, `new movie final.mkv` | ✗ not recognised — rename it with its DVD-ID, then scan again |
+>
+> Nothing is renamed or moved for you when there is no DVD-ID in the name.
 
 The full guide is **[How Kuraya works](docs/how-kuraya-works.md)** (also
 `HOW_KURAYA_WORKS.txt` inside the download). What changed in each version:

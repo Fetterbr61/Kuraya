@@ -108,12 +108,34 @@ Kuraya tells you which tool it needs and offers to open Setup.
 
 
 Pre-Inbox (optional). Drop finished downloads here. Kuraya watches the folder and,
-for each movie, works through checks in order: is it a duplicate of something you
-already own? is there an uncensored version? is an advertisement glued to the start?
-are there burned-in subtitles? does it need English subtitles (made now, see §8)?
-A movie that passes is moved to the Inbox automatically; one that stops shows the
-reason in plain words. You can close the Pre-Inbox window — the work continues and
+for each movie, works through checks in order: did you delete this movie before? do you
+already own it (then it waits for your answer, the others carry on)? is this file censored
+or uncensored (file name and a picture check for mosaic)? Advert and burned-in text checks
+and the English subtitle run in the background once the movie is in the Inbox (§8).
+A movie that passes is moved to the Inbox and scraped automatically; one that stops
+shows the reason in plain words. You can close the Pre-Inbox window — the work continues and
 shows in the Task Console.
+
+Pre-Inbox or straight into the Inbox?
+
+Both work - the Pre-Inbox is optional. With the default settings:
+
+                                                           Pre-Inbox   Straight into the Inbox
+  Starts by itself when a download lands                   yes         no
+  Loose file gets its own folder                           yes         yes
+  Multi-part files (CD1/CD2) joined                        yes         yes
+  Asks "do I already own this?"                            yes         yes
+  ...before any work, while the other movies carry on      yes         no
+  Catches a movie you deleted before                       yes         no
+  Checks the picture for mosaic, not only the file name    yes         no
+  Makes the English subtitle in the background             yes         yes
+  Checks for adverts and burned-in text in the background  yes         yes
+  Moves the movie on to the Inbox by itself                yes         no
+  Starts scraping by itself                                yes         no
+
+Why use the Pre-Inbox? It is the hands-off way: you drop downloads in, and they come out scraped in the Inbox without pressing anything. Movies you already own wait for your answer before any work is spent on them, while the rest keeps going - so a big overnight batch never stalls on one duplicate. It also stops a movie you deleted on purpose from sneaking back, and its picture check gives a better censored/uncensored answer than the file name alone. Put files straight into the Inbox when you want to handle each step yourself.
+
+Background work (subtitles, advert and burned-in text checks) runs while the Auto switch in the Task Console is on.
 
 Inbox. Press Process Inbox. Loose files get their own folder named after the
 DVD-ID; multi-part movies (CD1/CD2) can be joined; and every movie is compared with
@@ -136,6 +158,18 @@ actresses.
 
 Library. Movies are filed into the sort folders described in §6. A move only ever
 happens because you started it — never as a side effect of opening Kuraya.
+
+
+Movies that are not in folders
+Kuraya reads a movie only when it sits in its own folder, and every movie needs
+at least its DVD-ID in the file name. When Scan Library finds loose movie files
+in a library folder, it asks whether to move the ones with a DVD-ID to the
+Pre-Inbox. There Kuraya checks, scrapes, renames and files them by itself.
+Files without a DVD-ID stay where they are: put the DVD-ID in the name (for
+example ABP-112.mp4) and scan again. Nothing is overwritten.
+Movies that are already in a folder, even one with an odd name, are read as they
+are. Right-click, Names & Info, Check & Fix Names shows what is not standard and
+fixes it after you agree.
 
 
 6. How the library is sorted
@@ -230,8 +264,8 @@ Kuraya running.
 ------------------------------
 
 - Scraping sends the DVD-ID to the movie databases you enabled, to look it up.
-- Translation sends the subtitle text to DeepSeek — only if you entered a key.
-  Other cloud AI (Claude, DeepL) is used only if you add their keys.
+- Translation runs on your own PC with Ollama; the subtitle text is not sent anywhere.
+  Other cloud AI (DeepL) is used only if you add its key.
 - Ollama runs on your own PC; nothing leaves it.
 - Kuraya sends nothing to its developers: no accounts, no tracking, no statistics.
 - Your files never leave your drives (the remote app streams over your home network only).

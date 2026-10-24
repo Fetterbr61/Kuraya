@@ -224,7 +224,7 @@ chrome.runtime.onStartup.addListener(() => pushAll('startup'));
 chrome.action.onClicked.addListener(() => pushAll('clicked'));
 
 chrome.alarms.create('cf-push', { periodInMinutes: 1 });
-chrome.alarms.onAlarm.addListener((a) => { if (a.name === 'cf-push') { pushAll('alarm'); sweepRelayTabs(); } }); // #1478 sweep orphan tabs each minute
+chrome.alarms.onAlarm.addListener((a) => { if (a.name === 'cf-push') { pushAll('alarm'); sweepRelayTabs(); sweepMarkedTabsEverywhere(); } }); // #1478 sweep orphan tabs each minute
 
 let debounceTimer = null;
 // #1092e Trigger an INSTANT push when a login cookie (e.g. pornolab bb_data)
@@ -270,7 +270,9 @@ function relaySleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 // site's own partition (cookie attached) and the loaded tab has already passed
 // the JS challenge. The helper tab lives in a minimized background window so it
 // stays out of the way.
-const TAB_RELAY_HOSTS = ['missav.ws', 'missav.com', 'javlibrary.com', 'javtrailers.com', 'sextb.net', 'sextb.cc', 'jav-dl.com', 'javpornclub.com', 'extreme-fetish.org', 'warashi-asian-pornstars.fr', 'minnano-av.com', 'luxuretv.com', 'spankbang.com', 'heavy-r.com']; // #1390/#1414 every CF-protected scraper that Dio 403s must have a real-tab fetch fallback: CF's cf_clearance // #1611 luxuretv/spankbang/heavy-r confirmed Cloudflare-protected in tube_search_service.dart (cfSites / _fetchCloudflaredPage) — added so the calibrate test's tube-search checks get the same real-tab bypass instead of a plain (CORS-blocked, then Cloudflare-blocked) fetch.
+// #1981 sextb.net / sextb.cc REMOVED: its ads open new pages/tabs all the time when a real tab is kept open there.
+// Kuraya fetches SexTB through FlareSolverr (no browser tab) instead; the cookie push (HOSTS) stays.
+const TAB_RELAY_HOSTS = ['missav.ws', 'missav.com', 'javlibrary.com', 'javtrailers.com', 'jav-dl.com', 'javpornclub.com', 'extreme-fetish.org', 'warashi-asian-pornstars.fr', 'minnano-av.com', 'luxuretv.com', 'spankbang.com', 'heavy-r.com']; // #1390/#1414 every CF-protected scraper that Dio 403s must have a real-tab fetch fallback: CF's cf_clearance // #1611 luxuretv/spankbang/heavy-r confirmed Cloudflare-protected in tube_search_service.dart (cfSites / _fetchCloudflaredPage) — added so the calibrate test's tube-search checks get the same real-tab bypass instead of a plain (CORS-blocked, then Cloudflare-blocked) fetch.
 // is partitioned (CHIPS) + TLS-bound, so replaying it over Dio 403s and the SW-fetch
 // relay (extension partition) also misses it. A fetch inside a real site tab carries
 // the genuine cookie/UA/TLS and passes CF — the same path that already works for MissAV.
@@ -373,12 +375,13 @@ async function openDisplayTab(url) {
       if (displayTabCreating[origin]) {
         log('[openDisplayTab]', origin, '#1617 dedup-race guard hit, waiting on in-flight creation instead of making a new tab for', url);
         const existing = await displayTabCreating[origin];
-        try { await chrome.tabs.update(existing, { url: url }); } catch (e) {}
+        try { await chrome.tabs.update(existing, { url: mk(url) }); } catch (e) {}
         return;
       }
       displayTabCreating[origin] = (async () => {
-        const tab = await chrome.tabs.create({ windowId: winId, url: url, active: false });
+        const tab = await chrome.tabs.create({ windowId: winId, url: mk(url), active: false });
         displayTabs[origin] = tab.id;
+        dropBlankTab();
         log('[openDisplayTab]', origin, 'created new display tab', tab.id, 'url', url, 'in window', winId);
         // #1601 drop it into "Scraper Tabs" when that's where winId points.
         if (groupId != null) { try { await chrome.tabs.group({ tabIds: [tab.id], groupId }); } catch (e) {} }
@@ -389,11 +392,56 @@ async function openDisplayTab(url) {
       finally { delete displayTabCreating[origin]; }
     } else {
       log('[openDisplayTab]', origin, 'reusing existing display tab', tabId, 'navigating to', url);
-      await chrome.tabs.update(tabId, { url: url });
+      await chrome.tabs.update(tabId, { url: mk(url) });
     }
   } catch (e) { log('[openDisplayTab]', 'ERROR', String(e), 'url=', url); }
 }
 
+// #2005 Too many scraper pages piled up: the rule is one page per source.
+// Old scraper windows from earlier browser sessions / worker restarts were never swept (the sweep
+// below only looks at the CURRENT relay window), so they piled up. Every tab THIS extension
+// creates or navigates now carries a marker in the URL fragment (never sent to a website), and
+// any marked tab that is not one of the tracked tabs is closed - in ANY window. A page the user
+// opened himself has no marker and is never touched.
+const KMARK = '#kuraya-relay';
+function mk(u) {
+  try { const x = new URL(u); x.hash = 'kuraya-relay'; return x.toString(); } catch (e) { return u; }
+}
+async function sweepMarkedTabsEverywhere() {
+  try {
+    await loadRelayState();
+    const keep = new Set([...Object.values(relayTabs), ...Object.values(displayTabs)]);
+    const all = await chrome.tabs.query({});
+    let removed = 0;
+    for (const t of all) {
+      const u = String(t.url || t.pendingUrl || '');
+      if (u.indexOf(KMARK) === -1 || keep.has(t.id)) continue;
+      try { await chrome.tabs.remove(t.id); removed++; } catch (e) {}
+    }
+    // #2006 leftover scraper windows: our own windows are exactly 900x600 at the top-left corner and
+    // hold only about:blank or marked untracked tabs. Close those (never the current relay window).
+    try {
+      const wins = await chrome.windows.getAll({ populate: true });
+      for (const w of wins) {
+        if (w.id === relayWindowId) continue;
+        if (!(w.left === 0 && w.top === 0 && w.width < 1000 && w.height < 700 && w.state === 'normal')) continue; // our 900x600 window (the browser may add borders)
+        const ts = w.tabs || [];
+        const ours = ts.length > 0 && ts.every((t) => {
+          const u = String(t.url || t.pendingUrl || '');
+          return u === 'about:blank' || (u.indexOf(KMARK) !== -1 && !keep.has(t.id));
+        });
+        if (ours) { try { await chrome.windows.remove(w.id); removed++; } catch (e) {} }
+      }
+    } catch (e) {}
+    if (removed > 0) log('[sweepMarkedTabs]', '#2005 closed', removed, 'marked scraper tab(s) that were not tracked (old windows / duplicates)');
+  } catch (e) { log('[sweepMarkedTabs]', 'ERROR', String(e)); }
+}
+
+// #2006 the relay window is created with an about:blank tab; remove it once a real tab exists
+function dropBlankTab() {
+  const id = relayBlankTabId; relayBlankTabId = null;
+  if (id != null) { try { chrome.tabs.remove(id); } catch (e) {} }
+}
 // #1478 Safety net against tab pile-up: keep the TRACKED tabs (one relay tab
 // per CF origin + one display tab per origin — the intended design) and close
 // every OTHER tab in the relay window. Orphans appear when the SW state is lost,
@@ -468,7 +516,14 @@ async function sweepRelayTabs() {
 // requirement, so it's still safe and wanted in "Scraper Tabs". Split into
 // two: relay (CF-bypass, functional) ALWAYS gets the dedicated hidden window
 // it can keep active; display (cosmetic mirror) still prefers "Scraper Tabs".
+let relayBlankTabId = null;
+let relayWindowCreating = null; // #2006 one window, even when two callers ask at the same moment
 async function ensureHiddenRelayWindow() {
+  if (relayWindowCreating) return relayWindowCreating;
+  relayWindowCreating = _ensureHiddenRelayWindowImpl();
+  try { return await relayWindowCreating; } finally { relayWindowCreating = null; }
+}
+async function _ensureHiddenRelayWindowImpl() {
   await loadRelayState(); // #1400 reuse the persisted relay window across SW restarts
   if (relayWindowId != null) {
     try {
@@ -495,6 +550,7 @@ async function ensureHiddenRelayWindow() {
     w = await chrome.windows.create({ focused: false, url: 'about:blank' });
   }
   relayWindowId = w.id;
+  relayBlankTabId = (w.tabs && w.tabs[0]) ? w.tabs[0].id : null; // #2006 closed when the first real tab is in
   await saveRelayState(); // #1400
   log('[ensureHiddenRelayWindow]', 'created new hidden relay window', relayWindowId);
   return { windowId: relayWindowId, groupId: null };
@@ -542,8 +598,9 @@ async function ensureRelayTab(origin) {
     // "Scraper Tabs" group, which can't guarantee that and broke the CF
     // challenge for real fetches; that group is for cosmetic mirrors only).
     const { windowId: winId, groupId } = await ensureHiddenRelayWindow(); // #1612 shared window, this origin's OWN tab inside it
-    const tab = await chrome.tabs.create({ windowId: winId, url: origin + '/', active: true });
+    const tab = await chrome.tabs.create({ windowId: winId, url: mk(origin + '/'), active: true });
     relayTabs[origin] = tab.id;
+    dropBlankTab();
     log('[ensureRelayTab]', origin, 'created new relay tab', tab.id, 'in window', winId);
     if (groupId != null) { try { await chrome.tabs.group({ tabIds: [tab.id], groupId }); } catch (e) {} }
     await saveRelayState(); // #1400
@@ -569,7 +626,15 @@ async function findUserTab(origin) {
 }
 
 function looksLikeChallengeHtml(title, html) {
-  const s = ((title || '') + ' ' + (html || '')).toLowerCase();
+  // #2033 Cloudflare injects a "/cdn-cgi/challenge-platform/" script into NORMAL pages too, so
+  // a full MissAV list page (190k chars) was taken for a challenge and thrown away (page 3 every
+  // time). A real challenge page is small or says so in its title.
+  const t = (title || '').toLowerCase();
+  if (t.indexOf('just a moment') !== -1 || t.indexOf('attention required') !== -1 ||
+      t.indexOf('security verification') !== -1) return true;
+  const h = (html || '');
+  if (h.length > 60000) return false;
+  const s = (t + ' ' + h).toLowerCase();
   return s.indexOf('just a moment') !== -1 ||
          s.indexOf('verify you are human') !== -1 ||
          s.indexOf('performing security verification') !== -1 ||
@@ -658,11 +723,11 @@ async function _tabRelayFetchImpl(url, origin) {
   // TAB-FREE PATH: drive our own hidden background tab via a real navigation.
   let tabId = await ensureRelayTab(origin);
   try {
-    await chrome.tabs.update(tabId, { url: url, active: true });
+    await chrome.tabs.update(tabId, { url: mk(url), active: true });
   } catch (e) {
     delete relayTabs[origin];
     tabId = await ensureRelayTab(origin);
-    try { await chrome.tabs.update(tabId, { url: url, active: true }); }
+    try { await chrome.tabs.update(tabId, { url: mk(url), active: true }); }
     catch (e2) { return { status: 0, html: '' }; }
   }
   const res = await navReadLoop(tabId, url);
