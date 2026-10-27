@@ -16,6 +16,30 @@
   <a href="https://paypal.me/supportkuraya"><img alt="Donate" src="https://img.shields.io/badge/donate-PayPal-00457C?logo=paypal"></a>
 </p>
 
+## ⬇️ Download: three apps, one library
+
+Kuraya is **one main app on your Windows PC** that does all the work, plus **two free remote apps** that stream your movies to your other devices. **You always need the main app. The remotes are optional.**
+
+| | App | What it does | Runs on | Download |
+|:-:|:---|:---|:---|:---|
+| 🖥️ | **Kuraya**<br>*the main app* | Finds and sorts your movies, fetches covers and info, makes English subtitles, finds duplicates and plays everything. **Controls everything.** | Windows 10/11 PC | **[⬇ Installer (.exe)](https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Setup-2.0.5-beta.1.exe)**<br>[or portable .zip](https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-2.0.5-beta.1-win64.zip) |
+| 📱 | **Kuraya Remote**<br>*for Android* | Streams your movies from the PC to your phone or tablet. Favourites and flags sync back. | Android phone or tablet | **[⬇ Android app (.apk)](https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Remote-2.0.5-beta.1.apk)** |
+| 💻 | **Kuraya Remote**<br>*for Windows* | The same remote for a laptop or second PC. Unzip it and start `Kuraya_Remote.exe`. | Windows laptop or PC | **[⬇ Windows remote (.zip)](https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Remote-2.0.5-beta.1-win64.zip)** |
+
+```mermaid
+flowchart LR
+    subgraph PC["🖥️ Your Windows PC"]
+        D[("Your movie<br/>drives")] --- K["<b>Kuraya</b> (main app)<br/>scrape · sort · subtitle · play"]
+    end
+    K -- "your home Wi-Fi" --> A["📱 <b>Kuraya Remote</b><br/>Android phone or tablet"]
+    K -- "your home Wi-Fi" --> W["💻 <b>Kuraya Remote</b><br/>Windows laptop"]
+```
+
+**How to start:** 1) install **Kuraya** on the PC that holds your movies. 2) Install a **Remote** on the device where you want to watch. 3) In the remote, let it find your PC (or type its address and port 8080). The PC must be on with Kuraya running. All files in one place: [latest release](https://github.com/Fetterbr61/Kuraya/releases).
+
+<sub>Windows may warn about an unknown publisher the first time: choose *More info*, then *Run anyway*. Version 2.0.5-beta.1 is a test version (beta).</sub>
+
+---
 <!-- TESTERS-WANTED:START  (#1768: take out everything from here to TESTERS-WANTED:END when we have enough testers; the release notes copy this block automatically) -->
 ## 🧪 Beta testers wanted
 

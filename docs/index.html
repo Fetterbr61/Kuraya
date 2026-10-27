@@ -25,6 +25,8 @@ h1{font-size:44px;margin:12px 0 4px}h1 span{color:var(--muted);font-weight:400}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
 .card h3{margin:0 0 6px;font-size:18px}.card p{margin:0;color:var(--muted)}
 h2{text-align:center;margin:48px 0 8px}.sub{text-align:center;color:var(--muted);margin:0 0 8px}
+.dl .card{display:flex;flex-direction:column}.dl .card p:nth-of-type(2){margin-top:auto;padding-top:14px}.dl .btn{margin:0;display:block;text-align:center}.dl .note{font-size:13px;margin-top:8px;text-align:center}.dl .note a{color:var(--muted)}
+.badge{font-size:12px;font-weight:600;background:var(--accent);color:#fff;border-radius:6px;padding:2px 8px;vertical-align:middle;margin-left:6px}
 .testers{background:var(--card);border:1px solid var(--accent);border-radius:12px;padding:22px;margin:40px 0;text-align:center}
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px;margin-top:40px}
 footer a{color:var(--muted)}
@@ -36,13 +38,23 @@ footer a{color:var(--muted)}
   <img src="kuraya_logo.png" alt="Kuraya logo">
   <h1>Kuraya <span>蔵屋</span></h1>
   <p class="tag">The JAV library that runs itself.</p>
-  <a class="btn" href="https://github.com/Fetterbr61/Kuraya/releases/latest">Download for Windows</a>
+  <a class="btn" href="#download">Download</a>
   <a class="btn ghost" href="buttons.html">What every button does</a>
   <a class="btn ghost" href="third-party.html">Third-party tools</a>
   <a class="btn ghost" href="troubleshooting.html">Troubleshooting</a>
   <a class="btn ghost" href="https://github.com/Fetterbr61/Kuraya">Project page</a>
   <p class="age">Free · Windows 10/11 · adults 18+ only · your files never leave your PC</p>
 </header>
+
+<h2 id="download">Download</h2>
+<p class="sub">Three apps, one library. The <b>main app</b> runs on your Windows PC and controls everything. The two <b>remote apps</b> stream your movies to your other devices. You always need the main app; the remotes are optional.</p>
+
+<div class="grid dl">
+  <div class="card"><h3>🖥️ Kuraya <span class="badge">main app</span></h3><p>Runs on your Windows 10/11 PC. Finds and sorts your movies, fetches covers and info, makes English subtitles, finds duplicates and plays everything. <b>Start here.</b></p><p><a class="btn" href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Setup-2.0.5-beta.1.exe">Download installer</a></p><p class="note">or the <a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-2.0.5-beta.1-win64.zip">portable zip</a> (no install)</p></div>
+  <div class="card"><h3>📱 Kuraya Remote <span class="badge">Android</span></h3><p>Streams your movies from the PC to your phone or tablet over your home network. Favourites and flags sync back to the PC.</p><p><a class="btn" href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Remote-2.0.5-beta.1.apk">Download Android app</a></p><p class="note">APK file, install it from your Downloads</p></div>
+  <div class="card"><h3>💻 Kuraya Remote <span class="badge">Windows</span></h3><p>The same remote for a laptop or a second PC. Unzip it anywhere and start <b>Kuraya_Remote.exe</b>. Nothing to install.</p><p><a class="btn" href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Remote-2.0.5-beta.1-win64.zip">Download Windows remote</a></p><p class="note">zip file, keep the folder together</p></div>
+</div>
+<p class="sub">Not sure which one? Install the main app first. The PC must be on with Kuraya running when you use a remote. Windows may ask about an unknown publisher: choose <i>More info</i>, then <i>Run anyway</i>. <a href="https://github.com/Fetterbr61/Kuraya/releases">All files</a></p>
 
 <h2>You don't have a collection problem. You have a time problem.</h2>
 <p class="sub">Kuraya does the work that other tools leave to you.</p>
