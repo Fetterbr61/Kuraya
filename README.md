@@ -16,6 +16,17 @@
   <a href="https://paypal.me/supportkuraya"><img alt="Donate" src="https://img.shields.io/badge/donate-PayPal-00457C?logo=paypal"></a>
 </p>
 
+<p align="center"><b><a href="#download">Download</a></b> · <a href="https://fetterbr61.github.io/Kuraya/">Website</a> · <a href="HOW_KURAYA_WORKS.txt">User guide</a> · <a href="https://fetterbr61.github.io/Kuraya/buttons.html">What every button does</a> · <a href="https://fetterbr61.github.io/Kuraya/troubleshooting.html">Troubleshooting</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="https://github.com/Fetterbr61/Kuraya/issues">Report a problem</a></p>
+
+**Kuraya is a free Windows app that organises, subtitles and plays your own JAV collection.**
+
+- Finds every movie by its DVD-ID and fetches cover, title, cast, studio and genres from several sources.
+- Sorts your library into clean folders and finds duplicates across your drives.
+- Makes English subtitles from the audio, on your own PC.
+- Plays everything in one place, and streams it to your phone, tablet or laptop with the free Remote apps.
+
+<a id="download"></a>
+
 ## ⬇️ Download: three apps, one library
 
 Kuraya is **one main app on your Windows PC** that does all the work, plus **two free remote apps** that stream your movies to your other devices. **You always need the main app. The remotes are optional.**
@@ -52,6 +63,14 @@ Kuraya is **one main app on your Windows PC** that does all the work, plus **two
 
 <sub>Windows may warn about an unknown publisher the first time: choose *More info*, then *Run anyway*. Version 2.0.5-beta.1 is a test version (beta).</sub>
 
+### What you need
+
+- **Main app:** Windows 10 or 11 (64-bit). Setup helps you install the free helper tools, such as FFmpeg.
+- **English subtitles from audio:** an NVIDIA graphics card helps a lot. Everything else works without one.
+- **Remote apps:** the PC must be on with Kuraya running, and both devices on the same home network.
+
+> [!IMPORTANT]
+> **Every movie needs its DVD-ID in the file name**, the product code such as `ABP-112` or `SONE-804`. Kuraya recognises a movie only by that code. A file called `My Holiday Video.mp4` is not recognised.
 ---
 <!-- TESTERS-WANTED:START  (#1768: take out everything from here to TESTERS-WANTED:END when we have enough testers; the release notes copy this block automatically) -->
 ## 🧪 Beta testers wanted
