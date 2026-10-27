@@ -105,6 +105,21 @@ Kuraya does not start any work on it until the DVD-ID is in the name.
 
 ---
 
+## Screenshots
+
+<p align="center"><img src="docs/screenshots/poster-view.jpg" alt="Kuraya movie browser in poster view" width="900"></p>
+<p align="center"><em>The movie browser, poster view: every film with its cover, subtitle and file status.</em></p>
+
+<p align="center"><img src="docs/screenshots/fanart-view.jpg" alt="Kuraya movie browser in fanart view" width="900"></p>
+<p align="center"><em>The same library in fanart view.</em></p>
+
+<p align="center"><img src="docs/screenshots/scraper.jpg" alt="Kuraya scraper window comparing several movie databases" width="900"></p>
+<p align="center"><em>The scraper window: you pick the best title, cover, cast and genres from several databases at once.</em></p>
+
+<sub>The pictures above have been formatted a little for public display: some covers are blurred. Kuraya itself shows everything as it is.</sub>
+
+---
+
 ## Why Kuraya and not the others
 
 Most JAV tools fall into one of two camps: **scrapers** that fetch metadata, and
