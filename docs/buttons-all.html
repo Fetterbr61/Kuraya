@@ -1,0 +1,1472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuraya - buttons and controls</title>
+<meta name="description" content="What every button, menu and letter in Kuraya does - the toolbar, filters, movie card letters, the right-click menu and the background jobs.">
+<link rel="icon" href="kuraya_logo.png">
+<style>
+:root{--bg:#111318;--card:#1b1f27;--text:#e8e6e1;--muted:#9aa3b2;--accent:#D9432B;--line:#2a303b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px 40px}
+nav{display:flex;align-items:center;gap:12px;padding:20px 0}nav img{width:40px;height:40px}nav a{color:var(--text);text-decoration:none;font-weight:600}
+nav .sp{flex:1}nav .lnk{color:var(--muted);font-weight:400}
+h1{font-size:34px;margin:16px 0 4px}h2{margin:40px 0 4px;color:var(--text)}
+.sub{color:var(--muted);margin:0 0 12px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}tr:first-child td{border-top:none}
+td.ic{width:44px;text-align:center;font-size:18px;color:var(--accent);font-weight:700}
+td:nth-child(2){width:230px}
+code,kbd{background:#262b35;border-radius:4px;padding:1px 5px;font-size:14px}
+.tip{background:var(--card);border-left:4px solid var(--accent);padding:12px 16px;border-radius:8px;margin:20px 0}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center;padding:24px 0;margin-top:40px}footer a{color:var(--muted)}
+@media(max-width:640px){td:nth-child(2){width:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><img src="kuraya_logo.png" alt=""><a href="./">Kuraya</a><span class="sp"></span>
+<a class="lnk" href="https://github.com/Fetterbr61/Kuraya/releases/latest">Download</a></nav>
+
+<h1>Every button, by screen</h1>
+<p class="sub">Generated from the texts shown when you hover a button. Find the screen, then the button by its label or icon. <a href="buttons.html">&larr; back to the guided tour</a></p>
+<details><summary><b>About Dependencies View</b> (3)</summary><table>
+<tr><td><b>Icon [icon: info_outline]</b></td><td>Informational - no live check</td></tr>
+<tr><td><b>TextButton.icon - &quot;Setup &amp; Tools&quot; [icon: settings_suggest]</b></td><td>Re-open the first-start setup window at the page where you set up the external tools Kuraya uses.</td></tr>
+<tr><td><b>Re-check</b></td><td>Check again which external tools and services are installed and working.</td></tr>
+</table></details>
+<details><summary><b>Actor Details</b> (6)</summary><table>
+<tr><td><b>IconButton [icon: refresh]</b></td><td>Force rescrape bio data</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Show this photo full size.</td></tr>
+<tr><td><b>GestureDetector [icon: person]</b></td><td>Show this photo full size.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close the full-size photo.</td></tr>
+<tr><td><b>•</b></td><td>Open the details window of this movie.</td></tr>
+</table></details>
+<details><summary><b>Actor Filter Management</b> (14)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>Actors</b></td><td>Show the actor blacklist: actor names that are removed from the movies.</td></tr>
+<tr><td><b>Genres</b></td><td>Show the genre blacklist: genres that are removed from the movies.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: cleaning_services]</b></td><td>[state] - Cleaning is in progress. - Remove the blacklisted actors and genres from the details files of the movies that contain them.</td></tr>
+<tr><td><b>Done</b></td><td>Close this window.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Add the actor name {...} to the blacklist.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Ban&quot; [icon: block]</b></td><td>Add the genre you typed to the genre blacklist.</td></tr>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Take {...} off the blacklist.</td></tr>
+<tr><td><b>${sug.length} suggestions to blacklist</b></td><td>[state] - Hide the list of suggested names. - Show the names the app suggests for the blacklist.</td></tr>
+<tr><td><b>Ban all</b></td><td>Add all suggested names to the blacklist.</td></tr>
+<tr><td><b>GestureDetector [icon: block]</b></td><td>Add {...} to the blacklist.</td></tr>
+<tr><td><b>GestureDetector [icon: check]</b></td><td>Ignore the suggestion {...}. It is not added to the blacklist.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Ban&quot; [icon: block]</b></td><td>Add the name you typed to the blacklist.</td></tr>
+<tr><td><b>already banned</b></td><td>[state] - {...} is already on the blacklist. - Use {...}</td></tr>
+</table></details>
+<details><summary><b>Actor Live Result</b> (1)</summary><table>
+<tr><td><b>GestureDetector</b></td><td>[state] - Prev - Go to the previous actor. - Next - Go to the next actor. - Pause - Freeze the display on the current actor so it stops moving on. - Let the display move on to new actors again.</td></tr>
+</table></details>
+<details><summary><b>Actor Name Validator</b> (4)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>Test</b></td><td>Check the name you typed and show whether the app accepts it as an actress name.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Run All Predefined Tests&quot; [icon: play_arrow]</b></td><td>Run the built-in list of example names through the checker and show every result.</td></tr>
+<tr><td><b>OutlinedButton</b></td><td>Check the example name {...} with the name checker.</td></tr>
+</table></details>
+<details><summary><b>Actor Scraper</b> (49)</summary><table>
+<tr><td><b>GestureDetector [icon: refresh]</b></td><td>Count the actor photos again.</td></tr>
+<tr><td><b>GestureDetector [icon: check_circle, cancel_outlined]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>Btn [icon: stop_circle]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>Btn [icon: play_circle]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>Btn</b></td><td>Another scraper operation is currently running</td></tr>
+<tr><td><b>Btn</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>Btn [icon: stop_circle]</b></td><td>Signals the service to stop after finishing the current movie. {...}Progress is saved — you can Resume Refill Missing to continue from here.</td></tr>
+<tr><td><b>Btn [icon: play_circle]</b></td><td>Continues the previous Refill Missing pass from where it stopped. {...}{...} movies are already done and will be skipped. {...}Phases: metadata → translate → genres → series → photos → doctor → series fetch</td></tr>
+<tr><td><b>Btn [icon: healing]</b></td><td>Runs 7 phases over every movie in your library: {...}⚙️ Metadata — scrapes missing actors, studio, release date, title {...}🌐 Translate — translates Japanese series/title names {...}🏷️ Genres — normalises and deduplicates genre tags {...}🔀 Series names — fixes series name formatting {...}📸 Photos — downloads missing actor photos {...}🩺 Doctor — checks every .nmp file for errors and repairs them {...}🎯 Series fetch — finds missing movies in your series</td></tr>
+<tr><td><b>Btn [icon: stop_circle]</b></td><td>Signals both the Refill Missing service and the Get Photos scraper to stop. {...}Each finishes its current item then exits cleanly. {...}Progress is saved — press Resume Both to continue.</td></tr>
+<tr><td><b>Btn [icon: play_circle]</b></td><td>Continues both services from where they were paused. {...}Refill Missing picks up from movie #{...} {...}Get Photos picks up from movie #{...} {...}Both run in parallel and can be stopped with Stop Both.</td></tr>
+<tr><td><b>Btn [icon: rocket_launch]</b></td><td>Starts Refill Missing (Dart service) and Get Photos (PowerShell) {...}at the same time from the beginning. {...}Both share the same stop/resume cycle — press Stop Both to pause either.</td></tr>
+<tr><td><b>Btn [icon: play_arrow]</b></td><td>Opens PowerShell and scrapes metadata for every movie that {...}doesn&#x27;t yet have it — actors, genres, studio, release date, series, title. {...}Also downloads actor photos inline as each movie is processed. {...}Movies that already have complete metadata are skipped.</td></tr>
+<tr><td><b>✕ clear stuck status</b></td><td>Clear the &#x27;still running&#x27; status left behind by a scraper that stopped unexpectedly.</td></tr>
+<tr><td><b>Btn [icon: refresh]</b></td><td>Re-scrapes every movie in your library — even ones that already {...}have metadata. Newly found data is merged in without overwriting {...}anything you have set manually. Locked movies are always skipped.</td></tr>
+<tr><td><b>Btn [icon: replay]</b></td><td>Re-runs the scraper only on the IDs that failed in the {...}previous run (network errors, timeouts, no results found). {...}Failed IDs are read from the progress file of the last run.</td></tr>
+<tr><td><b>Btn [icon: undo]</b></td><td>Reverses all file and folder renames from the last scraper run {...}using the saved rename log. Safe to use as long as you haven&#x27;t {...}moved or deleted any files manually since the last run.</td></tr>
+<tr><td><b>Btn [icon: auto_fix_high]</b></td><td>Applies your genre synonym rules and filter rules to every {...}movie&#x27;s genre list. Runs locally with no network calls — completes {...}in seconds. Useful after editing genre synonyms or filters.</td></tr>
+<tr><td><b>Btn [icon: lock_open]</b></td><td>Removes the &quot;locked&quot; flag from every movie. {...}Locked movies are skipped by all scraper operations. {...}After clearing, the next scrape will re-process them.</td></tr>
+<tr><td><b>Btn [icon: face_retouching_natural]</b></td><td>Checks every actor photo by face: duplicates, covers and photos of {...}the wrong person are moved to a quarantine folder (nothing is deleted). {...}The first time it installs a small free add-on (needs Python). After {...}that it also runs by itself after each automatic photo download.</td></tr>
+<tr><td><b>Btn [icon: restart_alt]</b></td><td>Clears the saved scraper progress so the next run starts from the {...}first movie. Does not delete or change any movie data.</td></tr>
+<tr><td><b>Btn [icon: subtitles]</b></td><td>For each foreign-sub (JP/ZH) title: translate the Japanese .ja.srt {...}(Whisper it in Subtitle Edit) or burned subs to English, merge onto {...}clean timing, write &lt;name&gt;.en.srt. Minor-framed titles are skipped. {...}Pause/stop from the task console.</td></tr>
+<tr><td><b>Btn [icon: create_new_folder]</b></td><td>Pick ANY folder (movies need NOT be in the library). Each video is {...}transcribed with language AUTO-DETECT (Japanese -&gt; anime-whisper, {...}other -&gt; Faster-Whisper-XXL), then translated to English and written {...}as &lt;name&gt;.translated-to-EN.srt beside the movie. Minor-framed titles {...}are skipped. Pause/stop from the Task Console.</td></tr>
+<tr><td><b>Btn [icon: translate]</b></td><td>For movies flagged as burned-in (hardsub), OCRs a short sample with {...}VideOCR (PaddleOCR, GPU) to detect Japanese / Chinese / English, then {...}buckets them: JP/ZH -&gt; Foreign Sub, EN -&gt; burned-English. Needs VideOCR {...}CLI installed. Saves burnedSubLanguages + updates the Foreign/burned flags.</td></tr>
+<tr><td><b>Chip</b></td><td>When ticked, Get Photos only fills in missing actor details (age, {...}measurements, birthday) for actors who already have a photo. {...}No photos are downloaded. Untick it to download photos.</td></tr>
+<tr><td><b>Btn [icon: stop_circle_outlined, menu_book]</b></td><td>[state] - Click to stop the running bio fill. - The current batch of 4 will finish, then it stops. - Scrapes bio data (age, measurements, birthday) for every actor - that already has a photo but no bio in the database. - Runs entirely in Dart — parallel ×4, no PowerShell window. - Scans every movie&#x27;s actor list and downloads missing photos - from JavDatabase, Warashi, and Sextb in that order. - Actors that already have photos are skipped entirely.</td></tr>
+<tr><td><b>Btn [icon: science]</b></td><td>Picks 10 random movies from your library and scrapes them {...}as a quick sanity-check after changing scraper settings. {...}Useful for verifying scrapers work before running the full library.</td></tr>
+<tr><td><b>Btn [icon: preview]</b></td><td>Simulates the full rename pass and prints every planned {...}file/folder rename to the console — no files are modified. {...}If a DVD ID is typed in the field below, only that movie is tested.</td></tr>
+<tr><td><b>Btn [icon: science]</b></td><td>Runs JavTrailers / JavGuru / JavLibrary / MissAV against 15 random {...}library movies and writes a field-coverage report to the Logs folder. {...}Read-only — never modifies NMP files. Uses the app&#x27;s live FlareSolverr.</td></tr>
+<tr><td><b>Btn [icon: blur_on]</b></td><td>AI mosaic detector with review. Sort an unknown folder, or {...}re-verify your Uncensored / Censored library. Play to check, Yes/No {...}to confirm. Never changes the NMP — only flags conflicts for recheck. {...}Learns from your answers; renames confirmed-censored to DVD-ID.</td></tr>
+<tr><td><b>Btn [icon: auto_awesome_motion]</b></td><td>Open the Subtitle Migration dashboard — live progress, current {...}movie, real-time log, and Start / Pretest 10 / Pause / Stop / Resume. {...}Re-does EVERY movie without a DeepSeek sub (favorites -&gt; inbox -&gt; {...}libraries), batched large-v2 + DeepSeek, background, auto-resumes after {...}restart. Open it any time to watch — closing it does NOT stop the run.</td></tr>
+<tr><td><b>Btn [icon: sync]</b></td><td>FAST reliable rebuild of subtitle flags from disk (no OCR): {...}S = a live .srt exists; B = burned only when -SUBS/-MR or NMP {...}&lt;burnedSub&gt;true. Restores any .srt.old the false detector disabled. {...}Fixes wrong &quot;BURNED IN ENG SUBS&quot; labels library-wide. Pause/stop in {...}the Task Console. (Files/metadata are handled by the startup scan.)</td></tr>
+<tr><td><b>Btn [icon: translate]</b></td><td>AI-translates any remaining Japanese series names, then writes {...}ALL translated series + clean titles into the NMP files on disk. {...}After this + a rescan, the series view shows English permanently {...}(no re-translation even after a flutter clean or rebuild).</td></tr>
+<tr><td><b>Btn [icon: content_cut]</b></td><td>For every library movie the 2-day scan FLAGGED (adSpliceChecked has a {...}cut), remove the prepended ad: re-encode from the cut (NVENC), VERIFY {...}duration (±15s) or keep the original, then REPLACE it (no .pre-trim.bak {...}— saves disk) and shift every sidecar .srt earlier by the cut so the {...}subs still match. Pause/stop in the Task Console. Reversible only up to {...}the verify — a bad trim never replaces the original.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Test&quot; [icon: play_arrow]</b></td><td>Run the scraper for only the movie ID you typed, even if it was done before.</td></tr>
+<tr><td><b>Btn [icon: image_search]</b></td><td>OCR the COVER ART of every movie in niche_worklist.tsv (1,973 rows, {...}project root) to recover maker / director / product code / cast that {...}the web scrapers could not find — these are the kinky/niche titles no {...}standard source carries. {...}Writes &lt;stem&gt;.fanart-ocr.txt beside each movie (raw text kept verbatim) {...}plus a reviewable Logs/ops/fanart-ocr-niche_&lt;ts&gt;.log holding the FULL {...}OCR text and the 3 AI-proposed sort genres per movie. {...}MOVES NOTHING and writes no NMP — review the log first. {...}Resumable: any movie that already has a sidecar is skipped, so pressing {...}this again continues where it stopped. Pause/stop in the Task Console.</td></tr>
+<tr><td><b>Btn [icon: drive_file_move_outline]</b></td><td>Genre-Sort V2 step 1. Move EVERY library movie folder up to its own {...}drive&#x27;s \Sorted root (out of the old genre subfolders), then delete the {...}emptied genre folders. Same-drive instant moves. Shows a DRY-RUN plan {...}first and moves nothing until you confirm. Pause/stop in the Task Console.</td></tr>
+<tr><td><b>Btn [icon: account_tree_outlined]</b></td><td>Genre-Sort V2 step 2. Move each movie into the EXACT folder its card {...}badge shows: &lt;drive&gt;:\Sorted\Maker\g1\g2\g3\g4\&lt;DVD-ID&gt;. {...}Uses the same builder as the badge, so folder == badge. Same-drive instant {...}moves, Duplicates skipped. DRY-RUN plan first; pause/stop in Task Console.</td></tr>
+<tr><td><b>Btn [icon: delete_sweep]</b></td><td>Delete every &lt;name&gt;.pre-trim.bak across the library roots — the {...}backups kept from earlier approved ad trims (the 96 test files). Frees {...}disk. Only run once you are happy with those trims — this is permanent.</td></tr>
+<tr><td><b>Btn [icon: code_off]</b></td><td>Reads every NMP file and decodes HTML entities like {...}&amp;apos; → &#x27; and &amp;amp; → &amp; in titles, studio, series, {...}actors and all other text fields. {...}Safe to run multiple times — clean files are left unchanged.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Open&quot; [icon: open_in_new]</b></td><td>Open the list of actors that could not be found, in Notepad.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and move nothing.</td></tr>
+<tr><td><b>Move $n &amp; clean up</b></td><td>Move the folders up to their \Sorted root and then remove the genre folders that are left empty.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and move nothing.</td></tr>
+<tr><td><b>Sort $n</b></td><td>Move the movies into their Maker and genre folders.</td></tr>
+<tr><td><b>InkWell [icon: expand_less, expand_more]</b></td><td>[state] - Hide the section {...} - Show the section {...}</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and do nothing.</td></tr>
+<tr><td><b>Continue</b></td><td>Go ahead. {...}</td></tr>
+<tr><td><b>?</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+</table></details>
+<details><summary><b>Actor Scraper Test</b> (2)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Start Test&quot; [icon: play_arrow]</b></td><td>Start checking photo lookups for a sample of actors from your library.</td></tr>
+</table></details>
+<details><summary><b>Advanced Settings</b> (48)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this window without changing the setting.</td></tr>
+<tr><td><b>Save</b></td><td>Save the text you entered. If the box is empty, the default value is used.</td></tr>
+<tr><td><b>IconButton [icon: folder_open]</b></td><td>Browse…</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without changing the folder or file path.</td></tr>
+<tr><td><b>Save</b></td><td>Save the path you entered. If the box is empty, the default path is used.</td></tr>
+<tr><td><b>No, only change the setting</b></td><td>Only change the setting. The existing files stay in the old folder.</td></tr>
+<tr><td><b>Yes, move the content</b></td><td>Change the setting and move the contents of the old folder into the new folder.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without changing the number.</td></tr>
+<tr><td><b>Save</b></td><td>Save the number. Values outside the allowed range are adjusted to the nearest allowed value.</td></tr>
+<tr><td><b>IconButton [icon: visibility_outlined, visibility_off_outlined]</b></td><td>[state] - Show - Hide</td></tr>
+<tr><td><b>Copied to clipboard</b></td><td>Copy to clipboard</td></tr>
+<tr><td><b>Test Connection</b></td><td>Check whether the key you entered works by contacting the service.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without changing the key.</td></tr>
+<tr><td><b>Save</b></td><td>Save the entered key.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Press and hold on this setting to reset it to its default value.</td></tr>
+<tr><td><b>Switch</b></td><td>Turn this setting on or off.</td></tr>
+<tr><td><b>DropdownButton</b></td><td>Choose a value for this setting.</td></tr>
+<tr><td><b>ListTile [icon: chevron_right]</b></td><td>Click to change this setting. It is now: {...}</td></tr>
+<tr><td><b>Reset to default</b></td><td>Put this setting back to its default value.</td></tr>
+<tr><td><b>Copy key</b></td><td>Copy the internal name of this setting to the clipboard.</td></tr>
+<tr><td><b>Switch</b></td><td>Show or hide the advanced settings that are normally hidden.</td></tr>
+<tr><td><b>Tab [icon: tune]</b></td><td>Show all the settings.</td></tr>
+<tr><td><b>Tab [icon: speed]</b></td><td>Test and calibrate the scrapers.</td></tr>
+<tr><td><b>Tab [icon: backup]</b></td><td>Save and restore a backup of your settings.</td></tr>
+<tr><td><b>Tab [icon: extension]</b></td><td>Show which external tools Kuraya uses and whether they work.</td></tr>
+<tr><td><b>IconButton [icon: clear]</b></td><td>Clear the search box and show all settings again.</td></tr>
+<tr><td><b>✅ Settings saved</b></td><td>Save all changed settings to disk now.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without starting the calibration.</td></tr>
+<tr><td><b>Calibrate</b></td><td>Start testing every scraper against known movies and record the results.</td></tr>
+<tr><td><b>🔬 ${r.dvdId.isNotEmpty ? r.dvdId :</b></td><td>Show details of why this scraper found nothing.</td></tr>
+<tr><td><b>🔬 ${r.dvdId}</b></td><td>Show the full result this scraper found.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop the running calibration.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Reset all&quot; [icon: restore]</b></td><td>Put every scraper back to its default settings.</td></tr>
+<tr><td><b>FilledButton.icon - &quot;Calibrate all&quot; [icon: play_arrow]</b></td><td>Test every scraper against known movies and record how well each one works.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Check now&quot; [icon: health_and_safety]</b></td><td>Check now whether the keyword search sources are working.</td></tr>
+<tr><td><b>IconButton [icon: play_circle_outline]</b></td><td>Calibrate {...}</td></tr>
+<tr><td><b>IconButton [icon: science_outlined]</b></td><td>Scrape test: {...}</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without restoring the backup.</td></tr>
+<tr><td><b>Restore</b></td><td>Replace your current settings with the settings from this backup.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without importing.</td></tr>
+<tr><td><b>Import</b></td><td>Replace your current settings with the settings from the chosen file.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Import&quot; [icon: upload_file]</b></td><td>Load settings from a settings file you choose, replacing your current settings.</td></tr>
+<tr><td><b>FilledButton.icon - &quot;Export now&quot; [icon: download]</b></td><td>Save a backup copy of your current settings to a file now.</td></tr>
+<tr><td><b>Restore</b></td><td>Restore your settings from this backup.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Remove</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Add folder…&quot; [icon: add]</b></td><td>Add a folder to the list.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without changing the list.</td></tr>
+<tr><td><b>Save</b></td><td>Save the list as shown.</td></tr>
+</table></details>
+<details><summary><b>Ai Fanart Sorter</b> (17)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this question and move nothing.</td></tr>
+<tr><td><b>ElevatedButton</b></td><td>[state] - Move the movies even though this goes over the folder limit. - Move the movies to the folders shown.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and change nothing.</td></tr>
+<tr><td><b>Start fresh &amp; unlock</b></td><td>Clear the folder list of the AI sorter, restart the 50-folder count and unlock all movie cards. No files are moved or deleted.</td></tr>
+<tr><td><b>IconButton [icon: arrow_back]</b></td><td>Close</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Start fresh &amp; unlock&quot; [icon: lock_open]</b></td><td>Clear the folder list of the AI sorter, restart the 50-folder count and unlock all movie cards. No files are moved or deleted.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Clear the series search box.</td></tr>
+<tr><td><b>Search</b></td><td>[state] - Please wait until the current test has finished. - Search for the series you typed and show the folders suggested for it.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Move here&quot; [icon: drive_file_move]</b></td><td>Move this movie to the suggested folder shown next to this button.</td></tr>
+<tr><td><b>›</b></td><td>Copy the suggested folder path to the clipboard.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Preview folders&quot; [icon: folder_open]</b></td><td>Show the list of folders that would be used. Nothing is moved.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Apply All&quot; [icon: done_all]</b></td><td>Move all analysed movies to their suggested folders. You review the folder list before anything is moved.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Test Series&quot; [icon: collections_bookmark]</b></td><td>Test the sorter on the movies of one series. No files are moved or deleted.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: play_arrow]</b></td><td>[state] - The test is already running. - Test the sorter on {...} random movies. It shows the text the AI read from the cover and the suggested folders.</td></tr>
+</table></details>
+<details><summary><b>Ai Title Rewriter</b> (13)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>[state] - Stop the title rewriting and close this window. - Close this window.</td></tr>
+<tr><td><b>Save Key</b></td><td>Save the AI key you typed. It is used to write the new titles.</td></tr>
+<tr><td><b>All</b></td><td>Choose how many movies to rewrite: all of them, or only a few as a test.</td></tr>
+<tr><td><b>Switch</b></td><td>[state] - Wait until the rewriting has stopped. - When on, the best new title is taken for every movie without asking you.</td></tr>
+<tr><td><b>${index + 1}. ${_titleOptions[index]}</b></td><td>Choose title {...} as the new title.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Skip&quot; [icon: skip_next]</b></td><td>Keep the old title of this movie and go on to the next one.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Accept #${_selectedOption + 1}&quot; [icon: check]</b></td><td>Use title {...} as the new title of this movie and go on to the next one.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: hourglass_empty, search]</b></td><td>[state] - The scan is already running. - Search the folders for details files whose title can be rewritten.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: play_arrow]</b></td><td>[state] - Save an AI key and scan the files first. - Continue rewriting titles where you stopped. - Start rewriting the titles with AI.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Reset&quot; [icon: restart_alt]</b></td><td>Start again from the first movie and forget the saved progress.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: play_arrow, pause]</b></td><td>[state] - Continue rewriting titles. - Pause the rewriting. You can continue later.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop rewriting titles.</td></tr>
+<tr><td><b>Close</b></td><td>[state] - Stop the title rewriting and close this window. - Close this window.</td></tr>
+</table></details>
+<details><summary><b>Automation Status Icon</b> (5)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this window without starting anything.</td></tr>
+<tr><td><b>InkWell</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>? [icon: play_circle_outline]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>InkWell</b></td><td>Open the status window of the running background job.</td></tr>
+<tr><td><b>IconButton</b></td><td>line 359 IconButton [icon: play_circle_outline] Run converter…</td></tr>
+</table></details>
+<details><summary><b>Background Scraper Config</b> (15)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close without starting the background scraper.</td></tr>
+<tr><td><b>Start Scraping</b></td><td>Save these choices and start the background scraper.</td></tr>
+<tr><td><b>Everything (Title, Fanart, Genres, Actors, etc.)</b></td><td>Scrape every detail: title, cover, genres, actors and more.</td></tr>
+<tr><td><b>Custom Selection</b></td><td>Choose yourself which details to scrape. Tick them in the list below.</td></tr>
+<tr><td><b>Title</b></td><td>Tick to scrape the title.</td></tr>
+<tr><td><b>Fanart</b></td><td>Tick to scrape the fanart (cover image).</td></tr>
+<tr><td><b>Genres</b></td><td>Tick to scrape the genres.</td></tr>
+<tr><td><b>Actors</b></td><td>Tick to scrape the actors.</td></tr>
+<tr><td><b>Director</b></td><td>Tick to scrape the director.</td></tr>
+<tr><td><b>Studio</b></td><td>Tick to scrape the studio.</td></tr>
+<tr><td><b>Series</b></td><td>Tick to scrape the series.</td></tr>
+<tr><td><b>Year</b></td><td>Tick to scrape the year.</td></tr>
+<tr><td><b>Release Date</b></td><td>Tick to scrape the release date.</td></tr>
+<tr><td><b>Genres Only</b></td><td>Scrape only the genres.</td></tr>
+<tr><td><b>Fanart Only</b></td><td>Scrape only the fanart (cover image).</td></tr>
+</table></details>
+<details><summary><b>Batch Actor Photo Scraper And Bad Actor Cleaner</b> (52)</summary><table>
+<tr><td><b>OK</b></td><td>Close this summary of the stopped scraping run.</td></tr>
+<tr><td><b>OK</b></td><td>Close this summary of the finished scraping run.</td></tr>
+<tr><td><b>Cancel</b></td><td>Go back without removing any names.</td></tr>
+<tr><td><b>Yes, Remove Them</b></td><td>Remove the selected names from the movie information files, actor photo files and cache.</td></tr>
+<tr><td><b>Checkbox</b></td><td>Tick to include this name when cleaning. Untick to leave it alone.</td></tr>
+<tr><td><b>(icon)</b></td><td>Click to edit this actor name before cleaning.</td></tr>
+<tr><td><b>ActionChip</b></td><td>Use this known name as the new name for the actor.</td></tr>
+<tr><td><b>IconButton [icon: clear]</b></td><td>Clear the name field.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without renaming the actor.</td></tr>
+<tr><td><b>ElevatedButton</b></td><td>Rename the actor to the name you typed.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Switch to this tab.</td></tr>
+<tr><td><b>?</b></td><td>Actors with bio text saved</td></tr>
+<tr><td><b>🔁 Cross-Dupes</b></td><td>Find &amp; delete photos that are the same image saved under different actress names</td></tr>
+<tr><td><b>Checkbox</b></td><td>[state] - fill bios - Tick to fill in bio details for actors who already have photos, without downloading images. Untick to scrape missing photos normally. - Turn this option on or off.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Scan Again&quot; [icon: refresh]</b></td><td>Scan the library again for invalid actor names.</td></tr>
+<tr><td><b>IconButton [icon: clear]</b></td><td>Clear the search text.</td></tr>
+<tr><td><b>Icon [icon: info_outline]</b></td><td>Tip: Use commas to search multiple terms at once Example: 1, 2, 2002, -, actress</td></tr>
+<tr><td><b>Checkbox</b></td><td>Select or unselect all actor names currently listed.</td></tr>
+<tr><td><b>Checkbox</b></td><td>Select or unselect every name in this group.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Rescan&quot; [icon: refresh]</b></td><td>Scan the library again for invalid actor names.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Clean Selected ($selectedCount)&quot; [icon: cleaning_services]</b></td><td>Remove the selected invalid names from the movie information files, actor photo files and cache. You are asked to confirm first.</td></tr>
+<tr><td><b>?</b></td><td>Has photo but no bio file. Run scraper with &quot;missing only&quot; OFF to fill these in.</td></tr>
+<tr><td><b>IconButton [icon: clear]</b></td><td>Clear the search box.</td></tr>
+<tr><td><b>🆕 Newest</b></td><td>Choose how the actors are sorted: newest first, oldest first, or by name.</td></tr>
+<tr><td><b>IconButton [icon: arrow_back]</b></td><td>Go to the previous page of actors.</td></tr>
+<tr><td><b>IconButton [icon: arrow_forward]</b></td><td>Go to the next page of actors.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Delete ${_photosMarkedForDeletion.length}&quot; [icon: delete_forever]</b></td><td>Permanently delete the photos you have marked. You are asked to confirm first.</td></tr>
+<tr><td><b>IMAGE ERROR</b></td><td>Click to mark or unmark this photo for deletion. Press and hold for more options such as renaming or deleting.</td></tr>
+<tr><td><b>Container [icon: info]</b></td><td>Bio data available</td></tr>
+<tr><td><b>Rename + re-scrape photo</b></td><td>Rename the actor in the movie details files, then look for a fresh photo.</td></tr>
+<tr><td><b>Rename actor in NMP files only</b></td><td>Rename the actor only in the movie details files.</td></tr>
+<tr><td><b>Delete this photo</b></td><td>Delete this photo.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this menu and do nothing.</td></tr>
+<tr><td><b>Cancel</b></td><td>Keep the photo and close this window.</td></tr>
+<tr><td><b>Delete</b></td><td>Permanently delete this actor&#x27;s photo.</td></tr>
+<tr><td><b>Cancel</b></td><td>Keep the photos and close this window.</td></tr>
+<tr><td><b>DELETE</b></td><td>Permanently delete all the marked photos.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Reset&quot; [icon: restart_alt]</b></td><td>Clear the start-from name so scraping begins at the first actor.</td></tr>
+<tr><td><b>?</b></td><td>ON = fill bio data for actors who already have photos (no image downloads) OFF = normal mode: scrape photos for actors missing them</td></tr>
+<tr><td><b>TextButton.icon - &quot;Scraper&quot; [icon: arrow_forward]</b></td><td>Go to the photo scraper tab.</td></tr>
+<tr><td><b>TextButton.icon - &quot;🛑 Stop signal sent — finishes current actor then exits&quot; / &quot;Stop&quot; [icon: stop_circle]</b></td><td>Ask the movie scraper to stop after the current actor.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Start Auto-Scraping&quot; [icon: play_arrow]</b></td><td>Start downloading actor photos and bios from the online sources.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Pause&quot; [icon: pause]</b></td><td>Pause actor scraping. You can resume it later.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Resume&quot; [icon: play_arrow]</b></td><td>Continue actor scraping from where it was paused.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop actor scraping.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Actor scraping continues in background. Check Tools menu to &quot; / &quot;Hide Dialog&quot; [icon: minimize]</b></td><td>Hide this window while scraping continues in the background.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Delete All Photos&quot; [icon: delete_sweep]</b></td><td>Permanently delete every actor photo and clear the image caches. You are asked to confirm first.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Cross-Dupes&quot; [icon: find_replace]</b></td><td>Find photos that appear under more than one actor so you can remove the duplicates.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Close&quot; [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>Cancel</b></td><td>Go back without deleting any photos.</td></tr>
+<tr><td><b>Yes, Delete All</b></td><td>Permanently delete every actor photo.</td></tr>
+</table></details>
+<details><summary><b>Bulk Actor Photo Scraper</b> (4)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Start Scraping&quot; [icon: play_arrow]</b></td><td>Start searching for photos for all listed actors.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: play_arrow, pause]</b></td><td>[state] - Continue the photo search where it paused. - Pause the photo search. You can continue it later.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop the photo search.</td></tr>
+</table></details>
+<details><summary><b>Bulk Metadata Edit</b> (10)</summary><table>
+<tr><td><b>Cancel</b></td><td>Do not change anything.</td></tr>
+<tr><td><b>Only the ${widget.movies.length} selected</b></td><td>Rename the series only on the movies you selected. The others keep the old name and become a separate series.</td></tr>
+<tr><td><b>Rename for all ${all.length}</b></td><td>Rename the series on every movie in the list above. The series keeps its genre sort folders (g1–g4).</td></tr>
+<tr><td><b>Checkbox</b></td><td>Tick to change the genres of all selected movies.</td></tr>
+<tr><td><b>Checkbox</b></td><td>Tick to change the start of the movie ID (for example SSNI to SSIS) on all selected movies. Their folders and files are renamed to match.</td></tr>
+<tr><td><b>ElevatedButton</b></td><td>[state] - Please wait until the changes have been applied. - Close this window. - Close without changing any movie.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: save]</b></td><td>[state] - The changes are being applied. - Write the ticked changes into all {...} selected movies.</td></tr>
+<tr><td><b>Checkbox</b></td><td>Tick to change the {...} of all selected movies.</td></tr>
+<tr><td><b>InkWell</b></td><td>Current {...} Click to change it.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>[state] - Replace - Replace the genres of each movie with the ones you list. - Add the genres you list to the genres each movie already has.</td></tr>
+</table></details>
+<details><summary><b>Burned Sub Replace</b> (7)</summary><table>
+<tr><td><b>$label  $n</b></td><td>[state] - Show movies with burned-in subtitles in every language. - Show only movies whose burned-in subtitles are in {...}</td></tr>
+<tr><td><b>InkWell [icon: check_box, check_box_outline_blank]</b></td><td>Tick or untick this movie for the uncensored search.</td></tr>
+<tr><td><b>Icon [icon: travel_explore]</b></td><td>An uncensored replacement has already been searched for</td></tr>
+<tr><td><b>Checkbox</b></td><td>Hide the movies that were already searched for an uncensored version.</td></tr>
+<tr><td><b>TextButton.icon [icon: select_all]</b></td><td>[state] - Untick all movies in the list. - Tick every movie in the list.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Find uncensored (${chosen.length})&quot; [icon: travel_explore]</b></td><td>[state] - Tick at least one movie first. - Search for an uncensored version of the {...} ticked movie(s).</td></tr>
+<tr><td><b>TextButton.icon - &quot;Reload&quot; [icon: refresh]</b></td><td>Load the list of movies again.</td></tr>
+</table></details>
+<details><summary><b>Cf Clearance</b> (4)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>OutlinedButton</b></td><td>Fill in the form for {...} so you can paste its Cloudflare cookie.</td></tr>
+<tr><td><b>Clear this site</b></td><td>Remove the saved cookie for the site in the form, so the app asks Cloudflare the normal way again.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Save&quot; [icon: save]</b></td><td>Save the site, cookie and User-Agent you filled in. The cookie stays on this computer.</td></tr>
+</table></details>
+<details><summary><b>Content Duplicate</b> (19)</summary><table>
+<tr><td><b>GestureDetector [icon: content_copy, close]</b></td><td>Open the duplicate finder window again.</td></tr>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Stop the scan and close this window.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop the scan.</td></tr>
+<tr><td><b>IconButton [icon: remove]</b></td><td>Minimize — scan keeps running</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close</td></tr>
+<tr><td><b>IconButton [icon: remove_circle_outline]</b></td><td>Remove</td></tr>
+<tr><td><b>TextButton.icon - &quot;Add folder…&quot; [icon: add_circle_outline]</b></td><td>Add another folder to scan for duplicate videos.</td></tr>
+<tr><td><b>Switch</b></td><td>[state] - Do not look in sub-folders. - Also look in the sub-folders of the chosen folders.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Start Scan&quot; [icon: search]</b></td><td>[state] - Choose a folder first. The audio fingerprint program (fpcalc) must also be installed. - Scan the chosen folders for videos that have the same content, even if their names differ.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Review ${_pairs.length} Duplicate(s)&quot; [icon: list]</b></td><td>Show the duplicate videos that were found.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Select all duplicates&quot; [icon: select_all]</b></td><td>Tick the second copy of every pair. Nothing is deleted until you press the delete button.</td></tr>
+<tr><td><b>Clear selection</b></td><td>Untick all files.</td></tr>
+<tr><td><b>← Log</b></td><td>Go back to the scan log.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without deleting anything.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: delete_sweep]</b></td><td>[state] - Tick the files you want to delete first. - Permanently delete the {...} ticked file(s) from your disk. This cannot be undone.</td></tr>
+<tr><td><b>InkWell</b></td><td>[state] - Untick this file. - Tick this file for deletion.</td></tr>
+<tr><td><b>Checkbox</b></td><td>[state] - Untick this file. - Tick this file for deletion.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>InkWell [icon: arrow_upward, arrow_downward]</b></td><td>[state] - SIZE - Sort by file size. - FILENAME - Sort by file name. - FOLDER - Sort by folder. - Sort by date changed.</td></tr>
+</table></details>
+<details><summary><b>Converter Console</b> (13)</summary><table>
+<tr><td><b>GestureDetector</b></td><td>[state] - Converter - Show the video converter. - Repair - Show the list of damaged videos waiting for repair. - Subs - Show the burned-in subtitle reading list. - Show the search for broken video files.</td></tr>
+<tr><td><b>🔔 Get Links</b></td><td>Find download links (Find Links) for ALL queued titles</td></tr>
+<tr><td><b>InkWell [icon: close]</b></td><td>Take this file off the repair list.</td></tr>
+<tr><td><b>IconButton [icon: remove]</b></td><td>Minimize — floating progress card stays on top</td></tr>
+<tr><td><b>IconButton [icon: copy]</b></td><td>Copy log</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close</td></tr>
+<tr><td><b>GestureDetector [icon: vertical_align_bottom, vertical_align_center]</b></td><td>[state] - Stop the log from scrolling down by itself. - Let the log scroll down by itself to the newest line.</td></tr>
+<tr><td><b>▶ Resume</b></td><td>Continue the converter job that was paused when the app closed. Files that are already converted are skipped.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Dismiss</td></tr>
+<tr><td><b>InkWell</b></td><td>[state] - Convert dropped - Convert the video files you dropped here. - Add the video file path you pasted to the list. - Scan Library - Search your library for damaged video files and add them to the repair list. - Stop Scan - Stop searching for damaged files. - Start Repair - Start repairing the damaged videos in the list. - Pause - Pause the job. You can continue it later. - Resume - Continue the paused job. - Stop Repair - Stop - Stop the job. - Clear Done - Remove finished and failed items from the repair list. - Clear All - Remove every item from the repair list except the one being repaired right now. - Start Extraction - Start reading the burned-in subtitles of the listed videos. - Look through the burned-in subtitle folder again and list the videos found.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Open the converter window. You can drag this card to another place.</td></tr>
+<tr><td><b>Padding [icon: open_in_full]</b></td><td>Open console</td></tr>
+<tr><td><b>Padding [icon: close]</b></td><td>[state] - Close this result. It stays here until you do. - Hide until next run</td></tr>
+</table></details>
+<details><summary><b>Czkawka</b> (17)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this question and move nothing.</td></tr>
+<tr><td><b>Quarantine</b></td><td>Move the selected files to the quarantine folder. They can be recovered from there.</td></tr>
+<tr><td><b>IconButton [icon: settings]</b></td><td>Set czkawka_cli.exe path</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>Set path</b></td><td>Choose the czkawka_cli.exe program on your computer. It does the scanning.</td></tr>
+<tr><td><b>TextButton.icon [icon: select_all]</b></td><td>[state] - Tick every duplicate in every group except the one file that is kept in each group. - Tick every file in the list.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Select none&quot; [icon: deselect]</b></td><td>Untick all files.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Invert&quot; [icon: swap_horiz]</b></td><td>Tick the files that are not ticked and untick the ones that are.</td></tr>
+<tr><td><b>Icon [icon: info_outline]</b></td><td>The biggest file in each group is kept. {...}Select all never ticks every copy of a group.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Quarantine selected&quot; [icon: archive]</b></td><td>[state] - Please wait until the current work has finished. - Move the ticked files to the quarantine folder. They can be recovered from there.</td></tr>
+<tr><td><b>ElevatedButton.icon</b></td><td>[state] - Launch Krokiet - Open Krokiet, the graphical version of czkawka. - Broken videos - Scan the chosen folders for video files that are damaged or will not play. - Run the czkawka scan {...}</td></tr>
+<tr><td><b>${b.error.isNotEmpty ?</b></td><td>Tick or untick {...}.</td></tr>
+<tr><td><b>IconButton [icon: folder_open]</b></td><td>Show this file in its folder.</td></tr>
+<tr><td><b>CheckboxListTile [icon: folder_open]</b></td><td>Tick or untick {...}.</td></tr>
+<tr><td><b>IconButton [icon: folder_open]</b></td><td>Show this file in its folder.</td></tr>
+<tr><td><b>${_fmtSize(f.size)}  -  ${f.path}</b></td><td>[state] - This is the biggest copy and is kept by default. Tick it only if you want to remove it too. - Tick or untick this duplicate.</td></tr>
+<tr><td><b>IconButton [icon: folder_open]</b></td><td>Show this file in its folder.</td></tr>
+</table></details>
+<details><summary><b>Deepseek Key Box</b> (4)</summary><table>
+<tr><td><b>Don&#x27;t ask again</b></td><td>Close this reminder and do not show it again.</td></tr>
+<tr><td><b>Later</b></td><td>Close this reminder now. It will ask again next time.</td></tr>
+<tr><td><b>Save</b></td><td>Save the DeepSeek key you typed. It is used to translate subtitles.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Open the DeepSeek website&quot; [icon: open_in_new]</b></td><td>Open the DeepSeek website in your browser, where you can get a key.</td></tr>
+</table></details>
+<details><summary><b>Deleted Before</b> (3)</summary><table>
+<tr><td><b>Container</b></td><td>You downloaded this movie and deleted it on purpose before. {...}It is skipped when you download, so you do not do it again.</td></tr>
+<tr><td><b>Skip them</b></td><td>Leave these movies out of the download.</td></tr>
+<tr><td><b>Download anyway</b></td><td>Download them anyway and take them off the &quot;deleted before&quot; list.</td></tr>
+</table></details>
+<details><summary><b>Deletion Guard Service</b> (7)</summary><table>
+<tr><td><b>Keep it</b></td><td>Do not delete anything. Keep it.</td></tr>
+<tr><td><b>Yes, delete</b></td><td>Move it to the trash. It can be restored from Trash / History.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Play the NEW movie to check first&quot; [icon: play_circle_outline]</b></td><td>Open the new movie in your video player so you can check it first.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and delete nothing.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Delete ${isDirectory ? &quot;Folder&quot; : &quot;File&quot;}&quot; [icon: delete_forever]</b></td><td>[state] - Delete the whole folder and everything in it. - Delete this file.</td></tr>
+<tr><td><b>Cancel - keep them</b></td><td>Close this question and delete nothing.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Delete all ${paths.length}&quot; [icon: delete_forever]</b></td><td>Move all {...} listed items to the trash.</td></tr>
+</table></details>
+<details><summary><b>Doctor</b> (18)</summary><table>
+<tr><td><b>InkWell [icon: medical_services, open_in_full]</b></td><td>Open the Doctor window again. A scan that is running keeps going.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and change nothing.</td></tr>
+<tr><td><b>Fix Now</b></td><td>Fix the problems now: reformat the details files, remove duplicates and delete orphaned files, as listed in this window.</td></tr>
+<tr><td><b>IconButton [icon: remove]</b></td><td>Hide — scan keeps running</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Quick Scan&quot; [icon: flash_on]</b></td><td>[state] - A scan is already running. - Check the library quickly for common problems and list them.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Full Scan&quot; [icon: search]</b></td><td>[state] - A scan is already running. - Check every movie folder for problems and list them. Slower than the quick scan. Fixing is done separately with Auto-Fix.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Open Log&quot; [icon: description_outlined]</b></td><td>Open the text file that lists the problems that were found.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: play_arrow, pause]</b></td><td>[state] - Continue the scan. - Pause the scan. You can continue it later.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Stop Scan&quot; [icon: stop]</b></td><td>Stop the scan.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Stop Fix&quot; [icon: stop]</b></td><td>Stop fixing the problems.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Auto-Fix (${_report!.fixableCount})&quot; [icon: auto_fix_high]</b></td><td>[state] - Please wait until the scan has finished. - Fix the {...} problem(s) that can be fixed automatically (you are asked to confirm first).</td></tr>
+<tr><td><b>Checkbox</b></td><td>[state] - Please wait until the scan has finished. - Also check the sound of every video during the Full Scan. This is slower.</td></tr>
+<tr><td><b>📄 doctor_issues.txt</b></td><td>Open the text file that lists the problems that were found.</td></tr>
+<tr><td><b>ListTile [icon: auto_fix_high, build_outlined]</b></td><td>[state] - This problem has no folder to open. - Open the window to merge these video parts. - Open the window where you choose which of these files to keep. - Show this folder in Explorer.</td></tr>
+<tr><td><b>IconButton [icon: merge_type]</b></td><td>Review &amp; merge parts</td></tr>
+<tr><td><b>IconButton [icon: fact_check]</b></td><td>Review files (play &amp; keep one)</td></tr>
+<tr><td><b>IconButton [icon: folder_open]</b></td><td>Open folder</td></tr>
+</table></details>
+<details><summary><b>Doctor Guard Indicator</b> (6)</summary><table>
+<tr><td><b>IconButton</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>${iss.dvdId ??</b></td><td>[state] - This problem has no folder to open. - unmerged_parts - Open the window to merge these video parts. - multiple_video_files - multiple_subtitle_files - multiple_nmp_files - multiple_nmp - Open the window where you choose which of these files to keep. - Show this folder in Explorer.</td></tr>
+<tr><td><b>IconButton [icon: copy]</b></td><td>Copy folder path</td></tr>
+<tr><td><b>TextButton.icon - &quot;Scan &amp; Auto-Fix&quot; [icon: auto_fix_high]</b></td><td>Close this list and run a full library check that automatically fixes the safe problems it finds. Extra duplicate files are moved to a quarantine folder, not deleted.</td></tr>
+<tr><td><b>Copied all issues to clipboard</b></td><td>Copy the whole list of problems to the clipboard as text.</td></tr>
+<tr><td><b>Close</b></td><td>Close this list.</td></tr>
+</table></details>
+<details><summary><b>Dvd Id Review</b> (4)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close without saving</td></tr>
+<tr><td><b>IconButton [icon: skip_next]</b></td><td>Skip this file</td></tr>
+<tr><td><b>Skip All</b></td><td>Discard all the unrecognised names in this list without saving any DVD IDs, and close this window.</td></tr>
+<tr><td><b>FilledButton.icon - &quot;Save All&quot; [icon: save]</b></td><td>Save every DVD ID you typed in the list so those movies are recognised from now on. Empty entries are skipped.</td></tr>
+</table></details>
+<details><summary><b>Fanart Selection</b> (3)</summary><table>
+<tr><td><b>GestureDetector [icon: source, check]</b></td><td>Pick this cover image for the movie. The picked image gets a green frame and a check mark.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close without choosing a cover image.</td></tr>
+<tr><td><b>Use Selected Fanart</b></td><td>Use the picked cover image for this movie. Pick one first.</td></tr>
+</table></details>
+<details><summary><b>Genre Actor Export</b> (13)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this question and keep the exported entries.</td></tr>
+<tr><td><b>Clear</b></td><td>Remove all entries that were already written to the details files from this list. This cannot be undone.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and change nothing.</td></tr>
+<tr><td><b>Reset</b></td><td>Mark all entries as not exported, so they can be exported again.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Clean Junk Genres&quot; [icon: cleaning_services]</b></td><td>[state] - There are no junk genres to clean, or work is in progress. - Remove the junk genres from the collected list.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Preview (5)&quot; [icon: preview]</b></td><td>[state] - There is nothing to export, or work is in progress. - Show what the first 5 entries would write into the details files. Nothing is changed.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Export to NMP Files&quot; [icon: download]</b></td><td>[state] - There is nothing to export, or work is in progress. - Write the collected genres and actors into the details files of your movies.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Fix Duplicates&quot; [icon: auto_fix_high]</b></td><td>[state] - Work is in progress. - Go through the details files and remove duplicate actors, such as the same name written in reverse order.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Export CSV&quot; [icon: table_chart]</b></td><td>[state] - Work is in progress. - Save the collected entries as a CSV file you can open in a spreadsheet.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Reset Status&quot; [icon: refresh]</b></td><td>[state] - Work is in progress. - Mark all entries as not exported, so they can be exported again.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Clear Exported&quot; [icon: delete_outline]</b></td><td>[state] - Work is in progress. - Remove the entries that were already exported from this list.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+</table></details>
+<details><summary><b>Genre Actor Scraper</b> (13)</summary><table>
+<tr><td><b>Genre/Actor/Series Scraper</b></td><td>Open the Genre/Actor/Series Scraper window again. The scraping keeps running.</td></tr>
+<tr><td><b>IconButton [icon: remove]</b></td><td>Minimize</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>Checkbox</b></td><td>[state] - Please wait until scraping has finished or stopped. - Use the source {...} for scraping.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Export to NMP&quot; [icon: upload]</b></td><td>Open the window for writing the scraped genres and actors into the movies&#x27; details files.</td></tr>
+<tr><td><b>Resume from...</b></td><td>Choose a saved point to continue the scraping from.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Reset&quot; [icon: restart_alt]</b></td><td>Forget the saved progress and start again from the first movie.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: play_arrow]</b></td><td>[state] - Tick at least one source first. - Continue scraping where it stopped. - Start scraping genres, actors and series for the movies.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Pause&quot; [icon: pause]</b></td><td>Pause scraping after the movie that is being worked on now. You can continue later.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop scraping after the movie that is being worked on now.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Resume&quot; [icon: play_arrow]</b></td><td>Continue scraping where it stopped.</td></tr>
+</table></details>
+<details><summary><b>Genre Edit</b> (5)</summary><table>
+<tr><td><b>GestureDetector</b></td><td>[state] - Remove the genre {...} from the movie. - Add the genre {...} to the movie.</td></tr>
+<tr><td><b>IconButton [icon: expand_more]</b></td><td>Close this window.</td></tr>
+<tr><td><b>Add</b></td><td>Add the genre you typed to the movie.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close without changing any genres.</td></tr>
+<tr><td><b>ElevatedButton</b></td><td>[state] - Give all {...} selected movies the genre list shown here (the genres of all of them together, plus your changes). - Save the genre changes to this movie.</td></tr>
+</table></details>
+<details><summary><b>Genre Filter Management</b> (11)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this question and keep your blacklist as it is.</td></tr>
+<tr><td><b>Reset</b></td><td>Replace your blacklist with the default list. This cannot be undone.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Add&quot; [icon: add]</b></td><td>Add the genre you typed to the blacklist.</td></tr>
+<tr><td><b>GestureDetector [icon: block]</b></td><td>Add the genre {...} to the blacklist.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Reset to Defaults&quot; [icon: restart_alt]</b></td><td>Replace your genre blacklist with the default list (you are asked to confirm first).</td></tr>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Take {...} off the blacklist.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Reset to Defaults?&quot; / &quot;This will replace your current blacklist with the default li&quot; [icon: restart_alt]</b></td><td>Replace your genre blacklist with the default list (you are asked to confirm first).</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep your blacklist as it is.</td></tr>
+<tr><td><b>Reset</b></td><td>Replace your blacklist with the default list. This cannot be undone.</td></tr>
+<tr><td><b>Done</b></td><td>Close this window.</td></tr>
+</table></details>
+<details><summary><b>Genre Location Review</b> (144)</summary><table>
+<tr><td><b>Just This One</b></td><td>Apply this scrape to this movie only and leave the other movies in the same series alone.</td></tr>
+<tr><td><b>Scrape All ${seriesMoviesInBatch.length}</b></td><td>Scrape every movie of this series that is in the current list in one go.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Abort&quot; [icon: stop]</b></td><td>Stop the scraping that is running right now. Movies already finished keep their results.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close series view</td></tr>
+<tr><td><b>${e.key} (${e.value})</b></td><td>[state] - Unavailable while scraping is running. - Select or deselect this genre for the whole series. Selected genres are applied to every movie of the series.</td></tr>
+<tr><td><b>Review Only</b></td><td>Close the series view without applying anything. You can still review the movies one by one.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Apply to All ${seriesMovies.length} Movies&quot; [icon: check_circle]</b></td><td>Apply the selected genres and folder to all movies of this series at once.</td></tr>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Remove the genre &#x27;{...}&#x27; from this movie.</td></tr>
+<tr><td><b>add genre</b></td><td>Add another genre to this movie by typing its name.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without adding a genre.</td></tr>
+<tr><td><b>Add</b></td><td>Add the typed genre to this movie.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Browse&quot; [icon: folder_open]</b></td><td>Choose a different folder to search for movie folders.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Scan&quot; [icon: search]</b></td><td>Search the chosen folder for movie folders that can be loaded.</td></tr>
+<tr><td><b>TextButton</b></td><td>Select all found folders, or clear the selection if all are already selected.</td></tr>
+<tr><td><b>CheckboxListTile</b></td><td>Tick or untick this folder.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without loading any movies.</td></tr>
+<tr><td><b>Load ${selectedFolders.length} Movies</b></td><td>Load the movies from the ticked folders into the review list.</td></tr>
+<tr><td><b>Tab [icon: rate_review]</b></td><td>Review and change the genres and folders of your movies.</td></tr>
+<tr><td><b>Tab [icon: folder]</b></td><td>Manage the genre categories.</td></tr>
+<tr><td><b>Tab [icon: swap_horiz]</b></td><td>Manage genre synonyms: different spellings that count as the same genre.</td></tr>
+<tr><td><b>Tab [icon: block]</b></td><td>Manage the genre blacklist: genres that are not used.</td></tr>
+<tr><td><b>IconButton [icon: arrow_back]</b></td><td>Close</td></tr>
+<tr><td><b>🖼️ Vision</b></td><td>Choose what is used to find the genres: the cover image (Vision), the text read from the cover (OCR), the web scrape, or all of them together.</td></tr>
+<tr><td><b>Auto</b></td><td>[state] - Turn off automatic mode. - Turn on automatic mode: the app scrapes and moves through the movies on its own.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this review window.</td></tr>
+<tr><td><b>FilterChip</b></td><td>[state] - This site is used when scraping. Click to stop using it. - This site is not used. Click to use it when scraping.</td></tr>
+<tr><td><b>Abort</b></td><td>Stop the scraping that is running now.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Load Folder&quot; [icon: folder_open]</b></td><td>Pick a folder and load the movies it contains for review.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Load All Libraries&quot; [icon: library_books]</b></td><td>Load the movies from all your library folders for review.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Find Misplaced Series Movies&quot; [icon: compare_arrows]</b></td><td>Find movies of a series that are stored in a different folder than the rest of the series.</td></tr>
+<tr><td><b>All</b></td><td>Process all movies in one batch instead of a limited number.</td></tr>
+<tr><td><b>FilterChip</b></td><td>[state] - This site is used when scraping. Click to stop using it. - This site is not used. Click to use it when scraping.</td></tr>
+<tr><td><b>InkWell [icon: play_circle]</b></td><td>Play this movie in the built-in player. If that fails, its folder is opened instead.</td></tr>
+<tr><td><b>SERIES</b></td><td>Show this movie in the review panel.</td></tr>
+<tr><td><b>InkWell [icon: play_circle_outline]</b></td><td>Play this movie in the built-in player. If that fails, its folder is opened instead.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>[state] - Jump to this series movie in the review list. - This movie is not in the current review list.</td></tr>
+<tr><td><b>Container</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Rescrape&quot; [icon: refresh]</b></td><td>Clear the scraped results of this movie and scrape it again.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Rescrape Series (${_movies.where((m) =&gt; m.seriesName == movi&quot; [icon: playlist_play]</b></td><td>Clear the results for every movie of this series and scrape them again.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Scrape This&quot; [icon: search]</b></td><td>Scrape only the movie that is currently shown.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Scrape Selected (${_selectedMovieIndices.length})&quot; [icon: play_arrow]</b></td><td>Scrape all movies you have ticked in the list.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Scrape All (${_movies.length})&quot; [icon: bolt]</b></td><td>Scrape every movie in the current list.</td></tr>
+<tr><td><b>Title copied</b></td><td>Copy the AI-suggested title to the clipboard.</td></tr>
+<tr><td><b>🔄 Regen</b></td><td>Ask the AI to make a new title suggestion for this movie.</td></tr>
+<tr><td><b>Click to generate AI title...</b></td><td>Ask the AI to make a title suggestion for this movie.</td></tr>
+<tr><td><b>Reset</b></td><td>Undo your manual choice and go back to the AI&#x27;s suggested folder and genres.</td></tr>
+<tr><td><b>InkWell [icon: edit]</b></td><td>Edit the folder path for this movie by hand.</td></tr>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Long-press to make this genre the folder for this movie.</td></tr>
+<tr><td><b>InkWell [icon: close]</b></td><td>Remove this genre from the movie.</td></tr>
+<tr><td><b>OCR text copied</b></td><td>Copy the text read from the cover image to the clipboard.</td></tr>
+<tr><td><b>→</b></td><td>Use this translated genre as the folder for this movie.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Rescrape&quot; [icon: refresh]</b></td><td>Clear the scraped results of this movie and scrape it again.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Rescrape Series (${_movies.where((m) =&gt; _normalizeSeriesName&quot; [icon: playlist_play]</b></td><td>Clear the results for every movie of this series and scrape them again.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Apply to Series (${_movies.where((m) =&gt; _normalizeSeriesName&quot; [icon: copy_all]</b></td><td>Give the other movies of this series the same folder and genres as this one.</td></tr>
+<tr><td><b>InkWell [icon: refresh, auto_awesome]</b></td><td>Let the AI look at the cover image and suggest genres.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Apply Vision Results to This Movie&quot; [icon: check_circle]</b></td><td>Use the genres the image analysis found for this movie.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Scrape This&quot; [icon: search]</b></td><td>Scrape only the movie that is currently shown.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Scrape Selected (${_selectedMovieIndices.length})&quot; [icon: play_arrow]</b></td><td>Scrape all movies you have ticked in the list.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Scrape All (${_movies.length})&quot; [icon: bolt]</b></td><td>Scrape every movie in the current list.</td></tr>
+<tr><td><b>IconButton [icon: edit]</b></td><td>Edit folder</td></tr>
+<tr><td><b>GestureDetector [icon: undo, close]</b></td><td>Click to remove this genre from the movie, or to bring back a genre the AI removed.</td></tr>
+<tr><td><b>OCR text copied</b></td><td>Copy the text read from the cover image to the clipboard.</td></tr>
+<tr><td><b>→</b></td><td>Use this translated genre as the folder for this movie.</td></tr>
+<tr><td><b>InkWell</b></td><td>Choose this word as the genre.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without choosing a genre.</td></tr>
+<tr><td><b>I understand that $movingCount folder${movingCount != 1 ?</b></td><td>Tick to confirm you understand that folders will be moved or deleted.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without applying any changes.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: drive_file_move, check]</b></td><td>[state] - Apply the accepted changes and move the movie folders to their new places. - Apply the accepted changes.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without changing the folder path.</td></tr>
+<tr><td><b>Save</b></td><td>Save the folder and sub-folder you typed for this movie.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Add or remove this word as a genre of the movie.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Add or remove this genre on the movie.</td></tr>
+<tr><td><b>Use Series Location</b></td><td>Use the same folder as the other movies of this series.</td></tr>
+<tr><td><b>InkWell</b></td><td>Show this movie in the review panel.</td></tr>
+<tr><td><b>InkWell [icon: folder, check]</b></td><td>Add or remove this genre on the movie.</td></tr>
+<tr><td><b>Add to...</b></td><td>Add this genre to the category you pick. It is then kept and used for sorting.</td></tr>
+<tr><td><b>IconButton [icon: delete]</b></td><td>Discard</td></tr>
+<tr><td><b>IconButton [icon: edit]</b></td><td>Edit primary genre</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without changing the primary genre.</td></tr>
+<tr><td><b>Save</b></td><td>Save the primary genre you typed.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without changing the genres.</td></tr>
+<tr><td><b>Save</b></td><td>Save the changed genre list for this preset.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without creating a preset.</td></tr>
+<tr><td><b>Create</b></td><td>Create the new preset with the name and genres you typed.</td></tr>
+<tr><td><b>Edit Genres</b></td><td>Use this preset: it sets the movie&#x27;s genres and folder. Right-click for more options.</td></tr>
+<tr><td><b>Edit Genres</b></td><td>Change the list of genres in this preset.</td></tr>
+<tr><td><b>Delete Preset</b></td><td>Remove this preset from the list.</td></tr>
+<tr><td><b>＋ New</b></td><td>Create a new category preset.</td></tr>
+<tr><td><b>＋ New Preset</b></td><td>Create a new category preset.</td></tr>
+<tr><td><b>📁 ${cat.name}</b></td><td>Use this preset: it sets the movie&#x27;s genres and folder.</td></tr>
+<tr><td><b>InkWell [icon: edit]</b></td><td>Edit this preset.</td></tr>
+<tr><td><b>🗑</b></td><td>Delete this preset.</td></tr>
+<tr><td><b>Cancel</b></td><td>Stop editing this preset without saving.</td></tr>
+<tr><td><b>✓ Save</b></td><td>Save the changes to this preset.</td></tr>
+<tr><td><b>Checkbox</b></td><td>Tick to include this movie when you scrape the selected movies.</td></tr>
+<tr><td><b>IconButton [icon: arrow_back]</b></td><td>Go to the previous movie.</td></tr>
+<tr><td><b>IconButton [icon: arrow_forward]</b></td><td>Go to the next movie.</td></tr>
+<tr><td><b>TextButton</b></td><td>Tick all movies in the list, or untick them all if all are ticked.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Apply ($acceptedCount)&quot; [icon: save]</b></td><td>Apply the accepted movies: save their genres and move their folders as shown.</td></tr>
+<tr><td><b>InkWell</b></td><td>[state] - Not available right now: {...} - Click to use: {...}</td></tr>
+<tr><td><b>${category.priority}.</b></td><td>Select this category to see and change its details.</td></tr>
+<tr><td><b>${category.name} ${val ?</b></td><td>[state] - This category is on. Click to turn it off. - This category is off. Click to turn it on.</td></tr>
+<tr><td><b>IconButton [icon: arrow_upward]</b></td><td>Move up (higher priority)</td></tr>
+<tr><td><b>IconButton [icon: arrow_downward]</b></td><td>Move down (lower priority)</td></tr>
+<tr><td><b>TextButton.icon - &quot;Add&quot; [icon: add]</b></td><td>Add a new category.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Remove&quot; [icon: delete]</b></td><td>Remove the selected category from the list.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Clean Empty Folders&quot; [icon: cleaning_services]</b></td><td>Choose how to clean up empty folders in your library.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Scan from Disk&quot; [icon: folder_copy]</b></td><td>Look at the folders on disk and add any new categories found. Existing categories are kept.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Clear&quot; [icon: clear]</b></td><td>Clear the genres you have selected.</td></tr>
+<tr><td><b>Removed genre: $genre</b></td><td>Select or deselect the genre &#x27;{...}&#x27; so it can be moved to another category.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Move ${_selectedGenresForMove.length} genre(s) to...&quot; [icon: drive_file_move]</b></td><td>Move the selected genres to another category.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Apply Genres&quot; [icon: edit_note]</b></td><td>Apply this category&#x27;s genres to the movies of this series.</td></tr>
+<tr><td><b>Add</b></td><td>Add the typed genre to the selected category.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window and do nothing.</td></tr>
+<tr><td><b>Clean ALL Empty</b></td><td>Delete all empty folders in your library paths.</td></tr>
+<tr><td><b>Delete Empty Category Folders</b></td><td>Delete only the empty folders that belong to your categories.</td></tr>
+<tr><td><b>Clear All Genres</b></td><td>Empty the genre lists of all categories. Folders are not touched.</td></tr>
+<tr><td><b>New Folder</b></td><td>Create a brand new folder for this category.</td></tr>
+<tr><td><b>Subfolder</b></td><td>Create this category as a subfolder of an existing category.</td></tr>
+<tr><td><b>From Folder</b></td><td>Use a folder that already exists on disk for this category.</td></tr>
+<tr><td><b>Select parent...</b></td><td>Choose the parent category for the new sub-category.</td></tr>
+<tr><td><b>IconButton [icon: add]</b></td><td>Add the typed genre to this category.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without adding a category.</td></tr>
+<tr><td><b>Create</b></td><td>Create the category as set up above.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without removing the category.</td></tr>
+<tr><td><b>Remove &amp; Delete Folder</b></td><td>Remove the category from the list and delete its empty folder.</td></tr>
+<tr><td><b>Remove Category Only</b></td><td>Remove the category from the list. The folder on disk stays.</td></tr>
+<tr><td><b>${cat.genres.length} genres</b></td><td>Use the category {...}.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without moving any genres.</td></tr>
+<tr><td><b>No, Just Update Genres</b></td><td>Update the genre lists only. No movie folders are moved.</td></tr>
+<tr><td><b>Yes, Move Movies</b></td><td>Update the genres and also move the affected movies to the matching folders.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Expand All&quot; [icon: unfold_more]</b></td><td>Open every synonym group.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Collapse All&quot; [icon: unfold_less]</b></td><td>Close every synonym group.</td></tr>
+<tr><td><b>InkWell</b></td><td>Choose what to do with this spelling variation: blacklist it or use it as a new genre.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without changing anything.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Add to Blacklist&quot; [icon: block]</b></td><td>Put this word on the blacklist so it is removed from movies.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Use as New Genre&quot; [icon: add]</b></td><td>Keep this word as a separate new genre.</td></tr>
+<tr><td><b>Select category...</b></td><td>Choose the category for the genre.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without adding the genre to a category.</td></tr>
+<tr><td><b>Add</b></td><td>Add the genre to the chosen category.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Reset to Defaults&quot; [icon: refresh]</b></td><td>Replace the blacklist with the default list. Your own entries are lost.</td></tr>
+<tr><td><b>Add</b></td><td>Add the typed word to the blacklist.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window and keep the current blacklist.</td></tr>
+<tr><td><b>Reset</b></td><td>Reset the blacklist to the default list.</td></tr>
+</table></details>
+<details><summary><b>Genre Movie Select</b> (10)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window without applying anything.</td></tr>
+<tr><td><b>Series</b></td><td>Choose how the movies are ordered.</td></tr>
+<tr><td><b>— all series —</b></td><td>Show only the movies of one series, or all series.</td></tr>
+<tr><td><b>Checkbox</b></td><td>[state] - Show selected only - Show only the movies you have picked, so you can review your choice. - Show only movies that have no genre slots filled in yet.</td></tr>
+<tr><td><b>GestureDetector [icon: check, circle_outlined]</b></td><td>Pick or unpick this movie.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Select shown&quot; [icon: select_all]</b></td><td>Pick every movie that is currently shown in the list.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Deselect shown&quot; [icon: deselect]</b></td><td>Unpick every movie that is currently shown in the list.</td></tr>
+<tr><td><b>Clear all</b></td><td>Unpick all movies.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without applying anything.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Apply ${_selected.length}&quot; [icon: check]</b></td><td>[state] - Pick at least one movie first. - Use the {...} picked movie(s).</td></tr>
+</table></details>
+<details><summary><b>Genre Path Bulk</b> (17)</summary><table>
+<tr><td><b>Only these</b></td><td>Change only the movies selected here.</td></tr>
+<tr><td><b>Apply to whole series</b></td><td>Change every movie of this series, not just the ones selected here.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Select movies…  (${_movies.length})&quot; [icon: playlist_add_check]</b></td><td>[state] - Please wait until the changes have been applied. - Choose which movies this window changes. {...} are chosen now.</td></tr>
+<tr><td><b>Cancel</b></td><td>[state] - Please wait until the changes have been applied. - Close this window without changing anything.</td></tr>
+<tr><td><b>ElevatedButton</b></td><td>[state] - The changes are being applied. - Apply the folder words to all - movies. - Apply the folder words to this movie.</td></tr>
+<tr><td><b>DropdownButton</b></td><td>Choose the series these movies belong to.</td></tr>
+<tr><td><b>Checkbox</b></td><td>Also write the series name into these movies so they become part of the series.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;DeepSeek all ${_movies.length}&quot; [icon: auto_awesome]</b></td><td>[state] - DeepSeek is already working. - Let DeepSeek suggest the folder words for all {...} movies.</td></tr>
+<tr><td><b>Push to all ${_movies.length}</b></td><td>Copy the words you typed at the top into all {...} movies.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Remove from this edit</td></tr>
+<tr><td><b>IconButton [icon: auto_awesome]</b></td><td>DeepSeek: infer g1..g4 from the story</td></tr>
+<tr><td><b>? - &quot;➕ New word…&quot; / &quot;✏️ Rename &quot;$current&quot; everywhere…&quot; [icon: arrow_drop_down, history]</b></td><td>Pick, create or rename a {...} word</td></tr>
+<tr><td><b>Cancel</b></td><td>Close without using what you typed.</td></tr>
+<tr><td><b>OK</b></td><td>Use what you typed.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and rename nothing.</td></tr>
+<tr><td><b>Rename</b></td><td>Rename the word in the movies&#x27; details files and in the series settings. Folders are not moved.</td></tr>
+</table></details>
+<details><summary><b>Genre Path Editor</b> (6)</summary><table>
+<tr><td><b>?</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>?</b></td><td>Not in the vocabulary yet. {...}Saving adds &quot;{...}&quot; as a {...} word, so the sorter will {...}honour it from now on.</td></tr>
+<tr><td><b>?</b></td><td>&quot;{...}&quot; is normally a {...} word. {...}Kept where you put it — a person may be in control (g1) {...}or receiving (g3).</td></tr>
+<tr><td><b>InkWell</b></td><td>Use this suggestion for the word you are typing in the folder path.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close without changing the folder path.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Save&quot; [icon: check]</b></td><td>Save the folder path you typed. Any new words in it are added to the app&#x27;s list of known folder words first.</td></tr>
+</table></details>
+<details><summary><b>Genre Rules Banner</b> (1)</summary><table>
+<tr><td><b>GENRE RULES   Maker \ g1 \ g2 \ g3 \ g4 \ DVD-ID</b></td><td>Show or hide the rules for how movie folders are named and sorted.</td></tr>
+</table></details>
+<details><summary><b>Genre Tag Search</b> (19)</summary><table>
+<tr><td><b>TextButton.icon - &quot;Stop&quot; [icon: stop_circle]</b></td><td>Stop loading search results now. Results already loaded stay on screen.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close the genre search window.</td></tr>
+<tr><td><b>IconButton [icon: clear]</b></td><td>Clear the search box and the selected genre.</td></tr>
+<tr><td><b>IconButton [icon: search]</b></td><td>Search for the text in the search box.</td></tr>
+<tr><td><b>ListTile [icon: label_outline]</b></td><td>Use the genre {...} for the search.</td></tr>
+<tr><td><b>Clear all</b></td><td>Remove all remembered recent searches.</td></tr>
+<tr><td><b>GestureDetector [icon: history, close]</b></td><td>Run this recent search again.</td></tr>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Remove this search from the recent searches list.</td></tr>
+<tr><td><b>Exact words</b></td><td>Switch between matching the search word as a whole word only and matching it anywhere inside a word.</td></tr>
+<tr><td><b>All</b></td><td>Select every movie shown in the results.</td></tr>
+<tr><td><b>Clear</b></td><td>Deselect all selected movies.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: download]</b></td><td>Look for download links for the selected movies and open the download window.</td></tr>
+<tr><td><b>Close</b></td><td>Close the genre search window.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Show or hide results from this source.</td></tr>
+<tr><td><b>UNCENSORED</b></td><td>Select or deselect this movie for the group actions at the bottom.</td></tr>
+<tr><td><b>GestureDetector [icon: open_in_browser]</b></td><td>Open this movie&#x27;s web page in your browser.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Get uncensored&quot; [icon: upgrade]</b></td><td>Look for an uncensored version of this movie you already own and open the download window.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: check_circle_outline]</b></td><td>You already have this movie. Opens the download window if you still want to look for links.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Download&quot; [icon: download_outlined]</b></td><td>Look for download links for this movie and open the download window.</td></tr>
+</table></details>
+<details><summary><b>Hardsub Ocr Progress</b> (4)</summary><table>
+<tr><td><b>TextButton.icon [icon: play_arrow, pause]</b></td><td>[state] - Continue reading the burned-in subtitles. - Pause reading the burned-in subtitles. You can continue later.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop reading the burned-in subtitles.</td></tr>
+<tr><td><b>Run in Background</b></td><td>Close this window and let the job keep running in the background.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+</table></details>
+<details><summary><b>Inbox File Duplicate Handler</b> (5)</summary><table>
+<tr><td><b>ElevatedButton.icon - &quot;Replace&quot; [icon: swap_horiz]</b></td><td>Replace the file in your library with this one from the inbox.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Add to Library&quot; [icon: add_circle]</b></td><td>Move this file from the inbox into your library as well.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Delete&quot; [icon: delete]</b></td><td>Delete this file from the inbox.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Skip&quot; [icon: skip_next]</b></td><td>Leave this file as it is for now.</td></tr>
+<tr><td><b>Done</b></td><td>Close this window.</td></tr>
+</table></details>
+<details><summary><b>Inbox Multi Part Handler</b> (10)</summary><table>
+<tr><td><b>Delete File?</b></td><td>Delete file</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep the file.</td></tr>
+<tr><td><b>Delete</b></td><td>Delete this file. This cannot be undone.</td></tr>
+<tr><td><b>🎬 Combine: OCR subtitles + mux into UC file</b></td><td>Read the burned-in subtitles of the hardsub file, make an .srt from them and add it as a soft subtitle to the uncensored file. Nothing is re-encoded.</td></tr>
+<tr><td><b>🔄 Merge into single file (720p MP4)</b></td><td>Join all the parts into one 720p MP4 file.</td></tr>
+<tr><td><b>📦 Multi-part movie (all files in one folder)</b></td><td>Keep all the files together in one movie folder.</td></tr>
+<tr><td><b>📁 Separate movies (each in own folder)</b></td><td>Put each file in its own movie folder.</td></tr>
+<tr><td><b>⏭️ Skip for now (leave as loose files)</b></td><td>Leave these files loose in the inbox so you can handle them yourself.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without changing anything.</td></tr>
+<tr><td><b>Merging ${group.dvdId} ($currentIndex/$mergeCount)... This m</b></td><td>Carry out the choices you made for all the groups.</td></tr>
+</table></details>
+<details><summary><b>Inbox Processing Service</b> (4)</summary><table>
+<tr><td><b>Keep OLD sub</b></td><td>Keep the subtitle the movie already had.</td></tr>
+<tr><td><b>Keep NEW sub</b></td><td>Keep the new subtitle with its original timing. You can fine-tune it later.</td></tr>
+<tr><td><b>Leave for migration</b></td><td>Do not keep the carried subtitle now. The subtitle migration will transcribe this movie fresh.</td></tr>
+<tr><td><b>Keep carried sub</b></td><td>Keep the carried subtitle with its original timing. You can fine-tune it later.</td></tr>
+</table></details>
+<details><summary><b>Library Loose Files</b> (2)</summary><table>
+<tr><td><b>Not now</b></td><td>Leave the files where they are. You will be asked again at the next Scan Library.</td></tr>
+<tr><td><b>Move ${withId.length} to the Pre-Inbox</b></td><td>Move the {...} file(s) with a DVD-ID (and their subtitles and covers) to the Pre-Inbox. Nothing is overwritten.</td></tr>
+</table></details>
+<details><summary><b>Library Movie Card</b> (1)</summary><table>
+<tr><td><b>📁 ${getMovieLocation(movie.folderPath)}</b></td><td>Click to open this movie. Hold the click to select it along with other movies.</td></tr>
+</table></details>
+<details><summary><b>Live Log</b> (5)</summary><table>
+<tr><td><b>Live Log</b></td><td>Drag here to move the log window around the screen.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>[state] - Show log lines of every level. - Show only normal information lines. - Show only detailed debug lines. - Show only warnings. - Show only errors.</td></tr>
+<tr><td><b>Icon [icon: vertical_align_bottom]</b></td><td>Auto-scroll</td></tr>
+<tr><td><b>Icon [icon: copy]</b></td><td>Copy all</td></tr>
+<tr><td><b>Icon [icon: delete_sweep_outlined]</b></td><td>Clear</td></tr>
+</table></details>
+<details><summary><b>Local Browse</b> (17)</summary><table>
+<tr><td><b>IconButton [icon: arrow_back]</b></td><td>Go back to the previous folder.</td></tr>
+<tr><td><b>Padding [icon: videocam_off]</b></td><td>ffmpeg not found — no thumbnails. {...}Install from ffmpeg.org and place at one of: {...} {...} {...} C:\ffmpeg\bin\ffmpeg.exe {...} or add to Windows PATH</td></tr>
+<tr><td><b>? [icon: sort]</b></td><td>Sort by {...}</td></tr>
+<tr><td><b>IconButton [icon: arrow_upward, arrow_downward]</b></td><td>[state] - Ascending - Descending</td></tr>
+<tr><td><b>IconButton [icon: grid_view, grid_on]</b></td><td>[state] - Compact grid (4 col) - List view - Wide grid (2 col)</td></tr>
+<tr><td><b>IconButton [icon: home]</b></td><td>Drives</td></tr>
+<tr><td><b>TextButton.icon [icon: account_tree, account_tree_outlined]</b></td><td>[state] - Go back to showing only the videos of this folder. - Show all the videos of this folder and of all its sub-folders at once.</td></tr>
+<tr><td><b>TextButton.icon [icon: filter_alt, filter_alt_outlined]</b></td><td>[state] - Show all items again. - Show only the items that are not in your library yet.</td></tr>
+<tr><td><b>IconButton [icon: refresh]</b></td><td>Refresh</td></tr>
+<tr><td><b>Drives</b></td><td>Go back to the list of drives.</td></tr>
+<tr><td><b>InkWell</b></td><td>[state] - Go to this folder. - The folder you are in now.</td></tr>
+<tr><td><b>Go Back</b></td><td>Go back to the previous folder.</td></tr>
+<tr><td><b>InkWell [icon: folder, insert_drive_file]</b></td><td>[state] - Open this folder. - This file is not a video, so it cannot be played here.</td></tr>
+<tr><td><b>GestureDetector [icon: insert_drive_file, folder]</b></td><td>[state] - This file is not a video, so it cannot be played here. - Open this folder.</td></tr>
+<tr><td><b>GestureDetector [icon: play_arrow]</b></td><td>Play this video.</td></tr>
+<tr><td><b>•</b></td><td>Play this video.</td></tr>
+<tr><td><b>IconButton [icon: play_circle_filled]</b></td><td>Play this video.</td></tr>
+</table></details>
+<details><summary><b>Log Button</b> (1)</summary><table>
+<tr><td><b>IconButton [icon: terminal]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+</table></details>
+<details><summary><b>Main</b> (4)</summary><table>
+<tr><td><b>No</b></td><td>Keep the app open.</td></tr>
+<tr><td><b>Yes</b></td><td>Close the app.</td></tr>
+<tr><td><b>Resume Scrape</b></td><td>Continue the scrape that was stopped or minimized, from where it stopped. You can drag this button to another place.</td></tr>
+<tr><td><b>InkWell [icon: close]</b></td><td>No - forget the paused scrape (it will not ask again)</td></tr>
+</table></details>
+<details><summary><b>Manual Web Search</b> (14)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close without using anything.</td></tr>
+<tr><td><b>Use as $useAs</b></td><td>Use the web address you typed as the {...} image for this movie.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close without using anything.</td></tr>
+<tr><td><b>Use as $useAs</b></td><td>Use the text you typed as the {...} of this movie.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>IconButton [icon: arrow_back]</b></td><td>Back</td></tr>
+<tr><td><b>IconButton [icon: arrow_forward]</b></td><td>Forward</td></tr>
+<tr><td><b>IconButton [icon: refresh]</b></td><td>Reload</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Images&quot; [icon: image]</b></td><td>Search the web for images.</td></tr>
+<tr><td><b>DropdownButton</b></td><td>Choose which search site is used for the web search.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Images&quot; [icon: image]</b></td><td>Search the web for images.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;SAVE ALL TO MOVIE&quot; [icon: save]</b></td><td>Save everything you picked here into the movie: cover, poster, title, studio, director, actors and genres.</td></tr>
+<tr><td><b>ElevatedButton</b></td><td>[state] - Fanart - Paste the web address of a cover (fanart) image for this movie. - Poster - Paste the web address of a poster image for this movie. - Type the - - of this movie yourself.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Remove this item from your picks.</td></tr>
+</table></details>
+<details><summary><b>Media Player</b> (74)</summary><table>
+<tr><td><b>TextButton.icon - &quot;Project page&quot; [icon: public]</b></td><td>Open the {...} project page in your browser.</td></tr>
+<tr><td><b>DropdownButton</b></td><td>Choose a value for {...}:{...}{...} to change which movies are shown or how they are ordered.</td></tr>
+<tr><td><b>IconButton [icon: remove]</b></td><td>Minimize — scan keeps running in background</td></tr>
+<tr><td><b>From the whole current view</b></td><td>Where the movies are taken from.</td></tr>
+<tr><td><b>GB</b></td><td>Count the amount in GB or in number of movies.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close without selecting anything.</td></tr>
+<tr><td><b>Select and choose destination</b></td><td>Select that amount of movies from the grid, then choose where to move them.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close without changing the limit.</td></tr>
+<tr><td><b>No limit</b></td><td>Remove both limits: select as many as you like again.</td></tr>
+<tr><td><b>Set limit</b></td><td>Save the limit. It stays until you change it.</td></tr>
+<tr><td><b>OK</b></td><td>Close this message.</td></tr>
+<tr><td><b>📋 Copied: ${identResult.best!.dvdId}</b></td><td>Copy the DVD-ID that was found to the clipboard.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Results copied to clipboard!&quot; / &quot;Copy Results&quot; [icon: copy]</b></td><td>Copy the test results to the clipboard.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>DropdownButton</b></td><td>Choose a value for {...}:{...}{...} to change which movies are shown or how they are ordered.</td></tr>
+<tr><td><b>Show the welcome guide</b></td><td>Show the welcome guide again.</td></tr>
+<tr><td><b>${actor.movieCount} movies${allPhotos.length &gt; 1 ?</b></td><td>Click to show only the movies of this actor. Double-click to see the details of the actor.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Click to select this movie. Double-click to open its details. Right-click for more actions.</td></tr>
+<tr><td><b>${actor.movieCount} movies</b></td><td>Click to show only the movies of this actor. Double-click to see the details of the actor.</td></tr>
+<tr><td><b>GestureDetector [icon: delete]</b></td><td>Remove this actor name from all movies. You are asked to confirm first.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>[state] - Use this photo as the main photo of the actor. - Delete this photo of the actor. You are asked to confirm first.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep the photo.</td></tr>
+<tr><td><b>Delete</b></td><td>Delete this photo of the actor.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep the actor name.</td></tr>
+<tr><td><b>Remove</b></td><td>Remove this actor name from the details files of all movies.</td></tr>
+<tr><td><b>LogIconButton</b></td><td>View live log (Ctrl+L)</td></tr>
+<tr><td><b>IconButton [icon: play_circle_fill]</b></td><td>Resume the minimized scrape</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>No - forget the paused scrape (it will not ask again)</td></tr>
+<tr><td><b>IconButton [icon: drive_file_move_rtl]</b></td><td>Move by amount - choose how many GB or movies to move (taken from the top of the grid), then the destination. No need to select first.</td></tr>
+<tr><td><b>IconButton [icon: rule]</b></td><td>[state] - selectLimitCount - selectLimitGb - Selection limit is ON - click to change it - Selection limit - set how many movies or how many GB you can select (for moving between drives)</td></tr>
+<tr><td><b>IconButton [icon: filter_alt]</b></td><td>[state] - Taste filter ACTIVE — red-lined movies are blocked - Taste filter — build a keep-list from your favorites</td></tr>
+<tr><td><b>IconButton [icon: cleaning_services]</b></td><td>Clean all NMP files to standard (backup-first)</td></tr>
+<tr><td><b>IconButton [icon: video_library, new_releases]</b></td><td>[state] - feed - Back to your library - New Releases — the newest movies from the sites, with your owned ones marked</td></tr>
+<tr><td><b>IconButton [icon: refresh]</b></td><td>[state] - Scanning library… - Scan Library — full rescan from disk (library + inbox), rebuilds the cache</td></tr>
+<tr><td><b>IconButton [icon: closed_caption]</b></td><td>Scan Burned Subs — find movies with burned-in English subtitles (checks NMP burnedSub, folder name, title)</td></tr>
+<tr><td><b>IconButton [icon: pending_actions]</b></td><td>Process Pre-Inbox — prework staging: multi-part merge, de-duplicate, review, then move to Inbox</td></tr>
+<tr><td><b>IconButton [icon: history]</b></td><td>Trash / History — undo recent actions (delete, replace, rename, move) while they are still in the trash</td></tr>
+<tr><td><b>IconButton [icon: table_rows]</b></td><td>Subtitle Coverage — matrix of every movie vs its subs (JP/English/DeepSeek/…), flags NONE/OLD/MANY, totals + CSV export</td></tr>
+<tr><td><b>IconButton [icon: download_for_offline]</b></td><td>Flagged for download — titles the remote selected/flagged for download</td></tr>
+<tr><td><b>IconButton [icon: inbox]</b></td><td>Process Inbox — organise new files: detect DVD-ID, de-duplicate, move into the library</td></tr>
+<tr><td><b>IconButton [icon: people_alt]</b></td><td>Actor Manager — bulk rescrape actor names &amp; genres from eroasia/JavLibrary</td></tr>
+<tr><td><b>IconButton [icon: medical_services]</b></td><td>Doctor — diagnose &amp; fix library / NMP issues</td></tr>
+<tr><td><b>IconButton [icon: compare_arrows]</b></td><td>Ollama vs DeepSeek — compare subtitle translation quality on your own lines</td></tr>
+<tr><td><b>IconButton [icon: manage_search]</b></td><td>Genre / Tag Search — find movies by genre across JAVLibrary, JAV-GURU, MissAV</td></tr>
+<tr><td><b>IconButton [icon: ondemand_video]</b></td><td>Tube Search (website browsing)</td></tr>
+<tr><td><b>IconButton [icon: search]</b></td><td>Identify Unknown Clip — pick any video file to find its DVD-ID</td></tr>
+<tr><td><b>IconButton [icon: folder_open]</b></td><td>Local Drive Browser &amp; Player</td></tr>
+<tr><td><b>IconButton [icon: public, public_off]</b></td><td>[state] - Previewing PUBLIC build — click to return to the full app - Preview PUBLIC build (hide download/tube features)</td></tr>
+<tr><td><b>$count</b></td><td>{...} filename(s) need DVD-ID review</td></tr>
+<tr><td><b>? - &quot;Collecting the logs…&quot; / &quot;What every button does&quot; [icon: help_center_outlined, touch_app]</b></td><td>[state] - Help - Help - Kuraya {...} is ready to install</td></tr>
+<tr><td><b>What every button does</b></td><td>Show an explanation of what every button in the app does.</td></tr>
+<tr><td><b>Troubleshooting — try this first</b></td><td>Show the things to try first when something does not work.</td></tr>
+<tr><td><b>Report a problem (with log)</b></td><td>Build a problem report with the log, save it on your Desktop and open the page where you describe the problem.</td></tr>
+<tr><td><b>About ${AppBranding.appName}</b></td><td>Show the version, edition and project page of {...}, and the open-source licenses it uses.</td></tr>
+<tr><td><b>ListTile [icon: system_update_alt]</b></td><td>[state] - Look on the Kuraya page for a newer version. - Kuraya {...} is ready. Click to see what is new and install it.</td></tr>
+<tr><td><b>IconButton [icon: settings]</b></td><td>Settings</td></tr>
+<tr><td><b>IconButton [icon: find_in_page]</b></td><td>Check Duplicates</td></tr>
+<tr><td><b>IconButton [icon: cleaning_services]</b></td><td>Cleanup Duplicates</td></tr>
+<tr><td><b>IconButton [icon: auto_delete]</b></td><td>Clean Cache — fix wrong flags + duplicate rows, remove ghost entries (fast, no disk rescan)</td></tr>
+<tr><td><b>Fanart to Poster Converter launched!</b></td><td>Fanart to Poster Converter</td></tr>
+<tr><td><b>DropdownButton [icon: palette_outlined]</b></td><td>Choose the look of the whole app (all screens, dialogs and buttons).</td></tr>
+<tr><td><b>${selectedMovies.length} movie${selectedMovies.length != 1 ?</b></td><td>Quantity: {...} movie{...} : }{...} Size: {...}}</td></tr>
+<tr><td><b>TextButton.icon - &quot;Clear Selection&quot; [icon: clear]</b></td><td>Untick all selected movies.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Show Actor Scraper&quot; [icon: people]</b></td><td>Open the actor photo scraper that is running in the background.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Actor browser refreshed: ${allActors.length} actors&quot; [icon: refresh]</b></td><td>Build the actor list again.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Deselect all&quot; [icon: deselect]</b></td><td>Untick all selected movies.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Select all ${displayMovies.length}&quot; [icon: select_all]</b></td><td>Select all {...} movies that are shown.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Hide Console&quot; [icon: terminal]</b></td><td>Hide the scraper console.</td></tr>
+<tr><td><b>FilledButton.icon - &quot;Scrape now&quot; [icon: travel_explore]</b></td><td>Start scraping the new items that are ready in the Inbox.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Dismiss</td></tr>
+<tr><td><b>GestureDetector [icon: drive_file_move, play_circle]</b></td><td>Open the window of the move that is running. The move keeps going.</td></tr>
+<tr><td><b>GestureDetector [icon: play_circle, pause_circle]</b></td><td>[state] - Continue the move. - Pause the move.</td></tr>
+<tr><td><b>GestureDetector [icon: cancel]</b></td><td>Stop the move.</td></tr>
+</table></details>
+<details><summary><b>Media Player Helpers</b> (12)</summary><table>
+<tr><td><b>ElevatedButton.icon - &quot;Copy all ${release.linkSummary} links&quot; / &quot;✅ ${release.linkSummary} links copied&quot; [icon: copy]</b></td><td>Copy all {...} download links of this release to the clipboard.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Copy this link to the clipboard.</td></tr>
+<tr><td><b>IconButton [icon: clear]</b></td><td>Clear the search text.</td></tr>
+<tr><td><b>Checkbox</b></td><td>Tick or untick every actor name that is shown.</td></tr>
+<tr><td><b>Checkbox</b></td><td>Tick or untick every name in this group.</td></tr>
+<tr><td><b>${entry.value}x -</b></td><td>Tick to remove the actor name {...}. Untick to keep it.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window and change nothing.</td></tr>
+<tr><td><b>⚠️ Large Deletion Warning</b></td><td>[state] - Tick at least one name first. - Remove the ticked actor names from the movies. Unticked names are kept. - The folders listed here are renamed too.</td></tr>
+<tr><td><b>Cancel</b></td><td>Go back without removing anything.</td></tr>
+<tr><td><b>Yes, Remove Them</b></td><td>Yes, remove the ticked actor names now.</td></tr>
+<tr><td><b>? - &quot;Recent searches&quot; / &quot;Clear&quot; [icon: history]</b></td><td>Search history</td></tr>
+<tr><td><b>Clear</b></td><td>Delete the list of recent searches.</td></tr>
+</table></details>
+<details><summary><b>Metadata Edit</b> (12)</summary><table>
+<tr><td><b>ElevatedButton.icon - &quot;Rename Video&quot; [icon: drive_file_rename_outline]</b></td><td>Rename the video file to the name you typed.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Browse&quot; [icon: folder_open]</b></td><td>Choose a fanart (cover) image file from your computer.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Paste&quot; [icon: content_paste]</b></td><td>Paste the file path of an image that you copied. The image is then used as the fanart.</td></tr>
+<tr><td><b>Fanart</b></td><td>Use this image as the fanart (cover) of the movie. A copy is made and the original stays.</td></tr>
+<tr><td><b>Poster</b></td><td>Use this image as the poster of the movie.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Delete&quot; [icon: delete]</b></td><td>Delete this image file from the movie folder (you are asked to confirm first).</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without saving.</td></tr>
+<tr><td><b>Reset</b></td><td>[state] - Throw away your changes and load the saved details again. - There are no changes to reset.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Save &amp; Auto-Rename&quot; [icon: save]</b></td><td>Save your changes to the movie&#x27;s details file and rename the folder and files to match.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep the image.</td></tr>
+<tr><td><b>Delete</b></td><td>Yes, delete the image file.</td></tr>
+<tr><td><b>OK</b></td><td>Close this message.</td></tr>
+</table></details>
+<details><summary><b>Mosaic Review</b> (14)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>Sort a folder (unknown)</b></td><td>Choose what to check: sort a folder of unknown videos, or re-verify the movies marked uncensored or censored.</td></tr>
+<tr><td><b>OutlinedButton.icon [icon: folder_open]</b></td><td>Choose the folder whose videos should be checked.</td></tr>
+<tr><td><b>TextButton.icon [icon: play_arrow, pause]</b></td><td>[state] - Continue the check. - Pause the check. You can continue it later.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop the check.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Minimize&quot; [icon: remove]</b></td><td>Close this window. The check keeps running in the background.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Run&quot; [icon: play_arrow]</b></td><td>Start a new check. The videos found are listed for you to review.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Resume&quot; [icon: fast_forward]</b></td><td>Continue the previous check where it stopped.</td></tr>
+<tr><td><b>FilterChip</b></td><td>[state] - Leave drive {...} out of the check. - Include drive {...} in the check.</td></tr>
+<tr><td><b>Any time</b></td><td>Choose how far back to look: any time, or only the last few days.</td></tr>
+<tr><td><b>All</b></td><td>Choose how many movies to check in one run.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Rename confirmed censored → DVD-ID&quot; [icon: drive_file_rename_outline]</b></td><td>Rename the videos you marked as censored so that their name is only the DVD-ID.</td></tr>
+<tr><td><b>IconButton [icon: play_circle_fill]</b></td><td>Play to check</td></tr>
+<tr><td><b>OutlinedButton</b></td><td>[state] - Censored - Mark this video as censored (with a mosaic). Your answer is saved as an example for the detector. - Mark this video as uncensored (no mosaic). Your answer is saved as an example for the detector.</td></tr>
+</table></details>
+<details><summary><b>Movie Context Advanced Actions</b> (19)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this window without changing anything.</td></tr>
+<tr><td><b>Propagate Series</b></td><td>Give the series name to the movies that have a matching title but no series.</td></tr>
+<tr><td><b>❌ Cancel</b></td><td>Close this window and rename nothing.</td></tr>
+<tr><td><b>ElevatedButton</b></td><td>Carry out the renames and the info-file fixes listed above. Nothing changes before you press this.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;📋 Error report copied to clipboard!&quot; / &quot;Copy Error Report for AI&quot; [icon: copy]</b></td><td>Copy the error report to the clipboard so you can paste it to an AI for help.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Scrape Failed Movies?&quot; / &quot;Do you want to scrape ${results.errors.length} failed movie(&quot; [icon: refresh]</b></td><td>Scrape the movies that failed again (you are asked to confirm first).</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and scrape nothing.</td></tr>
+<tr><td><b>Scrape Now</b></td><td>Scrape the failed movies now.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>Not Now</b></td><td>Close this question and do not rename now.</td></tr>
+<tr><td><b>Retry Rename</b></td><td>Try to rename the movies that just got their metadata.</td></tr>
+<tr><td><b>IconButton [icon: clear]</b></td><td>Clear the search box.</td></tr>
+<tr><td><b>📁 Library Root</b></td><td>Move the movies to the library root folder.</td></tr>
+<tr><td><b>📁 Keep genre path → Sorted</b></td><td>Move each movie from the Inbox into the Sorted folders, keeping its own folder path.</td></tr>
+<tr><td><b>📥 Keep genre path → Inbox</b></td><td>Send each movie from Sorted back to the Inbox, keeping its own folder path.</td></tr>
+<tr><td><b>$genresPreview$moreCount</b></td><td>Move the movies to the category {...}.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without moving anything.</td></tr>
+<tr><td><b>ListTile [icon: video_library]</b></td><td>Choose the series {...}.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without choosing.</td></tr>
+</table></details>
+<details><summary><b>Movie Context Bulk Actions</b> (2)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this window without scraping anything.</td></tr>
+<tr><td><b>Start Bulk Scrape</b></td><td>Start scraping all the selected movies.</td></tr>
+</table></details>
+<details><summary><b>Movie Context Menu</b> (29)</summary><table>
+<tr><td><b>?</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>Stop</b></td><td>Stop here. The rest of the selected movies are skipped.</td></tr>
+<tr><td><b>Next</b></td><td>Open the replacement search for the next selected movie.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and change nothing.</td></tr>
+<tr><td><b>Fix ${candidates.length}</b></td><td>Fix the {...} FC2 ID(s) listed here.</td></tr>
+<tr><td><b>Not now</b></td><td>Close this question and do not trim.</td></tr>
+<tr><td><b>Trim first ${cut.toStringAsFixed(0)}s</b></td><td>Cut the first {...} seconds (the start ad) off this video. The original is backed up first.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window.</td></tr>
+<tr><td><b>Extract</b></td><td>Let AI read the movie details from the web address you typed, so you can check them. Nothing is saved until you apply it.</td></tr>
+<tr><td><b>OK</b></td><td>Close this message.</td></tr>
+<tr><td><b>OK</b></td><td>Close this message.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>Use ${results.values.where((r) =&gt; r[</b></td><td>Open the scrape window with the details found by the scrapers that succeeded.</td></tr>
+<tr><td><b>OK</b></td><td>Close this message.</td></tr>
+<tr><td><b>OK</b></td><td>Close this message.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and rename nothing.</td></tr>
+<tr><td><b>Rename ${plan.length}</b></td><td>Rename the {...} movies as listed.</td></tr>
+<tr><td><b>Cancel</b></td><td>Cancel: nothing is moved.</td></tr>
+<tr><td><b>Continue</b></td><td>Continue with this amount. You still see the destination and size before anything moves.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and move nothing.</td></tr>
+<tr><td><b>Move Folders</b></td><td>[state] - Move the movie folders to the new location. - There is not enough free space on the destination drive.</td></tr>
+<tr><td><b>IconButton [icon: remove]</b></td><td>Minimize to corner chip</td></tr>
+<tr><td><b>TextButton.icon [icon: play_arrow_rounded, pause_rounded]</b></td><td>[state] - Continue the move. - Pause the move.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Stop&quot; [icon: stop_circle_outlined]</b></td><td>Stop the move.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep the movies in the library.</td></tr>
+<tr><td><b>Hide from Library</b></td><td>Hide the movies from the library list. The files stay on your disk.</td></tr>
+<tr><td><b>TextButton.icon [icon: document_scanner]</b></td><td>[state] - Reading the cover text, please wait. - Read the text on this movie&#x27;s cover image now.</td></tr>
+<tr><td><b>Copied</b></td><td>Copy all</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+</table></details>
+<details><summary><b>Movie Contexts</b> (6)</summary><table>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Retry&quot; [icon: refresh]</b></td><td>Look for the links again.</td></tr>
+<tr><td><b>All</b></td><td>Tick all the links in the list.</td></tr>
+<tr><td><b>None</b></td><td>Untick all the links.</td></tr>
+<tr><td><b>Checkbox</b></td><td>Tick or untick this link.</td></tr>
+<tr><td><b>GestureDetector [icon: copy]</b></td><td>Copy this link to the clipboard.</td></tr>
+</table></details>
+<details><summary><b>Movie Indicator Row</b> (1)</summary><table>
+<tr><td><b>?</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+</table></details>
+<details><summary><b>Movie Selection</b> (10)</summary><table>
+<tr><td><b>IconButton [icon: play_arrow]</b></td><td>Play movie</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>Un-queued - tap again to select</b></td><td>[state] - This movie is already queued for download. Tap to take it out of the queue so you can pick it again. - Tap to unpick this movie. - Tap to pick this movie.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Close this picture.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Play Movie&quot; [icon: play_arrow]</b></td><td>Play the movie you already have in your library.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without picking anything.</td></tr>
+<tr><td><b>Skip ${widget.source}</b></td><td>Skip {...} and go on to the next source.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;❌ No download links found for any selected movie&quot; / &quot;❌ Error: $e&quot; [icon: download]</b></td><td>[state] - Looking for download links, please wait. - Put the picked movie(s) in the download queue. They are downloaded when scraping has finished. - Look up download links for the picked movie(s) and copy them to the clipboard.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Select &amp; Scrape&quot; [icon: check]</b></td><td>[state] - Use the picked movie and scrape its details. - Pick exactly one movie first.</td></tr>
+</table></details>
+<details><summary><b>Movie Sorter</b> (69)</summary><table>
+<tr><td><b>InkWell</b></td><td>Send this movie to the category {...}</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window and change nothing.</td></tr>
+<tr><td><b>DropdownButton</b></td><td>Choose what kind of category this is.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without adding a category.</td></tr>
+<tr><td><b>Add</b></td><td>Add a category with the name you typed. Its folder is created in your sorted folders.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without adding a sub-category.</td></tr>
+<tr><td><b>Add</b></td><td>Add a sub-category with the name you typed under the chosen category.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep the category.</td></tr>
+<tr><td><b>Remove</b></td><td>Remove the category from the list. The folder on your disk is kept.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep the synonyms.</td></tr>
+<tr><td><b>Reset</b></td><td>Replace all your synonyms with the built-in default list.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep the blacklist.</td></tr>
+<tr><td><b>Reset</b></td><td>Replace the blacklist with the built-in default list.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Take this folder path off the list.</td></tr>
+<tr><td><b>Add</b></td><td>Add the folder path you typed to the list.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without saving.</td></tr>
+<tr><td><b>Save</b></td><td>Save the list of sorted folder paths.</td></tr>
+<tr><td><b>Tab</b></td><td>Choose the sort folders for each series.</td></tr>
+<tr><td><b>3.2 · Sort</b></td><td>Preview where each movie belongs in the folder structure and move the movies there.</td></tr>
+<tr><td><b>Tab</b></td><td>Manage the genre categories that are used for sorting.</td></tr>
+<tr><td><b>Tab</b></td><td>Manage genre synonyms: different spellings that count as the same genre.</td></tr>
+<tr><td><b>Tab</b></td><td>Manage the genre blacklist: genres that are not used.</td></tr>
+<tr><td><b>InkWell [icon: edit]</b></td><td>Change the paths of your sorted folders.</td></tr>
+<tr><td><b>Merge Videos</b></td><td>Auto-merge numbered video parts (e.g. Movie01.wmv + Movie02.wmv → Movie.mp4)</td></tr>
+<tr><td><b>Dupes/Broken</b></td><td>Find duplicate, broken, or similar videos (Czkawka/Krokiet)</td></tr>
+<tr><td><b>AI Suggest</b></td><td>AI reads fanart images and suggests 3-level folder paths</td></tr>
+<tr><td><b>GlossyButton [icon: sync]</b></td><td>Re-read every movie&#x27;s .nmp from disk into memory and {...}ObjectBox. Run this after ANY script that edits NMP files, {...}or the sort will use the genres the app loaded at startup.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: play_arrow]</b></td><td>[state] - Please wait until the current work has finished. - Work out where every movie belongs in the folder structure and list the movies that are not there yet. Nothing is moved yet.</td></tr>
+<tr><td><b>IconButton [icon: clear]</b></td><td>Clear the search box.</td></tr>
+<tr><td><b>—</b></td><td>Click to tick or untick this movie. Right-click for more actions.</td></tr>
+<tr><td><b>Checkbox</b></td><td>Tick or untick this movie.</td></tr>
+<tr><td><b>Padding [icon: warning_amber_rounded]</b></td><td>Title suggests &quot;{...}&quot; {...}but genres matched &quot;{...}&quot;. {...}Click the arrow to override.</td></tr>
+<tr><td><b>InkWell [icon: manage_search]</b></td><td>Scrape metadata for {...}</td></tr>
+<tr><td><b>📂 Open current folder</b></td><td>Open the folder where this movie is now.</td></tr>
+<tr><td><b>📂 Open new location</b></td><td>Open the folder where this movie would be moved to.</td></tr>
+<tr><td><b>📋 Copy new path</b></td><td>Copy the path where this movie would be moved to.</td></tr>
+<tr><td><b>📋 Copy current path</b></td><td>Copy the path where this movie is now.</td></tr>
+<tr><td><b>Text</b></td><td>[state] - Untick this movie. - Tick this movie.</td></tr>
+<tr><td><b>☑ Select only this one</b></td><td>Tick only this movie and untick all the others.</td></tr>
+<tr><td><b>☐ Deselect all</b></td><td>Untick all movies.</td></tr>
+<tr><td><b>🔍 Scrape metadata</b></td><td>Search for the details of this movie.</td></tr>
+<tr><td><b>TextButton.icon [icon: deselect, select_all]</b></td><td>[state] - Untick all movies that are shown. - Tick all movies that are shown.</td></tr>
+<tr><td><b>TextButton.icon - &quot;🤖 Shorten $n cut names&quot; [icon: short_text]</b></td><td>{...} file names are cut with &quot;...&quot; by the 255 rule. {...}Ollama (local) writes a shorter title that fits; you read {...}the report (Logs\reports\short_titles_latest.txt) before saving.</td></tr>
+<tr><td><b>TextButton.icon - &quot;✅ Save $_shortReady short titles&quot; [icon: save_alt]</b></td><td>Write the {...} reviewed short titles into the NMPs {...}as &lt;filetitle&gt; (file names only — the card keeps the full title)</td></tr>
+<tr><td><b>TextButton.icon [icon: content_cut]</b></td><td>[state] - Show every movie again - Show and tick ONLY the {...} movies whose title was cut - short in the NMP — then press &quot;Scrape&quot; to get the full title</td></tr>
+<tr><td><b>TextButton.icon - &quot;Only these (${visibleIdxs.length})&quot; [icon: filter_alt]</b></td><td>Clear the selection and tick ONLY the {...}{...} rows this filter is showing</td></tr>
+<tr><td><b>?</b></td><td>{...} movies matched by series name</td></tr>
+<tr><td><b>?</b></td><td>{...} movies matched by genre tag</td></tr>
+<tr><td><b>?</b></td><td>{...} movies matched by title keyword</td></tr>
+<tr><td><b>?</b></td><td>{...} movies matched via OCR+AI fallback</td></tr>
+<tr><td><b>Scrape ${_selectedIndexes.length}</b></td><td>Fetch missing genres/actors/series from the internet for all selected movies, then re-analyze</td></tr>
+<tr><td><b>OutlinedButton.icon [icon: science_outlined]</b></td><td>Dry run: check 2500 random movies from this list — folder {...}move + file renames + 255 rule — and write a report. {...}Nothing on disk changes.</td></tr>
+<tr><td><b>GlossyButton [icon: drive_file_move]</b></td><td>Move {...} selected movies into their matched genre folders on disk</td></tr>
+<tr><td><b>InkWell</b></td><td>Show the details of this category on the right.</td></tr>
+<tr><td><b>Switch</b></td><td>[state] - Turn this category off so no movies are sorted into it. - Turn this category on.</td></tr>
+<tr><td><b>Chip [icon: close]</b></td><td>Click the x to remove the genre {...} from this category.</td></tr>
+<tr><td><b>Add</b></td><td>Add the genre you typed to the selected category.</td></tr>
+<tr><td><b>InkWell</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>TextButton</b></td><td>[state] - Close all synonym groups. - Open all synonym groups.</td></tr>
+<tr><td><b>Reset Defaults</b></td><td>Replace all your synonyms with the built-in default list (you are asked to confirm first).</td></tr>
+<tr><td><b>Reset Defaults</b></td><td>Replace the blacklist with the built-in default list (you are asked to confirm first).</td></tr>
+<tr><td><b>Block</b></td><td>Add the genre you typed to the blacklist so it is not used.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Take {...} off the blacklist.</td></tr>
+<tr><td><b>${widget.variations.length}</b></td><td>[state] - Close this synonym group. - Open this synonym group.</td></tr>
+<tr><td><b>InkWell [icon: edit]</b></td><td>Rename this group.</td></tr>
+<tr><td><b>Rename</b></td><td>Rename the group to the name you typed.</td></tr>
+<tr><td><b>Chip [icon: close]</b></td><td>Click the x to remove the spelling {...}.</td></tr>
+<tr><td><b>Add</b></td><td>Add the spelling you typed to this group.</td></tr>
+<tr><td><b>Map</b></td><td>Treat the first spelling as the same genre as the second one.</td></tr>
+</table></details>
+<details><summary><b>Multi File Resolve</b> (7)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this question without moving any files.</td></tr>
+<tr><td><b>Quarantine</b></td><td>Move the files you marked for removal to the quarantine folder. They can be recovered from there.</td></tr>
+<tr><td><b>CheckboxListTile [icon: play_circle_fill, folder_open]</b></td><td>Tick to mark this file for removal. Untick to keep it.</td></tr>
+<tr><td><b>IconButton [icon: play_circle_fill]</b></td><td>Play</td></tr>
+<tr><td><b>IconButton [icon: folder_open]</b></td><td>Reveal in Explorer</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window without moving any files.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Quarantine selected&quot; [icon: archive]</b></td><td>Move the files marked for removal to the quarantine folder so they can be recovered later. Files you keep stay where they are.</td></tr>
+</table></details>
+<details><summary><b>Nmp Migration</b> (16)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this question and change nothing.</td></tr>
+<tr><td><b>Clean library (backup-first)</b></td><td>Rewrite every details file in the library, inbox and duplicates folder to the standard. Every original is backed up first, so this can be undone.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and change nothing.</td></tr>
+<tr><td><b>Rename (backup-first)</b></td><td>Rename the subtitle files to the new naming scheme and update the details files. Every file is backed up first and removals go to the trash.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop after the file that is being handled now.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Dry run (count)&quot; [icon: fact_check_outlined]</b></td><td>Only count how many details files would be changed. Nothing is changed.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Clean library&quot; [icon: auto_fix_high]</b></td><td>Rewrite every details file to the standard (you are asked to confirm first). Every original is backed up first.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Dry run (count)&quot; [icon: fact_check_outlined]</b></td><td>Only count how many movies would get more genres. Nothing is changed.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;+ AI from titles (slow)&quot; [icon: auto_awesome]</b></td><td>Fill the genres up to 6 from the folder path and also let AI invent genres from the titles. Slow. Backed up first; no genre is removed.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Fill from folders&quot; [icon: label]</b></td><td>Fill the genres up to 6 from each movie&#x27;s genre-sort folder path. Fast. Backed up first; no genre is removed.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Dry run (count)&quot; [icon: fact_check_outlined]</b></td><td>Only count how many subtitles would be renamed. Nothing is changed.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Rename subs&quot; [icon: drive_file_rename_outline]</b></td><td>Rename the subtitle files to the new naming scheme (you are asked to confirm first). Every file is backed up first.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Re-translate (fast)&quot; [icon: translate]</b></td><td>Make the English subtitle again for the movies flagged by the subtitle check, by translating the Japanese subtitle that is already there. Fast.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Re-transcribe (slow)&quot; [icon: record_voice_over]</b></td><td>Make the English subtitle again for the movies flagged by the subtitle check, by listening to the audio again. Slow.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Burned-Chinese → EN&quot; [icon: translate]</b></td><td>Read the burned-in Chinese subtitles of the flagged movies and translate them to English.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+</table></details>
+<details><summary><b>Pre Inbox</b> (32)</summary><table>
+<tr><td><b>FilledButton.icon [icon: playlist_play, play_arrow]</b></td><td>[state] - Working, or there is nothing in the Pre-Inbox. - Process every movie in the Pre-Inbox one after another. - Process only the movie that is shown now.</td></tr>
+<tr><td><b>FilledButton.icon - &quot;Apply ($doneCount)&quot; [icon: done_all]</b></td><td>[state] - Move all the movies that are finished and reviewed from the Pre-Inbox into the Inbox. - Pause first, then you can apply the finished movies.</td></tr>
+<tr><td><b>FilledButton.icon - &quot;Scrape now ($n)&quot; [icon: travel_explore]</b></td><td>Start scraping the details of the movies that are ready, then close this window.</td></tr>
+<tr><td><b>IconButton [icon: restart_alt]</b></td><td>Re-run ALL from scratch — ignore &quot;done&quot;, fresh subtitle</td></tr>
+<tr><td><b>IconButton [icon: autorenew, sync_disabled]</b></td><td>[state] - Auto-process new arrivals: ON — new downloads transcribe/translate in the background while you scrape - Auto-process new arrivals: OFF</td></tr>
+<tr><td><b>IconButton [icon: play_arrow, pause]</b></td><td>[state] - Resume - Pause (finishes the current item, then holds)</td></tr>
+<tr><td><b>IconButton [icon: stop]</b></td><td>Stop the run</td></tr>
+<tr><td><b>IconButton [icon: fast_forward, fast_forward_outlined]</b></td><td>[state] - Overlap mode ON — translating in background while next transcribes (tap to turn off) - Overlap mode OFF — tap to speed up (transcribe next while translating current)</td></tr>
+<tr><td><b>IconButton [icon: refresh]</b></td><td>[state] - Please wait until the current work has finished. - Load the Pre-Inbox list again.</td></tr>
+<tr><td><b>IconButton [icon: remove]</b></td><td>Minimize — keeps running; progress in the task chip (top-right)</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>Copy log</b></td><td>Drag up or down to make the log bigger or smaller.</td></tr>
+<tr><td><b>Copy log</b></td><td>Copy the whole log to the clipboard.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Compare &amp; decide&quot; [icon: compare]</b></td><td>Open the window where you decide for each duplicate which copy to keep.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Delete this&quot; [icon: delete_outline]</b></td><td>Delete this duplicate. You are asked to confirm first.</td></tr>
+<tr><td><b>InkWell</b></td><td>[state] - Auto - Automatic mode: the Run button processes all movies one after another. - Manual mode: the Run button processes only the movie that is shown.</td></tr>
+<tr><td><b>InkWell</b></td><td>[state] - Show the previous movie. - Show the next movie.</td></tr>
+<tr><td><b>IconButton [icon: play_circle_outline]</b></td><td>Run prework</td></tr>
+<tr><td><b>IconButton [icon: replay]</b></td><td>Redo — reset &amp; re-run all gates (fresh subtitle)</td></tr>
+<tr><td><b>IconButton [icon: smart_display]</b></td><td>Open the movie to review (before moving)</td></tr>
+<tr><td><b>TextButton.icon - &quot;To Inbox&quot; [icon: move_to_inbox]</b></td><td>Move this movie from the Pre-Inbox to the Inbox.</td></tr>
+<tr><td><b>? - &quot;Blacklist genres…&quot; / &quot;Blacklist actors…&quot; [icon: build_circle_outlined]</b></td><td>Fix genres / actors / metadata</td></tr>
+<tr><td><b>Blacklist genres…</b></td><td>Open the genre blacklist, where you hide genres you do not want.</td></tr>
+<tr><td><b>Blacklist actors…</b></td><td>Open the actor blacklist, where you hide names you do not want.</td></tr>
+<tr><td><b>Edit metadata — library/OLD (fixes fanart)…</b></td><td>Open the editor for the details of the copy that is already in your library. You can also fix its fanart there.</td></tr>
+<tr><td><b>Text</b></td><td>[state] - Open the editor for the details of the incoming copy. - Open the editor for the details of this movie, such as the fanart and the fields.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Drag left or right to change the width of the two sides.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Compare &amp; decide&quot; [icon: compare]</b></td><td>Open the window where you decide for each duplicate which copy to keep.</td></tr>
+<tr><td><b>IconButton [icon: play_circle_outline]</b></td><td>Run prework</td></tr>
+<tr><td><b>IconButton [icon: replay]</b></td><td>Redo — reset &amp; re-run all gates (fresh subtitle)</td></tr>
+<tr><td><b>IconButton [icon: smart_display]</b></td><td>Open the movie to review (before moving)</td></tr>
+<tr><td><b>TextButton.icon - &quot;To Inbox&quot; [icon: move_to_inbox]</b></td><td>Move this movie from the Pre-Inbox to the Inbox.</td></tr>
+</table></details>
+<details><summary><b>Pre Inbox Dup Bridge</b> (2)</summary><table>
+<tr><td><b>No — discard</b></td><td>Throw the new download away. It is moved to the trash folder.</td></tr>
+<tr><td><b>Yes — keep it</b></td><td>Take this movie off your deleted list so the new download is processed like any other.</td></tr>
+</table></details>
+<details><summary><b>Pre Inbox Duplicate</b> (7)</summary><table>
+<tr><td><b>TextButton.icon - &quot;play&quot; [icon: play_circle_outline]</b></td><td>Play this copy so you can check it.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Yes — keep it&quot; [icon: check]</b></td><td>Take this movie off your deleted list. The new download is then processed like any other.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;No — discard&quot; [icon: delete_forever]</b></td><td>Throw the new download away. It is moved to the trash folder and can be restored until you empty the trash.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Keep library&quot; [icon: inventory_2_outlined]</b></td><td>Keep the copy that is already in your library and move the new download to the trash folder. The library copy is marked as newly added.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Replace (carry the sub over)&quot; [icon: swap_horiz]</b></td><td>Keep the new download and move the library copy to the trash folder. The English subtitle of the library copy is carried over first.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Keep both&quot; [icon: call_split]</b></td><td>Keep both copies. The library copy is marked as newly added.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+</table></details>
+<details><summary><b>Quick Edit</b> (6)</summary><table>
+<tr><td><b>ListTile</b></td><td>Use the genre {...}</td></tr>
+<tr><td><b>Use new genre</b></td><td>Use the new genre you typed.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close the genre list without adding a genre.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Add&quot; [icon: add]</b></td><td>[state] - Wait until saving has finished. - Pick a genre from the list (or type a new one) and add it to this movie.</td></tr>
+<tr><td><b>InputChip</b></td><td>Click to replace this genre with another one. The x removes it from the movie.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: save]</b></td><td>[state] - Saving is in progress. - Save the changed title and genres to the movie&#x27;s details file. Movies you did not change are left alone.</td></tr>
+</table></details>
+<details><summary><b>Rename</b> (2)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this window without renaming anything.</td></tr>
+<tr><td><b>Rename</b></td><td>Rename the file to the name typed above. Nothing happens if the name is empty.</td></tr>
+</table></details>
+<details><summary><b>Scraper Generator</b> (3)</summary><table>
+<tr><td><b>Use FlareSolverr (for Cloudflare)</b></td><td>Turn this on if the site uses Cloudflare protection. The new scraper then uses FlareSolverr to get past it.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without creating a scraper.</td></tr>
+<tr><td><b>Generate Scraper</b></td><td>Create a new scraper file from the web address and selectors entered above.</td></tr>
+</table></details>
+<details><summary><b>Scraper Log Window</b> (1)</summary><table>
+<tr><td><b>IconButton [icon: clear]</b></td><td>Clear all lines from this log window.</td></tr>
+</table></details>
+<details><summary><b>Scraper Priority</b> (8)</summary><table>
+<tr><td><b>FilledButton.icon - &quot;Change order&quot; [icon: swap_vert]</b></td><td>Open one small window where you drag the scrapers into the order you want. The position is the number, so no number is used twice.</td></tr>
+<tr><td><b>${i + 1}  ${ScraperPriority.nameOf(s.ranked[i])}</b></td><td>{...} is number {...}.</td></tr>
+<tr><td><b>off  ${ScraperPriority.nameOf(e)}</b></td><td>{...} is off (last resort only).</td></tr>
+<tr><td><b>IconButton [icon: open_in_new]</b></td><td>Open the {...} website in your browser, for example when its tab disappeared or the site wants a check.</td></tr>
+<tr><td><b>IconButton [icon: visibility_off]</b></td><td>Turn this scraper off. It moves to the off list and is only a last resort.</td></tr>
+<tr><td><b>ActionChip</b></td><td>Turn {...} on again, last in the order.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close without changing anything.</td></tr>
+<tr><td><b>Save</b></td><td>Save this order. Scrapers get the numbers 1, 2, 3 ... from the top.</td></tr>
+</table></details>
+<details><summary><b>Series Path</b> (28)</summary><table>
+<tr><td><b>TextButton.icon - &quot;Export CSV&quot; [icon: download]</b></td><td>Save the list of series and their sort folders as a CSV file you can open in a spreadsheet.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Show only the series in this status group. Click again on another one to switch the list.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Show only series sorted under this top-level folder. Click again to remove the filter.</td></tr>
+<tr><td><b>🔒</b></td><td>Open this series to choose which sort folders its movies belong in.</td></tr>
+<tr><td><b>Text</b></td><td>Heading for the move menu. It shows how many cards will be moved to the group you pick.</td></tr>
+<tr><td><b>Divider</b></td><td>Divider in the move menu. It cannot be clicked.</td></tr>
+<tr><td><b>Saved groups</b></td><td>Heading for groups you created earlier that are not in this series. It cannot be clicked.</td></tr>
+<tr><td><b>Divider</b></td><td>Divider in the move menu. It cannot be clicked.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without creating a group.</td></tr>
+<tr><td><b>Create</b></td><td>Create a group with the name you typed and move the selected cards into it.</td></tr>
+<tr><td><b>Clear</b></td><td>Deselect all the selected cards.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Assign folder&quot; [icon: folder_special]</b></td><td>Choose sort folders and apply them to all the selected cards at once.</td></tr>
+<tr><td><b>${gMovies.length} movies  ·  tap to re-open</b></td><td>Open this finished group again so you can work on its movies.</td></tr>
+<tr><td><b>${gMovies.length} movies</b></td><td>Select or deselect every movie in this group.</td></tr>
+<tr><td><b>Assign folder</b></td><td>Choose sort folders for every movie in this group, then mark the group as finished.</td></tr>
+<tr><td><b>Back</b></td><td>Go back to the previous window.</td></tr>
+<tr><td><b>Auto-Group</b></td><td>Turn automatic grouping on or off. When on, the movies are grouped by their genre tags so you can sort them in batches.</td></tr>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>GestureDetector [icon: check]</b></td><td>Click to set sort folders for this movie. When cards are selected, click to select or deselect it. Press and hold to start selecting.</td></tr>
+<tr><td><b>— select —</b></td><td>Choose a folder word from the list.</td></tr>
+<tr><td><b>ElevatedButton</b></td><td>[state] - Save &amp; Lock - Save the chosen sort folders for this series and lock them so they are not changed automatically. - Unlock - Unlock this series so its sort folders can be changed again. - Close this window without making any changes.</td></tr>
+<tr><td><b>Level 1</b></td><td>Choose the level 1 folder for this series.</td></tr>
+<tr><td><b>Clear Override</b></td><td>Remove the special sort folders set for this one movie, so it follows its series again.</td></tr>
+<tr><td><b>Save Override</b></td><td>Save these sort folders for this one movie only, instead of using the series setting.</td></tr>
+<tr><td><b>Level 1 — Character Type</b></td><td>Choose the level 1 folder (character type) for this series.</td></tr>
+<tr><td><b>Level 2 — Scenario / Setting</b></td><td>Choose the level 2 folder (scenario or setting) for this series.</td></tr>
+<tr><td><b>Level 3 — Specific Act</b></td><td>Choose the level 3 folder (specific act) for this series.</td></tr>
+<tr><td><b>ElevatedButton</b></td><td>Move all the movies in this group to the chosen sort folders.</td></tr>
+</table></details>
+<details><summary><b>Setup Wizard</b> (14)</summary><table>
+<tr><td><b>I am 18 or older and this content is legal where I live.</b></td><td>Tick to confirm that you are 18 or older and that this content is legal where you live.</td></tr>
+<tr><td><b>Browse</b></td><td>Choose the folder: {...}</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Take this folder off your library list. Nothing is deleted from the disk.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Add library folder&quot; [icon: add]</b></td><td>Choose another folder that holds your movies and add it to your library.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and download nothing.</td></tr>
+<tr><td><b>Download</b></td><td>Download {...} into the folder shown.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Download&quot; [icon: download]</b></td><td>Download {...} (you are shown where it comes from and where it goes first).</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Get installer&quot; [icon: open_in_new]</b></td><td>Open the download page of this program in your web browser.</td></tr>
+<tr><td><b>I have it — browse</b></td><td>Choose the program on your computer if you already have it.</td></tr>
+<tr><td><b>Check again</b></td><td>Check again whether the program can be found.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Add to ${b.$1}&quot; [icon: extension]</b></td><td>Open the extensions page of {...} and copy the Kuraya extension folder for you. You then add it yourself.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close — Kuraya keeps working, open again from Settings</td></tr>
+<tr><td><b>Back</b></td><td>Go back to the previous step.</td></tr>
+<tr><td><b>ElevatedButton</b></td><td>[state] - Finish this step first. - Finish the setup. - Go to the next step.</td></tr>
+</table></details>
+<details><summary><b>Slot Learn</b> (4)</summary><table>
+<tr><td><b>${e.key}   -&gt;   $slot</b></td><td>Tick to teach the app that {...} is a valid word for {...}</td></tr>
+<tr><td><b>DropdownButton</b></td><td>Choose which folder slot your own word belongs to.</td></tr>
+<tr><td><b>Not now</b></td><td>Close this window without teaching the app any of these words.</td></tr>
+<tr><td><b>Learn selected</b></td><td>Teach the app the words you ticked (and the one you typed, if any). From then on they are accepted as valid folder names for that slot.</td></tr>
+</table></details>
+<details><summary><b>Srt File Browser</b> (7)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this file browser without choosing anything.</td></tr>
+<tr><td><b>IconButton [icon: clear]</b></td><td>Clear the search box and the search results.</td></tr>
+<tr><td><b>Go</b></td><td>Open the folder or subtitle file whose path you typed or pasted on the left.</td></tr>
+<tr><td><b>ActionChip</b></td><td>Show the contents of {...}</td></tr>
+<tr><td><b>IconButton [icon: arrow_upward]</b></td><td>Up one folder</td></tr>
+<tr><td><b>ListTile [icon: folder, description]</b></td><td>[state] - Open this folder. - Choose this subtitle file.</td></tr>
+<tr><td><b>ListTile [icon: movie_outlined]</b></td><td>Open the folder of this movie in this browser.</td></tr>
+</table></details>
+<details><summary><b>Subtitle Coverage</b> (9)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>Missing DeepSeek</b></td><td>Show only movies that have no English subtitle made with DeepSeek.</td></tr>
+<tr><td><b>Only problems</b></td><td>Show only movies that have a subtitle problem.</td></tr>
+<tr><td><b>Safety-blocked (${_blockedIds.length})</b></td><td>Show only movies held back by the safety filter, so no subtitle is made for them.</td></tr>
+<tr><td><b>ChoiceChip</b></td><td>[state] - Everything - Let the background worker make missing English subtitles for every movie, favourites first. - Favorites + Inbox - Let the background worker make missing English subtitles for your favourites and the inbox only. - Let the background worker make missing English subtitles for the inbox only. Tapping this also starts the worker now.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Copy paths&quot; [icon: copy_all]</b></td><td>Copy the video file paths of the movies shown to the clipboard, one per line, so you can paste them into Subtitle Edit. Movies held back by the safety filter are left out.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Translate JA-only&quot; [icon: translate]</b></td><td>[state] - Already working on it. - Find every movie that has a Japanese subtitle but no English one and queue it for translation with DeepSeek, favourites first.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Export CSV&quot; [icon: download]</b></td><td>[state] - Already exporting. - Save the subtitle list as a CSV file you can open in a spreadsheet. Wait until scanning has finished.</td></tr>
+<tr><td><b>${c.count}</b></td><td>Click to open folder: {...}</td></tr>
+</table></details>
+<details><summary><b>Subtitle Editor</b> (6)</summary><table>
+<tr><td><b>Cancel</b></td><td>Keep the subtitle text as it is.</td></tr>
+<tr><td><b>Clear</b></td><td>Clear the text in the editor. No files are deleted until you save.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Cancel</td></tr>
+<tr><td><b>Cancel</b></td><td>[state] - Saving is in progress. - Close the editor without saving your changes.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: save]</b></td><td>[state] - Please wait until loading or saving has finished. - Save the subtitle text to a subtitle file in the movie folder and add it to the movie&#x27;s details file.</td></tr>
+<tr><td><b>InkWell</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+</table></details>
+<details><summary><b>Subtitle Migration</b> (11)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this question and do nothing.</td></tr>
+<tr><td><b>FilledButton</b></td><td>Go ahead. {...}</td></tr>
+<tr><td><b>IconButton [icon: remove]</b></td><td>Minimize (keeps running in background)</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close (keeps running; reopen from Media Tools)</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Pretest 10 (dry-run cleanup)&quot; [icon: science]</b></td><td>Try the migration on 10 movies and only report which files the folder cleanup would remove. Nothing is deleted.</td></tr>
+<tr><td><b>FilledButton.icon - &quot;Start full&quot; [icon: play_arrow]</b></td><td>Make an English DeepSeek subtitle for every movie that does not have one yet (favourites, then inbox, then libraries) and tidy each folder. It runs in the background for a long time and continues after a restart.</td></tr>
+<tr><td><b>FilledButton.icon - &quot;Resume&quot; [icon: play_arrow]</b></td><td>Continue the subtitle migration where it was paused.</td></tr>
+<tr><td><b>FilledButton.icon - &quot;Pause&quot; [icon: pause]</b></td><td>Pause the subtitle migration. You can continue it later.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop the migration and clear its queue. Movies that are already done keep their subtitles.</td></tr>
+<tr><td><b>InkWell [icon: open_in_full]</b></td><td>Open the full subtitle migration window again.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Drag to move this bar. The migration keeps running.</td></tr>
+</table></details>
+<details><summary><b>Subtitle Sync Gate Service</b> (3)</summary><table>
+<tr><td><b>OutlinedButton.icon - &quot;Play uncensored to check&quot; [icon: play_arrow]</b></td><td>Play the uncensored video with the subtitle so you can check the timing.</td></tr>
+<tr><td><b>Cancel (keep soft subs)</b></td><td>Do not burn the subtitles in. The subtitle stays as a separate soft subtitle file.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Approve &amp; Burn&quot; [icon: local_fire_department]</b></td><td>Burn the subtitles permanently into the uncensored video.</td></tr>
+</table></details>
+<details><summary><b>System Issue Banner</b> (2)</summary><table>
+<tr><td><b>InkWell [icon: error_outline, expand_less]</b></td><td>[state] - Hide the details of the current problems. - Show the details of the current problems.</td></tr>
+<tr><td><b>TextButton</b></td><td>[state] - Try this again to fix the problem. - Run the suggested fix for this problem.</td></tr>
+</table></details>
+<details><summary><b>Task Console</b> (9)</summary><table>
+<tr><td><b>IconButton [icon: dashboard_customize_outlined, dashboard_customize]</b></td><td>[state] - Task console — no active tasks - Task console — {...} active task(s). Tap to manage.</td></tr>
+<tr><td><b>InkWell</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>InkWell</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>${active.length}</b></td><td>Open the task console to see, pause or stop background jobs. You can drag this button to another place on the screen.</td></tr>
+<tr><td><b>Turn Auto off?</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep Auto on.</td></tr>
+<tr><td><b>Turn Auto off</b></td><td>Turn Auto off. Every running background job stops after its current item and nothing starts on its own until Auto is on again.</td></tr>
+<tr><td><b>IconButton [icon: remove]</b></td><td>Minimize (tasks keep running)</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Drag up or down to change the height of the task console.</td></tr>
+</table></details>
+<details><summary><b>Taste Filter</b> (6)</summary><table>
+<tr><td><b>Switch</b></td><td>Turn the taste filter on or off. While it is on, movies that match none of your keep-words get a red line and cannot be opened. Nothing is deleted; turning it off undoes it.</td></tr>
+<tr><td><b>Not in favourites  (recommended)</b></td><td>Keep only your own favourite movies. Every other movie gets the red line.</td></tr>
+<tr><td><b>Keep-word matching</b></td><td>Keep movies whose title matches a keep-word taken from your favourites. Only useful with a small favourites list.</td></tr>
+<tr><td><b>TextButton</b></td><td>[state] - Please wait, this is already working. - Fill the keep-word list from the words in your favourite movies, so you do not have to type them all.</td></tr>
+<tr><td><b>Save list</b></td><td>[state] - Please wait, this is already working. - Save the keep-words you typed. Nothing is deleted or moved.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+</table></details>
+<details><summary><b>Tool Guard</b> (2)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this message and do not continue.</td></tr>
+<tr><td><b>Open Setup</b></td><td>Open the setup window, where you can install the missing program.</td></tr>
+</table></details>
+<details><summary><b>Translator Compare</b> (4)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this comparison window.</td></tr>
+<tr><td><b>IconButton [icon: refresh]</b></td><td>Refresh model list</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Browse .ja.srt…&quot; [icon: folder_open]</b></td><td>Choose a Japanese subtitle file (.ja.srt) from your computer to compare the two translators on.</td></tr>
+<tr><td><b>FilledButton.icon [icon: play_arrow]</b></td><td>[state] - The comparison is already running. - Translate the subtitle with both Ollama and DeepSeek so you can compare the results side by side.</td></tr>
+</table></details>
+<details><summary><b>Trash History</b> (11)</summary><table>
+<tr><td><b>$label${n &gt; 0 ?</b></td><td>[state] - Show every kind of entry. - Show only the entries of the kind: {...}.</td></tr>
+<tr><td><b>IconButton [icon: refresh]</b></td><td>[state] - Please wait until the current undo has finished. - Load the list again.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>[state] - Please wait until the current undo has finished. - Close this window.</td></tr>
+<tr><td><b>OutlinedButton.icon [icon: arrow_downward, arrow_upward]</b></td><td>[state] - Newest first - Oldest first</td></tr>
+<tr><td><b>Checkbox</b></td><td>Pick or unpick all the entries that are shown.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Cancel&quot; [icon: stop]</b></td><td>Stop undoing after the entry that is being put back right now. Entries already undone stay undone.</td></tr>
+<tr><td><b>FilledButton.icon [icon: undo]</b></td><td>[state] - Put every entry that is shown back the way it was before (you are asked to confirm first). - Put the picked entries back the way they were before (you are asked to confirm first).</td></tr>
+<tr><td><b>Checkbox</b></td><td>Pick or unpick this entry.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Undo&quot; [icon: undo]</b></td><td>[state] - Please wait until the current undo has finished. - Put this one back the way it was before.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and undo nothing.</td></tr>
+<tr><td><b>Undo ${targets.length}</b></td><td>Undo these {...} action(s) one by one.</td></tr>
+</table></details>
+<details><summary><b>Uncensored Scope</b> (4)</summary><table>
+<tr><td><b>ChoiceChip</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>Skip movies that already have an uncensored version</b></td><td>Leave out movies that are already uncensored, or that you already own an uncensored copy of.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without searching.</td></tr>
+<tr><td><b>Start search</b></td><td>Start looking for uncensored versions of the movies counted above.</td></tr>
+</table></details>
+<details><summary><b>Unified Actor Manager</b> (5)</summary><table>
+<tr><td><b>Blacklists</b></td><td>Actor and genre blacklists</td></tr>
+<tr><td><b>Hide</b></td><td>Hide — services keep running in background</td></tr>
+<tr><td><b>Actor Photos</b></td><td>Show the actor photo tools: scrape, check and clean the actor photos.</td></tr>
+<tr><td><b>Metadata</b></td><td>Show the movie details tools: scrape details, repair them and manage subtitles.</td></tr>
+<tr><td><b>Movie Sorter</b></td><td>Show the movie sorter, which sorts your movies into folders.</td></tr>
+</table></details>
+<details><summary><b>Unified Details</b> (7)</summary><table>
+<tr><td><b>IconButton [icon: arrow_back]</b></td><td>Close this window.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Play ${_movieData?[&quot; [icon: play_arrow]</b></td><td>Play this movie in Kuraya&#x27;s own player.</td></tr>
+<tr><td><b>Close</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+<tr><td><b>(${movie[</b></td><td>Open the details window of this movie.</td></tr>
+<tr><td><b>InkWell [icon: person]</b></td><td>Show the details of this actress.</td></tr>
+</table></details>
+<details><summary><b>Unified Duplicate</b> (15)</summary><table>
+<tr><td><b>Go Back</b></td><td>Go back and keep deciding.</td></tr>
+<tr><td><b>Cancel Anyway</b></td><td>Close this window anyway. Changes that were already made are not undone.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Show only the duplicates with the status: {...}</td></tr>
+<tr><td><b>UNC</b></td><td>Show this duplicate in the big comparison on the right.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Choose the inbox file as the one to keep.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Choose the library file as the one to keep.</td></tr>
+<tr><td><b>IconButton [icon: play_circle_outline]</b></td><td>Play this video in Kuraya&#x27;s own player.</td></tr>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Show this picture bigger.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close the big picture.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>[state] - First click the file you want to keep, left or right. - Choose this action for this movie: {...} Nothing happens until you press Finish.</td></tr>
+<tr><td><b>Radio</b></td><td>[state] - First click the file you want to keep, left or right. - Choose this action for this movie.</td></tr>
+<tr><td><b>IconButton [icon: arrow_back]</b></td><td>[state] - Show the previous duplicate. - This is the first duplicate.</td></tr>
+<tr><td><b>IconButton [icon: arrow_forward]</b></td><td>[state] - Show the next duplicate. - This is the last duplicate.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without finishing.</td></tr>
+<tr><td><b>Processing...</b></td><td>[state] - The chosen actions are being carried out. - Carry out all the actions you chose for the duplicates.</td></tr>
+</table></details>
+<details><summary><b>Unified Edit</b> (3)</summary><table>
+<tr><td><b>TextButton.icon</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Done — Close&quot; [icon: check]</b></td><td>Close this editor. Changes you already applied are kept; anything not applied yet is dropped.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this editor</td></tr>
+</table></details>
+<details><summary><b>Unified Scraping</b> (101)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this window without reading anything.</td></tr>
+<tr><td><b>Extract</b></td><td>Let AI read the movie details from the web address you typed, so you can check them. Nothing is saved until you apply it.</td></tr>
+<tr><td><b>Opacity</b></td><td>Available when the scrape of this movie is done.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without adding a word.</td></tr>
+<tr><td><b>Use it</b></td><td>Use the word you typed for {...}</td></tr>
+<tr><td><b>RESUME</b></td><td>Continue the scrape that was stopped or interrupted, from where it stopped.</td></tr>
+<tr><td><b>DISCARD</b></td><td>Throw away the saved progress of that scrape.</td></tr>
+<tr><td><b>Switch</b></td><td>When on, the app chooses the scrapers for you. When off, you tick them yourself.</td></tr>
+<tr><td><b>All</b></td><td>[state] - The scrapers are chosen automatically while Auto is on. - Tick all the scrapers.</td></tr>
+<tr><td><b>None</b></td><td>[state] - The scrapers are chosen automatically while Auto is on. - Untick all the scrapers.</td></tr>
+<tr><td><b>P$priority</b></td><td>[state] - The scrapers are chosen automatically while Auto is on. - Leave this scraper out of the run. - Use this scraper in the run.</td></tr>
+<tr><td><b>InkWell [icon: open_in_new]</b></td><td>Open the {...} website in your browser, for example when its tab disappeared or the site wants a check.</td></tr>
+<tr><td><b>🔓 Uncensored + English Subtitle Mode</b></td><td>Switch the mode that only looks for uncensored and English-subtitled versions of the movies you own. This mode is always manual.</td></tr>
+<tr><td><b>🔄 Force Recheck Already-Searched</b></td><td>Search again even for the movies that were already searched for an uncensored version.</td></tr>
+<tr><td><b>✕</b></td><td>Close this window without saving anything.</td></tr>
+<tr><td><b>🚀</b></td><td>[state] - Start scraping the movies with the scrapers you ticked. - Tick at least one scraper first.</td></tr>
+<tr><td><b>Click here to Apply Auto to All → Then Manual Override</b></td><td>Hide this banner.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>[state] - Genres - Open the genre list manager. - Actors - Open the actor list manager. - Scrapers - Choose the scrapers again. - Resume - Continue the scrape. - Pause - Pause the scrape after the movie that is being worked on. - Stop - Stop the scrape. - Minimize this window. The scrape keeps running in the background.</td></tr>
+<tr><td><b>↻ RE-SCRAPE (${movie?.id ??</b></td><td>Scrape this movie again with its own ID.</td></tr>
+<tr><td><b>↻ SCRAPE</b></td><td>Scrape this movie again using the movie ID you typed.</td></tr>
+<tr><td><b>All queued movies are already owned — nothing to fetch</b></td><td>[state] - Looking for download links, please wait. - Look up download links for the movies you queued.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>[state] - Saving is in progress. - Save the details you chose to this movie.</td></tr>
+<tr><td><b>✕</b></td><td>Close this window without saving anything.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>[state] - Switch to manual mode: you choose each detail yourself. - Switch to automatic mode: the best details are chosen for you.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>[state] - Take back the rejection of this movie. - Reject this movie. None of the scraped details are used and it is marked as rejected.</td></tr>
+<tr><td><b>DELETE</b></td><td>Delete the folder of this movie. It is moved to the trash folder and can be recovered from there. You are asked to confirm first.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this question and keep the movie.</td></tr>
+<tr><td><b>DELETE</b></td><td>Yes, delete the movie folder. It is moved to the trash folder and can be recovered from there.</td></tr>
+<tr><td><b>Copied ${_clipboardGenres.length} genres</b></td><td>Copy these genres so you can paste them onto another movie.</td></tr>
+<tr><td><b>Pasted ${_clipboardGenres.length} genres</b></td><td>[state] - This movie is rejected. - Paste the genres you copied into this movie.</td></tr>
+<tr><td><b>+</b></td><td>[state] - This movie is rejected. - Show or hide the box for typing a genre yourself.</td></tr>
+<tr><td><b>✓</b></td><td>Add the genre you typed.</td></tr>
+<tr><td><b>GestureDetector</b></td><td>Show the photos of {...} and tick the main photo (the one the actor browser and movie details show).</td></tr>
+<tr><td><b>GestureDetector [icon: check_circle, radio_button_unchecked]</b></td><td>[state] - This is the main photo of {...} - Make this the main photo of {...} (actor browser and movie details).</td></tr>
+<tr><td><b>Done</b></td><td>Close. The ticked photo is already saved.</td></tr>
+<tr><td><b>Added</b></td><td>Click to remove {...} from this movie. Press and hold to put this name on the blacklist for good.</td></tr>
+<tr><td><b>MALE ACTOR</b></td><td>{...} is a male actor (JAV-GURU lists him under &quot;Actor&quot;, women are under &quot;Actress&quot;). No photo is searched for him.</td></tr>
+<tr><td><b>Container [icon: person_off_outlined]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>GestureDetector [icon: check_circle]</b></td><td>[state] - This photo is shown for {...} in the actor browser and movie details. - Click to show this photo for {...} in the actor browser and movie details.</td></tr>
+<tr><td><b>$where · $lib</b></td><td>{...}: {...}s file before this scrape.{...}the name came from this scrape.{...} {...}</td></tr>
+<tr><td><b>Text</b></td><td>[state] - No bio for {...} yet. It is fetched in the background with the photos after you apply this scrape. - {...} ${lines.join(</td></tr>
+<tr><td><b>Copied ${_clipboardActors.length} actors</b></td><td>Copy these actors so you can paste them onto another movie.</td></tr>
+<tr><td><b>Pasted ${_clipboardActors.length} actors</b></td><td>[state] - This movie is rejected. - Paste the actors you copied into this movie.</td></tr>
+<tr><td><b>+</b></td><td>[state] - This movie is rejected. - Show or hide the box for typing an actor yourself.</td></tr>
+<tr><td><b>✓</b></td><td>Add the actor you typed.</td></tr>
+<tr><td><b>+ $h</b></td><td>{...} was hidden because only MissAV or JavTrailers list this name - they also list male actors. Click to keep {...} in this movie.</td></tr>
+<tr><td><b>PLAY</b></td><td>Play this video. {...}</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Browse Fallback&quot; [icon: folder_open]</b></td><td>Choose a cover image from your fallback image folder.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Fallback&quot; [icon: folder_open]</b></td><td>Choose a cover image from your fallback image folder.</td></tr>
+<tr><td><b>GestureDetector [icon: broken_image]</b></td><td>Use this image as the cover.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window without choosing an image.</td></tr>
+<tr><td><b>GestureDetector [icon: check_circle]</b></td><td>Use the title: {...}</td></tr>
+<tr><td><b>cover: ${v.ocrTitleJa}</b></td><td>Compare the title on the cover with the scraped title again, using AI.</td></tr>
+<tr><td><b>use: ${v.suggestedTitle}  (tap)</b></td><td>Use the title suggested from the cover: {...}</td></tr>
+<tr><td><b>GestureDetector</b></td><td>[state] - Let AI write a title for this movie. - Use no title. - Type the title yourself.</td></tr>
+<tr><td><b>TOGGLE</b></td><td>Switch this value to the other option.</td></tr>
+<tr><td><b>GestureDetector [icon: edit]</b></td><td>Edit the series name. The box opens with the current name - change it and press Save. Your name is what gets saved.</td></tr>
+<tr><td><b>Save</b></td><td>Save the series name you typed.</td></tr>
+<tr><td><b>GestureDetector [icon: check]</b></td><td>[state] - Do not use this series name. - Use this series name.</td></tr>
+<tr><td><b>Container [icon: push_pin, push_pin_outlined]</b></td><td>[state] - Genres PINNED — scrapers keep them. Tap to open. - Genres OPEN — scrapers may change them. Tap to pin.</td></tr>
+<tr><td><b>GestureDetector [icon: auto_awesome]</b></td><td>[state] - Please wait, or this movie is rejected. - Let AI choose the best 6 genres for this movie from all the genres that were found.</td></tr>
+<tr><td><b>g1–g4 (${lockedPairs.length})</b></td><td>These AI-6 genres come from the folder slots above {...}(change a slot to change them): {...}{...}g{...}{...}+{...}).join({...})}</td></tr>
+<tr><td><b>Copy to ${_kSlotName[i]}</b></td><td>Copy &quot;{...}&quot; into a g1..g4 slot</td></tr>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Remove the genre {...} from the six.</td></tr>
+<tr><td><b>? [icon: add]</b></td><td>Add genre</td></tr>
+<tr><td><b>Old:</b></td><td>Use the old value: {...}</td></tr>
+<tr><td><b>New:</b></td><td>Use the new value: {...}</td></tr>
+<tr><td><b>Keep this one individual</b></td><td>Change only this movie, not the other movies of the series.</td></tr>
+<tr><td><b>Apply to whole series</b></td><td>Apply the change to all movies of this series.</td></tr>
+<tr><td><b>? - &quot;No matches&quot; [icon: search, arrow_drop_down]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>InkWell</b></td><td>Choose: {...}</td></tr>
+<tr><td><b>GestureDetector [icon: edit_note]</b></td><td>Type the whole path — g1\g2\g3\g4 — in one field. {...}New words are created for you.</td></tr>
+<tr><td><b>Copied — paste it anywhere</b></td><td>{...} {...}</td></tr>
+<tr><td><b>GestureDetector [icon: refresh]</b></td><td>Ask the AI again to choose g1–g4 for THIS movie (ignores the series preset)</td></tr>
+<tr><td><b>confirm</b></td><td>Apply these four folders to every movie in the series</td></tr>
+<tr><td><b>+</b></td><td>[state] - This movie is rejected. - Show or hide the box for typing a genre yourself.</td></tr>
+<tr><td><b>✓</b></td><td>Add the genre you typed.</td></tr>
+<tr><td><b>${g.name}×</b></td><td>Remove the genre {...} from this movie.</td></tr>
+<tr><td><b>+</b></td><td>[state] - This movie is rejected. - Show or hide the box for typing an actor yourself.</td></tr>
+<tr><td><b>✓</b></td><td>Add the actor you typed.</td></tr>
+<tr><td><b>${a.name}×</b></td><td>Remove {...} from this movie.</td></tr>
+<tr><td><b>Previous</b></td><td>[state] - Go to the previous movie. - This is the first movie.</td></tr>
+<tr><td><b>Next</b></td><td>[state] - Go to the next movie. - This is the last movie.</td></tr>
+<tr><td><b>⏭ $skipped cached</b></td><td>Forget which movies were already searched and check all of them again.</td></tr>
+<tr><td><b>Re-check</b></td><td>Forget which movies were already searched and check all of them again.</td></tr>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Clear this list.</td></tr>
+<tr><td><b>GestureDetector [icon: check]</b></td><td>Pick or unpick this result.</td></tr>
+<tr><td><b>no story</b></td><td>Click to use or not use the details of this scraper for the movie.</td></tr>
+<tr><td><b>GestureDetector [icon: fullscreen]</b></td><td>Show this cover full screen.</td></tr>
+<tr><td><b>${result.previews!.length}</b></td><td>Pick a different preview image from this result.</td></tr>
+<tr><td><b>Copied: $copy</b></td><td>Right-click to copy the title and the DVD-ID.</td></tr>
+<tr><td><b>GestureDetector [icon: broken_image]</b></td><td>Click to close the full-screen picture.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close the full-screen picture.</td></tr>
+<tr><td><b>★</b></td><td>Use this cover for the movie.</td></tr>
+<tr><td><b>NMP Only - Clear?</b></td><td>NMP has series data but no scraper found it. Click to clear series from NMP.</td></tr>
+<tr><td><b>Upgrade</b></td><td>Queue the movies of this series that you own as censored, so uncensored versions get looked up.</td></tr>
+<tr><td><b>Select All</b></td><td>Pick all the movies of this series that you do not have, and queue your censored ones for an uncensored lookup.</td></tr>
+<tr><td><b>GestureDetector [icon: check_circle, add_to_queue]</b></td><td>[state] - Looking for download links, please wait. - Look up download links for the picked movies.</td></tr>
+<tr><td><b>LIB</b></td><td>[state] - This is the movie you are scraping now. - You already have this movie. If your copy is censored, click to queue it for an uncensored link lookup. - Click to pick this movie so its download links get looked up. Click again to take it out.</td></tr>
+<tr><td><b>GestureDetector [icon: refresh]</b></td><td>Load the pictures of this series again.</td></tr>
+<tr><td><b>Clear all</b></td><td>Remove all movies of this series from the download queue.</td></tr>
+</table></details>
+<details><summary><b>Update Service</b> (3)</summary><table>
+<tr><td><b>Skip this version</b></td><td>Do not offer this version again.</td></tr>
+<tr><td><b>Later</b></td><td>Close this message. You are asked again later.</td></tr>
+<tr><td><b>Install now</b></td><td>Download and install the new version now.</td></tr>
+</table></details>
+<details><summary><b>Video Merge</b> (10)</summary><table>
+<tr><td><b>GestureDetector [icon: close]</b></td><td>Close this window.</td></tr>
+<tr><td><b>GestureDetector [icon: folder_open]</b></td><td>[state] - Please wait until the current work has finished. - Choose the folder to search for numbered video parts (such as Movie01, Movie02).</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Browse&quot; [icon: folder_open]</b></td><td>[state] - Please wait until the current work has finished. - Choose the folder to search for numbered video parts (such as Movie01, Movie02).</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Rescan&quot; [icon: refresh]</b></td><td>[state] - Please wait, the folder is being scanned. - Search the folder again for numbered video parts.</td></tr>
+<tr><td><b>All</b></td><td>Tick every group of video parts in the list.</td></tr>
+<tr><td><b>None</b></td><td>Untick every group in the list.</td></tr>
+<tr><td><b>· ${path.basename(f.path)}</b></td><td>[state] - Untick this group of video parts. - Tick this group of video parts so it is merged.</td></tr>
+<tr><td><b>TextButton.icon - &quot;Stop&quot; [icon: stop_circle_outlined]</b></td><td>Stop the merge.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: merge_type]</b></td><td>[state] - {...}: join the ticked video parts into one MP4 file, or convert already joined files to MP4. - Tick at least one group that still needs merging or converting first.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window.</td></tr>
+</table></details>
+<details><summary><b>Welcome Empty Library</b> (4)</summary><table>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Process Inbox&quot; [icon: inbox]</b></td><td>Process the movies waiting in your inbox folder.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Open Setup&quot; [icon: settings_suggest]</b></td><td>Open the setup wizard to choose your library and inbox folders.</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Scan library&quot; [icon: refresh]</b></td><td>Look through your library folders again and add any movies that are missing from the app. Needs a library folder to be set first. ######################################################################## # Controls that deliberately have no tooltip ######################################################################## lib/main.dart:899 drag handle only; the chip inside has the tooltip (it says it can be dragged) lib/main.dart:981 drag handle only; the task console button inside has the tooltip lib/services/core/movie_context_menu.dart:2794 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2800 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2811 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/ui/screens/tube_video_player_screen.dart:1123 the whole video surface (tap = show controls, drag = volume / brightness / seek). A tooltip here would pop up over the playing video. lib/ui/screens/tube_video_player_screen.dart:1656 only stops a tap on the open settings panel from reaching the video behind it; the panel&#x27;s own buttons have tooltips. lib/ui/widgets/cascading_menu.dart:72 the row&#x27;s own child already carries its tooltip (built by _buildMenuItem) SnackBar action buttons (&quot;Open&quot;, &quot;RESCUE&quot;, ...) part of a message, not a screen control</td></tr>
+</table></details>
+<footer>Kuraya manages files you own and does not provide any video content. For adults (18+) only.</footer></body></html>

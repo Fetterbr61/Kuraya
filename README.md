@@ -305,6 +305,16 @@ subtitles, more fixes.
 
 ---
 
+## Official links
+
+- **Website and documentation:** <https://fetterbr61.github.io/Kuraya/>
+- **GitHub (project page and downloads):** <https://github.com/Fetterbr61/Kuraya>
+- **Download the latest version:** <https://github.com/Fetterbr61/Kuraya/releases/latest>
+
+Kuraya has no other official website.
+
+---
+
 ## Status
 
 Kuraya is in **beta** — every main feature is in place and it has been tested on a
