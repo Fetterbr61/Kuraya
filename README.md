@@ -20,22 +20,35 @@
 
 Kuraya is **one main app on your Windows PC** that does all the work, plus **two free remote apps** that stream your movies to your other devices. **You always need the main app. The remotes are optional.**
 
-| | App | What it does | Runs on | Download |
-|:-:|:---|:---|:---|:---|
-| 🖥️ | **Kuraya**<br>*the main app* | Finds and sorts your movies, fetches covers and info, makes English subtitles, finds duplicates and plays everything. **Controls everything.** | Windows 10/11 PC | **[⬇ Installer (.exe)](https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Setup-2.0.5-beta.1.exe)**<br>[or portable .zip](https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-2.0.5-beta.1-win64.zip) |
-| 📱 | **Kuraya Remote**<br>*for Android* | Streams your movies from the PC to your phone or tablet. Favourites and flags sync back. | Android phone or tablet | **[⬇ Android app (.apk)](https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Remote-2.0.5-beta.1.apk)** |
-| 💻 | **Kuraya Remote**<br>*for Windows* | The same remote for a laptop or second PC. Unzip it and start `Kuraya_Remote.exe`. | Windows laptop or PC | **[⬇ Windows remote (.zip)](https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Remote-2.0.5-beta.1-win64.zip)** |
+<table>
+<tr>
+<td width="33%" valign="top" align="center">
+<h3>Kuraya</h3>
+<b>The main app</b>
+<p>Runs on your Windows 10/11 PC. Finds and sorts your movies, fetches covers and info, makes English subtitles, finds duplicates and plays everything. <b>Controls everything. Start here.</b></p>
+<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Setup-2.0.5-beta.1.exe"><img alt="Download the installer" src="https://img.shields.io/badge/Download-Installer-D9432B?style=for-the-badge&logo=windows&logoColor=white"></a>
+<br><sub>or the <a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-2.0.5-beta.1-win64.zip">portable .zip</a> (no install)</sub>
+</td>
+<td width="33%" valign="top" align="center">
+<h3>Kuraya Remote</h3>
+<b>For Android</b>
+<p>Streams your movies from the PC to your phone or tablet. Favourites and flags sync back to the PC.</p>
+<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Remote-2.0.5-beta.1.apk"><img alt="Download the Android app" src="https://img.shields.io/badge/Download-Android%20app-3DDC84?style=for-the-badge&logo=android&logoColor=white"></a>
+<br><sub>APK file</sub>
+</td>
+<td width="33%" valign="top" align="center">
+<h3>Kuraya Remote</h3>
+<b>For Windows</b>
+<p>The same remote for a laptop or a second PC. Unzip it anywhere and start <code>Kuraya_Remote.exe</code>. Nothing to install.</p>
+<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Remote-2.0.5-beta.1-win64.zip"><img alt="Download the Windows remote" src="https://img.shields.io/badge/Download-Windows%20remote-0078D4?style=for-the-badge&logo=windows&logoColor=white"></a>
+<br><sub>zip file, keep the folder together</sub>
+</td>
+</tr>
+</table>
 
-```mermaid
-flowchart LR
-    subgraph PC["🖥️ Your Windows PC"]
-        D[("Your movie<br/>drives")] --- K["<b>Kuraya</b> (main app)<br/>scrape · sort · subtitle · play"]
-    end
-    K -- "your home Wi-Fi" --> A["📱 <b>Kuraya Remote</b><br/>Android phone or tablet"]
-    K -- "your home Wi-Fi" --> W["💻 <b>Kuraya Remote</b><br/>Windows laptop"]
-```
+<p align="center"><img src="docs/how_it_fits.svg" alt="The main app Kuraya on your Windows PC reads your movie drives and streams over your home Wi-Fi to Kuraya Remote on an Android phone or a Windows laptop" width="760"></p>
 
-**How to start:** 1) install **Kuraya** on the PC that holds your movies. 2) Install a **Remote** on the device where you want to watch. 3) In the remote, let it find your PC (or type its address and port 8080). The PC must be on with Kuraya running. All files in one place: [latest release](https://github.com/Fetterbr61/Kuraya/releases).
+**How to start:** 1) install **Kuraya** on the PC that holds your movies. 2) Install a **Remote** on the device where you want to watch. 3) In the remote, let it find your PC (or type its address and port 8080). The PC must be on with Kuraya running. All files in one place: [latest release](https://github.com/Fetterbr61/Kuraya/releases/latest).
 
 <sub>Windows may warn about an unknown publisher the first time: choose *More info*, then *Run anyway*. Version 2.0.5-beta.1 is a test version (beta).</sub>
 
