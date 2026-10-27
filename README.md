@@ -66,7 +66,7 @@ Most JAV tools fall into one of two camps: **scrapers** that fetch metadata, and
 | **Watching** | | | |
 | Built-in player and cover browser | — | ✓ | ✓ |
 | English subtitles generated from the audio | — | — | ✓ Whisper + AI translation, fully automatic |
-| Stream your library to your phone | — | ✓ | ✓ Free Android remote |
+| Stream your library to your phone | — | ✓ | ✓ Free Android and Windows remote |
 | Browse and play any drive or network share | — | ◐ | ✓ Movies only, no clutter |
 | **Proven** | | | |
 | Used daily on a library of 20,000+ films | — | — | ✓ |
@@ -120,8 +120,8 @@ network share and shows **only the movies** — no torrents, subtitles or instal
 the way. Sort, change the grid size and play straight away in Kuraya's own player.
 
 ### 📱 It comes with you
-The free **Kuraya-Remote** Android app streams your own collection to any phone or
-tablet in the house. Your files never leave your network.
+The free **Kuraya-Remote** app (Android and Windows) streams your own collection to any
+phone, tablet or laptop in the house. Your files never leave your network.
 
 ---
 

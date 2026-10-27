@@ -23,8 +23,8 @@ stored on your own drives. You point it at your folders and it:
 - can make English subtitles from the Japanese audio,
 - finds duplicates, broken files and missing pieces, and can shrink large videos.
 
-An optional Android remote app (a separate download, "Kuraya-Remote") lets you
-browse and stream your library on a phone or tablet on your home network.
+An optional remote app for Android and Windows (a separate download, "Kuraya-Remote")
+lets you browse and stream your library on a phone, tablet or laptop on your home network.
 
 Kuraya never deletes anything without asking you first.
 
@@ -250,10 +250,12 @@ Rules Kuraya always follows:
   there and can be paused or stopped safely between movies.
 
 
-10. The Android remote (optional)
----------------------------------
+10. The remote (optional)
+-------------------------
 
 Install Kuraya-Remote on an Android phone or tablet on the same network as the PC.
+On a Windows laptop, unzip Kuraya-Remote-<version>-win64.zip anywhere and start
+Kuraya_Remote.exe (keep the folder together; there is nothing to install).
 In the remote's settings enter the PC's IP address (e.g. 192.168.0.10, not
 "localhost") and port 8080. The PC does all the work; the remote shows your library,
 streams movies, and syncs favourites and flags back to the PC. The PC must be on and

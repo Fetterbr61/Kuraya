@@ -21,6 +21,8 @@ repository.
 
 - In short: every long job in the Task Console can be paused, resumed and stopped; every page, dialog and button follows the chosen theme; text in windows can be marked and copied; the video converter keeps its originals in NMP_Trash and leaves its end result on screen; the scraper shows the whole cover; many Upgrades, subtitle and Pre-Inbox fixes. Everything is listed below.
 
+- New: **Kuraya Remote for Windows** - the same remote as on Android, for a laptop (unzip and start Kuraya_Remote.exe). Both remotes now start without a default PC address, and the remote's file browser uses the address you entered instead of a fixed one
+
 - Actor photos & bios: Stop now always stops the job, also when the download of one actor hangs. A job that makes no progress for 20 minutes is stopped by itself and the remaining actors carry on (#2073)
 - Video converter: the original file is now moved to NMP_Trash (a dated folder on the same drive) after it has been replaced by the smaller version, instead of being deleted for good (#2072)
 - Video converter: when a run finishes, the result (how many were converted, skipped, failed and how much space was saved) now stays on screen until you close it. A later automatic run can no longer wipe it (#2071)
