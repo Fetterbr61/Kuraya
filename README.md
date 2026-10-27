@@ -70,7 +70,9 @@ Kuraya is **one main app on your Windows PC**, plus **two free remote apps** tha
 - **Remote apps:** the PC must be on with Kuraya running, and both devices on the same home network.
 
 > [!IMPORTANT]
-> **Every movie needs its DVD-ID in the file name**, the product code such as `ABP-112` or `SONE-804`. Kuraya recognises a movie only by that code. A file called `My Holiday Video.mp4` is not recognised.
+> **Every movie needs its DVD-ID in the file name**, the product code such as `ABP-112` or `SONE-804`. Kuraya recognises a movie only by that code. A file called `My Holiday Video.mp4` is not recognised, and Kuraya does not start any work on it.
+>
+> **Put new movies loose, not in a folder, into the Pre-Inbox or the Inbox.** Kuraya makes the movie's folder itself.
 ---
 <!-- TESTERS-WANTED:START  (#1768: take out everything from here to TESTERS-WANTED:END when we have enough testers; the release notes copy this block automatically) -->
 ## 🧪 Beta testers wanted
@@ -221,7 +223,7 @@ Background work (subtitles, advert and burned-in text checks) runs while the **A
 
 ### Movies that are not in folders
 
-Kuraya reads a movie only when it sits in **its own folder**, and every movie needs at least its **DVD-ID in the file name**. When **Scan Library** finds loose movie files in a library folder, it asks whether to move the ones with a DVD-ID to the **Pre-Inbox**. There Kuraya checks, scrapes, renames and files them by itself. Files without a DVD-ID stay where they are; put the DVD-ID in the name (for example `ABP-112.mp4`) and scan again. Nothing is overwritten.
+Put new movies **loose** (not in a folder) into the **Pre-Inbox** or the **Inbox**: Kuraya makes the folder itself. Inside your library, Kuraya reads a movie only when it sits in **its own folder**, and every movie needs at least its **DVD-ID in the file name**. When **Scan Library** finds loose movie files in a library folder, it asks whether to move the ones with a DVD-ID to the **Pre-Inbox**. There Kuraya checks, scrapes, renames and files them by itself. Files without a DVD-ID stay where they are; put the DVD-ID in the name (for example `ABP-112.mp4`) and scan again. Nothing is overwritten.
 
 ```
 Before (loose files)                 After Pre-Inbox + scraping
@@ -272,6 +274,7 @@ Only **FFmpeg** is required — Kuraya's Setup offers the rest. Full list with w
 3. The **Setup** window walks you through it: choose your movie folders, and let
    Kuraya download the free helper tools it needs (FFmpeg and friends) into its own
    folder.
+4. Put your movie files **loose** (not in a folder) into the **Pre-Inbox** or the **Inbox**, with the DVD-ID in the file name. Kuraya makes the folder itself and does the rest.
 
 > ### ⚠️ Every movie needs its DVD-ID in the file name
 > Kuraya recognises a movie **only by its DVD-ID** (the product code, for example `ABP-112` or `SONE-804`).
