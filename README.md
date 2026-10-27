@@ -20,23 +20,23 @@
 
 **Kuraya is a free Windows app that organises, subtitles and plays your own JAV collection.**
 
-- Finds every movie by its DVD-ID and fetches cover, title, cast, studio and genres from several sources.
+- Recognises a movie by the DVD-ID in its file name, and then fetches cover, title, cast, studio and genres from several sources.
 - Sorts your library into clean folders and finds duplicates across your drives.
 - Makes English subtitles from the audio, on your own PC.
-- Plays everything in one place, and streams it to your phone, tablet or laptop with the free Remote apps.
+- Plays your movies in one place, and streams them to your phone, tablet or laptop with the free Remote apps.
 
 <a id="download"></a>
 
 ## ⬇️ Download: three apps, one library
 
-Kuraya is **one main app on your Windows PC** that does all the work, plus **two free remote apps** that stream your movies to your other devices. **You always need the main app. The remotes are optional.**
+Kuraya is **one main app on your Windows PC**, plus **two free remote apps** that stream your movies to your other devices. **You always need the main app. The remotes are optional.**
 
 <table>
 <tr>
 <td width="33%" valign="top" align="center">
 <h3>Kuraya</h3>
 <b>The main app</b>
-<p>Runs on your Windows 10/11 PC. Finds and sorts your movies, fetches covers and info, makes English subtitles, finds duplicates and plays everything. <b>Controls everything. Start here.</b></p>
+<p>Runs on your Windows 10/11 PC. For movies that have a DVD-ID in the file name, it fetches covers and info, sorts them into folders, finds duplicates and makes English subtitles. It also plays your movies. <b>Start here.</b></p>
 <a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Setup-2.0.5-beta.1.exe"><img alt="Download the installer" src="https://img.shields.io/badge/Download-Installer-D9432B?style=for-the-badge&logo=windows&logoColor=white"></a>
 <br><sub>or the <a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-2.0.5-beta.1-win64.zip">portable .zip</a> (no install)</sub>
 </td>
@@ -93,12 +93,13 @@ Half without covers. Japanese titles you can't read. Three copies of the same fi
 three drives. No subtitles. And every tool you try does **one** of those jobs — then
 leaves the other ten to you.
 
-**Kuraya does all of it.** Point it at your drives and it identifies every film,
-fetches the cover, title, cast, studio and genres, translates them into English,
-files everything into a clean folder structure, finds the duplicates, makes English
-subtitles from the audio — and plays it all in one place.
+**Kuraya takes over the repetitive work.** For every movie that has its DVD-ID in the file name,
+it identifies the film, fetches the cover, title, cast, studio and genres, translates them into English,
+files it into a clean folder structure, finds duplicates and makes English subtitles from the audio.
+It also plays your movies in one place. A movie file **without a DVD-ID in its name is not picked up**:
+Kuraya does not start any work on it until the DVD-ID is in the name.
 
-> Organisers show you what you have. **Kuraya does the work.**
+> Organisers show you what you have. **Kuraya does the repetitive work for you, once the DVD-ID is in the file name.**
 
 ---
 
@@ -133,7 +134,7 @@ Most JAV tools fall into one of two camps: **scrapers** that fetch metadata, and
 
 ## What it feels like
 
-### 🧠 It knows every film
+### 🧠 It knows the films it can identify
 Kuraya reads the DVD-ID out of even a messy file name (as long as the DVD-ID is in it), asks several movie
 databases **at the same time**, and shows you every answer as a card: cover, title,
 cast, genres. Take the best of each — or let automatic mode decide for a thousand films
