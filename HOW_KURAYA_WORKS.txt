@@ -256,10 +256,24 @@ Rules Kuraya always follows:
 Install Kuraya-Remote on an Android phone or tablet on the same network as the PC.
 On a Windows laptop, unzip Kuraya-Remote-<version>-win64.zip anywhere and start
 Kuraya_Remote.exe (keep the folder together; there is nothing to install).
-In the remote's settings enter the PC's IP address (e.g. 192.168.0.10, not
-"localhost") and port 8080. The PC does all the work; the remote shows your library,
-streams movies, and syncs favourites and flags back to the PC. The PC must be on and
-Kuraya running.
+In the remote's settings press "Find my PC automatically" (or type the PC's address,
+e.g. 192.168.0.10, and port 8080). The PC does all the work; the remote shows your
+library, streams movies, and syncs favourites and flags back to the PC. The PC must be
+on and Kuraya running. While Kuraya runs it keeps the PC awake (Settings > Automation >
+Power), so the remote can always reach it.
+
+"Find my PC" finds nothing? Windows Firewall blocks it. Setup can open it for you
+(tick "Let the Android remote reach this PC"), or press the shield button in
+Settings > Network. Windows asks for permission once; it is for your home network only.
+
+Away from home (optional): install the free Tailscale app (tailscale.com) on the PC
+and on the phone, and sign in with the same account on both. Then in the remote's
+settings switch on "Use away from home (Tailscale)". The away address fills in by
+itself the next time the remote finds the PC at home. At home the remote uses your
+Wi-Fi; away it switches to Tailscale by itself. Nothing is opened to the internet -
+Tailscale connects only your own devices, encrypted. Settings > Network on the PC shows
+whether Tailscale is running and the PC's away address. Streaming away uses the
+upload speed of your home internet; turn on Smooth mode in the remote if it stutters.
 
 
 11. What goes online — privacy

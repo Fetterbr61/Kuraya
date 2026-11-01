@@ -17,7 +17,59 @@ repository.
 
 ---
 
-## [2.0.5-beta.1] — 2026-10-24 — pause and resume every job, themes everywhere, copyable text, a safer video converter
+## [2.0.5-beta.4] — 2026-11-01 — security: the scripts Kuraya ships cannot be changed
+- (security) Kuraya now checks every script it comes with before it starts it. A script that has been edited, or a different script chosen in Settings, is not started - Kuraya says which file and asks you to install Kuraya again. Online download code is no longer in the public edition's scripts (#2111)
+- (security) A security update can no longer be skipped in the update window; it is offered at every start until it is installed (#2111)
+- A Caribbeancom file named like 'Caribbean-071525-001-FHD' is now recognised as 071525-001, so the scrapers find it without renaming (a quality tag like FHD or 1080p after the number is ignored) (#2113)
+- Every release now checks the app's software packages for security warnings and available updates; 8 packages were updated, 3 are held back on purpose (#2112, #2114)
+
+- Also new since the last public version (2.0.5-beta.1) - details in the 2.0.5-beta.2 and beta.3 sections below:
+- The actor photo face check works again (it stopped with an error on names with special letters like ū).
+- Merge Videos finds parts in subfolders and parts named "Movie (1)", "Movie (2)" or "Title A / B / C"; a new tick box keeps the original parts, and removed parts go to NMP_Trash instead of being deleted.
+- "Recently Added" shows what you just added again, and NMP_Trash is only emptied by age (30 days by default), never by size.
+- Pre-Inbox: two files that are parts of one movie open the merge window instead of showing as duplicates.
+- Every search tab remembers your searches (click a chip to search again).
+- Stop in the Task Console really stops background transcribing; the Rinryu scraper reads Team Rinryu's new website.
+- Scraper and Edit window: a "use for others" button for the four folder words, one Save & close button, and the folder each card will really use is shown.
+- Settings > Scrapers shows each scraper's website address with copy and open buttons.
+
+## [2.0.5-beta.3] — 2026-11-01 — actor face check works again
+- The actor photo face check no longer stops with an error when an actress name has a special letter (like ū); it ran every 2.5 minutes and failed every time. A test now also guards which scrapers the public edition may contain (#2110, #783)
+
+## [2.0.5-beta.2] — 2026-11-01 — one set of link toggles for all New Releases tabs
+
+
+- Settings > Scraping > Scrapers: every scraper row now shows its website address as text you can mark, with a copy button and an open-in-browser button (#2066b)
+
+- Merge Videos also looks in subfolders (up to 3 levels) and understands names like "The Cane Bet A - …", "B - …", "C - …" (#2112b)
+- Merge Videos: new tick box "Keep the original parts" - make only the new joined file. When it is off, the parts are now moved to NMP_Trash instead of being deleted for good (#2112c)
+- Merge Videos now also finds parts named like "Movie (1)", "Movie (2)" … (including .rm files). Windows copies of one file ("Movie.mp4" + "Movie (1).mp4") are never offered for merging (#2112)
+- "Recently Added" again shows what you just added: a new movie's date added is now the day it enters Kuraya, not the date stored in the downloaded file (which was often years old). Tonight's movies that got an old date were set to today (#2111)
+- NMP_Trash is no longer emptied because of its size - only folders older than the days you set (30 by default) are deleted. The size limit could delete today's removed files minutes after they were put there; the "NMP_Trash maximum size" setting is gone (#2110)
+- Pre-Inbox: two files that are parts of one movie (XRW-813A + XRW-813B, Part 1/2, CD1/CD2) are no longer shown as duplicates - the usual merge dialog opens by itself so you can join them into one file or keep them together in one folder. It also finds a part that is already in its own folder, and the "one folder" choice now works in the Pre-Inbox (#2108)
+- Search history in every search tab: Find Links and Western now remember your searches like the other tabs. A row of chips under the search box - click one to search again, the pencil puts it in the box to change it, x forgets it. Long ID lists show as e.g. "BP-55, DD-202 … (38)", and the tooltip shows the whole list and when you searched it (#2107)
+- Transcribe (background): pressing Stop in the Task Console now really stops. The movie being transcribed finishes, but no new movie starts afterwards - freshly scraped movies used to restart it a few seconds later (#2100)
+- Rinryu scraper: Team Rinryu rebuilt their website and the old shop it read from is down. The scraper now reads the new site first (exact DVD-ID match, title, story and cover) and only falls back to the old shop (#2098)
+- Scraper: a new "use for others" button next to the four folder words (g1-g4). It opens a list of the other movies in the scrape; you tick only the ones that should get the same words (none are ticked at the start) (#2097)
+- Edit window: under each movie you now see the folder the card will really use, and a g1-g4 box turns red when the sorting rules will not use your word (with the reason, e.g. "Human-Toilet is a g2 word, not g3") or orange when it is sorted under its agreed spelling (#2096)
+- Edit window: one Save & close button now saves the title, genres, maker, series and director together. Closing with unsaved changes asks first. When the selected movies have different makers (or series, director), each current value is shown as a button - click it to use it for all of them. Each movie row in the genres has a new button that copies its four words to the other movies (#2095)
+- New Releases and all searches now use one site choice. Pick the sites once and every tab follows; the choice is remembered when you restart. Upgrades is its own tab now, and Flagged is a small switch next to the sites (#2094)
+- Turning burned-in subtitles into soft subtitles now keeps running when you close the window. It shows in the Task Console with Pause, Resume and Stop (#2089)
+- Android remote: Setup can now open Windows Firewall for the remote on your home network, so "Find my PC" works at once. Already installed? Settings > Network > the shield button does the same (#2086)
+- Duplicate-picture finder: files you remove are now moved to NMP_Trash instead of being deleted for good, so a wrong tick can be undone (#2085)
+- Actress photos: an actress Warashi does not know now costs 8 seconds instead of 20 (#2085)
+- Smaller app: three packages that were never used are removed (video_player, synchronized, cupertino_icons) (#2084)
+- New setting 'Keep the PC awake while Kuraya runs' (on by default): Windows does not put the PC to sleep while Kuraya is open, so the Android remote can always stream, also away from home. The screen can still turn off (#2082)
+- Translation dictionary cleaned: every Japanese word now has one English translation, the most specific one (95 words changed, for example 輪姦 is "Gang Rape" again instead of "Gang") (#2081)
+- Fixed: the Subtitle delay slider in the Tube player now really moves the subtitles, and it is remembered (#2079)
+- Fixed: the New Releases taste filter switch is remembered after a restart (#2079)
+- Fixed: scraper priority is used everywhere, also for scrapers whose priority was never changed (#2078)
+- Fixed: Undo and a few background jobs now report a failure instead of stopping silently (#2080)
+- Settings: about 60 settings that could only be changed by editing a file are now in Settings and can be found with the search (for example NMP_Trash size, the local AI models, the subtitle translator, automatic jobs and tool paths). The search also finds advanced settings now (#2077)
+- Settings > Network shows whether the Android remote can be used away from home: Tailscale running (with the address to use), installed but not connected, or not installed with a download link (#2076)
+- Android remote: new option 'Use away from home (Tailscale)'. With the free Tailscale app on the PC and the phone, the remote also works outside your home; at home it keeps using the Wi-Fi, away it switches by itself. Off by default (#2074)
+
+## [2.0.5-beta.1] — 2026-10-24
 
 - In short: every long job in the Task Console can be paused, resumed and stopped; every page, dialog and button follows the chosen theme; text in windows can be marked and copied; the video converter keeps its originals in NMP_Trash and leaves its end result on screen; the scraper shows the whole cover; many Upgrades, subtitle and Pre-Inbox fixes. Everything is listed below.
 
@@ -26,9 +78,7 @@ repository.
 - Actor photos & bios: Stop now always stops the job, also when the download of one actor hangs. A job that makes no progress for 20 minutes is stopped by itself and the remaining actors carry on (#2073)
 - Video converter: the original file is now moved to NMP_Trash (a dated folder on the same drive) after it has been replaced by the smaller version, instead of being deleted for good (#2072)
 - Video converter: when a run finishes, the result (how many were converted, skipped, failed and how much space was saved) now stays on screen until you close it. A later automatic run can no longer wipe it (#2071)
-- **Download Guard** (full edition) also stops a movie you deleted earlier, not only movies you own. The prompt says "You deleted ..." and nothing in your library changes (#2068)
 - Scraper: the cover preview in the left panel now fits the picture, so a full DVD cover is shown whole. The Play button is a small chip on the picture instead of its own row (#2069, #2070)
-- **Download Guard** (full edition): a browser add-on that stops a torrent or download link for a movie you already own before it reaches uTorrent, so the tracker never counts it. The owned movie gets today's date as date added. The tray icon shows how many movies it knows and has a Rescan button (#2067)
 - Each scraper now has a link to its website, in the scraper list before scraping and in Settings, so you can open the site in your browser when its tab has disappeared or the site wants a check (#2066).
 - Pre-Inbox: a movie whose title the content filter excludes from subtitles no longer gets stuck in the Pre-Inbox; it moves on to the Inbox without a subtitle (#2065b).
 - Guide and README: a yes/no comparison of the Pre-Inbox and putting files straight into the Inbox, and why the Pre-Inbox is worth using. Corrected: the Pre-Inbox no longer makes the subtitle before the movie moves on (it is made in the background in the Inbox), and it checks whether this file is censored, not whether an uncensored version exists (#2065).

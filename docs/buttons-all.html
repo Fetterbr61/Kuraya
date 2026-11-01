@@ -124,7 +124,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Start Test&quot; [icon: play_arrow]</b></td><td>Start checking photo lookups for a sample of actors from your library.</td></tr>
 </table></details>
-<details><summary><b>Advanced Settings</b> (48)</summary><table>
+<details><summary><b>Advanced Settings</b> (54)</summary><table>
 <tr><td><b>Cancel</b></td><td>Close this window without changing the setting.</td></tr>
 <tr><td><b>Save</b></td><td>Save the text you entered. If the box is empty, the default value is used.</td></tr>
 <tr><td><b>IconButton [icon: folder_open]</b></td><td>Browse…</td></tr>
@@ -140,6 +140,8 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Cancel</b></td><td>Close this window without changing the key.</td></tr>
 <tr><td><b>Save</b></td><td>Save the entered key.</td></tr>
 <tr><td><b>GestureDetector</b></td><td>Press and hold on this setting to reset it to its default value.</td></tr>
+<tr><td><b>Copied $url</b></td><td>Copy this website address to the clipboard.</td></tr>
+<tr><td><b>IconButton [icon: open_in_new]</b></td><td>Open this website in your browser, for example when its tab disappeared or the site wants a check.</td></tr>
 <tr><td><b>Switch</b></td><td>Turn this setting on or off.</td></tr>
 <tr><td><b>DropdownButton</b></td><td>Choose a value for this setting.</td></tr>
 <tr><td><b>ListTile [icon: chevron_right]</b></td><td>Click to change this setting. It is now: {...}</td></tr>
@@ -173,6 +175,10 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>OutlinedButton.icon - &quot;Add folder…&quot; [icon: add]</b></td><td>Add a folder to the list.</td></tr>
 <tr><td><b>Cancel</b></td><td>Close this window without changing the list.</td></tr>
 <tr><td><b>Save</b></td><td>Save the list as shown.</td></tr>
+<tr><td><b>IconButton [icon: copy]</b></td><td>Copy the Tailscale address {...}, to type it in the remote by hand.</td></tr>
+<tr><td><b>Get Tailscale</b></td><td>Open the Tailscale download page in your browser.</td></tr>
+<tr><td><b>IconButton [icon: shield_outlined]</b></td><td>Let the Android remote reach this PC through Windows Firewall on your home network (needed for &quot;Find my PC&quot;). Windows asks for permission once.</td></tr>
+<tr><td><b>IconButton [icon: refresh]</b></td><td>Check again whether Tailscale is running on this PC.</td></tr>
 </table></details>
 <details><summary><b>Ai Fanart Sorter</b> (17)</summary><table>
 <tr><td><b>Cancel</b></td><td>Close this question and move nothing.</td></tr>
@@ -292,7 +298,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>ElevatedButton.icon [icon: play_arrow, pause]</b></td><td>[state] - Continue the photo search where it paused. - Pause the photo search. You can continue it later.</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop the photo search.</td></tr>
 </table></details>
-<details><summary><b>Bulk Metadata Edit</b> (10)</summary><table>
+<details><summary><b>Bulk Metadata Edit</b> (11)</summary><table>
 <tr><td><b>Cancel</b></td><td>Do not change anything.</td></tr>
 <tr><td><b>Only the ${widget.movies.length} selected</b></td><td>Rename the series only on the movies you selected. The others keep the old name and become a separate series.</td></tr>
 <tr><td><b>Rename for all ${all.length}</b></td><td>Rename the series on every movie in the list above. The series keeps its genre sort folders (g1–g4).</td></tr>
@@ -300,6 +306,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Checkbox</b></td><td>Tick to change the start of the movie ID (for example SSNI to SSIS) on all selected movies. Their folders and files are renamed to match.</td></tr>
 <tr><td><b>ElevatedButton</b></td><td>[state] - Please wait until the changes have been applied. - Close this window. - Close without changing any movie.</td></tr>
 <tr><td><b>ElevatedButton.icon [icon: save]</b></td><td>[state] - The changes are being applied. - Write the ticked changes into all {...} selected movies.</td></tr>
+<tr><td><b>${e.key}  ×${e.value}</b></td><td>Use &quot;{...}&quot; for all the selected movies. It is written when you save.</td></tr>
 <tr><td><b>Checkbox</b></td><td>Tick to change the {...} of all selected movies.</td></tr>
 <tr><td><b>InkWell</b></td><td>Current {...} Click to change it.</td></tr>
 <tr><td><b>GestureDetector</b></td><td>[state] - Replace - Replace the genres of each movie with the ones you list. - Add the genres you list to the genres each movie already has.</td></tr>
@@ -334,7 +341,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Clear selection</b></td><td>Untick all files.</td></tr>
 <tr><td><b>← Log</b></td><td>Go back to the scan log.</td></tr>
 <tr><td><b>Cancel</b></td><td>Close this window without deleting anything.</td></tr>
-<tr><td><b>ElevatedButton.icon [icon: delete_sweep]</b></td><td>[state] - Tick the files you want to delete first. - Permanently delete the {...} ticked file(s) from your disk. This cannot be undone.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: delete_sweep]</b></td><td>[state] - Tick the files you want to delete first. - Move the {...} ticked file(s) to NMP_Trash on the same drive. You can put them back from there until the trash is emptied.</td></tr>
 <tr><td><b>InkWell</b></td><td>[state] - Untick this file. - Tick this file for deletion.</td></tr>
 <tr><td><b>Checkbox</b></td><td>[state] - Untick this file. - Tick this file for deletion.</td></tr>
 <tr><td><b>Close</b></td><td>Close this window.</td></tr>
@@ -641,7 +648,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Cancel</b></td><td>Close this window without applying anything.</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Apply ${_selected.length}&quot; [icon: check]</b></td><td>[state] - Pick at least one movie first. - Use the {...} picked movie(s).</td></tr>
 </table></details>
-<details><summary><b>Genre Path Bulk</b> (17)</summary><table>
+<details><summary><b>Genre Path Bulk</b> (18)</summary><table>
 <tr><td><b>Only these</b></td><td>Change only the movies selected here.</td></tr>
 <tr><td><b>Apply to whole series</b></td><td>Change every movie of this series, not just the ones selected here.</td></tr>
 <tr><td><b>IconButton [icon: close]</b></td><td>Close this window.</td></tr>
@@ -654,6 +661,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Push to all ${_movies.length}</b></td><td>Copy the words you typed at the top into all {...} movies.</td></tr>
 <tr><td><b>IconButton [icon: close]</b></td><td>Remove from this edit</td></tr>
 <tr><td><b>IconButton [icon: auto_awesome]</b></td><td>DeepSeek: infer g1..g4 from the story</td></tr>
+<tr><td><b>IconButton [icon: content_copy]</b></td><td>Use these words for all the other movies too. Empty boxes are not copied.</td></tr>
 <tr><td><b>? - &quot;➕ New word…&quot; / &quot;✏️ Rename &quot;$current&quot; everywhere…&quot; [icon: arrow_drop_down, history]</b></td><td>Pick, create or rename a {...} word</td></tr>
 <tr><td><b>Cancel</b></td><td>Close without using what you typed.</td></tr>
 <tr><td><b>OK</b></td><td>Use what you typed.</td></tr>
@@ -697,6 +705,10 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>TextButton.icon - &quot;Stop&quot; [icon: stop]</b></td><td>Stop reading the burned-in subtitles.</td></tr>
 <tr><td><b>Run in Background</b></td><td>Close this window and let the job keep running in the background.</td></tr>
 <tr><td><b>Close</b></td><td>Close this window.</td></tr>
+</table></details>
+<details><summary><b>Host Toggle Column</b> (2)</summary><table>
+<tr><td><b>Text</b></td><td>What the copy buttons in every tab will include right now.</td></tr>
+<tr><td><b>InkWell [icon: toggle_on, toggle_off]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
 </table></details>
 <details><summary><b>Inbox File Duplicate Handler</b> (5)</summary><table>
 <tr><td><b>ElevatedButton.icon - &quot;Replace&quot; [icon: swap_horiz]</b></td><td>Replace the file in your library with this one from the inbox.</td></tr>
@@ -781,7 +793,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>ElevatedButton</b></td><td>[state] - Fanart - Paste the web address of a cover (fanart) image for this movie. - Poster - Paste the web address of a poster image for this movie. - Type the - - of this movie yourself.</td></tr>
 <tr><td><b>IconButton [icon: close]</b></td><td>Remove this item from your picks.</td></tr>
 </table></details>
-<details><summary><b>Media Player</b> (74)</summary><table>
+<details><summary><b>Media Player</b> (73)</summary><table>
 <tr><td><b>TextButton.icon - &quot;Project page&quot; [icon: public]</b></td><td>Open the {...} project page in your browser.</td></tr>
 <tr><td><b>DropdownButton</b></td><td>Choose a value for {...}:{...}{...} to change which movies are shown or how they are ordered.</td></tr>
 <tr><td><b>IconButton [icon: remove]</b></td><td>Minimize — scan keeps running in background</td></tr>
@@ -825,7 +837,6 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>IconButton [icon: inbox]</b></td><td>Process Inbox — organise new files: detect DVD-ID, de-duplicate, move into the library</td></tr>
 <tr><td><b>IconButton [icon: people_alt]</b></td><td>Actor Manager — bulk rescrape actor names &amp; genres from eroasia/JavLibrary</td></tr>
 <tr><td><b>IconButton [icon: medical_services]</b></td><td>Doctor — diagnose &amp; fix library / NMP issues</td></tr>
-<tr><td><b>IconButton [icon: compare_arrows]</b></td><td>Ollama vs DeepSeek — compare subtitle translation quality on your own lines</td></tr>
 <tr><td><b>IconButton [icon: manage_search]</b></td><td>Genre / Tag Search — find movies by genre across JAVLibrary, JAV-GURU, MissAV</td></tr>
 <tr><td><b>IconButton [icon: ondemand_video]</b></td><td>Tube Search (website browsing)</td></tr>
 <tr><td><b>IconButton [icon: search]</b></td><td>Identify Unknown Clip — pick any video file to find its DVD-ID</td></tr>
@@ -1155,6 +1166,11 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Cancel</b></td><td>Close without changing anything.</td></tr>
 <tr><td><b>Save</b></td><td>Save this order. Scrapers get the numbers 1, 2, 3 ... from the top.</td></tr>
 </table></details>
+<details><summary><b>Search History Row</b> (3)</summary><table>
+<tr><td><b>InkWell</b></td><td>Search again for: {...}{...}{...}}</td></tr>
+<tr><td><b>InkWell [icon: edit]</b></td><td>Put this search in the box so you can change it.</td></tr>
+<tr><td><b>InkWell [icon: close]</b></td><td>Remove this search from the list.</td></tr>
+</table></details>
 <details><summary><b>Series Path</b> (28)</summary><table>
 <tr><td><b>TextButton.icon - &quot;Export CSV&quot; [icon: download]</b></td><td>Save the list of series and their sort folders as a CSV file you can open in a spreadsheet.</td></tr>
 <tr><td><b>GestureDetector</b></td><td>Show only the series in this status group. Click again on another one to switch the list.</td></tr>
@@ -1206,6 +1222,12 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>DropdownButton</b></td><td>Choose which folder slot your own word belongs to.</td></tr>
 <tr><td><b>Not now</b></td><td>Close this window without teaching the app any of these words.</td></tr>
 <tr><td><b>Learn selected</b></td><td>Teach the app the words you ticked (and the one you typed, if any). From then on they are accepted as valid folder names for that slot.</td></tr>
+</table></details>
+<details><summary><b>Source Picker</b> (4)</summary><table>
+<tr><td><b>GestureDetector</b></td><td>[state] - Leave {...} out of the {...} - Include {...} in the {...} - (At least one site stays on.)</td></tr>
+<tr><td><b>All</b></td><td>Switch every site on again.</td></tr>
+<tr><td><b>Close</b></td><td>Close. Your choice is saved at once and used by every tab.</td></tr>
+<tr><td><b>GestureDetector [icon: arrow_drop_down]</b></td><td>Choose which sites the list and every search use ({...} of {...} on).</td></tr>
 </table></details>
 <details><summary><b>Srt File Browser</b> (7)</summary><table>
 <tr><td><b>IconButton [icon: close]</b></td><td>Close this file browser without choosing anything.</td></tr>
@@ -1338,12 +1360,15 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Cancel</b></td><td>Close this window without finishing.</td></tr>
 <tr><td><b>Processing...</b></td><td>[state] - The chosen actions are being carried out. - Carry out all the actions you chose for the duplicates.</td></tr>
 </table></details>
-<details><summary><b>Unified Edit</b> (3)</summary><table>
+<details><summary><b>Unified Edit</b> (6)</summary><table>
+<tr><td><b>Go back</b></td><td>Go back to the editor. Nothing is saved or thrown away.</td></tr>
+<tr><td><b>Throw away</b></td><td>Close the editor and forget the changes. The movies stay as they were.</td></tr>
+<tr><td><b>Save &amp; close</b></td><td>Save the changes to the movies, then close the editor.</td></tr>
 <tr><td><b>TextButton.icon</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
-<tr><td><b>ElevatedButton.icon - &quot;Done — Close&quot; [icon: check]</b></td><td>Close this editor. Changes you already applied are kept; anything not applied yet is dropped.</td></tr>
-<tr><td><b>IconButton [icon: close]</b></td><td>Close this editor</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: save]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this editor. If you changed something, it asks first.</td></tr>
 </table></details>
-<details><summary><b>Unified Scraping</b> (101)</summary><table>
+<details><summary><b>Unified Scraping</b> (105)</summary><table>
 <tr><td><b>Cancel</b></td><td>Close this window without reading anything.</td></tr>
 <tr><td><b>Extract</b></td><td>Let AI read the movie details from the web address you typed, so you can check them. Nothing is saved until you apply it.</td></tr>
 <tr><td><b>Opacity</b></td><td>Available when the scrape of this movie is done.</td></tr>
@@ -1419,6 +1444,10 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Copied — paste it anywhere</b></td><td>{...} {...}</td></tr>
 <tr><td><b>GestureDetector [icon: refresh]</b></td><td>Ask the AI again to choose g1–g4 for THIS movie (ignores the series preset)</td></tr>
 <tr><td><b>confirm</b></td><td>Apply these four folders to every movie in the series</td></tr>
+<tr><td><b>use for others</b></td><td>Use these four folder words (g1-g4) for other movies in this scrape. You choose which ones; nothing is saved until you apply.</td></tr>
+<tr><td><b>${m.id}  ${m.title}</b></td><td>Give {...} these g1-g4 words.</td></tr>
+<tr><td><b>Cancel</b></td><td>Close without copying anything.</td></tr>
+<tr><td><b>Copy to ${picked.length}</b></td><td>Copy the words into the ticked movies.</td></tr>
 <tr><td><b>+</b></td><td>[state] - This movie is rejected. - Show or hide the box for typing a genre yourself.</td></tr>
 <tr><td><b>✓</b></td><td>Add the genre you typed.</td></tr>
 <tr><td><b>${g.name}×</b></td><td>Remove the genre {...} from this movie.</td></tr>
@@ -1451,7 +1480,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Later</b></td><td>Close this message. You are asked again later.</td></tr>
 <tr><td><b>Install now</b></td><td>Download and install the new version now.</td></tr>
 </table></details>
-<details><summary><b>Video Merge</b> (10)</summary><table>
+<details><summary><b>Video Merge</b> (11)</summary><table>
 <tr><td><b>GestureDetector [icon: close]</b></td><td>Close this window.</td></tr>
 <tr><td><b>GestureDetector [icon: folder_open]</b></td><td>[state] - Please wait until the current work has finished. - Choose the folder to search for numbered video parts (such as Movie01, Movie02).</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Browse&quot; [icon: folder_open]</b></td><td>[state] - Please wait until the current work has finished. - Choose the folder to search for numbered video parts (such as Movie01, Movie02).</td></tr>
@@ -1459,6 +1488,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>All</b></td><td>Tick every group of video parts in the list.</td></tr>
 <tr><td><b>None</b></td><td>Untick every group in the list.</td></tr>
 <tr><td><b>· ${path.basename(f.path)}</b></td><td>[state] - Untick this group of video parts. - Tick this group of video parts so it is merged.</td></tr>
+<tr><td><b>Keep the original parts</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
 <tr><td><b>TextButton.icon - &quot;Stop&quot; [icon: stop_circle_outlined]</b></td><td>Stop the merge.</td></tr>
 <tr><td><b>ElevatedButton.icon [icon: merge_type]</b></td><td>[state] - {...}: join the ticked video parts into one MP4 file, or convert already joined files to MP4. - Tick at least one group that still needs merging or converting first.</td></tr>
 <tr><td><b>Close</b></td><td>Close this window.</td></tr>
@@ -1467,6 +1497,6 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>IconButton [icon: close]</b></td><td>Close</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Process Inbox&quot; [icon: inbox]</b></td><td>Process the movies waiting in your inbox folder.</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Open Setup&quot; [icon: settings_suggest]</b></td><td>Open the setup wizard to choose your library and inbox folders.</td></tr>
-<tr><td><b>OutlinedButton.icon - &quot;Scan library&quot; [icon: refresh]</b></td><td>Look through your library folders again and add any movies that are missing from the app. Needs a library folder to be set first. ######################################################################## # Controls that deliberately have no tooltip ######################################################################## lib/main.dart:899 drag handle only; the chip inside has the tooltip (it says it can be dragged) lib/main.dart:981 drag handle only; the task console button inside has the tooltip lib/services/core/movie_context_menu.dart:2794 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2800 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2811 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/ui/screens/tube_video_player_screen.dart:1123 the whole video surface (tap = show controls, drag = volume / brightness / seek). A tooltip here would pop up over the playing video. lib/ui/screens/tube_video_player_screen.dart:1656 only stops a tap on the open settings panel from reaching the video behind it; the panel&#x27;s own buttons have tooltips. lib/ui/widgets/cascading_menu.dart:72 the row&#x27;s own child already carries its tooltip (built by _buildMenuItem) SnackBar action buttons (&quot;Open&quot;, &quot;RESCUE&quot;, ...) part of a message, not a screen control</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Scan library&quot; [icon: refresh]</b></td><td>Look through your library folders again and add any movies that are missing from the app. Needs a library folder to be set first. ######################################################################## # Controls that deliberately have no tooltip ######################################################################## lib/main.dart:902 drag handle only; the chip inside has the tooltip (it says it can be dragged) lib/main.dart:984 drag handle only; the task console button inside has the tooltip lib/services/core/movie_context_menu.dart:2788 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2794 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2805 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/ui/screens/tube_video_player_screen.dart:1133 the whole video surface (tap = show controls, drag = volume / brightness / seek). A tooltip here would pop up over the playing video. lib/ui/screens/tube_video_player_screen.dart:1666 only stops a tap on the open settings panel from reaching the video behind it; the panel&#x27;s own buttons have tooltips. lib/ui/widgets/cascading_menu.dart:72 the row&#x27;s own child already carries its tooltip (built by _buildMenuItem) SnackBar action buttons (&quot;Open&quot;, &quot;RESCUE&quot;, ...) part of a message, not a screen control</td></tr>
 </table></details>
 <footer>Kuraya manages files you own and does not provide any video content. For adults (18+) only.</footer></body></html>
