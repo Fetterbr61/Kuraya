@@ -17,11 +17,22 @@ repository.
 
 ---
 
+## [2.0.5-beta.5] — 2026-11-02 — a thank-you note for new users, lists no longer forgotten at restart, download buttons on the newest version
+
+- The download buttons on the website and in the README pointed to an old version (2.0.5-beta.1); they now point to the newest one (urgent) (#2131)
+- The Movie Sorter in the public edition now shows only the sort itself; the maintenance buttons (merge videos, duplicate finder, AI folder suggestions, reload from files) are only in the full edition (#2124)
+- The README now also describes the Tube browser (#2125)
+- Media Tools > Actor Photos shows "Loading actor photos…" instead of a blank page while it reads your photos (#2126)
+- "Scrape new" in Media Tools now always uses this install's own settings, so it no longer looks in an old Kuraya folder and finds 0 movies (#2127)
+- Kuraya no longer forgets some lists when it restarts: the Doctor's list of folders it has already checked (so it no longer re-checks every folder at each start), the subtitle lists, and the Pre-Inbox duplicate decisions you had not answered yet (#2128)
+- Actor alias notes and the male-actor list are kept in the right folder again; what was saved in the wrong place is merged in, nothing is deleted (#2128)
+- New installs now get a short thank-you note after the setup window, with a button to share feedback on GitHub (#2133)
+
 ## [2.0.5-beta.4] — 2026-11-01 — security: the scripts Kuraya ships cannot be changed
-- (security) Kuraya now checks every script it comes with before it starts it. A script that has been edited, or a different script chosen in Settings, is not started - Kuraya says which file and asks you to install Kuraya again. Online download code is no longer in the public edition's scripts (#2111)
-- (security) A security update can no longer be skipped in the update window; it is offered at every start until it is installed (#2111)
+- (security) Kuraya now checks every script it comes with before it starts it. A script that has been edited, or a different script chosen in Settings, is not started - Kuraya says which file and asks you to install Kuraya again. Online download code is no longer in the public edition's scripts (#2120)
+- (security) A security update can no longer be skipped in the update window; it is offered at every start until it is installed (#2120)
 - A Caribbeancom file named like 'Caribbean-071525-001-FHD' is now recognised as 071525-001, so the scrapers find it without renaming (a quality tag like FHD or 1080p after the number is ignored) (#2113)
-- Every release now checks the app's software packages for security warnings and available updates; 8 packages were updated, 3 are held back on purpose (#2112, #2114)
+- Every release now checks the app's software packages for security warnings and available updates; 8 packages were updated, 3 are held back on purpose (#2121, #2122)
 
 - Also new since the last public version (2.0.5-beta.1) - details in the 2.0.5-beta.2 and beta.3 sections below:
 - The actor photo face check works again (it stopped with an error on names with special letters like ū).
@@ -34,7 +45,7 @@ repository.
 - Settings > Scrapers shows each scraper's website address with copy and open buttons.
 
 ## [2.0.5-beta.3] — 2026-11-01 — actor face check works again
-- The actor photo face check no longer stops with an error when an actress name has a special letter (like ū); it ran every 2.5 minutes and failed every time. A test now also guards which scrapers the public edition may contain (#2110, #783)
+- The actor photo face check no longer stops with an error when an actress name has a special letter (like ū); it ran every 2.5 minutes and failed every time. A test now also guards which scrapers the public edition may contain (#2119, #783)
 
 ## [2.0.5-beta.2] — 2026-11-01 — one set of link toggles for all New Releases tabs
 

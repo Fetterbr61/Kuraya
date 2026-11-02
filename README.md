@@ -37,21 +37,21 @@ Kuraya is **one main app on your Windows PC**, plus **two free remote apps** tha
 <h3>Kuraya</h3>
 <b>The main app</b>
 <p>Runs on your Windows 10/11 PC. For movies that have a DVD-ID in the file name, it fetches covers and info, sorts them into folders, finds duplicates and makes English subtitles. It also plays your movies. <b>Start here.</b></p>
-<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Setup-2.0.5-beta.1.exe"><img alt="Download the installer" src="https://img.shields.io/badge/Download-Installer-D9432B?style=for-the-badge&logo=windows&logoColor=white"></a>
-<br><sub>or the <a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-2.0.5-beta.1-win64.zip">portable .zip</a> (no install)</sub>
+<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.5/Kuraya-Setup-2.0.5-beta.5.exe"><img alt="Download the installer" src="https://img.shields.io/badge/Download-Installer-D9432B?style=for-the-badge&logo=windows&logoColor=white"></a>
+<br><sub>or the <a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.5/Kuraya-2.0.5-beta.5-win64.zip">portable .zip</a> (no install)</sub>
 </td>
 <td width="33%" valign="top" align="center">
 <h3>Kuraya Remote</h3>
 <b>For Android</b>
 <p>Streams your movies from the PC to your phone or tablet. Favourites and flags sync back to the PC.</p>
-<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Remote-2.0.5-beta.1.apk"><img alt="Download the Android app" src="https://img.shields.io/badge/Download-Android%20app-3DDC84?style=for-the-badge&logo=android&logoColor=white"></a>
+<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.5/Kuraya-Remote-2.0.5-beta.5.apk"><img alt="Download the Android app" src="https://img.shields.io/badge/Download-Android%20app-3DDC84?style=for-the-badge&logo=android&logoColor=white"></a>
 <br><sub>APK file</sub>
 </td>
 <td width="33%" valign="top" align="center">
 <h3>Kuraya Remote</h3>
 <b>For Windows</b>
 <p>The same remote for a laptop or a second PC. Unzip it anywhere and start <code>Kuraya_Remote.exe</code>. Nothing to install.</p>
-<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.1/Kuraya-Remote-2.0.5-beta.1-win64.zip"><img alt="Download the Windows remote" src="https://img.shields.io/badge/Download-Windows%20remote-0078D4?style=for-the-badge&logo=windows&logoColor=white"></a>
+<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.5/Kuraya-Remote-2.0.5-beta.5-win64.zip"><img alt="Download the Windows remote" src="https://img.shields.io/badge/Download-Windows%20remote-0078D4?style=for-the-badge&logo=windows&logoColor=white"></a>
 <br><sub>zip file, keep the folder together</sub>
 </td>
 </tr>
@@ -192,6 +192,10 @@ silent is thrown away and the original kept.
 Not everything is in the library yet? The **Local & LAN browser** opens any drive or
 network share and shows **only the movies** — no torrents, subtitles or installers in
 the way. Sort, change the grid size and play straight away in Kuraya's own player.
+
+### 🌐 It searches the video sites for you
+The **Tube browser** searches several video sites in one go, shows the results as one
+grid and plays what you pick in Kuraya's own player — no site-hopping, no pop-ups.
 
 ### 📱 It comes with you
 The free **Kuraya-Remote** app (Android and Windows) streams your own collection to any
