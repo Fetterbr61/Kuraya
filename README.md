@@ -16,7 +16,8 @@
   <a href="https://paypal.me/supportkuraya"><img alt="Donate" src="https://img.shields.io/badge/donate-PayPal-00457C?logo=paypal"></a>
 </p>
 
-<p align="center"><b><a href="#download">Download</a></b> · <a href="https://fetterbr61.github.io/Kuraya/">Website</a> · <a href="HOW_KURAYA_WORKS.txt">User guide</a> · <a href="https://fetterbr61.github.io/Kuraya/buttons.html">What every button does</a> · <a href="https://fetterbr61.github.io/Kuraya/troubleshooting.html">Troubleshooting</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/NEXT_VERSION.md">Issues corrected for next release</a> · <a href="https://github.com/Fetterbr61/Kuraya/issues">Report a problem</a></p>
+<p align="center"><b><a href="#download">Download</a></b> · <a href="https://fetterbr61.github.io/Kuraya/">Website</a> · <a href="HOW_KURAYA_WORKS.txt">User guide</a> · <a href="https://fetterbr61.github.io/Kuraya/buttons.html">What every button does</a><br>
+<a href="https://fetterbr61.github.io/Kuraya/troubleshooting.html">Troubleshooting</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/NEXT_VERSION.md">Issues corrected for next release</a> · <a href="https://github.com/Fetterbr61/Kuraya/issues">Report a problem</a></p>
 
 **Kuraya is a free Windows app that organises, subtitles and plays your own JAV collection.**
 
