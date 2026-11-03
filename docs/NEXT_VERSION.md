@@ -27,6 +27,8 @@ Changes made since the last public release (**2.0.5-beta.5**). They arrive with 
 - Edit genres (g1-g4): picture-quality words like HD-1080p, HD-720p or 4K are no longer shown as genres and no longer fill a g1-g4 box
 - Edit several movies: press a DVD-ID in the right column to see that movie's pictures and say which one is the fanart and which is the poster
 - Actor photos: the "Scraping Stopped" box now lists what the run found per site also when you press Stop yourself (it said "none")
+- Actor photos: XCITY is a new source for photos and bios (birthday, height, size, blood type); it finds her under either name order
+- A woman with a photo is no longer shown as "MALE ACTOR" just because another person with the same one-word name (Maki) was once listed as a man
 - The phone remote: removed an error at start-up ("Zone mismatch") and moved to the new Android build system
 - Behind the scenes: 194 unused functions removed, the freeze watchdog names more causes, and the README download sentence follows the release version
 
