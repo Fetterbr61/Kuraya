@@ -17,6 +17,24 @@ repository.
 
 ---
 
+## [Unreleased]
+
+- The faint Kuraya logo is now the background of Settings, Media Tools, Tube Search and the Local & LAN browser too, not only the main screen (#2156)
+- Help → What every button does: the full list is now a manual with 12 chapters in the order you meet them in Kuraya (Getting started, Main screen, a movie, Inbox, Scraping, ... Settings), with the names you see on screen (#2157)
+
+## [2.0.5-beta.6] — 2026-11-03 — fewer freezes, one search rule and look for every search box, fixes found while cleaning up
+
+- Movie Sorter: the Synonyms and Blacklist tabs now say they come ready-made and when you would change them (#2138)
+- Searching for several names with a comma (for example two actresses) now works everywhere; names stored with an underscore were not found once a comma was typed (#2139)
+- Every search box in Kuraya now follows the same rule: space = all words, comma = any of them. Before, about fifteen boxes (Settings, Movie Sorter, blacklists, the actors view and more) each searched their own way. New Releases' actress search takes several names with a comma (#2140)
+- Every search box also looks the same now: same colours in every theme, a clear (x) button as soon as you type, and a short note saying what space and comma do - hover the magnifier for the full explanation (#2141)
+- The PC no longer freezes for several seconds when the phone remote refreshes its movie list - the list is now built from what Kuraya already knows instead of looking into every movie folder (#2142)
+- The "Clean Cache" toolbar button (the bin with a clock) no longer freezes Kuraya for about 12 seconds - it checks the folders in the background (#2145)
+- Pressing play on the phone remote no longer freezes the PC for several seconds when the movie's drive has to wake up (#2146)
+- "Remove actor from all files" works again - it could not find the movie files after the folder rename, so nothing was removed (#2148)
+- Settings: every API key field has a button that opens the page where you create or change the key (#2149)
+- Genre Location Review: the "I understand" box before moving folders can be ticked again - before, Apply never became active when folders had to move (#2155)
+
 ## [2.0.5-beta.5] — 2026-11-02 — a thank-you note for new users, lists no longer forgotten at restart, download buttons on the newest version
 
 - The download buttons on the website and in the README pointed to an old version (2.0.5-beta.1); they now point to the newest one (urgent) (#2131)

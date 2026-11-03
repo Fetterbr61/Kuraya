@@ -62,7 +62,7 @@ Kuraya is **one main app on your Windows PC**, plus **two free remote apps** tha
 
 **How to start:** 1) install **Kuraya** on the PC that holds your movies. 2) Install a **Remote** on the device where you want to watch. 3) In the remote, let it find your PC (or type its address and port 8080). The PC must be on with Kuraya running. All files in one place: [latest release](https://github.com/Fetterbr61/Kuraya/releases/latest).
 
-<sub>Windows may warn about an unknown publisher the first time: choose *More info*, then *Run anyway*. Version 2.0.5-beta.1 is a test version (beta).</sub>
+<sub>Windows may warn about an unknown publisher the first time: choose *More info*, then *Run anyway*. Version 2.0.5-beta.5 is a test version (beta).</sub>
 
 ### What you need
 

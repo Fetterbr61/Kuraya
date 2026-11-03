@@ -1,7 +1,7 @@
 HOW KURAYA WORKS
 ================
 
-Kuraya 0.9.0-beta.1 (test version) — Where Your Japanese Adult Movies Lives.
+Kuraya 2.0.5-beta.5 (test version) — Where Your Japanese Adult Movies Lives.
 
 This is the complete description of what Kuraya does and how it does it, written for
 users. The newest changes are in CHANGELOG.md. Kuraya is for adults (18+) and for
@@ -313,7 +313,7 @@ Each movie folder holds the video, its .nmp, the cover images and any subtitles.
 14. Versions
 ------------
 
-Kuraya uses version numbers like 0.9.0-beta.1. "beta" means a test version: all
+Kuraya uses version numbers like 2.1.0-beta.3. "beta" means a test version: all
 main features are there but bugs are expected. A finished release has no suffix
 (1.0.0). What changed in each version is in CHANGELOG.md.
 
