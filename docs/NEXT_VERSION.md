@@ -31,6 +31,7 @@ Changes made since the last public release (**2.0.5-beta.5**). They arrive with 
 - A woman with a photo is no longer shown as "MALE ACTOR" just because another person with the same one-word name (Maki) was once listed as a man
 - Actor photo window: the list of sources now names every source that is used (javmodel, XCITY and DMM were missing), and their photos get their own coloured label
 - Actor photo window: names on the photo cards start with a capital letter again (Aihara Reno, not aihara reno)
+- Actor photos: the scraper remembers which actresses it has already run through the sites and skips them for 3 days, so a second start no longer begins with the same list again. Actresses tried while Warashi was down are tried again when it is back
 - The phone remote: removed an error at start-up ("Zone mismatch") and moved to the new Android build system
 - Behind the scenes: 194 unused functions removed, the freeze watchdog names more causes, and the README download sentence follows the release version
 
