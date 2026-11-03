@@ -22,6 +22,7 @@ Changes made since the last public release (**2.0.5-beta.5**). They arrive with 
 - Same kind of fixes found in a check: re-scraping an inbox movie with a new DVD-ID no longer moves it out of the inbox; the Chinese/Japanese/English burned-subs filters no longer show old numbers after a Pre-Inbox run; the T/E/D filters read the same subtitle files as the letters on the card
 - "F - Missing Fanart" listed every inbox movie: the inbox scan, the single-movie rescan and the edit windows set only the NMP flag. They now set fanart and poster too, and the check that guards this now demands all three
 - Help -> Report a problem and the README now point to a "Coming in the next version" page, so you can see whether a problem you found is already fixed before you report it
+- After this update Kuraya runs ONE full library scan at the first start, so every movie information file is read again and the movie flags (NMP, fanart, poster) are right at once. The background sync no longer runs at the same time as a full scan
 - The phone remote: removed an error at start-up ("Zone mismatch") and moved to the new Android build system
 - Behind the scenes: 194 unused functions removed, the freeze watchdog names more causes, and the README download sentence follows the release version
 
