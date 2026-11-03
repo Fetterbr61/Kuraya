@@ -23,6 +23,7 @@ Changes made since the last public release (**2.0.5-beta.5**). They arrive with 
 - "F - Missing Fanart" listed every inbox movie: the inbox scan, the single-movie rescan and the edit windows set only the NMP flag. They now set fanart and poster too, and the check that guards this now demands all three
 - Help -> Report a problem and the README now point to a "Coming in the next version" page, so you can see whether a problem you found is already fixed before you report it
 - After this update Kuraya runs ONE full library scan at the first start, so every movie information file is read again and the movie flags (NMP, fanart, poster) are right at once. The background sync no longer runs at the same time as a full scan
+- A picture you set as fanart in the file editor stays fanart: a tall (portrait) picture named -fanart was renamed -poster at the next save because the program judged by its shape. The name now wins
 - The phone remote: removed an error at start-up ("Zone mismatch") and moved to the new Android build system
 - Behind the scenes: 194 unused functions removed, the freeze watchdog names more causes, and the README download sentence follows the release version
 
