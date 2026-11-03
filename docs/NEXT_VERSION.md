@@ -30,6 +30,7 @@ Changes made since the last public release (**2.0.5-beta.5**). They arrive with 
 - Actor photos: XCITY is a new source for photos and bios (birthday, height, size, blood type); it finds her under either name order
 - A woman with a photo is no longer shown as "MALE ACTOR" just because another person with the same one-word name (Maki) was once listed as a man
 - Actor photo window: the list of sources now names every source that is used (javmodel, XCITY and DMM were missing), and their photos get their own coloured label
+- Actor photo window: names on the photo cards start with a capital letter again (Aihara Reno, not aihara reno)
 - The phone remote: removed an error at start-up ("Zone mismatch") and moved to the new Android build system
 - Behind the scenes: 194 unused functions removed, the freeze watchdog names more causes, and the README download sentence follows the release version
 
