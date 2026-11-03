@@ -24,6 +24,7 @@ Changes made since the last public release (**2.0.5-beta.5**). They arrive with 
 - Help -> Report a problem and the README now point to a "Coming in the next version" page, so you can see whether a problem you found is already fixed before you report it
 - After this update Kuraya runs ONE full library scan at the first start, so every movie information file is read again and the movie flags (NMP, fanart, poster) are right at once. The background sync no longer runs at the same time as a full scan
 - A picture you set as fanart in the file editor stays fanart: a tall (portrait) picture named -fanart was renamed -poster at the next save because the program judged by its shape. The name now wins
+- Edit genres (g1-g4): picture-quality words like HD-1080p, HD-720p or 4K are no longer shown as genres and no longer fill a g1-g4 box
 - The phone remote: removed an error at start-up ("Zone mismatch") and moved to the new Android build system
 - Behind the scenes: 194 unused functions removed, the freeze watchdog names more causes, and the README download sentence follows the release version
 
