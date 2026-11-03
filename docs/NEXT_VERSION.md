@@ -33,6 +33,7 @@ Changes made since the last public release (**2.0.5-beta.5**). They arrive with 
 - Actor photo window: names on the photo cards start with a capital letter again (Aihara Reno, not aihara reno)
 - Actor photos: the scraper remembers which actresses it has already run through the sites and skips them for 3 days, so a second start no longer begins with the same list again. Actresses tried while Warashi was down are tried again when it is back
 - Actor photos: XCITY's grey "No Image" picture is no longer saved as a photo
+- Phone remote: the inbox no longer shows every movie as missing subtitles - the subtitle files of each inbox movie are now recorded and sent to the phone (after the first start the app reads the library once more)
 - The phone remote: removed an error at start-up ("Zone mismatch") and moved to the new Android build system
 - Behind the scenes: 194 unused functions removed, the freeze watchdog names more causes, and the README download sentence follows the release version
 
