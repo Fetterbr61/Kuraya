@@ -32,6 +32,7 @@ Changes made since the last public release (**2.0.5-beta.5**). They arrive with 
 - Actor photo window: the list of sources now names every source that is used (javmodel, XCITY and DMM were missing), and their photos get their own coloured label
 - Actor photo window: names on the photo cards start with a capital letter again (Aihara Reno, not aihara reno)
 - Actor photos: the scraper remembers which actresses it has already run through the sites and skips them for 3 days, so a second start no longer begins with the same list again. Actresses tried while Warashi was down are tried again when it is back
+- Actor photos: XCITY's grey "No Image" picture is no longer saved as a photo
 - The phone remote: removed an error at start-up ("Zone mismatch") and moved to the new Android build system
 - Behind the scenes: 194 unused functions removed, the freeze watchdog names more causes, and the README download sentence follows the release version
 
