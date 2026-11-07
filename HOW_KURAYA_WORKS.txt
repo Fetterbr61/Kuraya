@@ -1,7 +1,7 @@
 HOW KURAYA WORKS
 ================
 
-Kuraya 2.0.5-beta.5 (test version) — Where Your Japanese Adult Movies Lives.
+Kuraya 2.0.5-beta.20 (test version) — Where Your Japanese Adult Movies Lives.
 
 This is the complete description of what Kuraya does and how it does it, written for
 users. The newest changes are in CHANGELOG.md. Kuraya is for adults (18+) and for
@@ -111,7 +111,8 @@ Pre-Inbox (optional). Drop finished downloads here. Kuraya watches the folder an
 for each movie, works through checks in order: did you delete this movie before? do you
 already own it (then it waits for your answer, the others carry on)? is this file censored
 or uncensored (file name and a picture check for mosaic)? Advert and burned-in text checks
-and the English subtitle run in the background once the movie is in the Inbox (§8).
+and the English subtitle run in the background once the movie is in the Inbox and
+Transcribe or Auto is switched on in the Task Console (§8).
 A movie that passes is moved to the Inbox and scraped automatically; one that stops
 shows the reason in plain words. You can close the Pre-Inbox window — the work continues and
 shows in the Task Console.

@@ -31,7 +31,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 
 <h1>Kuraya manual: every button, by screen</h1>
 <p class="sub">One chapter per part of Kuraya, in the order you meet them. Each line is the text you see when you hover that button in the app. <a href="buttons.html">&larr; back to the guided tour</a></p>
-<p class="sub"><b>Chapters:</b> <a href="#ch1">1. Getting started</a> &middot; <a href="#ch2">2. The main screen</a> &middot; <a href="#ch3">3. A movie: right-click, details and editing</a> &middot; <a href="#ch4">4. Inbox and Pre-Inbox</a> &middot; <a href="#ch5">5. Scraping a movie</a> &middot; <a href="#ch6">6. New Releases</a> &middot; <a href="#ch7">7. Media Tools: actors</a> &middot; <a href="#ch8">8. Movie Sorter and genres</a> &middot; <a href="#ch9">9. Subtitles</a> &middot; <a href="#ch10">10. Doctor, duplicates and clean-up</a> &middot; <a href="#ch11">11. Settings</a> &middot; <a href="#ch12">12. Players and browsers</a></p>
+<p class="sub"><b>Chapters:</b> <a href="#ch1">1. Getting started</a> &middot; <a href="#ch2">2. The main screen</a> &middot; <a href="#ch3">3. A movie: right-click, details and editing</a> &middot; <a href="#ch4">4. Inbox and Pre-Inbox</a> &middot; <a href="#ch5">5. Scraping a movie</a> &middot; <a href="#ch6">6. New Releases</a> &middot; <a href="#ch7">7. Media Tools: actors</a> &middot; <a href="#ch8">8. Movie Sorter and genres</a> &middot; <a href="#ch9">9. Subtitles</a> &middot; <a href="#ch10">10. Doctor, duplicates and clean-up</a> &middot; <a href="#ch11">11. Settings</a> &middot; <a href="#ch12">12. Players and browsers</a> &middot; <a href="#ch13">13. Other windows</a></p>
 <h2 id="ch1">1. Getting started</h2><p class="sub">The first-start setup, the welcome windows and updates.</p>
 <details><summary><b>Setup window</b> (14)</summary><table>
 <tr><td><b>I am 18 or older and this content is legal where I live.</b></td><td>Tick to confirm that you are 18 or older and that this content is legal where you live.</td></tr>
@@ -59,11 +59,11 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>IconButton [icon: close]</b></td><td>Close</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Process Inbox&quot; [icon: inbox]</b></td><td>Process the movies waiting in your inbox folder.</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Open Setup&quot; [icon: settings_suggest]</b></td><td>Open the setup wizard to choose your library and inbox folders.</td></tr>
-<tr><td><b>OutlinedButton.icon - &quot;Scan library&quot; [icon: refresh]</b></td><td>Look through your library folders again and add any movies that are missing from the app. Needs a library folder to be set first. ######################################################################## # Controls that deliberately have no tooltip ######################################################################## lib/main.dart:903 drag handle only; the chip inside has the tooltip (it says it can be dragged) lib/main.dart:985 drag handle only; the task console button inside has the tooltip lib/services/core/movie_context_menu.dart:2532 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2538 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2549 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/ui/screens/tube_video_player_screen.dart:1052 the whole video surface (tap = show controls, drag = volume / brightness / seek). A tooltip here would pop up over the playing video. lib/ui/screens/tube_video_player_screen.dart:1585 only stops a tap on the open settings panel from reaching the video behind it; the panel&#x27;s own buttons have tooltips. lib/ui/widgets/cascading_menu.dart:72 the row&#x27;s own child already carries its tooltip (built by _buildMenuItem) SnackBar action buttons (&quot;Open&quot;, &quot;RESCUE&quot;, ...) part of a message, not a screen control</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Scan library&quot; [icon: refresh]</b></td><td>Look through your library folders again and add any movies that are missing from the app. Needs a library folder to be set first. ######################################################################## # Controls that deliberately have no tooltip ######################################################################## lib/main.dart:908 drag handle only; the chip inside has the tooltip (it says it can be dragged) lib/main.dart:990 drag handle only; the task console button inside has the tooltip lib/services/core/movie_context_menu.dart:2524 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2530 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2541 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/ui/screens/tube_video_player_screen.dart:1052 the whole video surface (tap = show controls, drag = volume / brightness / seek). A tooltip here would pop up over the playing video. lib/ui/screens/tube_video_player_screen.dart:1585 only stops a tap on the open settings panel from reaching the video behind it; the panel&#x27;s own buttons have tooltips. lib/ui/widgets/cascading_menu.dart:72 the row&#x27;s own child already carries its tooltip (built by _buildMenuItem) SnackBar action buttons (&quot;Open&quot;, &quot;RESCUE&quot;, ...) part of a message, not a screen control</td></tr>
 </table></details>
 <details><summary><b>Closing Kuraya and paused scrapes</b> (4)</summary><table>
 <tr><td><b>No</b></td><td>Keep the app open.</td></tr>
-<tr><td><b>Yes</b></td><td>Close the app.</td></tr>
+<tr><td><b>Yes</b></td><td>Close the app. Anything still running finishes its current movie first.</td></tr>
 <tr><td><b>Resume Scrape</b></td><td>Continue the scrape that was stopped or minimized, from where it stopped. You can drag this button to another place.</td></tr>
 <tr><td><b>InkWell [icon: close]</b></td><td>No - forget the paused scrape (it will not ask again)</td></tr>
 </table></details>
@@ -315,12 +315,15 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Delete</b></td><td>Yes, delete the image file.</td></tr>
 <tr><td><b>OK</b></td><td>Close this message.</td></tr>
 </table></details>
-<details><summary><b>Edit several movies</b> (11)</summary><table>
+<details><summary><b>Edit several movies</b> (14)</summary><table>
 <tr><td><b>Cancel</b></td><td>Do not change anything.</td></tr>
 <tr><td><b>Only the ${widget.movies.length} selected</b></td><td>Rename the series only on the movies you selected. The others keep the old name and become a separate series.</td></tr>
 <tr><td><b>Rename for all ${all.length}</b></td><td>Rename the series on every movie in the list above. The series keeps its genre sort folders (g1–g4).</td></tr>
 <tr><td><b>Checkbox</b></td><td>Tick to change the genres of all selected movies.</td></tr>
 <tr><td><b>Checkbox</b></td><td>Tick to change the start of the movie ID (for example SSNI to SSIS) on all selected movies. Their folders and files are renamed to match.</td></tr>
+<tr><td><b>InkWell [icon: expand_more, chevron_right]</b></td><td>[state] - Hide the pictures of {...}. - Show the pictures in the folder of {...}, so you can say which one is the fanart and which is the poster.</td></tr>
+<tr><td><b>Fanart</b></td><td>Use this picture as the fanart (the wide cover) of {...}. A copy named {...}-fanart is made; the original stays.</td></tr>
+<tr><td><b>Poster</b></td><td>Use this picture as the poster (the tall cover) of {...}. A copy named {...}-poster is made; the original stays.</td></tr>
 <tr><td><b>ElevatedButton</b></td><td>[state] - Please wait until the changes have been applied. - Close this window. - Close without changing any movie.</td></tr>
 <tr><td><b>ElevatedButton.icon [icon: save]</b></td><td>[state] - The changes are being applied. - Write the ticked changes into all {...} selected movies.</td></tr>
 <tr><td><b>${e.key}  ×${e.value}</b></td><td>Use &quot;{...}&quot; for all the selected movies. It is written when you save.</td></tr>
@@ -1460,5 +1463,10 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>GestureDetector [icon: play_arrow]</b></td><td>Play this video.</td></tr>
 <tr><td><b>•</b></td><td>Play this video.</td></tr>
 <tr><td><b>IconButton [icon: play_circle_filled]</b></td><td>Play this video.</td></tr>
+</table></details>
+<h2 id="ch13">13. Other windows</h2><p class="sub">Smaller windows not yet placed in a chapter.</p>
+<details><summary><b>App Shutdown</b> (2)</summary><table>
+<tr><td><b>TextButton</b></td><td>[state] - Hide this window to the tray. Kuraya keeps finishing and then closes. - Close this note. Kuraya keeps finishing and then closes.</td></tr>
+<tr><td><b>Quit now</b></td><td>Stop everything right now, including the movie in progress, and close Kuraya.</td></tr>
 </table></details>
 <footer>Kuraya manages files you own and does not provide any video content. For adults (18+) only.</footer></body></html>

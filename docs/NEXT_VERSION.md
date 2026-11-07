@@ -12,6 +12,8 @@ Changes made since the last public release (**2.0.5-beta.5**). They arrive with 
 - "Remove actor from all files" works again - it could not find the movie files after the folder rename, so nothing was removed
 - Settings: every API key field has a button that opens the page where you create or change the key
 - Genre Location Review: the "I understand" box before moving folders can be ticked again - before, Apply never became active when folders had to move
+- Startup no longer freezes the window for several seconds when the year/date check runs (it read hundreds of files in one go); the freeze report now also lists what ran just before a stall.
+- Actor photo scraper: while Warashi is down, the "source was unreachable" line is shown once at the start instead of for every actress.
 - The faint Kuraya logo is now the background of Settings, Media Tools, Tube Search and the Local & LAN browser too, not only the main screen
 - Help → What every button does: the full list is now a manual with 12 chapters in the order you meet them in Kuraya (Getting started, Main screen, a movie, Inbox, Scraping, ... Settings), with the names you see on screen
 - Task Console: Actor Photos & Bios is now a box like the others. Tick it to fetch photos and bios for the actors waiting in the queue, untick it to stop; nothing in the queue is lost. The actors of the movie open in the scraper window still get their photos straight away
@@ -37,5 +39,43 @@ Changes made since the last public release (**2.0.5-beta.5**). They arrive with 
 - Actor photos: the summary at the end of a run now also lists JavModel and XCITY
 - The phone remote: removed an error at start-up ("Zone mismatch") and moved to the new Android build system
 - Behind the scenes: 194 unused functions removed, the freeze watchdog names more causes, and the README download sentence follows the release version
+- The window no longer freezes (a measured 11 seconds) while Kuraya updates a movie folder that another tool is busy writing to: the folder check now reads the disk without holding the window.
+- Male actors no longer show a woman's photo in the scraper: three old wrong photos were moved to the quarantine folder.
+- Kuraya now shows its icon in the system tray (next to the clock) with a right-click menu; before, the tray code existed but was never started. Closing with the X still asks before quitting.
+- Tray icon library updated to 0.8.3: the icon keeps working when Kuraya runs as administrator.
+- Closing Kuraya (the X button or Quit in the tray menu) no longer cuts off Whisper, ffmpeg or the other helper programs. Every running job finishes the movie it is working on, then Kuraya closes by itself. While it waits the window hides to the tray; the tray menu and a small status window show what is left, and **Quit now** stops everything at once.
+- The tray menu showed 'Server: stopped' and an old list status for the whole session; it is now rebuilt from the live state every time you open it.
+- Quit and the X button now show at once what Kuraya is finishing, instead of showing nothing until you pressed Quit a second time.
+- The tray menu has a Scan menu: full library scan, library sync, process inbox, metadata backfill and Doctor. 'Start Scanning' only ever started the metadata backfill.
+- Scraper Status in the tray and the status icon on the toolbar now open the Scraper tab; they did nothing.
+- Clicking the tray icon brings back a minimized window. The tray menu shows how many jobs are running instead of 'Idle' while a job runs.
+- Detach from Tray no longer makes the X button close Kuraya without asking and cut off the movie in progress.
+- Kuraya starts maximized instead of in a half-size window.
+- The Media Tools header no longer overflows in a narrow window.
+- Quit no longer waits forever: the background subtitle watcher counted as a running program, so Kuraya never closed by itself.
+- Automatic Inbox scrapes start as soon as the machine is idle instead of always waiting 5 minutes.
+- 11 Flutter packages updated, including the ones that keep the PC awake and check the network connection.
+- Packages updated: `connectivity_plus` 7.3.1 → 7.3.2, `dbus` 0.7.15 → 0.8.0, `wakelock_plus` 1.8.0 → 1.8.2.
+- The tray packages are updated; the new version fixes tray icons when Kuraya runs as administrator.
+- New: docs/PACKAGES.md lists every package, what it does and its version history.
+- Removed the package `process`, which nothing used.
+- Packages updated: `cnativeapi` 0.5.2 → 0.5.10, `nativeapi` 0.5.2 → 0.5.10, `nativeapi_flutter` 0.5.2 → 0.5.10.
+- Scraping no longer starts transcribing by itself. New movies wait until Transcribe or Auto is switched on in the Task Console.
+- Transcribe + Translate from the right-click menu now shows one box in the Task Console instead of one for the batch and one for the movie.
+- The extra "anime-whisper transcribe" box no longer appears next to a transcribe job.
+- After this update Kuraya runs ONE full library scan at the first start, so the movie flags (NMP, fanart, poster) are right. Let it finish.
+- System tray: Kuraya now has a tray icon with a right-click menu, live status and a Scan menu, and it keeps working when Kuraya runs as administrator.
+- Closing: the X button and Quit no longer cut off Whisper, ffmpeg or other helper programs. Every job finishes the movie it is working on, Kuraya shows what it is finishing, then it closes by itself.
+- Transcribing runs only when you turn it on: scraping no longer starts it. New movies wait until Transcribe or Auto is switched on in the Task Console.
+- Task Console: one box per job, and Actor Photos & Bios is now a box like the others.
+- Search: every search box follows the same rule (space = all words, comma = any of them) and looks the same, with a clear button.
+- Fewer freezes: at startup, while a folder is being worked on, in Clean Cache, and when the phone remote refreshes its list or starts a movie.
+- Actor photos: javmodel and XCITY are new sources for photos and bios, and an unreachable site no longer marks an actress as "no photo found".
+- Sort By Badge Letters: "N - Missing NMP" and "F - Missing Fanart" no longer list movies that have those files.
+- Editing: a picture you set as fanart stays fanart, picture-quality words are no longer shown as genres, and Edit several movies can show each movie's pictures.
+- Kuraya starts maximized, the logo is on more pages, and Help has a manual of every button in 12 chapters.
+- Phone remote: the inbox no longer shows every movie as missing subtitles, and an error at start-up is gone.
+- Help -> Report a problem points to a "Coming in the next version" page.
+- docs/PACKAGES.md lists every package Kuraya uses, what it does and its version history. 11 packages and the tray packages are updated.
 
 _Some changes are not listed here until they are released._
