@@ -17,6 +17,37 @@ repository.
 
 ---
 
+## [2.0.5-beta.40] — 2026-11-14 — Deleted movies leave the list, faster sorting, a shorter log
+
+- **Everything since the last public version (2.0.5-beta.34):** this release covers 2.0.5-beta.35, 2.0.5-beta.36, 2.0.5-beta.37, 2.0.5-beta.38, 2.0.5-beta.39 and 2.0.5-beta.40. The points below sum it up.
+- A movie you delete, or whose folder you move away in Windows, now leaves Kuraya's list at once. Before, it could stay until the next start, and a new download with the same folder name never got subtitles. (#2227)
+- Sorting the library by "Recently added" is instant (it took about half a second each time), and the actor list is built in about half the time. (#2232, #2233)
+- The log is about half as long: the browser extension's repeated reports are written once and then counted. (#2229)
+- Kuraya keeps a history of the moments it stopped responding, so the cause can be found. (#2232)
+- Kuraya is built with the newest small updates of the packages it uses (bug fixes only, no new features and no version-limit changes). (#2234)
+- Packages updated: `cached_network_image` 4.0.6 → 4.0.7, `file_picker` 13.3.2 → 13.3.3, `image` 4.12.0 → 4.13.1.
+
+## [2.0.5-beta.39] — 2026-11-14 — The actor list is built faster
+
+- Building the actor list (at start and after the library changes) now checks each name once instead of twice, so it takes about half as long. The list itself is the same. (#2233)
+
+## [2.0.5-beta.38] — 2026-11-14 — Sorting by "Recently added" is instant
+
+- Sorting the library by "Recently added" took about half a second every time the grid was sorted again, and the window could not react meanwhile. It now takes a few milliseconds, with exactly the same order. (#2232)
+- Kuraya keeps a history of the moments it stopped responding, so they can be counted and their cause found (before, each start threw the old record away). (#2232)
+
+## [2.0.5-beta.37] — 2026-11-14 — The log is half as long
+
+- The browser extension reports to Kuraya about every 90 seconds, and Kuraya wrote every report to the log - almost half of all log lines said the same thing again. Kuraya now writes a line only when something changed, plus one short "the extension is alive" line every 10 minutes. A cookie that did not change is no longer saved to disk again. (#2229)
+
+## [2.0.5-beta.36] — 2026-11-14 — A rejected GitHub token is asked about once
+
+
+## [2.0.5-beta.35] — 2026-11-14 — A deleted movie really leaves the list
+
+- A movie you deleted, or whose folder you moved somewhere else, could stay in Kuraya's list until the next start. Windows reports a folder that is moved away as a removed file, so Kuraya did not notice it was gone. The movie now leaves the list at once, both when you delete it in Kuraya and when the folder is moved away in Windows. (#2227)
+- Subtitles: a movie folder that no longer exists was put on the list of folders that are skipped for ever - a list meant only for a drive that does not answer. A new download with the same folder name then never got subtitles, and the log warned about the deleted movie once a minute. A folder that is gone is now simply left out, and the old list is cleaned of such folders at the next start. (#2227)
+
 ## [2.0.5-beta.34] — 2026-11-13 — Delete only takes the movies you can see
 
 - **Everything since the last public version (2.0.5-beta.20):** this release covers beta.21 to beta.34. The points below sum it up.
