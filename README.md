@@ -17,7 +17,7 @@
 </p>
 
 <p align="center"><b><a href="#download">Download</a></b> · <a href="https://fetterbr61.github.io/Kuraya/">Website</a> · <a href="HOW_KURAYA_WORKS.txt">User guide</a> · <a href="https://fetterbr61.github.io/Kuraya/buttons.html">What every button does</a><br>
-<a href="https://fetterbr61.github.io/Kuraya/troubleshooting.html">Troubleshooting</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/NEXT_VERSION.md">Issues corrected for next release</a> · <a href="https://github.com/Fetterbr61/Kuraya/issues">Report a problem</a></p>
+<a href="https://fetterbr61.github.io/Kuraya/troubleshooting.html">Troubleshooting</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/NEXT_VERSION.md">Issues corrected for next release</a> · <a href="docs/PACKAGES.md">Packages used</a> · <a href="https://github.com/Fetterbr61/Kuraya/issues">Report a problem</a></p>
 
 **Kuraya is a free Windows app that organises, subtitles and plays your own JAV collection.**
 
@@ -38,21 +38,21 @@ Kuraya is **one main app on your Windows PC**, plus **two free remote apps** tha
 <h3>Kuraya</h3>
 <b>The main app</b>
 <p>Runs on your Windows 10/11 PC. For movies that have a DVD-ID in the file name, it fetches covers and info, sorts them into folders, finds duplicates and makes English subtitles. It also plays your movies. <b>Start here.</b></p>
-<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.20/Kuraya-Setup-2.0.5-beta.20.exe"><img alt="Download the installer" src="https://img.shields.io/badge/Download-Installer-D9432B?style=for-the-badge&logo=windows&logoColor=white"></a>
-<br><sub>or the <a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.20/Kuraya-2.0.5-beta.20-win64.zip">portable .zip</a> (no install)</sub>
+<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.34/Kuraya-Setup-2.0.5-beta.34.exe"><img alt="Download the installer" src="https://img.shields.io/badge/Download-Installer-D9432B?style=for-the-badge&logo=windows&logoColor=white"></a>
+<br><sub>or the <a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.34/Kuraya-2.0.5-beta.34-win64.zip">portable .zip</a> (no install)</sub>
 </td>
 <td width="33%" valign="top" align="center">
 <h3>Kuraya Remote</h3>
 <b>For Android</b>
 <p>Streams your movies from the PC to your phone or tablet. Favourites and flags sync back to the PC.</p>
-<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.20/Kuraya-Remote-2.0.5-beta.20.apk"><img alt="Download the Android app" src="https://img.shields.io/badge/Download-Android%20app-3DDC84?style=for-the-badge&logo=android&logoColor=white"></a>
+<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.34/Kuraya-Remote-2.0.5-beta.34.apk"><img alt="Download the Android app" src="https://img.shields.io/badge/Download-Android%20app-3DDC84?style=for-the-badge&logo=android&logoColor=white"></a>
 <br><sub>APK file</sub>
 </td>
 <td width="33%" valign="top" align="center">
 <h3>Kuraya Remote</h3>
 <b>For Windows</b>
 <p>The same remote for a laptop or a second PC. Unzip it anywhere and start <code>Kuraya_Remote.exe</code>. Nothing to install.</p>
-<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.20/Kuraya-Remote-2.0.5-beta.20-win64.zip"><img alt="Download the Windows remote" src="https://img.shields.io/badge/Download-Windows%20remote-0078D4?style=for-the-badge&logo=windows&logoColor=white"></a>
+<a href="https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.5-beta.34/Kuraya-Remote-2.0.5-beta.34-win64.zip"><img alt="Download the Windows remote" src="https://img.shields.io/badge/Download-Windows%20remote-0078D4?style=for-the-badge&logo=windows&logoColor=white"></a>
 <br><sub>zip file, keep the folder together</sub>
 </td>
 </tr>
@@ -62,7 +62,7 @@ Kuraya is **one main app on your Windows PC**, plus **two free remote apps** tha
 
 **How to start:** 1) install **Kuraya** on the PC that holds your movies. 2) Install a **Remote** on the device where you want to watch. 3) In the remote, let it find your PC (or type its address and port 8080). The PC must be on with Kuraya running. All files in one place: [latest release](https://github.com/Fetterbr61/Kuraya/releases/latest).
 
-<sub>Windows may warn about an unknown publisher the first time: choose *More info*, then *Run anyway*. Version 2.0.5-beta.20 is a test version (beta).</sub>
+<sub>Windows may warn about an unknown publisher the first time: choose *More info*, then *Run anyway*. Version 2.0.5-beta.34 is a test version (beta).</sub>
 
 ### What you need
 
@@ -271,6 +271,8 @@ Try **[Troubleshooting](https://fetterbr61.github.io/Kuraya/troubleshooting.html
 FFmpeg · FlareSolverr · Microsoft Edge (optional, with Kuraya's browser extension) · Ollama · Python · Subtitle Edit + Faster-Whisper · Chromaprint · czkawka · Tesseract · VideOCR · Flutter · media_kit/libmpv · ObjectBox.
 Only **FFmpeg** is required — Kuraya's Setup offers the rest. Full list with what each is for and its licence:
 **[Third-party tools](https://fetterbr61.github.io/Kuraya/third-party.html)**
+
+The packages inside the app, what each one does and its version history: **[Packages used](docs/PACKAGES.md)**
 
 ---
 

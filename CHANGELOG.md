@@ -17,6 +17,75 @@ repository.
 
 ---
 
+## [2.0.5-beta.34] — 2026-11-13 — Delete only takes the movies you can see
+
+- **Everything since the last public version (2.0.5-beta.20):** this release covers beta.21 to beta.34. The points below sum it up.
+- New in Media Tools: **Import folder (no DVD-ID)**. Point it at a folder of loose movie files and every movie gets its own folder on the same drive, with its subtitles, the file name as title, the folder name as series and a cover picture taken from the movie itself (how far in is a setting, 30 % by default). You can first see a plan without anything being moved. Kuraya can also look each title up on japanfemdom.net and show you the posts it found - a match is only used when you click it. (#2225)
+- The video converter is much better: it works on up to three movies at the same time, checks free space before every file (and clears only its own old originals if a drive is short), stops early when a movie would not get smaller, and remembers files that do not shrink. The converter console shows what was found in a folder you add and why files were left out, and you can drop more folders in while a conversion is running. Old RealMedia and WMV files, also ones with several video tracks, are now handled. (#2206, #2207)
+- Moving several movies to another drive no longer leaves each one behind in the list at its old place, so the sizes you see stay right. (#2224)
+- The Android remote: panels that slide up now end above Android's own bottom bar, so everything in them can be reached.
+- Kuraya is built with a newer Flutter, and a folder path that is too long for Windows now gives a clear error instead of a crash. Help -> Packages used lists every package Kuraya is built with and what it does. (#2206, #2207)
+- A movie you selected earlier no longer comes along when a filter hides it. Before, choosing three movies to delete often showed a fourth in the list: one still selected from before, hidden by a filter such as Flags. Now a selection only holds movies shown in the grid, and the log says which hidden ones were let go. (urgent) (#2226)
+
+## [2.0.5-beta.33] — 2026-11-12 — Import movies that have no DVD-ID
+
+- New button in Media Tools: **Import folder (no DVD-ID)**. Point it at a folder of loose movie files and every movie gets its own folder on the same drive, with its subtitles, the file name as title, the folder name as series and a cover picture taken from the movie itself (how far in is a setting, 30 % by default). You can first see a plan without anything being moved. (#2225)
+- Optionally Kuraya looks each title up on japanfemdom.net and shows you the posts it found, with cover, file name, size and length. A match is only used when you click it. (#2225)
+
+## [2.0.5-beta.32] — 2026-11-10 — Moved movies no longer stay behind at their old place
+
+- Moving several movies to another drive left each one behind in the list at its OLD place as well. In that view they counted as 0 GB, so after moving 100 GB from K: to D: the next selection on K: showed the wrong amount. A multi-movie move now takes the old place out of the list at once, and when a folder disappears the list always drops it, even if the database already had. (#2224)
+
+## [2.0.5-beta.31] — 2026-11-09 — Tube favourites get their pictures back
+
+
+## [2.0.5-beta.30] — 2026-11-09 — Tube thumbnails no longer drop out in the middle of a search
+
+
+## [2.0.5-beta.29] — 2026-11-09 — RealMedia files in added folders are converted
+
+- Converter: in a folder you add, RealMedia files (.rm, .rmvb) and a dozen other old video types counted as "not a video" and were left out, although the library pass converts them. They are now included, and so are .ram files that are really whole RealMedia movies (a .ram that is only a link is still left out). (#2220)
+- Remote: Android's own bottom bar (back / home) covered the bottom of every panel that slides up, so for example the Tube sites could not be ticked or unticked. Every such panel now ends above that bar, and the Tube filter panel scrolls when it does not fit (remote 2.0.5-beta.4). (#2221)
+
+## [2.0.5-beta.28] — 2026-11-09 — the converter finds the picture in WMVs with several video tracks
+
+- Converter: some old WMV files hold several video tracks of which only one has the picture. The converter always took the first track, so the new file had sound but no picture and was thrown away by the final check. It now uses the track that holds the picture. (#2219)
+
+## [2.0.5-beta.27] — 2026-11-09 — the converter remembers files that will not get smaller
+
+- Converter: a file from a folder you add that turns out not to get smaller is now remembered. When you add the folder again it is left out (the folder report says how many), so the converter no longer spends 10-15 minutes re-trying the same files. A file you drop on its own is still tried. (#2218)
+
+## [2.0.5-beta.26] — 2026-11-09 — converter lanes no longer mix each other up
+
+- Converter: when a CPU helper had to wait for the graphics card, its job could run with the GPU lane's settings. Two old WMV/AVI files were wrongly marked as failed, and one movie was fully converted and then thrown away (it will be converted again). Each job now always runs as the lane that started it. The helpers also re-encode old WMV/AVI files themselves instead of waiting for the graphics card, keep working while the GPU lane re-encodes one, and a file the graphics card cannot unpack is tried once more with the processor unpacking it. (#2217)
+
+## [2.0.5-beta.25] — 2026-11-09 — the converter shrinks three movies at once
+
+- The video converter now works on up to three movies at the same time: one on the graphics card as before, and two more where the processor unpacks the video and the graphics card still encodes it. Measured on a 1080p movie: 31.4x realtime instead of 17.9x - about 75 % faster. The number of extra jobs is a setting ("Converter: extra CPU jobs", 0-2). Every movie gets the same checks as before. (#2216)
+
+## [2.0.5-beta.24] — 2026-11-09 — the converter gives up early, Tube thumbnails and links fixed
+
+- The converter no longer encodes a whole movie only to find it would not be smaller: it now stops as soon as that is clear (from 15 % in) and skips the file, and its estimate before starting knows that an HEVC or AV1 file shrinks much less than an H.264 one. (#2213)
+
+## [2.0.5-beta.23] — 2026-11-09 — see what a folder holds before converting, dropped files go first
+
+- Converter console: after you choose or drop folders, a window shows each folder's full path, how many subfolders and files were searched, the videos (and GB) per subfolder, and what was left out and why - not a video (by file type), already in the list, a folder that could not be read, unfinished downloads, or "the folder is empty". Nothing is added until you press "Queue N video(s)". (#2211)
+- "Convert dropped" now works while a conversion is running: the running job does the dropped files right after the file it is on, then goes on with its own work. Before, the button was greyed out and the files just waited. If the run ends first, the dropped files start by themselves. (#2212)
+
+## [2.0.5-beta.22] — 2026-11-08 — compress a folder outside the library, never a full drive
+
+- The converter checks free space before every file, both where it encodes (C:) and on the movie's drive. When a drive is short, it deletes only its own old originals from NMP_Trash, oldest first; everything else in NMP_Trash keeps the 30-day rule. If there is still not enough room, the file is skipped and the log says so - a compress never runs a drive full. (#2210)
+
+- Converter console: "Choose folder…" picks any folder, also outside the library, and queues every video in it and its subfolders for compressing, in alphabetical order. You can also drag several folders in at once. The button is there while a conversion runs too; press "Convert dropped" when it is done. The originals go to NMP_Trash on the same drive, as before. (#2209)
+
+## [2.0.5-beta.21] — 2026-11-08 — Flutter 3.47.9, newer build packages
+
+- Kuraya is built with Flutter 3.47.9. A folder path that is too long for Windows now gives a clear error instead of a crash. (#2206)
+- Three build packages are updated (objective_c, code_assets, native_toolchain_c). (#2206)
+- "Coming in the next version" starts empty again at every public release. (#2205)
+- Help -> Packages used shows every package Kuraya is built with, what it does and its version history. The README and the website link to it too. (#2207)
+- Packages updated: `objective_c` 9.6.2 → 9.6.3.
+
 ## [2.0.5-beta.20] — 2026-11-07 — tray icon, closing finishes the current movie, one search rule, fewer freezes
 
 - The extra "anime-whisper transcribe" box no longer appears next to a transcribe job. (#2204)

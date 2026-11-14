@@ -1,7 +1,7 @@
 HOW KURAYA WORKS
 ================
 
-Kuraya 2.0.5-beta.20 (test version) — Where Your Japanese Adult Movies Lives.
+Kuraya 2.0.5-beta.34 (test version) — Where Your Japanese Adult Movies Lives.
 
 This is the complete description of what Kuraya does and how it does it, written for
 users. The newest changes are in CHANGELOG.md. Kuraya is for adults (18+) and for

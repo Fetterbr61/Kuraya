@@ -73,7 +73,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Install now</b></td><td>Download and install the new version now.</td></tr>
 </table></details>
 <h2 id="ch2">2. The main screen</h2><p class="sub">The movie grid, the toolbar, the search box, the log and the background jobs.</p>
-<details><summary><b>Main screen and toolbar</b> (70)</summary><table>
+<details><summary><b>Main screen and toolbar</b> (71)</summary><table>
 <tr><td><b>TextButton.icon - &quot;Project page&quot; [icon: public]</b></td><td>Open the {...} project page in your browser.</td></tr>
 <tr><td><b>IconButton [icon: remove]</b></td><td>Minimize — scan keeps running in background</td></tr>
 <tr><td><b>From the whole current view</b></td><td>Where the movies are taken from.</td></tr>
@@ -125,6 +125,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Troubleshooting — try this first</b></td><td>Show the things to try first when something does not work.</td></tr>
 <tr><td><b>Report a problem (with log)</b></td><td>Build a problem report with the log, save it on your Desktop and open the page where you describe the problem.</td></tr>
 <tr><td><b>About ${AppBranding.appName}</b></td><td>Show the version, edition and project page of {...}, and the open-source licenses it uses.</td></tr>
+<tr><td><b>Packages used</b></td><td>Show the list of software packages {...} is built with, what each one does and which versions it has used.</td></tr>
 <tr><td><b>ListTile [icon: system_update_alt]</b></td><td>[state] - Look on the Kuraya page for a newer version. - Kuraya {...} is ready. Click to see what is new and install it.</td></tr>
 <tr><td><b>IconButton [icon: settings]</b></td><td>Settings</td></tr>
 <tr><td><b>IconButton [icon: find_in_page]</b></td><td>Check Duplicates</td></tr>
@@ -657,7 +658,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Metadata</b></td><td>Show the movie details tools: scrape details, repair them and manage subtitles.</td></tr>
 <tr><td><b>Movie Sorter</b></td><td>Show the movie sorter, which sorts your movies into folders.</td></tr>
 </table></details>
-<details><summary><b>Media Tools - main tab</b> (49)</summary><table>
+<details><summary><b>Media Tools - main tab</b> (55)</summary><table>
 <tr><td><b>GestureDetector [icon: refresh]</b></td><td>Count the actor photos again.</td></tr>
 <tr><td><b>GestureDetector [icon: check_circle, cancel_outlined]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
 <tr><td><b>Btn [icon: stop_circle]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
@@ -678,6 +679,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Btn [icon: auto_fix_high]</b></td><td>Applies your genre synonym rules and filter rules to every {...}movie&#x27;s genre list. Runs locally with no network calls — completes {...}in seconds. Useful after editing genre synonyms or filters.</td></tr>
 <tr><td><b>Btn [icon: lock_open]</b></td><td>Removes the &quot;locked&quot; flag from every movie. {...}Locked movies are skipped by all scraper operations. {...}After clearing, the next scrape will re-process them.</td></tr>
 <tr><td><b>Btn [icon: face_retouching_natural]</b></td><td>Checks every actor photo by face: duplicates, covers and photos of {...}the wrong person are moved to a quarantine folder (nothing is deleted). {...}The first time it installs a small free add-on (needs Python). After {...}that it also runs by itself after each automatic photo download.</td></tr>
+<tr><td><b>Btn [icon: folder_special]</b></td><td>Pick a folder of loose movie files that have no DVD-ID. Every movie gets its own {...}folder inside the one you pick (same drive, a plain move - nothing is copied or deleted), {...}its subtitles go with it, the file name becomes the title and the folder name the series. {...}The cover is a picture taken from the movie itself (set how far in under Settings). {...}You can first see the plan without anything being moved, and you can let Kuraya look the {...}title up on japanfemdom.net - you always choose the match yourself.</td></tr>
 <tr><td><b>Btn [icon: restart_alt]</b></td><td>Clears the saved scraper progress so the next run starts from the {...}first movie. Does not delete or change any movie data.</td></tr>
 <tr><td><b>Btn [icon: subtitles]</b></td><td>For each foreign-sub (JP/ZH) title: translate the Japanese .ja.srt {...}(Whisper it in Subtitle Edit) or burned subs to English, merge onto {...}clean timing, write &lt;name&gt;.en.srt. Minor-framed titles are skipped. {...}Pause/stop from the task console.</td></tr>
 <tr><td><b>Btn [icon: create_new_folder]</b></td><td>Pick ANY folder (movies need NOT be in the library). Each video is {...}transcribed with language AUTO-DETECT (Japanese -&gt; anime-whisper, {...}other -&gt; Faster-Whisper-XXL), then translated to English and written {...}as &lt;name&gt;.translated-to-EN.srt beside the movie. Minor-framed titles {...}are skipped. Pause/stop from the Task Console.</td></tr>
@@ -706,6 +708,11 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>InkWell [icon: expand_less, expand_more]</b></td><td>[state] - Hide the section {...} - Show the section {...}</td></tr>
 <tr><td><b>Cancel</b></td><td>Close this question and do nothing.</td></tr>
 <tr><td><b>Continue</b></td><td>Go ahead. {...}</td></tr>
+<tr><td><b>Cancel</b></td><td>Close this window. Nothing happens.</td></tr>
+<tr><td><b>Preview only</b></td><td>Shows what would be created. Nothing is moved or written.</td></tr>
+<tr><td><b>Import</b></td><td>Moves every movie into its own folder and makes the title and cover from the file name and the movie.</td></tr>
+<tr><td><b>Import + look up titles</b></td><td>Same as Import, but first looks each title up on japanfemdom.net. You choose the match yourself - nothing is saved without your click.</td></tr>
+<tr><td><b>Close</b></td><td>Close the preview.</td></tr>
 <tr><td><b>?</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
 </table></details>
 <details><summary><b>Actor photos</b> (47)</summary><table>
@@ -1362,7 +1369,9 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>ElevatedButton.icon [icon: merge_type]</b></td><td>[state] - {...}: join the ticked video parts into one MP4 file, or convert already joined files to MP4. - Tick at least one group that still needs merging or converting first.</td></tr>
 <tr><td><b>Close</b></td><td>Close this window.</td></tr>
 </table></details>
-<details><summary><b>Video converter</b> (13)</summary><table>
+<details><summary><b>Video converter</b> (15)</summary><table>
+<tr><td><b>Cancel</b></td><td>Close this window. Nothing is added to the list.</td></tr>
+<tr><td><b>FilledButton</b></td><td>[state] - There is nothing new to add. - Add these {...} video(s) to the list, in alphabetical order. Then press Convert dropped.</td></tr>
 <tr><td><b>GestureDetector</b></td><td>[state] - Converter - Show the video converter. - Repair - Show the list of damaged videos waiting for repair. - Subs - Show the burned-in subtitle reading list. - Show the search for broken video files.</td></tr>
 <tr><td><b>🔔 Get Links</b></td><td>Find download links (Find Links) for ALL queued titles</td></tr>
 <tr><td><b>InkWell [icon: close]</b></td><td>Take this file off the repair list.</td></tr>
@@ -1372,7 +1381,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>GestureDetector [icon: vertical_align_bottom, vertical_align_center]</b></td><td>[state] - Stop the log from scrolling down by itself. - Let the log scroll down by itself to the newest line.</td></tr>
 <tr><td><b>▶ Resume</b></td><td>Continue the converter job that was paused when the app closed. Files that are already converted are skipped.</td></tr>
 <tr><td><b>IconButton [icon: close]</b></td><td>Dismiss</td></tr>
-<tr><td><b>InkWell</b></td><td>[state] - Convert dropped - Convert the video files you dropped here. - Add the video file path you pasted to the list. - Scan Library - Search your library for damaged video files and add them to the repair list. - Stop Scan - Stop searching for damaged files. - Start Repair - Start repairing the damaged videos in the list. - Pause - Pause the job. You can continue it later. - Resume - Continue the paused job. - Stop Repair - Stop - Stop the job. - Clear Done - Remove finished and failed items from the repair list. - Clear All - Remove every item from the repair list except the one being repaired right now. - Start Extraction - Start reading the burned-in subtitles of the listed videos. - Look through the burned-in subtitle folder again and list the videos found.</td></tr>
+<tr><td><b>InkWell</b></td><td>[state] - Choose folder… - Choose a folder (also outside the library). Every video in it and in its subfolders is added to the list, in alphabetical order. Then press Convert dropped. - Searching folder… - Searching the folder and its subfolders for video files. - Convert dropped - next - The dropped files start after the file being converted now; then the running job goes on. - Convert dropped next - A conversion is running. Press to convert the dropped files after the file it is on now; then it goes on with its own work. - Convert dropped - Convert the video files you dropped here. - Add the video file path you pasted to the list. - Scan Library - Search your library for damaged video files and add them to the repair list. - Stop Scan - Stop searching for damaged files. - Start Repair - Start repairing the damaged videos in the list. - Pause - Pause the job. You can continue it later. - Resume - Continue the paused job. - Stop Repair - Stop - Stop the job. - Clear Done - Remove finished and failed items from the repair list. - Clear All - Remove every item from the repair list except the one being repaired right now. - Start Extraction - Start reading the burned-in subtitles of the listed videos. - Look through the burned-in subtitle folder again and list the videos found.</td></tr>
 <tr><td><b>GestureDetector</b></td><td>Open the converter window. You can drag this card to another place.</td></tr>
 <tr><td><b>Padding [icon: open_in_full]</b></td><td>Open console</td></tr>
 <tr><td><b>Padding [icon: close]</b></td><td>[state] - Close this result. It stays here until you do. - Hide until next run</td></tr>
@@ -1468,5 +1477,10 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <details><summary><b>App Shutdown</b> (2)</summary><table>
 <tr><td><b>TextButton</b></td><td>[state] - Hide this window to the tray. Kuraya keeps finishing and then closes. - Close this note. Kuraya keeps finishing and then closes.</td></tr>
 <tr><td><b>Quit now</b></td><td>Stop everything right now, including the movie in progress, and close Kuraya.</td></tr>
+</table></details>
+<details><summary><b>Title Match Dialog</b> (3)</summary><table>
+<tr><td><b>Use this</b></td><td>Use this post: its title and cover are saved on the movie. Nothing else changes.</td></tr>
+<tr><td><b>None - skip web for the rest</b></td><td>Stop asking about the web for the remaining movies. They get the file name as title and a picture from the movie.</td></tr>
+<tr><td><b>None of these</b></td><td>None of these is the movie. It keeps the file name as title and gets a picture taken from the movie.</td></tr>
 </table></details>
 <footer>Kuraya manages files you own and does not provide any video content. For adults (18+) only.</footer></body></html>
