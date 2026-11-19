@@ -1,0 +1,35 @@
+name: Report a bug
+description: Something does not work. Tell us what happened.
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Please do not post movie files, covers or personal data. A log file is welcome, but look through it first.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, and what did Kuraya do?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: Kuraya version
+      placeholder: "for example 2.0.5-beta.40 (see the title bar or Settings)"
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Windows version and graphics card
+      placeholder: "for example Windows 11, NVIDIA RTX 3060"
+    validations:
+      required: false
