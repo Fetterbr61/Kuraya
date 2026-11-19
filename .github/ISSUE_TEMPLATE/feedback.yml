@@ -1,0 +1,33 @@
+name: Tell us what you think
+description: Two minutes. Good or bad, both help. No account details needed beyond GitHub.
+title: "Feedback: "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for trying Kuraya. Short answers are fine. Please do not post movie files, covers or personal data.
+  - type: textarea
+    id: liked
+    attributes:
+      label: What works well for you?
+    validations:
+      required: false
+  - type: textarea
+    id: broke
+    attributes:
+      label: What broke, or what was confusing?
+    validations:
+      required: false
+  - type: textarea
+    id: missing
+    attributes:
+      label: What is missing?
+    validations:
+      required: false
+  - type: input
+    id: size
+    attributes:
+      label: About how many movies are in your library?
+      placeholder: "for example 500"
+    validations:
+      required: false
