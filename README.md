@@ -21,6 +21,8 @@
 
 **Kuraya is a free Windows app that organises, subtitles and plays your own JAV collection.**
 
+> **Do you use Kuraya? Tell us what you think. It takes 2 minutes.** [Give feedback](https://github.com/Fetterbr61/Kuraya/issues/new?template=feedback.yml) · [Report a bug](https://github.com/Fetterbr61/Kuraya/issues/new?template=bug.yml) · [Ask or talk](https://github.com/Fetterbr61/Kuraya/discussions)
+
 - Recognises a movie by the DVD-ID in its file name, and then fetches cover, title, cast, studio and genres from several sources.
 - Sorts your library into clean folders and finds duplicates across your drives.
 - Makes English subtitles from the audio, on your own PC.
