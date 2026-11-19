@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Ask a question or just talk
+    url: https://github.com/Fetterbr61/Kuraya/discussions
+    about: Not a bug and not sure? Write here. No form needed.
