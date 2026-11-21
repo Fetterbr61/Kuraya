@@ -77,6 +77,14 @@ Kuraya answers only devices that you paired. Do this one time for each phone, ta
 
 Did the code run out? Press *Pair a device* again and type the new code.
 
+### 🌍 Use the Remote away from home
+
+1. Install the free [Tailscale](https://tailscale.com) app on the PC and on the phone, tablet or laptop. Sign in with the same account on both.
+2. At home, pair the Remote and let it find the PC once.
+3. In the Remote: **Settings >** switch on **Use away from home (Tailscale)**.
+
+At home it uses your Wi-Fi; away it switches to Tailscale by itself. Nothing is opened to the internet.
+
 ### What you need
 
 - **Main app:** Windows 10 or 11 (64-bit). Setup helps you install the free helper tools, such as FFmpeg.
@@ -213,7 +221,8 @@ grid and plays what you pick in Kuraya's own player — no site-hopping, no pop-
 
 ### 📱 It comes with you
 The free **Kuraya-Remote** app (Android and Windows) streams your own collection to any
-phone, tablet or laptop in the house. Your files never leave your network.
+phone, tablet or laptop in the house, and away from home through the free Tailscale app.
+Your files never go to anyone else: Tailscale connects only your own devices.
 
 ---
 

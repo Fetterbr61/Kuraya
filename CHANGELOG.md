@@ -29,6 +29,18 @@ repository.
 Why: from now on only devices that you paired can reach your library. Before, any device on your network could.
 Did the code run out? Press Pair a device again and type the new code. You pair each device one time only.
 
+### The Remote also works away from home
+
+The Remote (Android and Windows) can reach your PC from anywhere, not only in the same house:
+
+1. Install the free Tailscale app (tailscale.com) on the PC and on the phone, tablet or laptop. Sign in with the same account on both.
+2. At home, pair the Remote first (see above) and let it find the PC once.
+3. In the Remote: Settings > switch on **Use away from home (Tailscale)**.
+
+At home the Remote uses your Wi-Fi. Away it switches to Tailscale by itself. Nothing is opened to the internet: Tailscale connects only your own devices, encrypted. Streaming away uses the upload speed of your home internet; switch on Smooth mode in the Remote if it stutters.
+
+- When a phone, tablet or PC that is not paired tries to connect, Kuraya on the PC says so in a bar, with a button to pair it. (#2259) (security)
+- The Remote app says "Not paired with Kuraya yet" with the steps and a Pair button, instead of a technical error. (#2259) (security)
 - Please update Kuraya AND the Kuraya Remote app (phone, tablet, Windows). This version closes two security holes in the Remote server: a device on your network could read or remove files on the PC. The Remote must now be paired once with a code: in Kuraya open Settings > Network > Pair a device. (security)
 - When a PC guard for the graphics card is installed, Kuraya asks it before it uses the card. If another program has the card, the job waits and the Task Console shows why, with a Start anyway button. Without the guard nothing changes. (#2258)
 - A paired Remote showed "Refresh failed" when the old HTTP login was switched on. Fixed. (#2257) (security)
