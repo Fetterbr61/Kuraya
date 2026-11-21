@@ -70,6 +70,8 @@ Kuraya is **one main app on your Windows PC**, plus **two free remote apps** tha
 
 Kuraya answers only devices that you paired. Do this one time for each phone, tablet or laptop:
 
+🎬 [Watch it in 39 seconds](https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.6-beta.1/Kuraya-Pair-the-Remote.mp4)
+
 1. Install **Kuraya** on the PC and the **Remote** from the same release. An older Remote can not connect.
 2. On the PC: **Settings > Network > Kuraya Remote > Pair a device**. Kuraya shows a 6-digit code for 2 minutes.
 3. In the Remote: **Settings > Pair with Kuraya**, type the code, press **Pair**.

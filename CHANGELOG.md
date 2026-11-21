@@ -21,6 +21,8 @@ repository.
 
 ### After you update: do this once, or the Remote can not connect
 
+Watch it in 39 seconds: [Pair the Remote (video)](https://github.com/Fetterbr61/Kuraya/releases/download/v2.0.6-beta.1/Kuraya-Pair-the-Remote.mp4)
+
 1. Update Kuraya on the PC to this version.
 2. Install the new Kuraya Remote on your phone, tablet or laptop. An older Remote can not connect.
 3. On the PC: open Settings > Network > Kuraya Remote and press **Pair a device**. Kuraya shows a 6-digit code for 2 minutes.
