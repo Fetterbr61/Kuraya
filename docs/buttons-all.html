@@ -59,7 +59,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>IconButton [icon: close]</b></td><td>Close</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Process Inbox&quot; [icon: inbox]</b></td><td>Process the movies waiting in your inbox folder.</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Open Setup&quot; [icon: settings_suggest]</b></td><td>Open the setup wizard to choose your library and inbox folders.</td></tr>
-<tr><td><b>OutlinedButton.icon - &quot;Scan library&quot; [icon: refresh]</b></td><td>Look through your library folders again and add any movies that are missing from the app. Needs a library folder to be set first. ######################################################################## # Controls that deliberately have no tooltip ######################################################################## lib/main.dart:908 drag handle only; the chip inside has the tooltip (it says it can be dragged) lib/main.dart:990 drag handle only; the task console button inside has the tooltip lib/services/core/movie_context_menu.dart:2525 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2531 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2542 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/ui/screens/tube_video_player_screen.dart:1052 the whole video surface (tap = show controls, drag = volume / brightness / seek). A tooltip here would pop up over the playing video. lib/ui/screens/tube_video_player_screen.dart:1585 only stops a tap on the open settings panel from reaching the video behind it; the panel&#x27;s own buttons have tooltips. lib/ui/widgets/cascading_menu.dart:72 the row&#x27;s own child already carries its tooltip (built by _buildMenuItem) SnackBar action buttons (&quot;Open&quot;, &quot;RESCUE&quot;, ...) part of a message, not a screen control</td></tr>
+<tr><td><b>OutlinedButton.icon - &quot;Scan library&quot; [icon: refresh]</b></td><td>Look through your library folders again and add any movies that are missing from the app. Needs a library folder to be set first. ######################################################################## # Controls that deliberately have no tooltip ######################################################################## lib/main.dart:910 drag handle only; the chip inside has the tooltip (it says it can be dragged) lib/main.dart:992 drag handle only; the task console button inside has the tooltip lib/services/core/movie_context_menu.dart:2525 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2531 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/services/core/movie_context_menu.dart:2542 radio option inside the &#x27;how much to move&#x27; dialog; its own label says what it does lib/ui/screens/tube_video_player_screen.dart:1052 the whole video surface (tap = show controls, drag = volume / brightness / seek). A tooltip here would pop up over the playing video. lib/ui/screens/tube_video_player_screen.dart:1585 only stops a tap on the open settings panel from reaching the video behind it; the panel&#x27;s own buttons have tooltips. lib/ui/widgets/cascading_menu.dart:72 the row&#x27;s own child already carries its tooltip (built by _buildMenuItem) SnackBar action buttons (&quot;Open&quot;, &quot;RESCUE&quot;, ...) part of a message, not a screen control</td></tr>
 </table></details>
 <details><summary><b>Closing Kuraya and paused scrapes</b> (4)</summary><table>
 <tr><td><b>No</b></td><td>Keep the app open.</td></tr>
@@ -73,7 +73,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Install now</b></td><td>Download and install the new version now.</td></tr>
 </table></details>
 <h2 id="ch2">2. The main screen</h2><p class="sub">The movie grid, the toolbar, the search box, the log and the background jobs.</p>
-<details><summary><b>Main screen and toolbar</b> (71)</summary><table>
+<details><summary><b>Main screen and toolbar</b> (72)</summary><table>
 <tr><td><b>TextButton.icon - &quot;Project page&quot; [icon: public]</b></td><td>Open the {...} project page in your browser.</td></tr>
 <tr><td><b>IconButton [icon: remove]</b></td><td>Minimize — scan keeps running in background</td></tr>
 <tr><td><b>From the whole current view</b></td><td>Where the movies are taken from.</td></tr>
@@ -124,6 +124,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>What every button does</b></td><td>Show an explanation of what every button in the app does.</td></tr>
 <tr><td><b>Troubleshooting — try this first</b></td><td>Show the things to try first when something does not work.</td></tr>
 <tr><td><b>Report a problem (with log)</b></td><td>Build a problem report with the log, save it on your Desktop and open the page where you describe the problem.</td></tr>
+<tr><td><b>Give feedback</b></td><td>Open a short form in your browser where you tell us what works, what broke and what is missing. It takes two minutes and sends nothing from your PC.</td></tr>
 <tr><td><b>About ${AppBranding.appName}</b></td><td>Show the version, edition and project page of {...}, and the open-source licenses it uses.</td></tr>
 <tr><td><b>Packages used</b></td><td>Show the list of software packages {...} is built with, what each one does and which versions it has used.</td></tr>
 <tr><td><b>ListTile [icon: system_update_alt]</b></td><td>[state] - Look on the Kuraya page for a newer version. - Kuraya {...} is ready. Click to see what is new and install it.</td></tr>
@@ -203,9 +204,10 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Copied all issues to clipboard</b></td><td>Copy the whole list of problems to the clipboard as text.</td></tr>
 <tr><td><b>Close</b></td><td>Close this list.</td></tr>
 </table></details>
-<details><summary><b>Task Console</b> (9)</summary><table>
+<details><summary><b>Task Console</b> (10)</summary><table>
 <tr><td><b>IconButton [icon: dashboard_customize_outlined, dashboard_customize]</b></td><td>[state] - Task console — no active tasks - Task console — {...} active task(s). Tap to manage.</td></tr>
 <tr><td><b>InkWell</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
+<tr><td><b>? [icon: play_circle_outline]</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
 <tr><td><b>InkWell</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
 <tr><td><b>${active.length}</b></td><td>Open the task console to see, pause or stop background jobs. You can drag this button to another place on the screen.</td></tr>
 <tr><td><b>Turn Auto off?</b></td><td>(text is passed in from elsewhere - see the code)</td></tr>
@@ -302,8 +304,9 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>InputChip</b></td><td>Click to replace this genre with another one. The x removes it from the movie.</td></tr>
 <tr><td><b>ElevatedButton.icon [icon: save]</b></td><td>[state] - Saving is in progress. - Save the changed title and genres to the movie&#x27;s details file. Movies you did not change are left alone.</td></tr>
 </table></details>
-<details><summary><b>Edit information</b> (12)</summary><table>
+<details><summary><b>Edit information</b> (13)</summary><table>
 <tr><td><b>ElevatedButton.icon - &quot;Rename Video&quot; [icon: drive_file_rename_outline]</b></td><td>Rename the video file to the name you typed.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Create fanart…&quot; [icon: add_photo_alternate]</b></td><td>This movie has no fanart. Make one from a frame of the video, a picture file, or a Google image search.</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Browse&quot; [icon: folder_open]</b></td><td>Choose a fanart (cover) image file from your computer.</td></tr>
 <tr><td><b>ElevatedButton.icon - &quot;Paste&quot; [icon: content_paste]</b></td><td>Paste the file path of an image that you copied. The image is then used as the fanart.</td></tr>
 <tr><td><b>Fanart</b></td><td>Use this image as the fanart (cover) of the movie. A copy is made and the original stays.</td></tr>
@@ -1391,7 +1394,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Open Setup</b></td><td>Open the setup window, where you can install the missing program.</td></tr>
 </table></details>
 <h2 id="ch11">11. Settings</h2><p class="sub">All options, grouped and searchable.</p>
-<details><summary><b>Settings</b> (55)</summary><table>
+<details><summary><b>Settings</b> (60)</summary><table>
 <tr><td><b>Cancel</b></td><td>Close this window without changing the setting.</td></tr>
 <tr><td><b>Save</b></td><td>Save the text you entered. If the box is empty, the default value is used.</td></tr>
 <tr><td><b>IconButton [icon: folder_open]</b></td><td>Browse…</td></tr>
@@ -1447,6 +1450,11 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <tr><td><b>Get Tailscale</b></td><td>Open the Tailscale download page in your browser.</td></tr>
 <tr><td><b>IconButton [icon: shield_outlined]</b></td><td>Let the Android remote reach this PC through Windows Firewall on your home network (needed for &quot;Find my PC&quot;). Windows asks for permission once.</td></tr>
 <tr><td><b>IconButton [icon: refresh]</b></td><td>Check again whether Tailscale is running on this PC.</td></tr>
+<tr><td><b>Cancel</b></td><td>Keep this device paired.</td></tr>
+<tr><td><b>Remove</b></td><td>Remove this device. Its Remote app must be paired again.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Pair a device&quot; [icon: phonelink_lock]</b></td><td>Show a 6-digit code for 2 minutes. Type it in the Kuraya Remote app on the phone, tablet or PC you want to use.</td></tr>
+<tr><td><b>IconButton [icon: link_off]</b></td><td>Remove {...}. It can no longer use the Remote until you pair it again.</td></tr>
+<tr><td><b>Close</b></td><td>Close this window. The code stops working.</td></tr>
 </table></details>
 <details><summary><b>About</b> (3)</summary><table>
 <tr><td><b>Icon [icon: info_outline]</b></td><td>Informational - no live check</td></tr>
@@ -1477,6 +1485,18 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-a
 <details><summary><b>App Shutdown</b> (2)</summary><table>
 <tr><td><b>TextButton</b></td><td>[state] - Hide this window to the tray. Kuraya keeps finishing and then closes. - Close this note. Kuraya keeps finishing and then closes.</td></tr>
 <tr><td><b>Quit now</b></td><td>Stop everything right now, including the movie in progress, and close Kuraya.</td></tr>
+</table></details>
+<details><summary><b>Fanart Maker Dialog</b> (10)</summary><table>
+<tr><td><b>InkWell [icon: image_not_supported]</b></td><td>[state] - This suggested frame is still being made. - Use the frame at {...} as the picture to preview. Nothing is saved yet.</td></tr>
+<tr><td><b>IconButton [icon: close]</b></td><td>Close this window. Nothing is saved.</td></tr>
+<tr><td><b>Slider</b></td><td>Slide to any moment of the video, then press &quot;Grab this frame&quot;.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: camera_alt]</b></td><td>Take the frame at the time on the slider and show it in the preview. Nothing is saved yet.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Choose picture…&quot; [icon: folder_open]</b></td><td>Choose a picture file (jpg, png, webp) from your computer and show it in the preview. The file stays where it is; a copy is used.</td></tr>
+<tr><td><b>ElevatedButton.icon - &quot;Open Google images&quot; [icon: search]</b></td><td>Open a Google image search for this movie (DVD-ID and title) in your web browser.</td></tr>
+<tr><td><b>TextField</b></td><td>Paste the address of the picture here (a normal https link to the image).</td></tr>
+<tr><td><b>IconButton [icon: content_paste]</b></td><td>Paste the address you copied into the box.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: download]</b></td><td>Download the picture from this address and show it in the preview. Nothing is saved yet.</td></tr>
+<tr><td><b>ElevatedButton.icon [icon: check]</b></td><td>Save the previewed picture in the movie folder as &quot;{...}-fanart&quot;. Nothing is overwritten: if the movie already has a fanart, nothing is saved.</td></tr>
 </table></details>
 <details><summary><b>Title Match Dialog</b> (3)</summary><table>
 <tr><td><b>Use this</b></td><td>Use this post: its title and cover are saved on the movie. Nothing else changes.</td></tr>

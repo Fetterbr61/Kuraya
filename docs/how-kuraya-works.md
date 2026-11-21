@@ -276,10 +276,16 @@ Rules Kuraya always follows:
 ## 10. The Android remote (optional)
 
 Install **Kuraya-Remote** on an Android phone or tablet on the same network as the PC.
-In the remote's settings enter the PC's **IP address** (e.g. `192.168.0.10`, not
-"localhost") and port **8080**. The PC does all the work; the remote shows your library,
+In the remote's settings press **Find my PC automatically** (or type the PC's address,
+e.g. `192.168.0.10`, and port **8080**). The PC does all the work; the remote shows your library,
 streams movies, and syncs favourites and flags back to the PC. The PC must be on and
 Kuraya running.
+
+**Pair the remote once (since 2.0.6).** Kuraya answers only devices that are paired.
+On the PC: *Settings > Network > Kuraya Remote > Pair a device* shows a 6-digit code for
+2 minutes. In the remote: *Settings > Pair with Kuraya*, type the code, press *Pair*.
+The PC lists the paired devices and can remove one. Install the remote of the same
+release as Kuraya: an older remote can not pair.
 
 ---
 

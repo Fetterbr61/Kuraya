@@ -1,7 +1,7 @@
 HOW KURAYA WORKS
 ================
 
-Kuraya 2.0.5-beta.40 (test version) — Where Your Japanese Adult Movies Lives.
+Kuraya 2.0.6-beta.1 (test version) — Where Your Japanese Adult Movies Lives.
 
 This is the complete description of what Kuraya does and how it does it, written for
 users. The newest changes are in CHANGELOG.md. Kuraya is for adults (18+) and for
@@ -262,6 +262,13 @@ e.g. 192.168.0.10, and port 8080). The PC does all the work; the remote shows yo
 library, streams movies, and syncs favourites and flags back to the PC. The PC must be
 on and Kuraya running. While Kuraya runs it keeps the PC awake (Settings > Automation >
 Power), so the remote can always reach it.
+
+Pair the remote once (since 2.0.6). Kuraya answers only devices that are paired:
+  1. On the PC: Settings > Network > Kuraya Remote > Pair a device. Kuraya shows a
+     6-digit code for 2 minutes.
+  2. In the remote: Settings > Pair with Kuraya, type the code, press Pair.
+The PC lists the paired devices there; press the unlink button to remove one.
+An older remote can not pair: install the remote of the same release as Kuraya.
 
 "Find my PC" finds nothing? Windows Firewall blocks it. Setup can open it for you
 (tick "Let the Android remote reach this PC"), or press the shield button in

@@ -17,6 +17,130 @@ repository.
 
 ---
 
+## [2.0.6-beta.1] — 2026-11-21 — Security update for the Remote, and better subtitles
+
+### After you update: do this once, or the Remote can not connect
+
+1. Update Kuraya on the PC to this version.
+2. Install the new Kuraya Remote on your phone, tablet or laptop. An older Remote can not connect.
+3. On the PC: open Settings > Network > Kuraya Remote and press **Pair a device**. Kuraya shows a 6-digit code for 2 minutes.
+4. In the Remote: open Settings, press **Pair with Kuraya**, type the code and press Pair.
+
+Why: from now on only devices that you paired can reach your library. Before, any device on your network could.
+Did the code run out? Press Pair a device again and type the new code. You pair each device one time only.
+
+- Please update Kuraya AND the Kuraya Remote app (phone, tablet, Windows). This version closes two security holes in the Remote server: a device on your network could read or remove files on the PC. The Remote must now be paired once with a code: in Kuraya open Settings > Network > Pair a device. (security)
+- When a PC guard for the graphics card is installed, Kuraya asks it before it uses the card. If another program has the card, the job waits and the Task Console shows why, with a Start anyway button. Without the guard nothing changes. (#2258)
+- A paired Remote showed "Refresh failed" when the old HTTP login was switched on. Fixed. (#2257) (security)
+- Pairing the Remote failed with "expired code" when the old HTTP login was switched on. The old login now applies only when pairing is switched off. (#2257) (security)
+- The Kuraya Remote must now be paired once. In Kuraya open Settings > Network and click Pair a device; type the 6-digit code in the Remote app. Devices that are not paired can no longer use Kuraya. Update the Remote app too: an older Remote can not pair. (#2257) (security)
+- The Remote can now only open, play and move to the trash files inside your movie folders: the library folders, the inbox, the pre-inbox and the duplicates folder. Before, a device on the same network could read or remove any file on the PC while Kuraya ran. To browse another folder from the phone (for example a download folder), add it in Settings > Network > Remote folders. (#2256) (security)
+- Help has a new entry, Give feedback. It opens a short form in your browser: what works, what broke, what is missing. It takes two minutes. (#2255)
+- The Kuraya page on GitHub now has a short feedback form, a bug form and a place to ask questions. The links are at the top of the page. (#2254)
+- The local model for genres, sorting and series names is now Gemma 4 (the uncensored build), the same model that already reads the pictures. Before, two different models took turns on the graphics card, and each change cost loading time. If you chose a model yourself in Settings, your choice is kept. (#2253)
+- When a movie still has no story or no genres after the first sites, Idle Genre Re-scrape now asks the other sites too, one at a time in your priority order - also the specialised sites that are switched off for a normal scrape. It stops as soon as the movie has both. Settings > "Idle re-scrape: ask the other sites too" switches this off. (#2252)
+- Some sites (JavLibrary, MissAV, JavTrailers) only open through the Kuraya add-on in Edge or Chrome. When the browser is closed, Kuraya now opens it by itself and waits for the add-on, at most once every 5 minutes. Settings > "Open the browser when a site needs it" switches this off. (#2251)
+- Idle Genre Re-scrape waits while the browser add-on is not connected. Before, it went on, saved an empty result for each movie and marked the movie as done. (#2251) (urgent)
+- When a movie has its subtitle as an .ass, .ssa or .vtt file next to the video, "Transcribe + Translate" now makes that text into the standard .srt subtitle instead of transcribing the sound. English text is ready at once; another language is translated. The original file is not changed. (#2250)
+- Movies that are not in the Inbox or the library (an imported folder somewhere else) now also get subtitles, last in line. (#2250)
+- A built-in or side subtitle is named by the language of most of its lines, so a few lines in another language no longer decide. (#2250)
+- A movie that was imported with only a title (no DVD-ID) is no longer searched for on websites by Idle Genre Re-scrape, Metadata Backfill or the Doctor Guard. No site can find such a movie, and the search rewrote its information file with wrong values. (#2249) (urgent)
+- When any scrape saves a movie without a DVD-ID, its information file keeps what makes it title-only: the ID type, the original file name and where the title came from. (#2249)
+- A movie whose transcription failed once was marked "no speech" and never tried again, although it had normal sound. Now a failure is tried again, and the movie is only marked after 3 failures in a row. A finished subtitle clears the count. (#2248)
+- A built-in subtitle without a language label: Thai and Russian are now recognised by their letters, and text in Latin letters is only called English when it holds common English words. Otherwise the file is named as unknown, so it never counts as the movie's English subtitle. (#2248)
+- An .mkv with old sound (wmapro, wmav2) is now turned into .mp4: the picture is copied without loss and only the sound is converted. Before, the file stayed .mkv. (#2247)
+- An .mkv with old video (wmv, vc1) is now converted to .mp4 the same way a .wmv file is. (#2247)
+- An .mkv with built-in text subtitles: the subtitles are first saved as .srt files next to the movie (an existing subtitle file is never overwritten), then the movie becomes .mp4. A built-in track that is only an advert (a few lines with a web address) is not saved as a subtitle. Picture subtitles cannot be saved as .srt, so those files stay .mkv. The old .mkv goes to NMP_Trash as always. (#2247)
+- When you start the converter yourself, ticking another box in the Task Console no longer pauses it. Before, it was paused because the Converter box had no tick. (#2246)
+- When Auto pauses the converter, its card now says why ("Auto - the Converter box is off", "Auto - a Pre-Inbox run is active", "Auto - the PC is in use") instead of "Held by you". (#2246)
+- The converter now waits for subtitle work. While movies are being transcribed and translated, compression holds and shows "waiting for subtitles"; it starts by itself when the subtitle work is finished. A file that is already being compressed finishes first. (#2245)
+- Subtitles have fewer sound lines. When several lines in a row are only sounds (moans, breathing, kissing), the first one stays and the repeats are left out. Spoken lines are never removed. Subtitles you already have keep their sound lines until they are translated again. (#2243)
+- Local translation (used without a DeepSeek key, or when the balance is used up): a line the main model does not translate is now sent to the uncensored Gemma 4 model when it is installed. A refusal sentence from a model is never shown as a subtitle. (#2244)
+- The series view rebuilt itself about five times a second without end: it asked the AI to translate 5,401 series names again and again, got nothing back, threw its list away and built it again for all ~19,000 movies. That is why sorting felt slow and why pictures were slow to appear. Names that cannot be translated are now asked about once, and the view only rebuilds when translations really arrived. (#2242)
+- In the full file editor, a movie without fanart now has a "Create fanart…" button. Pick a frame of the video (5 suggested frames or a time slider), choose a picture file, or open a Google image search and paste the image address. The picture is saved as the movie's fanart; an existing fanart is never overwritten. (#2240)
+
+## [2.0.5-beta.58] — 2026-11-21 — Kuraya takes turns with other programs on the graphics card
+
+- When a PC guard for the graphics card is installed, Kuraya asks it before it uses the card. If another program has the card, the job waits and the Task Console shows why, with a Start anyway button. Without the guard nothing changes. (#2258)
+
+## [2.0.5-beta.57] — 2026-11-19 — The paired Remote loads the library
+
+- A paired Remote showed "Refresh failed" when the old HTTP login was switched on. Fixed. (#2257) (security)
+
+## [2.0.5-beta.56] — 2026-11-19 — Pairing works with the old login switched on
+
+- Pairing the Remote failed with "expired code" when the old HTTP login was switched on. The old login now applies only when pairing is switched off. (#2257) (security)
+
+## [2.0.5-beta.55] — 2026-11-19 — Pair your Remote with a code
+
+- The Kuraya Remote must now be paired once. In Kuraya open Settings > Network and click Pair a device; type the 6-digit code in the Remote app. Devices that are not paired can no longer use Kuraya. Update the Remote app too: an older Remote can not pair. (#2257) (security)
+
+## [2.0.5-beta.54] — 2026-11-19 — The Remote reaches only your movie folders
+
+- The Remote can now only open, play and move to the trash files inside your movie folders: the library folders, the inbox, the pre-inbox and the duplicates folder. Before, a device on the same network could read or remove any file on the PC while Kuraya ran. To browse another folder from the phone (for example a download folder), add it in Settings > Network > Remote folders. (#2256) (security)
+
+## [2.0.5-beta.53] — 2026-11-19 — Give feedback from the app
+
+- Help has a new entry, Give feedback. It opens a short form in your browser: what works, what broke, what is missing. It takes two minutes. (#2255)
+
+## [2.0.5-beta.52] — 2026-11-19 — Tell us what you think
+
+- The Kuraya page on GitHub now has a short feedback form, a bug form and a place to ask questions. The links are at the top of the page. (#2254)
+
+## [2.0.5-beta.51] — 2026-11-18 — One local model
+
+- The local model for genres, sorting and series names is now Gemma 4 (the uncensored build), the same model that already reads the pictures. Before, two different models took turns on the graphics card, and each change cost loading time. If you chose a model yourself in Settings, your choice is kept. (#2253)
+
+## [2.0.5-beta.50] — 2026-11-18 — Idle re-scrape asks more sites
+
+- When a movie still has no story or no genres after the first sites, Idle Genre Re-scrape now asks the other sites too, one at a time in your priority order - also the specialised sites that are switched off for a normal scrape. It stops as soon as the movie has both. Settings > "Idle re-scrape: ask the other sites too" switches this off. (#2252)
+
+## [2.0.5-beta.49] — 2026-11-18 — Kuraya opens the browser when a site needs it
+
+- Some sites (JavLibrary, MissAV, JavTrailers) only open through the Kuraya add-on in Edge or Chrome. When the browser is closed, Kuraya now opens it by itself and waits for the add-on, at most once every 5 minutes. Settings > "Open the browser when a site needs it" switches this off. (#2251)
+- Idle Genre Re-scrape waits while the browser add-on is not connected. Before, it went on, saved an empty result for each movie and marked the movie as done. (#2251) (urgent)
+
+## [2.0.5-beta.48] — 2026-11-18 — A subtitle file next to the movie is used
+
+- When a movie has its subtitle as an .ass, .ssa or .vtt file next to the video, "Transcribe + Translate" now makes that text into the standard .srt subtitle instead of transcribing the sound. English text is ready at once; another language is translated. The original file is not changed. (#2250)
+- Movies that are not in the Inbox or the library (an imported folder somewhere else) now also get subtitles, last in line. (#2250)
+- A built-in or side subtitle is named by the language of most of its lines, so a few lines in another language no longer decide. (#2250)
+
+## [2.0.5-beta.47] — 2026-11-18 — Movies without a DVD-ID are left alone by the background jobs
+
+- A movie that was imported with only a title (no DVD-ID) is no longer searched for on websites by Idle Genre Re-scrape, Metadata Backfill or the Doctor Guard. No site can find such a movie, and the search rewrote its information file with wrong values. (#2249) (urgent)
+- When any scrape saves a movie without a DVD-ID, its information file keeps what makes it title-only: the ID type, the original file name and where the title came from. (#2249)
+
+## [2.0.5-beta.46] — 2026-11-18 — A failed transcription is tried again
+
+- A movie whose transcription failed once was marked "no speech" and never tried again, although it had normal sound. Now a failure is tried again, and the movie is only marked after 3 failures in a row. A finished subtitle clears the count. (#2248)
+- A built-in subtitle without a language label: Thai and Russian are now recognised by their letters, and text in Latin letters is only called English when it holds common English words. Otherwise the file is named as unknown, so it never counts as the movie's English subtitle. (#2248)
+
+## [2.0.5-beta.45] — 2026-11-18 — Every .mkv can become .mp4
+
+- An .mkv with old sound (wmapro, wmav2) is now turned into .mp4: the picture is copied without loss and only the sound is converted. Before, the file stayed .mkv. (#2247)
+- An .mkv with old video (wmv, vc1) is now converted to .mp4 the same way a .wmv file is. (#2247)
+- An .mkv with built-in text subtitles: the subtitles are first saved as .srt files next to the movie (an existing subtitle file is never overwritten), then the movie becomes .mp4. A built-in track that is only an advert (a few lines with a web address) is not saved as a subtitle. Picture subtitles cannot be saved as .srt, so those files stay .mkv. The old .mkv goes to NMP_Trash as always. (#2247)
+
+## [2.0.5-beta.44] — 2026-11-18 — A converter you started is not paused by Auto
+
+- When you start the converter yourself, ticking another box in the Task Console no longer pauses it. Before, it was paused because the Converter box had no tick. (#2246)
+- When Auto pauses the converter, its card now says why ("Auto - the Converter box is off", "Auto - a Pre-Inbox run is active", "Auto - the PC is in use") instead of "Held by you". (#2246)
+
+## [2.0.5-beta.43] — 2026-11-18 — Fewer sound lines in subtitles; the converter waits for subtitle work
+
+- The converter now waits for subtitle work. While movies are being transcribed and translated, compression holds and shows "waiting for subtitles"; it starts by itself when the subtitle work is finished. A file that is already being compressed finishes first. (#2245)
+- Subtitles have fewer sound lines. When several lines in a row are only sounds (moans, breathing, kissing), the first one stays and the repeats are left out. Spoken lines are never removed. Subtitles you already have keep their sound lines until they are translated again. (#2243)
+- Local translation (used without a DeepSeek key, or when the balance is used up): a line the main model does not translate is now sent to the uncensored Gemma 4 model when it is installed. A refusal sentence from a model is never shown as a subtitle. (#2244)
+
+## [2.0.5-beta.42] — 2026-11-15 — The series view no longer rebuilds itself all the time
+
+- The series view rebuilt itself about five times a second without end: it asked the AI to translate 5,401 series names again and again, got nothing back, threw its list away and built it again for all ~19,000 movies. That is why sorting felt slow and why pictures were slow to appear. Names that cannot be translated are now asked about once, and the view only rebuilds when translations really arrived. (#2242)
+
+## [2.0.5-beta.41] — 2026-11-15 — Make a fanart for a movie that has none; guard for JDownloader
+
+- In the full file editor, a movie without fanart now has a "Create fanart…" button. Pick a frame of the video (5 suggested frames or a time slider), choose a picture file, or open a Google image search and paste the image address. The picture is saved as the movie's fanart; an existing fanart is never overwritten. (#2240)
+
 ## [2.0.5-beta.40] — 2026-11-14 — Deleted movies leave the list, faster sorting, a shorter log
 
 - **Everything since the last public version (2.0.5-beta.34):** this release covers 2.0.5-beta.35, 2.0.5-beta.36, 2.0.5-beta.37, 2.0.5-beta.38, 2.0.5-beta.39 and 2.0.5-beta.40. The points below sum it up.
